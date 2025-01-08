@@ -1,4 +1,16 @@
-// question: 1  name: Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: 
+// question: 1  name: Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: 
+// [tag:email] [tag:protocollo] [tag:mta] [tag:msa] [tag:mua] [tag:smtp] [tag:tls] 
+::Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: </strong></p>{
+	~%20.00000%[moodle] MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
+	~%20.00000%[moodle] SMTP è un protocollo orientato alla connessione utilizzato per l'invio di email.
+	~%20.00000%[moodle] Una sfida nella sicurezza della posta elettronica è la presenza di MTA potenzialmente non attendibili nella catena di consegna.
+	~%20.00000%[moodle] ESMTP è un'estensione di SMTP che introduce funzionalità aggiuntive, incluso il supporto per miglioramenti della sicurezza.
+	~[moodle] Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+	~[moodle] Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
+	~%20.00000%[moodle] TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
+}
+
+// question: 2  name: Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: 
 // [tag:tls] [tag: starttls] [tag: email] [tag: sicurezza] [tag: protocollo] 
 ::Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: </strong></p>{
 	=[moodle]Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
@@ -7,52 +19,27 @@
 	~[moodle]SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
 }
 
-// question: 2  name: Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?
-// [tag:ipsec] [tag:esp] [tag: transportmode] [tag:tunnelmode] [tag:sicurezza] [tag:funzionamento] 
-::Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?::[html]<p><strong>Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?</strong></p>{
-	~%50.00000%[moodle]Transport Mode: Solo il payload del pacchetto IP è crittografato.
-	~%50.00000%[moodle]Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
-	~[moodle]Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
-	~[moodle]Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
-	~[moodle]Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
-	~[moodle]Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
+// question: 3  name: Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?
+// [tag:esp] [tag: ipsec] 
+::Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?</strong></p>{
+	~%50.00000%[moodle]ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
+	~%50.00000%[moodle]ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
+	~[moodle]ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
+	~[moodle]ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
+	~[moodle]ESPv3+ non può essere utilizzato insieme al protocollo AH.
 }
 
-// question: 3  name: Quali affermazioni riguardanti la crittografia a stream sono corrette?
-// [tag:crypto] [tag: stream] [tag: simmetrica] 
-::Quali affermazioni riguardanti la crittografia a stream sono corrette?::[html]<p><strong>Quali affermazioni riguardanti la crittografia a stream sono corrette?</strong></p>{
-	~[moodle]Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
-	~[moodle]Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
-	~[moodle]Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
-	~%50.00000%[moodle]Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
-	~[moodle]Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
-	~[moodle] L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
-	~%50.00000%[moodle]Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+// question: 4  name: Quale delle seguenti affermazioni sulle VPN è corretta?
+// [tag:vpn] [tag: ipsec] 
+::Quale delle seguenti affermazioni sulle VPN è corretta?::[html]<p><strong>Quale delle seguenti affermazioni sulle VPN è corretta?</strong></p>{
+	~[moodle]Le VPN operano esclusivamente a livello applicativo per la protezione dei dati.
+	~%50.00000%[moodle]OpenVPN può essere preferibile ad IPsec in reti complesse o eterogenee
+	~%50.00000%[moodle]IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
+	~[moodle]OpenVPN supporta nativamente sia modalità transport che tunnel
+	~[moodle]Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
 }
 
-// question: 4  name: Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: 
-// [tag:spam] [tag:email] [tag:blacklisting] [tag:greylisting] [tag:sicurezza] 
-::Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: </strong></p>{
-	~%20.00000%[moodle] Lo spam si riferisce a email di massa non richieste, spesso di natura commerciale.
-	~%20.00000%[moodle] Una tattica comune degli spammer è quella di nascondere la vera identità del mittente e falsificare le intestazioni delle email.
-	~%20.00000%[moodle] Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
-	~%20.00000%[moodle] Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-	~%20.00000%[moodle] Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-	~[moodle] Blacklist e Greylisting vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-}
-
-// question: 5  name: Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?
-// [tag:ipsec] [tag: retecore] 
-::Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?::[html]<p><strong>Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?</strong></p>{
-	~%33.33333%[moodle]Configurare la modalità Transport anziché Tunnel per traffico specifico.
-	~[moodle]Utilizzare algoritmi di hashing più complessi come SHA-512.
-	~[moodle]Abilitare il rinnovo delle chiavi con IKE ogni 10 pacchetti.
-	~%33.33333%[moodle]Ottimizzare i percorsi di instradamento per ridurre i ritardi.
-	~%33.33333%[moodle]Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
-	~%33.33333%[moodle]Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
-}
-
-// question: 6  name: Quale ruolo svolge il protocollo IKE in IPsec?
+// question: 5  name: Quale ruolo svolge il protocollo IKE in IPsec?
 // [tag:ipsec] [tag:ike] [tag:sicurezza ] [tag:autenticazione] 
 ::Quale ruolo svolge il protocollo IKE in IPsec?::[html]<p><strong>Quale ruolo svolge il protocollo IKE in IPsec?</strong></p>{
 	~%33.33333%[moodle]Negoziazione dei parametri di sicurezza tra i peer.
@@ -63,46 +50,56 @@
 	~%33.33333%[moodle]Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
 }
 
-// question: 7  name: Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: 
-// [tag:cms] [tag:crittografia] [tag:struttura] [tag:firma digitale] [tag:sicurezza] 
-::Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: </strong></p>{
-	~[moodle] CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
-	~%50.00000%[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-	~%50.00000%[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-	~[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-	~[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-	~[moodle] CMS supporta solo un singolo destinatario per i messaggi crittografati.
+// question: 6  name: Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: 
+// [tag:spam] [tag:tecniche] [tag:email] [tag:sicurezza] 
+::Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: </strong></p>{
+	~[moodle] Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
+	~%33.33333%[moodle] Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+	~%33.33333%[moodle] Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+	~%33.33333%[moodle] Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
 }
 
-// question: 8  name: Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: 
-// [tag:dnssec] [tag:hash] [tag:certificati] [tag:greylisting] [tag:attacchi] [tag:sicurezza] [tag:email] 
-::Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: </strong></p>{
-	~%20.00000%[moodle] La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
-	~%20.00000%[moodle] L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
-	~[moodle] Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
-	~[moodle] Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
-	~%20.00000%[moodle] Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
-	~%20.00000%[moodle] Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
-	~%20.00000%[moodle] Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
+// question: 7  name: Indica quali delle seguenti affermazioni su S/MIME sono vere: 
+// [tag:smime] [tag:email] [tag:sicurezza] [tag:integrità] [tag:autenticazione] [tag:non ripudio] [tag:riservatezza] [tag:cms] 
+::Indica quali delle seguenti affermazioni su S/MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su S/MIME sono vere: </strong></p>{
+	~%25.00000%[moodle] S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
+	~[moodle] S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
+	~%25.00000%[moodle] S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
+	~[moodle] La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
+	~%25.00000%[moodle] S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
+	~%25.00000%[moodle] CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
 }
 
-// question: 9  name: Quali delle seguenti sono tecniche di crittografia simmetrica?
-// [tag:simmetrica] 
-::Quali delle seguenti sono tecniche di crittografia simmetrica?::[html]<p><strong>Quali delle seguenti sono tecniche di crittografia simmetrica?</strong></p>{
-	~%50.00000%[moodle]AES (Advanced Encryption Standard)
-	~%50.00000%[moodle]DES (Data Encryption Standard)
-	~[moodle]RSA
-	~[moodle]ECC (Elliptic Curve Cryptography)
-	~[moodle]Elgamal
+// question: 8  name: Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?
+// [tag:ah] [tag: ipsec] 
+::Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?</strong></p>{
+	~%50.00000%[moodle]AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
+	~%50.00000%[moodle]AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
+	~[moodle]AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
+	~[moodle]AH richiede un certificato digitale per autenticare gli utenti.
+	~[moodle]AH supporta Perfect Forward Secrecy come ESP.
 }
 
-// question: 10  name: Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?
-// [tag:crypto] [tag: autenticazione] [tag: chiavi] [tag: tls] 
-::Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?::[html]<p><strong>Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?</strong></p>{
-	~%50.00000%[moodle]Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
-	~%50.00000%[moodle]Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
-	~[moodle]I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
-	~[moodle]I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
-	~[moodle]TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
+// question: 9  name: Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: 
+// [tag:smime] [tag:pgp] [tag:sicurezza] [tag:email] [tag:standard] [tag:smime] 
+::Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: </strong></p>{
+	~%50.00000%[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
+	~[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
+	~[moodle] L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
+	~%50.00000%[moodle] A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
+}
+
+// question: 10  name: Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?
+// [tag:ipsec] [tag:ah] [tag:esp] [tag:ike] [tag:sicurezza] [tag:protocollo] 
+::Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?::[html]<p><strong>Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?</strong></p>{
+	~[moodle]TCP
+	~%33.33333%[moodle]AH (Authentication Header)
+	~%33.33333%[moodle]ESP (Encapsulating Security Payload)
+	~[moodle]HTTPS
+	~[moodle]RSSA
+	~%33.33333%[moodle]IKE (Internet Key Exchange)
 }
 

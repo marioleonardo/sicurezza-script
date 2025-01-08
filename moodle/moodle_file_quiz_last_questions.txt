@@ -1,0 +1,121 @@
+// question: 1  name: Quali delle seguenti affermazioni su RC4 e AES sono vere?
+// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
+::Quali delle seguenti affermazioni su RC4 e AES sono vere?::[html]<p><strong>Quali delle seguenti affermazioni su RC4 e AES sono vere?</strong></p>{
+	~%50.00000%[moodle]RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
+	~%50.00000%[moodle]AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
+	~[moodle]RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
+	~[moodle]AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
+	~[moodle]Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
+}
+
+// question: 2  name: Quali fasi compongono l’handshake TLS?
+// [tag:fasi] [tag:tls] 
+::Quali fasi compongono l’handshake TLS?::[html]<p><strong>Quali fasi compongono l’handshake TLS?</strong></p>{
+	~%25.00000%[moodle]Negoziazione dei parametri di cifratura.
+	~%25.00000%[moodle]Autenticazione del server (e opzionalmente del client).
+	~%25.00000%[moodle]Scambio di chiavi per la sessione.
+	~[moodle]Trasferimento di file tramite HTTP.
+	~[moodle]Utilizzo del protocollo IKE per la gestione delle SA.
+	~%25.00000%[moodle]Scambio di una Server Challenge Request/Response.
+}
+
+// question: 3  name: Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?
+// [tag:tls] [tag: sicurezza] 
+::Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?::[html]<p><strong>Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?</strong></p>{
+	~%50.00000%[moodle]In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
+	~[moodle]TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
+	~[moodle]Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
+	~[moodle]Entrambi mantengono un canale sicuro dall’inizio della connessione.
+	~%50.00000%[moodle]STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
+}
+
+// question: 4  name: Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?
+// [tag:firewall] [tag: configurazione] [tag: reti] 
+::Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?::[html]<p><strong>Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?</strong></p>{
+	~%33.33333%[moodle]Impostare una regola che accetti solo connessioni in uscita con destinazione porta 443 e stato "NEW".
+	~%33.33333%[moodle]Configurare una regola che consenta il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni.
+	~[moodle]Impostare una regola per consentire tutte le connessioni in uscita indipendentemente dalla porta.
+	~[moodle]Bloccare tutto il traffico in entrata, incluso il traffico correlato.
+	~%33.33333%[moodle]Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite.
+}
+
+// question: 5  name: In quale scenario è più appropriato utilizzare TLS anziché IPsec?
+// [tag:ipsec] 
+::In quale scenario è più appropriato utilizzare TLS anziché IPsec?::[html]<p><strong>In quale scenario è più appropriato utilizzare TLS anziché IPsec?</strong></p>{
+	~%33.33333%[moodle]Comunicazioni tra un server e dei client non noti a priori.
+	~%33.33333%[moodle]Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
+	~[moodle]Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
+	~%33.33333%[moodle]In un’app mobile per accedere ad un server FTP.
+}
+
+// question: 6  name: Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?
+// [tag:crypto] [tag: simmetrica] 
+::Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?</strong></p>{
+	~%50.00000%[moodle]Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
+	~%50.00000%[moodle]In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
+	~[moodle]Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
+	~[moodle]Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
+	~[moodle]Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
+}
+
+// question: 7  name: Bob ha implementato un IDS basato su anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?
+// [tag:ids] 
+::Bob ha implementato un IDS basato su anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?::[html]<p><strong>Bob ha implementato un IDS basato su anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?</strong></p>{
+	~%33.33333%[moodle]Regolare la soglia di rilevamento dell'IDS per ridurre i falsi positivi.
+	~%33.33333%[moodle]Analizzare i log storici per identificare pattern normali e aggiornare i profili di base.
+	~%33.33333%[moodle]Consultare un esperto di sicurezza per verificare se il traffico sia effettivamente legittimo.
+	~[moodle]Disabilitare temporaneamente l'IDS fino a quando il problema non viene risolto.
+	~[moodle]Configurare l'IDS per ignorare completamente il traffico proveniente dal server critico.
+}
+
+// question: 8  name: Quali vulnerabilità sono associate a una configurazione TLS debole?
+// [tag:tls] [tag: vulnerabilità] 
+::Quali vulnerabilità sono associate a una configurazione TLS debole?::[html]<p><strong>Quali vulnerabilità sono associate a una configurazione TLS debole?</strong></p>{
+	~%33.33333%[moodle]Uso di algoritmi deboli come MD5 per hash.
+	~%33.33333%[moodle]Mancato controllo della revoca del certificato.
+	~[moodle]Uso di session resumption per ottimizzare le prestazioni.
+	~%33.33333%[moodle]Supporto a TLS 1.0 o SSL 3.0.
+	~[moodle]Supporto a TLS 1.3
+}
+
+// question: 9  name: Quali delle seguenti sono tecniche di crittografia simmetrica?
+// [tag:simmetrica] 
+::Quali delle seguenti sono tecniche di crittografia simmetrica?::[html]<p><strong>Quali delle seguenti sono tecniche di crittografia simmetrica?</strong></p>{
+	~%50.00000%[moodle]AES (Advanced Encryption Standard)
+	~%50.00000%[moodle]DES (Data Encryption Standard)
+	~[moodle]RSA
+	~[moodle]ECC (Elliptic Curve Cryptography)
+	~[moodle]Elgamal
+}
+
+// question: 10  name: Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?
+// [tag:hash] [tag: funzioni di hash] [tag: crypto] 
+::Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?</strong></p>{
+	~%50.00000%[moodle]Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
+	~%50.00000%[moodle]Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
+	~[moodle]Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
+	~[moodle]L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
+	~[moodle]Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
+}
+
+// question: 11  name: Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?_
+// [tag:ids] 
+::Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?_::[html]<p><strong>Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?_</strong></p>{
+	~%50.00000%[moodle]Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme.
+	~%50.00000%[moodle]Un IDS basato su anomalie combinato con un firewall stateful.
+	~[moodle]Un IDS configurato per monitorare solo i log del traffico HTTPS.
+	~[moodle]Una combinazione di proxy server e NAT senza alcun sistema di rilevamento attivo.
+	~%50.00000%[moodle]Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.
+}
+
+// question: 12  name: Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?
+// [tag:asimmetrica] 
+::Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?::[html]<p><strong>Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?</strong></p>{
+	~%50.00000%[moodle]Una chiave pubblica che può essere usata per cifrare i dati.
+	~[moodle]Una chiave privata che può essere usata solo per decifrare i dati.
+	~[moodle]Le chiavi pubbliche e private per alcuni algoritmi sono identiche.
+	~[moodle]Una chiave asimmetrica condivisa tra mittente e destinatario.
+	~[moodle]Una chiave di sessione generata casualmente.
+	~%50.00000%[moodle]Due chiavi matematicamente legate da un problema matematico.
+}
+

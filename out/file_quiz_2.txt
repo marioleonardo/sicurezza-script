@@ -1,4 +1,15 @@
 
+$email,protocollo,mta,msa,mua,smtp,tls
+_Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere:5
+* MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
+* SMTP è un protocollo orientato alla connessione utilizzato per l'invio di email.
+* Una sfida nella sicurezza della posta elettronica è la presenza di MTA potenzialmente non attendibili nella catena di consegna.
+* ESMTP è un'estensione di SMTP che introduce funzionalità aggiuntive, incluso il supporto per miglioramenti della sicurezza.
+- Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+- Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
+* TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
+%
+
 $tls, starttls, email, sicurezza, protocollo
 _Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere:1
 *Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
@@ -7,45 +18,22 @@ _Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta
 -SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
 %
 
-$ipsec,esp, transportmode,tunnelmode,sicurezza,funzionamento
-_Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?2
-*Transport Mode: Solo il payload del pacchetto IP è crittografato.
-*Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
--Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
--Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
--Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
--Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
+$esp, ipsec
+_Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
+*ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
+*ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
+-ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
+-ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
+-ESPv3+ non può essere utilizzato insieme al protocollo AH.
 %
 
-$crypto, stream, simmetrica
-_Quali affermazioni riguardanti la crittografia a stream sono corrette?2
--Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
--Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
--Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
-*Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
--Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
-- L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
-*Nell’EBC blocchi di plaintext identici producono ciphertext identici.
-%
-
-$spam,email,blacklisting,greylisting,sicurezza
-_Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere:5
-* Lo spam si riferisce a email di massa non richieste, spesso di natura commerciale.
-* Una tattica comune degli spammer è quella di nascondere la vera identità del mittente e falsificare le intestazioni delle email.
-* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
-* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-- Blacklist e Greylisting vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-%
-
-$ipsec, retecore
-_Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?3
-*Configurare la modalità Transport anziché Tunnel per traffico specifico.
--Utilizzare algoritmi di hashing più complessi come SHA-512.
--Abilitare il rinnovo delle chiavi con IKE ogni 10 pacchetti.
-*Ottimizzare i percorsi di instradamento per ridurre i ritardi.
-*Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
-*Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
+$vpn, ipsec
+_Quale delle seguenti affermazioni sulle VPN è corretta?2
+-Le VPN operano esclusivamente a livello applicativo per la protezione dei dati.
+*OpenVPN può essere preferibile ad IPsec in reti complesse o eterogenee
+*IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
+-OpenVPN supporta nativamente sia modalità transport che tunnel
+-Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
 %
 
 $ipsec,ike,sicurezza ,autenticazione
@@ -58,41 +46,50 @@ _Quale ruolo svolge il protocollo IKE in IPsec?3
 *Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
 %
 
-$cms,crittografia,struttura,firma digitale,sicurezza
-_Indica quali delle seguenti affermazioni sulla struttura CMS sono vere:2
-- CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
-* La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-* La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-- La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-- La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-- CMS supporta solo un singolo destinatario per i messaggi crittografati.
+$spam,tecniche,email,sicurezza
+_Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere:3
+- Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
+* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
 %
 
-$dnssec,hash,certificati,greylisting,attacchi,sicurezza,email
-_Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere:5
-* La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
-* L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
-- Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
-- Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
-* Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
-* Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
-* Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
+$smime,email,sicurezza,integrità,autenticazione,non ripudio,riservatezza,cms
+_Indica quali delle seguenti affermazioni su S/MIME sono vere:4
+* S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
+- S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
+* S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
+- La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
+* S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
+* CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
 %
 
-$simmetrica
-_Quali delle seguenti sono tecniche di crittografia simmetrica?2
-*AES (Advanced Encryption Standard)
-*DES (Data Encryption Standard)
--RSA
--ECC (Elliptic Curve Cryptography)
--Elgamal
+$ah, ipsec
+_Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?2
+*AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
+*AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
+-AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
+-AH richiede un certificato digitale per autenticare gli utenti.
+-AH supporta Perfect Forward Secrecy come ESP.
 %
 
-$crypto, autenticazione, chiavi, tls
-_Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?2
-*Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
-*Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
--I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
--I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
--TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
+$smime,pgp,sicurezza,email,standard,smime
+_Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere:2
+* Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
+- Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
+- L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
+* A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
+- A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
+- La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
+%
+
+$ipsec,ah,esp,ike,sicurezza,protocollo
+_Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?3
+-TCP
+*AH (Authentication Header)
+*ESP (Encapsulating Security Payload)
+-HTTPS
+-RSSA
+*IKE (Internet Key Exchange)
 %

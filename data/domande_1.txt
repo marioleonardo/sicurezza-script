@@ -1,4 +1,4 @@
-%
+
 $ipsec,ah,esp,ike,sicurezza,protocollo
 _Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?3
 -TCP
@@ -430,92 +430,6 @@ _Indica quali delle seguenti affermazioni su PKCS sono vere:3
 - I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
 
 %
-$iptables, firewall, icmp, packetfilter
-_Alice ha configurato il firewall del suo sistema con i seguenti comandi:
-iptables -F 
-iptables -P INPUT DROP
-iptables -A INPUT -p icmp -j ACCEPT
-iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-La configurazione risultante di iptables è la seguente:
-Chain INPUT (policy DROP 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
-    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
-Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-Quali problemi ci sono con questa configurazione?3
-*Alice non riesce ad avviare una connessione SSH verso Bob perché la policy DROP della chain INPUT blocca i pacchetti di risposta (SYN+ACK).
--Bob non riesce a eseguire una scansione delle porte di Alice.
-*Le risposte ai ping inviati da Bob vengono accettate, ma le risposte ai pacchetti TCP (ad esempio HTTPS sulla porta 443 o SSH sulla porta 21) non vengono gestite correttamente.
-*Alice non ha configurato una regola per consentire il traffico correlato (RELATED, ESTABLISHED), rendendo il firewall inefficace per connessioni bidirezionali.
--La policy DROP della chain INPUT blocca tutto il traffico, inclusi i pacchetti ICMP accettati dalla regola esplicita
--Alice non può creare nuove chain per gestire altri tipi di traffico
-
-%
-$firewall, iptables,configurazione
-_Alice ha configurato il firewall del suo sistema con i seguenti comandi:
-iptables -F
-iptables -P INPUT ACCEPT
-iptables -A INPUT -p tcp --syn -j DROP
-
-La configurazione risultante di iptables è la seguente:
-Chain INPUT (policy ACCEPT)
- pkts bytes target     prot opt in     out     source               destination         
-    0     0 DROP       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02 (SYN)
-
-Chain FORWARD (policy ACCEPT)
- pkts bytes target     prot opt in     out     source               destination         
-
-Chain OUTPUT (policy ACCEPT)
- pkts bytes target     prot opt in     out     source               destination                       destination         
-
-Seleziona le affermazioni corrette:3
-*Tutto il traffico in uscita è consentito
--Tutto il traffico in ingresso viene automaticamente inoltrato (default policy ACCEPT)
--Alice non può connettersi ad un server di Bob, perché tutti i pacchetti TCP con flag SYN sono bloccati
-*Bob non può instaurare una nuova connessione TCP con Alice
-*Bob non può individuare i servizi esposti di Alice tramite SYN scan
-%
-$firewall, iptables, configurazione
-_Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:
-Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-
-Chain FORWARD (policy DROP 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-    0     0 ACCEPT     tcp  --  *      *       IP_Alice             0.0.0.0/0           tcp dpt:80
-    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP_Alice            tcp spt:80
-
-Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-
-Frank ha configurato il firewall eseguendo i seguenti comandi:
-iptables -P FORWARD DROP
-iptables -A FORWARD -p tcp -s IP Alice --dport 80 -j ACCEPT 
-iptables -A FORWARD -p tcp -d IP Alice --sport 80 -j ACCEPT
-
-Seleziona le affermazioni corrette:2
--Alice può collegarsi solo al server web di Bob
--Bob può collegarsi al server web di Alice con qualunque porta
-*Ogni pacchetto TCP inviato a Frank da Alice viene automaticamente inoltrato a Bob se la porta di destinazione è 80
--Bob non può inviare richieste HTTP verso qualsiasi server web esterno, ma solo verso Alice
-*Qualsiasi altro tipo di traffico (sia in ingresso che in uscita) tra Bob e Alice viene bloccato dalla policy DROP della chain FORWARD.
-%
-
-$firewall, configurazione, iptables
-_Alice ha configurato il firewall del suo server con le seguenti regole:
-iptables -A INPUT -p tcp --dport 22 -j ACCEPT  
-iptables -A INPUT -p tcp --dport 80 -j ACCEPT  
-iptables -P INPUT DROP  
-Quali dei seguenti comportamenti sono veri?3
-*Il server accetta connessioni SSH sulla porta 22 e HTTP sulla porta 80.
-*Qualsiasi connessione in ingresso su altre porte verrà bloccata, inclusi i ping.
--Alice può accedere da remoto al server tramite SSH solo se si trova nella stessa rete locale.
-*Le risposte alle connessioni HTTP stabilite dal server non sono influenzate da queste regole.
--Le regole configurate garantiscono automaticamente protezione contro attacchi DoS.
-%
 
 $firewall, configurazione, reti
 _Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?3
@@ -588,5 +502,4 @@ _Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewal
 -Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
 *Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
 
-%
 

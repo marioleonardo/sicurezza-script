@@ -139,7 +139,7 @@ def to_moodle_format(input_file_path, output_file):
 
     if not error:
         if sep_counter != counter:
-            print(f"You missed the last separator")
+            print(f"You missed the last separator {counter} {sep_counter} {input_file}")
             output_file.close()
             os.remove(output_file.name)
         else:
