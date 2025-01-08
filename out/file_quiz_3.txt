@@ -1,51 +1,30 @@
-%
-$hash, autenticazione, tls, collisioni
-_Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?3
-*Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
-*Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
--Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
--L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
-*TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
 
+$tls, starttls, email, sicurezza, protocollo
+_Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere:1
+*Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
+- Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+-La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
+-SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
 %
-$mime,email,formato,header,body
-_Indica quali delle seguenti affermazioni sul formato MIME sono vere:3
-* MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
-* I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
-* MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
-- Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
-- MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
-- MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
 
+$vpn, ipsec
+_Quale delle seguenti affermazioni sulle VPN è corretta?2
+-Le VPN operano esclusivamente a livello applicativo per la protezione dei dati.
+*OpenVPN può essere preferibile ad IPsec in reti complesse o eterogenee
+*IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
+-OpenVPN supporta nativamente sia modalità transport che tunnel
+-Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
 %
-$fasi,tls
-_Quali fasi compongono l’handshake TLS?4
-*Negoziazione dei parametri di cifratura.
-*Autenticazione del server (e opzionalmente del client).
-*Scambio di chiavi per la sessione.
--Trasferimento di file tramite HTTP.
--Utilizzo del protocollo IKE per la gestione delle SA.
-*Scambio di una Server Challenge Request/Response.
 
+$sicurezza,rsa,tls
+_Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?3
+-Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
+*Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
+-Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
+-Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
+*Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
 %
-$smime,email,sicurezza,integrità,autenticazione,non ripudio,riservatezza,cms
-_Indica quali delle seguenti affermazioni su S/MIME sono vere:4
-* S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
-- S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
-* S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
-- La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
-* S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
-* CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
 
-%
-$crypto, simmetrica
-_Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?2
-*La crittografia simmetrica richiede una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati.
-*Gli algoritmi simmetrici come AES sono generalmente più efficienti di quelli asimmetrici per grandi volumi di dati.
--La distribuzione sicura delle chiavi nella crittografia simmetrica è facilmente risolvibile senza l’uso di ulteriori protocolli.
--Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
-
-%
 $crypto, stream, simmetrica
 _Quali affermazioni riguardanti la crittografia a stream sono corrette?2
 -Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
@@ -55,46 +34,26 @@ _Quali affermazioni riguardanti la crittografia a stream sono corrette?2
 -Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
 - L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
 *Nell’EBC blocchi di plaintext identici producono ciphertext identici.
-
 %
-$tls,certificati
-_Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?2
-*RSA
--DES
--X.509
--AES
--SHA (utilizzato solo come hash ma non per l'autenticazione)
-*AEAD nell’ultima versione di TLS
 
+$crypto, autenticazione, chiavi, tls
+_Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?2
+*Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
+*Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
+-I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
+-I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
+-TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
 %
-$ipsec,ah,esp,ike,sicurezza,protocollo
-_Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?3
--TCP
-*AH (Authentication Header)
-*ESP (Encapsulating Security Payload)
--HTTPS
--RSSA
-*IKE (Internet Key Exchange)
 
+$spam,tecniche,email,sicurezza
+_Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere:3
+- Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
+* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
 %
-$simmetrica
-_Quali delle seguenti sono tecniche di crittografia simmetrica?2
-*AES (Advanced Encryption Standard)
-*DES (Data Encryption Standard)
--RSA
--ECC (Elliptic Curve Cryptography)
--Elgamal
 
-%
-$ipsec, tls, differenze, sicurezza
-_Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?3
-*IPsec opera a livello di rete, mentre TLS opera a livello di trasporto, rendendo TLS più adatto per la protezione di applicazioni specifiche all’interno dello stesso server.
-*IPsec può fornire sicurezza per tutto il traffico di rete (unicast), inclusi protocolli non orientati alla connessione, mentre TLS protegge solo protocolli basati su TCP.
-*L'autenticazione in TLS è spesso basata su certificati, mentre IPsec può supportare autenticazione con chiavi precondivise o certificati.
--TLS può essere utilizzato per proteggere il traffico multicast, mentre IPsec no.
--IPsec è ottimale per la protezione di pagine web dinamiche come HTTPS, mentre TLS non è progettato per questo.
-
-%
 $ipsec, sicurezza, ah, attacchi, integrità, autenticazione
 _Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti:2
 -Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
@@ -102,14 +61,32 @@ _Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti:2
 -Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
 *Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
 *IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
-
 %
-$ipsec,esp, transportmode,tunnelmode,sicurezza,funzionamento
-_Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?2
-*Transport Mode: Solo il payload del pacchetto IP è crittografato.
-*Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
--Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
--Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
--Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
--Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
 
+$mime,email,formato,header,body
+_Indica quali delle seguenti affermazioni sul formato MIME sono vere:3
+* MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
+* I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
+* MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
+- Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
+- MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
+- MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
+%
+
+$sicurezza,tls,http,email
+_Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere:3
+* Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
+- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
+* Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
+* L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
+- S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
+%
+
+$tls, vulnerabilità,
+_Quali vulnerabilità sono associate a una configurazione TLS debole?3
+*Uso di algoritmi deboli come MD5 per hash.
+*Mancato controllo della revoca del certificato.
+-Uso di session resumption per ottimizzare le prestazioni.
+*Supporto a TLS 1.0 o SSL 3.0.
+-Supporto a TLS 1.3
+%

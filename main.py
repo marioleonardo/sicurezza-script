@@ -2,6 +2,148 @@ import os
 import random
 from prettytable import PrettyTable
 import re
+import time
+
+
+def to_moodle_format(input_file_path, output_file):
+
+    if not os.path.exists(input_file_path):
+        print("Error, file not found")
+        return
+
+    #input_file = open(file_path, "r", encoding='utf-8-sig')
+    input_file = open(input_file_path, "r")
+    output_file = open(output_file, "w")
+    
+
+    score = -1
+    counter = 0
+    line_counter = 0
+    sep_counter = 0
+    tags = []
+    inSpecificFeedback = False
+    inGenericFeedback = False
+    error = False
+
+    separator = True
+    for line in input_file:
+        line_counter += 1
+
+        if line.__contains__("="):
+            line = line.replace("=", "\\=")
+        if line.__contains__("{"):
+            line = line.replace("{", "\\{")
+        if line.__contains__("}"):
+            line = line.replace("}", "\\}")
+
+        if line[0] == '_':  # question case
+            inSpecificFeedback = False
+            inGenericFeedback = False
+            if separator:  # check if there is a separator before current question
+                separator = False  # set separator to False for future checks
+                line = line.strip()
+                question = line[1:-1]
+                counter += 1
+
+                if question[-1] == ':':  # add a space if there's a : as last character to avoid import errors
+                    question = question + " "
+
+                if not line[-1].isdigit():  # check if there's the number of correct answers
+                    print(f"Error, number of correct answers missing at the line: {line_counter}")
+                    error = True
+                    output_file.close()
+                    os.remove(output_file.name)
+                    break
+                n_corr = int(line[-1])
+
+                if n_corr > 1:  # divide the score by the number of correct answers
+                    score = 100 / n_corr
+                output_file.write(f"// question: {counter}  name: {question}\n")
+                if len(tags) > 0:
+                    output_file.write("// ")
+                    for tag in tags:
+                        output_file.write(f"[tag:{tag}] ")
+                    output_file.write("\n")
+                output_file.write(f"::{question}::[html]<p><strong>{question}</strong></p>" + '{\n')
+
+            else:
+                print(f"Error, missing separator before line: {line_counter}")
+                error = True
+                output_file.close()
+                os.remove(output_file.name)
+                break
+        elif line[0] == '$':
+            tags = line[1:].strip().split(",")
+            tags = list(filter(lambda t: t != "", tags))
+
+        elif line[0] == '*':  # right answer case
+            inSpecificFeedback = False
+            inGenericFeedback = False
+            correct_answer = line[1:]
+            if score != -1:
+                output_file.write(f"\t~%{score:.5f}%[moodle]{correct_answer}")
+            else:
+                output_file.write(f"\t=[moodle]{correct_answer}")
+
+        elif line[0] == '-':  # wrong answer case
+            inSpecificFeedback = False
+            inGenericFeedback = False
+            wrong_answer = line[1:]
+            output_file.write(f"\t~[moodle]{wrong_answer}")
+
+        elif line[0] == '#':  # feedback answer case
+            feedback = line[1:]
+            inSpecificFeedback = False
+            if not inGenericFeedback:
+                output_file.write(f"\t####[moodle]{feedback}")
+                inGenericFeedback = True
+            else:
+                output_file.write(f"\t{feedback}")
+
+        elif line[0] == '@':
+            feedback = line[1:]
+            inGenericFeedback = False
+            if not inSpecificFeedback:
+                output_file.write(f"\t#[moodle]{feedback}")
+                inSpecificFeedback = True
+            else:
+                output_file.write(f"\t{feedback}")
+
+        elif line[0] == '+':  # t/f answer case
+            inSpecificFeedback = False
+            inGenericFeedback = False
+            answer = line[1]
+            if answer == 'T':
+                output_file.write(f"\tTRUE\n")
+            elif answer == 'F':
+                output_file.write(f"\tFALSE\n")
+            else:
+                print("Error, wrong answer format")
+                error = True
+
+        elif line[0] == '%':  # end of question case
+            inSpecificFeedback = False
+            inGenericFeedback = False
+            sep_counter += 1
+            output_file.write("}\n\n")
+            separator = True
+            score = -1
+
+        else:
+            if len(line.strip()) > 0:  # case of formatting error, only if not empty line
+                print(f"Error: missing symbol indicator at line {line_counter}\n\t{line}")
+                error = True
+                output_file.close()
+                os.remove(output_file.name)
+                break
+
+    if not error:
+        if sep_counter != counter:
+            print(f"You missed the last separator")
+            output_file.close()
+            os.remove(output_file.name)
+        else:
+            print(f"You just created {counter} questions")
 
 def create_files_with_questions(config):
     """
@@ -196,6 +338,8 @@ def create_files_with_questions(config):
         with open(os.path.join(out_folder, "file_quiz_last_questions"), 'w', encoding='utf-8') as f_last:
             for q in remaining_questions:
                 f_last.write(q['original_text'] + "\n")
+        to_moodle_format(os.path.join(out_folder, "file_quiz_last_questions"), os.path.join(out_folder, "moodle_file_quiz_last_questions.txt"))
+
 
     # 7. Write questions to output files
     for i in range(num_out_files):
@@ -205,6 +349,10 @@ def create_files_with_questions(config):
         with open(out_filename, 'w', encoding='utf-8') as f_out:
             for question in questions_in_files[i]:
                 f_out.write(question['original_text'] + "\n")
+        try:
+            to_moodle_format(out_filename, os.path.join(out_folder, "moodle_file_quiz_"+str(i + 1)+".txt"))
+        except Exception as e:
+            print(f"Error converting to moodle format:{str(i + 1)} , {e} ")
 
     # 8. Print stats
     if config['print_stats']:
@@ -306,8 +454,9 @@ def parse_questions(text, blacklist):
                         'labels': labels,
                         'question': question_text,
                         'answers': answers,
-                        'original_text': '%'+'\n'+label_part+'\n'+question_answer_part+'\n'
+                        'original_text': '\n'+label_part+'\n'+question_answer_part+'\n'+"%"
                     })
+                
                     
     return questions
 
@@ -316,7 +465,7 @@ if __name__ == "__main__":
         'num_in_files': 3,
         'in_folder': 'data',
         'num_out_files': 4,
-        'questions_per_out': {'min': 10, 'max': 12},
+        'questions_per_out': {'min': 10, 'max': 10},
         'distribution': 1,  # 0 -> don't mix, 1 -> distribute evenly, intermediate values for a degree of mixing
         'repeat': False,
         'high_distribution': True,

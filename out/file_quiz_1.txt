@@ -1,54 +1,91 @@
-%
-$pkcs12, pkcs7, pkcs, chiavi,certificati,crittografia
-_Indica quali delle seguenti affermazioni su PKCS sono vere:3
-* PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-* I file PKCS #12 sono comunemente usati per esportare e importare identità digitali.
-* PKCS #12 è ampiamente supportato dai browser web e dai client di posta elettronica.
-- PKCS #7 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-- I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
-- PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
-- I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
 
+$ipsec, tls, sicurezza
+_Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?3
+*IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
+*IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
+*TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
+-IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
 %
 
+$ipsec, tls, differenze, sicurezza
+_Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?3
+*IPsec opera a livello di rete, mentre TLS opera a livello di trasporto, rendendo TLS più adatto per la protezione di applicazioni specifiche all’interno dello stesso server.
+*IPsec può fornire sicurezza per tutto il traffico di rete (unicast), inclusi protocolli non orientati alla connessione, mentre TLS protegge solo protocolli basati su TCP.
+*L'autenticazione in TLS è spesso basata su certificati, mentre IPsec può supportare autenticazione con chiavi precondivise o certificati.
+-TLS può essere utilizzato per proteggere il traffico multicast, mentre IPsec no.
+-IPsec è ottimale per la protezione di pagine web dinamiche come HTTPS, mentre TLS non è progettato per questo.
 %
-$sicurezza,rsa,tls
-_Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?3
--Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
-*Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
--Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
--Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
-*Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
 
+$ipsec, retecore
+_Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?3
+*Configurare la modalità Transport anziché Tunnel per traffico specifico.
+-Utilizzare algoritmi di hashing più complessi come SHA-512.
+-Abilitare il rinnovo delle chiavi con IKE ogni 10 pacchetti.
+*Ottimizzare i percorsi di instradamento per ridurre i ritardi.
+*Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
+*Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
 %
-$dnssec,hash,certificati,greylisting,attacchi,sicurezza,email
-_Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere:5
-* La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
-* L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
-- Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
-- Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
-* Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
-* Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
-* Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
 
+$ipsec
+_In quale scenario è più appropriato utilizzare TLS anziché IPsec?3
+*Comunicazioni tra un server e dei client non noti a priori.
+*Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
+-Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
+*In un’app mobile per accedere ad un server FTP.
 %
-$tls, sicurezza
-_Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?2
-*In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
--TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
--Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
--Entrambi mantengono un canale sicuro dall’inizio della connessione.
-*STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
 
+$fasi,tls
+_Quali fasi compongono l’handshake TLS?4
+*Negoziazione dei parametri di cifratura.
+*Autenticazione del server (e opzionalmente del client).
+*Scambio di chiavi per la sessione.
+-Trasferimento di file tramite HTTP.
+-Utilizzo del protocollo IKE per la gestione delle SA.
+*Scambio di una Server Challenge Request/Response.
 %
-$tls, starttls, email, sicurezza, protocollo
-_Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere:1
-*Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
-- Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
--La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
--SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
 
+$ipsec, sicurezza
+_Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
+*Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
+*Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
+-Disabilitare il supporto a TLS 1.3.
+-Usare IPsec solo in transport mode.
+-Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
+*Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
+-Usare sempre e solo AH in IPsec.
+-Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
 %
+
+$cms,crittografia,struttura,firma digitale,sicurezza
+_Indica quali delle seguenti affermazioni sulla struttura CMS sono vere:2
+- CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+* La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+* La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+- La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+- La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+- CMS supporta solo un singolo destinatario per i messaggi crittografati.
+%
+
+$ipsec,ike,sicurezza ,autenticazione
+_Quale ruolo svolge il protocollo IKE in IPsec?3
+*Negoziazione dei parametri di sicurezza tra i peer.
+*Gestione delle chiavi crittografiche.
+-Fornisce cifratura end-to-end per i dati.
+-Configura le policy DNS per la risoluzione dei peer.
+-Crea AH header e trailer.
+*Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
+%
+
+$smime,pgp,sicurezza,email,standard,smime
+_Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere:2
+* Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
+- Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
+- L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
+* A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
+- A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
+- La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
+%
+
 $spam,email,blacklisting,greylisting,sicurezza
 _Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere:5
 * Lo spam si riferisce a email di massa non richieste, spesso di natura commerciale.
@@ -57,56 +94,4 @@ _Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam 
 * Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
 * Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
 - Blacklist e Greylisting vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-
 %
-$vpn, ipsec
-_Quale delle seguenti affermazioni sulle VPN è corretta?2
--Le VPN operano esclusivamente a livello applicativo per la protezione dei dati.
-*OpenVPN può essere preferibile ad IPsec in reti complesse o eterogenee
-*IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
--OpenVPN supporta nativamente sia modalità transport che tunnel
--Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
-
-%
-$diffiehellman, asimmetrica
-_Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
-*Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
-*La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
--Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
--La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
-
-%
-$tls, vulnerabilità,
-_Quali vulnerabilità sono associate a una configurazione TLS debole?3
-*Uso di algoritmi deboli come MD5 per hash.
-*Mancato controllo della revoca del certificato.
--Uso di session resumption per ottimizzare le prestazioni.
-*Supporto a TLS 1.0 o SSL 3.0.
--Supporto a TLS 1.3
-
-%
-$crypto, rsa, asimmetrica, autenticazione
-_Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?2
-*Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
-*Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
--Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
--Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
--Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
-
-%
-$ipsec
-_In quale scenario è più appropriato utilizzare TLS anziché IPsec?3 [da rivedere]
-*Comunicazioni tra un server e dei client non noti a priori.
-*Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
--Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
-*In un’app mobile per accedere ad un server FTP.
-
-%
-$sicurezza,tls,http,email
-_Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere:3
-* Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
-- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
-* Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
-* L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
-- S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
-

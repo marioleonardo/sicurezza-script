@@ -69,7 +69,6 @@ _Quali vulnerabilità sono associate a una configurazione TLS debole?3
 *Supporto a TLS 1.0 o SSL 3.0.
 -Supporto a TLS 1.3
 %
-
 $ipsec, retecore
 _Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?3
 *Configurare la modalità Transport anziché Tunnel per traffico specifico.
@@ -79,15 +78,13 @@ _Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-si
 *Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
 *Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
 %
-
 $ipsec
-_In quale scenario è più appropriato utilizzare TLS anziché IPsec?3 [da rivedere]
+_In quale scenario è più appropriato utilizzare TLS anziché IPsec?3
 *Comunicazioni tra un server e dei client non noti a priori.
 *Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
 -Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
 *In un’app mobile per accedere ad un server FTP.
 %
-
 $ipsec, sicurezza
 _Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
 *Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
@@ -146,7 +143,6 @@ _Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?2
 -Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
 
 %
-
 $diffiehellman, asimmetrica
 _Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
 *Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
@@ -155,7 +151,6 @@ _Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono ve
 -La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
 
 %
-
 $ah, ipsec
 _Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?2
 *AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
@@ -434,7 +429,6 @@ _Indica quali delle seguenti affermazioni su PKCS sono vere:3
 - PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
 - I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
 
-%
 
 
 

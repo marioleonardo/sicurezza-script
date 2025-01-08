@@ -1,0 +1,110 @@
+// question: 1  name: Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?
+// [tag:hash] [tag: autenticazione] [tag: tls] [tag: collisioni] 
+::Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?::[html]<p><strong>Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?</strong></p>{
+	~%33.33333%[moodle]Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
+	~%33.33333%[moodle]Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
+	~[moodle]Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
+	~[moodle]L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
+	~%33.33333%[moodle]TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
+}
+
+// question: 2  name: Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?
+// [tag:tls] [tag: sicurezza] 
+::Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?::[html]<p><strong>Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?</strong></p>{
+	~%50.00000%[moodle]In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
+	~[moodle]TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
+	~[moodle]Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
+	~[moodle]Entrambi mantengono un canale sicuro dall’inizio della connessione.
+	~%50.00000%[moodle]STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
+}
+
+// question: 3  name: Quali affermazioni sulla crittografia sono corrette?
+// [tag:crypto] [tag: simmetrica] [tag: asimmetrica] 
+::Quali affermazioni sulla crittografia sono corrette?::[html]<p><strong>Quali affermazioni sulla crittografia sono corrette?</strong></p>{
+	~[moodle]La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
+	~%25.00000%[moodle]La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
+	~%25.00000%[moodle]La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
+	~%25.00000%[moodle]La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
+	~[moodle]Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
+	~%25.00000%[moodle]​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
+}
+
+// question: 4  name: Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?
+// [tag:diffiehellman] [tag: asimmetrica] 
+::Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?</strong></p>{
+	~%50.00000%[moodle]Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
+	~%50.00000%[moodle]La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
+	~[moodle]Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
+	~[moodle]La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+}
+
+// question: 5  name: Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?
+// [tag:ah] [tag: ipsec] 
+::Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?</strong></p>{
+	~%50.00000%[moodle]AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
+	~%50.00000%[moodle]AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
+	~[moodle]AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
+	~[moodle]AH richiede un certificato digitale per autenticare gli utenti.
+	~[moodle]AH supporta Perfect Forward Secrecy come ESP.
+}
+
+// question: 6  name: Indica quali delle seguenti affermazioni su S/MIME sono vere: 
+// [tag:smime] [tag:email] [tag:sicurezza] [tag:integrità] [tag:autenticazione] [tag:non ripudio] [tag:riservatezza] [tag:cms] 
+::Indica quali delle seguenti affermazioni su S/MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su S/MIME sono vere: </strong></p>{
+	~%25.00000%[moodle] S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
+	~[moodle] S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
+	~%25.00000%[moodle] S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
+	~[moodle] La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
+	~%25.00000%[moodle] S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
+	~%25.00000%[moodle] CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+}
+
+// question: 7  name: Quali delle seguenti affermazioni su RC4 e AES sono vere?
+// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
+::Quali delle seguenti affermazioni su RC4 e AES sono vere?::[html]<p><strong>Quali delle seguenti affermazioni su RC4 e AES sono vere?</strong></p>{
+	~%50.00000%[moodle]RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
+	~%50.00000%[moodle]AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
+	~[moodle]RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
+	~[moodle]AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
+	~[moodle]Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
+}
+
+// question: 8  name: Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.
+// [tag:sicurezza] [tag: email] [tag: messaggi] 
+::Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.::[html]<p><strong>Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.</strong></p>{
+	~%50.00000%[moodle]Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
+	~[moodle]Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
+	~%50.00000%[moodle]Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
+	~[moodle]Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
+	~[moodle]Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
+}
+
+// question: 9  name: Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?
+// [tag:sicurezza] [tag: tls] [tag: email] [tag: smtp] 
+::Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?::[html]<p><strong>Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?</strong></p>{
+	~%33.33333%[moodle]Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
+	~%33.33333%[moodle]Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
+	~[moodle]Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
+	~%33.33333%[moodle]Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
+}
+
+// question: 10  name: Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?
+// [tag:esp] [tag: ipsec] 
+::Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?</strong></p>{
+	~%50.00000%[moodle]ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
+	~%50.00000%[moodle]ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
+	~[moodle]ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
+	~[moodle]ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
+	~[moodle]ESPv3+ non può essere utilizzato insieme al protocollo AH.
+}
+
+// question: 11  name: Quali delle seguenti sono tecniche di crittografia simmetrica?
+// [tag:simmetrica] 
+::Quali delle seguenti sono tecniche di crittografia simmetrica?::[html]<p><strong>Quali delle seguenti sono tecniche di crittografia simmetrica?</strong></p>{
+	~%50.00000%[moodle]AES (Advanced Encryption Standard)
+	~%50.00000%[moodle]DES (Data Encryption Standard)
+	~[moodle]RSA
+	~[moodle]ECC (Elliptic Curve Cryptography)
+	~[moodle]Elgamal
+}
+

@@ -1,0 +1,102 @@
+// question: 1  name: Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: 
+// [tag:tls] [tag: starttls] [tag: email] [tag: sicurezza] [tag: protocollo] 
+::Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: </strong></p>{
+	=[moodle]Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
+	~[moodle] Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+	~[moodle]La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
+	~[moodle]SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
+}
+
+// question: 2  name: Quale delle seguenti affermazioni sulle VPN è corretta?
+// [tag:vpn] [tag: ipsec] 
+::Quale delle seguenti affermazioni sulle VPN è corretta?::[html]<p><strong>Quale delle seguenti affermazioni sulle VPN è corretta?</strong></p>{
+	~[moodle]Le VPN operano esclusivamente a livello applicativo per la protezione dei dati.
+	~%50.00000%[moodle]OpenVPN può essere preferibile ad IPsec in reti complesse o eterogenee
+	~%50.00000%[moodle]IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
+	~[moodle]OpenVPN supporta nativamente sia modalità transport che tunnel
+	~[moodle]Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
+}
+
+// question: 3  name: Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?
+// [tag:sicurezza] [tag:rsa] [tag:tls] 
+::Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?::[html]<p><strong>Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?</strong></p>{
+	~[moodle]Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
+	~%33.33333%[moodle]Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
+	~[moodle]Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
+	~[moodle]Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
+	~%33.33333%[moodle]Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
+}
+
+// question: 4  name: Quali affermazioni riguardanti la crittografia a stream sono corrette?
+// [tag:crypto] [tag: stream] [tag: simmetrica] 
+::Quali affermazioni riguardanti la crittografia a stream sono corrette?::[html]<p><strong>Quali affermazioni riguardanti la crittografia a stream sono corrette?</strong></p>{
+	~[moodle]Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
+	~[moodle]Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
+	~[moodle]Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
+	~%50.00000%[moodle]Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
+	~[moodle]Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
+	~[moodle] L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
+	~%50.00000%[moodle]Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+}
+
+// question: 5  name: Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?
+// [tag:crypto] [tag: autenticazione] [tag: chiavi] [tag: tls] 
+::Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?::[html]<p><strong>Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?</strong></p>{
+	~%50.00000%[moodle]Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
+	~%50.00000%[moodle]Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
+	~[moodle]I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
+	~[moodle]I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
+	~[moodle]TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
+}
+
+// question: 6  name: Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: 
+// [tag:spam] [tag:tecniche] [tag:email] [tag:sicurezza] 
+::Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: </strong></p>{
+	~[moodle] Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
+	~%33.33333%[moodle] Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+	~%33.33333%[moodle] Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+	~%33.33333%[moodle] Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
+}
+
+// question: 7  name: Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: 
+// [tag:ipsec] [tag: sicurezza] [tag: ah] [tag: attacchi] [tag: integrità] [tag: autenticazione] 
+::Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: ::[html]<p><strong>Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: </strong></p>{
+	~[moodle]Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
+	~[moodle]Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
+	~[moodle]Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
+	~%50.00000%[moodle]Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
+	~%50.00000%[moodle]IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
+}
+
+// question: 8  name: Indica quali delle seguenti affermazioni sul formato MIME sono vere: 
+// [tag:mime] [tag:email] [tag:formato] [tag:header] [tag:body] 
+::Indica quali delle seguenti affermazioni sul formato MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul formato MIME sono vere: </strong></p>{
+	~%33.33333%[moodle] MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
+	~%33.33333%[moodle] I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
+	~%33.33333%[moodle] MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
+	~[moodle] Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
+	~[moodle] MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
+	~[moodle] MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
+}
+
+// question: 9  name: Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: 
+// [tag:sicurezza] [tag:tls] [tag:http] [tag:email] 
+::Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: </strong></p>{
+	~%33.33333%[moodle] Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
+	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
+	~%33.33333%[moodle] Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
+	~%33.33333%[moodle] L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
+	~[moodle] S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
+}
+
+// question: 10  name: Quali vulnerabilità sono associate a una configurazione TLS debole?
+// [tag:tls] [tag: vulnerabilità] 
+::Quali vulnerabilità sono associate a una configurazione TLS debole?::[html]<p><strong>Quali vulnerabilità sono associate a una configurazione TLS debole?</strong></p>{
+	~%33.33333%[moodle]Uso di algoritmi deboli come MD5 per hash.
+	~%33.33333%[moodle]Mancato controllo della revoca del certificato.
+	~[moodle]Uso di session resumption per ottimizzare le prestazioni.
+	~%33.33333%[moodle]Supporto a TLS 1.0 o SSL 3.0.
+	~[moodle]Supporto a TLS 1.3
+}
+

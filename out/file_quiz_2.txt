@@ -1,22 +1,93 @@
-%
-$ah, ipsec
-_Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?2
-*AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
-*AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
--AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
--AH richiede un certificato digitale per autenticare gli utenti.
--AH supporta Perfect Forward Secrecy come ESP.
 
+$crypto, algoritmi
+_Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?2
+*Il principio di Kerckhoffs afferma che un sistema crittografico deve essere sicuro anche se l’algoritmo è pubblico, purché la chiave sia segreta.
+*L’applicazione del principio di Kerckhoffs ha portato alla trasparenza nello sviluppo degli algoritmi crittografici moderni come AES.
+-La segretezza dell’algoritmo garantisce sempre un livello aggiuntivo di sicurezza rispetto alla trasparenza dell’algoritmo.
+-Il principio di Kerckhoffs richiede che l’algoritmo di crittografia e le chiavi siano mantenuti segreti per garantire sicurezza.
+-Le vulnerabilità negli algoritmi pubblici sono inevitabili e non possono essere mitigate con il solo uso di chiavi sicure.
 %
-$crypto, autenticazione, chiavi, tls
-_Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?2
-*Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
-*Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
--I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
--I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
--TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
 
+$pkcs12, pkcs7, pkcs, chiavi,certificati,crittografia
+_Indica quali delle seguenti affermazioni su PKCS sono vere:3
+* PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
+* I file PKCS #12 sono comunemente usati per esportare e importare identità digitali.
+* PKCS #12 è ampiamente supportato dai browser web e dai client di posta elettronica.
+- PKCS #7 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
+- I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
+- PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
+- I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
 %
+
+$crittografia,sicurezza,email,prestazioni,anti-spam,ipsec,tls,attacchi
+_Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere:3
+* La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
+* L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
+- L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
+* Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
+- Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
+%
+
+$ipsec,esp, transportmode,tunnelmode,sicurezza,funzionamento
+_Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?2
+*Transport Mode: Solo il payload del pacchetto IP è crittografato.
+*Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
+-Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
+-Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
+-Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
+-Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
+%
+
+$dnssec,hash,certificati,greylisting,attacchi,sicurezza,email
+_Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere:5
+* La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
+* L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
+- Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
+- Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
+* Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
+* Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
+* Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
+%
+
+$tls,certificati
+_Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?2
+*RSA
+-DES
+-X.509
+-AES
+-SHA (utilizzato solo come hash ma non per l'autenticazione)
+*AEAD nell’ultima versione di TLS
+%
+
+$hash, funzioni di hash, crypto
+_Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?2
+*Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
+*Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
+-Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
+-L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
+-Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
+%
+
+$asimmetrica
+_Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?2
+*Una chiave pubblica che può essere usata per cifrare i dati.
+-Una chiave privata che può essere usata solo per decifrare i dati.
+-Le chiavi pubbliche e private per alcuni algoritmi sono identiche.
+-Una chiave asimmetrica condivisa tra mittente e destinatario.
+-Una chiave di sessione generata casualmente.
+*Due chiavi matematicamente legate da un problema matematico.
+%
+
+$ipsec,ah,esp,ike,sicurezza,protocollo
+_Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?3
+-TCP
+*AH (Authentication Header)
+*ESP (Encapsulating Security Payload)
+-HTTPS
+-RSSA
+*IKE (Internet Key Exchange)
+%
+
 $email,protocollo,mta,msa,mua,smtp,tls
 _Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere:5
 * MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
@@ -26,89 +97,4 @@ _Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della
 - Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
 - Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
 * TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
-
 %
-$cms,crittografia,struttura,firma digitale,sicurezza
-_Indica quali delle seguenti affermazioni sulla struttura CMS sono vere:2
-- CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
-* La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-* La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-- La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-- La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-- CMS supporta solo un singolo destinatario per i messaggi crittografati.
-
-%
-$smime,pgp,sicurezza,email,standard,smime
-_Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere:2
-* Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
-- Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
-- L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
-* A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
-- A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
-- La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
-
-%
-$asimmetrica
-_Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?2
-*Una chiave pubblica che può essere usata per cifrare i dati.
--Una chiave privata che può essere usata solo per decifrare i dati.
--Le chiavi pubbliche e private per alcuni algoritmi sono identiche.
--Una chiave asimmetrica condivisa tra mittente e destinatario.
--Una chiave di sessione generata casualmente.
-*Due chiavi matematicamente legate da un problema matematico.
-
-%
-$ipsec, retecore
-_Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?3
-*Configurare la modalità Transport anziché Tunnel per traffico specifico.
--Utilizzare algoritmi di hashing più complessi come SHA-512.
--Abilitare il rinnovo delle chiavi con IKE ogni 10 pacchetti.
-*Ottimizzare i percorsi di instradamento per ridurre i ritardi.
-*Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
-*Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
-
-%
-$esp, ipsec
-_Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
-*ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
-*ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
--ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
--ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
--ESPv3+ non può essere utilizzato insieme al protocollo AH.
-
-%
-$spam,tecniche,email,sicurezza
-_Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere:3
-- Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
-* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
-
-%
-$crypto, algoritmi
-_Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?2
-*Il principio di Kerckhoffs afferma che un sistema crittografico deve essere sicuro anche se l’algoritmo è pubblico, purché la chiave sia segreta.
-*L’applicazione del principio di Kerckhoffs ha portato alla trasparenza nello sviluppo degli algoritmi crittografici moderni come AES.
--La segretezza dell’algoritmo garantisce sempre un livello aggiuntivo di sicurezza rispetto alla trasparenza dell’algoritmo.
--Il principio di Kerckhoffs richiede che l’algoritmo di crittografia e le chiavi siano mantenuti segreti per garantire sicurezza.
--Le vulnerabilità negli algoritmi pubblici sono inevitabili e non possono essere mitigate con il solo uso di chiavi sicure.
-
-%
-$crittografia,sicurezza,email,prestazioni,anti-spam,ipsec,tls,attacchi
-_Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere:3
-* La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
-* L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
-- L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
-* Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
-- Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
-
-%
-$algoritmi, crypto, simmetrica
-_Quali delle seguenti affermazioni su RC4 e AES sono vere?2
-*RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
-*AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
--RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
--AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
--Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
-
