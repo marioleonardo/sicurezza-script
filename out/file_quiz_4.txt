@@ -1,0 +1,83 @@
+%
+$sicurezza, email, messaggi
+_Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.2
+*Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
+-Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
+*Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
+-Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
+-Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
+% 
+
+$sicurezza, tls, email, smtp
+_Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?3
+*Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
+*Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
+-Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
+*Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
+
+%
+$crypto, simmetrica, asimmetrica
+_Quali affermazioni sulla crittografia sono corrette?4
+-La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
+*La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
+*La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
+*La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
+-Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
+*​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
+
+%
+$ipsec, sicurezza
+_Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
+*Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
+*Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
+-Disabilitare il supporto a TLS 1.3.
+-Usare IPsec solo in transport mode.
+-Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
+*Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
+-Usare sempre e solo AH in IPsec.
+-Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
+
+%
+$crypto, simmetrica
+_Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?2
+*Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
+*In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
+-Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
+-Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
+-Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
+
+%
+$ipsec,ike,sicurezza ,autenticazione
+_Quale ruolo svolge il protocollo IKE in IPsec?3
+*Negoziazione dei parametri di sicurezza tra i peer.
+*Gestione delle chiavi crittografiche.
+-Fornisce cifratura end-to-end per i dati.
+-Configura le policy DNS per la risoluzione dei peer.
+-Crea AH header e trailer.
+*Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
+
+%
+$algoritmi, crypto, simmetrica
+_Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?2
+*AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
+*AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
+-AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
+-AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
+
+%
+$ipsec, tls, sicurezza
+_Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?3
+*IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
+*IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
+*TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
+-IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
+
+%
+$hash, funzioni di hash, crypto
+_Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?2
+*Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
+*Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
+-Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
+-L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
+-Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
+
