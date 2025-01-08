@@ -1,0 +1,104 @@
+// question: 1  name: Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?
+// [tag:tls] [tag:certificati] 
+::Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?::[html]<p><strong>Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?</strong></p>{
+	~%50.00000%[moodle]RSA
+	~[moodle]DES
+	~[moodle]X.509
+	~[moodle]AES
+	~[moodle]SHA (utilizzato solo come hash ma non per l'autenticazione)
+	~%50.00000%[moodle]AEAD nell’ultima versione di TLS
+}
+
+// question: 2  name: Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?
+// [tag:ah] [tag: ipsec] 
+::Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?</strong></p>{
+	~%50.00000%[moodle]AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
+	~%50.00000%[moodle]AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
+	~[moodle]AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
+	~[moodle]AH richiede un certificato digitale per autenticare gli utenti.
+	~[moodle]AH supporta Perfect Forward Secrecy come ESP.
+}
+
+// question: 3  name: Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: 
+// [tag:email] [tag:protocollo] [tag:mta] [tag:msa] [tag:mua] [tag:smtp] [tag:tls] 
+::Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: </strong></p>{
+	~%20.00000%[moodle] MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
+	~%20.00000%[moodle] SMTP è un protocollo orientato alla connessione utilizzato per l'invio di email.
+	~%20.00000%[moodle] Una sfida nella sicurezza della posta elettronica è la presenza di MTA potenzialmente non attendibili nella catena di consegna.
+	~%20.00000%[moodle] ESMTP è un'estensione di SMTP che introduce funzionalità aggiuntive, incluso il supporto per miglioramenti della sicurezza.
+	~[moodle] Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+	~[moodle] Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
+	~%20.00000%[moodle] TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
+}
+
+// question: 4  name: Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?
+// [tag:asimmetrica] 
+::Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?::[html]<p><strong>Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?</strong></p>{
+	~%50.00000%[moodle]Una chiave pubblica che può essere usata per cifrare i dati.
+	~[moodle]Una chiave privata che può essere usata solo per decifrare i dati.
+	~[moodle]Le chiavi pubbliche e private per alcuni algoritmi sono identiche.
+	~[moodle]Una chiave asimmetrica condivisa tra mittente e destinatario.
+	~[moodle]Una chiave di sessione generata casualmente.
+	~%50.00000%[moodle]Due chiavi matematicamente legate da un problema matematico.
+}
+
+// question: 5  name: Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?
+// [tag:crypto] [tag: simmetrica] 
+::Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?</strong></p>{
+	~%50.00000%[moodle]Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
+	~%50.00000%[moodle]In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
+	~[moodle]Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
+	~[moodle]Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
+	~[moodle]Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
+}
+
+// question: 6  name: In quale scenario è più appropriato utilizzare TLS anziché IPsec?
+// [tag:ipsec] 
+::In quale scenario è più appropriato utilizzare TLS anziché IPsec?::[html]<p><strong>In quale scenario è più appropriato utilizzare TLS anziché IPsec?</strong></p>{
+	~%33.33333%[moodle]Comunicazioni tra un server e dei client non noti a priori.
+	~%33.33333%[moodle]Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
+	~[moodle]Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
+	~%33.33333%[moodle]In un’app mobile per accedere ad un server FTP.
+}
+
+// question: 7  name: Quali vulnerabilità sono associate a una configurazione TLS debole?
+// [tag:tls] [tag: vulnerabilità] 
+::Quali vulnerabilità sono associate a una configurazione TLS debole?::[html]<p><strong>Quali vulnerabilità sono associate a una configurazione TLS debole?</strong></p>{
+	~%33.33333%[moodle]Uso di algoritmi deboli come MD5 per hash.
+	~%33.33333%[moodle]Mancato controllo della revoca del certificato.
+	~[moodle]Uso di session resumption per ottimizzare le prestazioni.
+	~%33.33333%[moodle]Supporto a TLS 1.0 o SSL 3.0.
+	~[moodle]Supporto a TLS 1.3
+}
+
+// question: 8  name: Indica quali delle seguenti affermazioni su S/MIME sono vere: 
+// [tag:smime] [tag:email] [tag:sicurezza] [tag:integrità] [tag:autenticazione] [tag:non ripudio] [tag:riservatezza] [tag:cms] 
+::Indica quali delle seguenti affermazioni su S/MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su S/MIME sono vere: </strong></p>{
+	~%25.00000%[moodle] S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
+	~[moodle] S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
+	~%25.00000%[moodle] S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
+	~[moodle] La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
+	~%25.00000%[moodle] S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
+	~%25.00000%[moodle] CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+}
+
+// question: 9  name: Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?
+// [tag:firewall] [tag: architettura] [tag: sicurezza] 
+::Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?::[html]<p><strong>Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?</strong></p>{
+	~%50.00000%[moodle]Isolamento dei server pubblici per ridurre l'accesso diretto alla rete interna.
+	~%50.00000%[moodle]Facilità di applicazione di policy di sicurezza specifiche per ciascun segmento di rete.
+	~[moodle]Maggiore velocità di trasmissione rispetto a un firewall con DMZ singola.
+	~[moodle]I server nella DMZ possono comunicare direttamente con la rete interna senza ulteriori configurazioni.
+	~%50.00000%[moodle]Possibilità di monitorare e analizzare il traffico verso i server pubblici senza esporre la rete interna.
+}
+
+// question: 10  name: Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?
+// [tag:crypto] [tag: algoritmi] 
+::Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?</strong></p>{
+	~%50.00000%[moodle]Il principio di Kerckhoffs afferma che un sistema crittografico deve essere sicuro anche se l’algoritmo è pubblico, purché la chiave sia segreta.
+	~%50.00000%[moodle]L’applicazione del principio di Kerckhoffs ha portato alla trasparenza nello sviluppo degli algoritmi crittografici moderni come AES.
+	~[moodle]La segretezza dell’algoritmo garantisce sempre un livello aggiuntivo di sicurezza rispetto alla trasparenza dell’algoritmo.
+	~[moodle]Il principio di Kerckhoffs richiede che l’algoritmo di crittografia e le chiavi siano mantenuti segreti per garantire sicurezza.
+	~[moodle]Le vulnerabilità negli algoritmi pubblici sono inevitabili e non possono essere mitigate con il solo uso di chiavi sicure.
+}
+

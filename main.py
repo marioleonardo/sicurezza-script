@@ -49,7 +49,7 @@ def to_moodle_format(input_file_path, output_file):
                     question = question + " "
 
                 if not line[-1].isdigit():  # check if there's the number of correct answers
-                    print(f"Error, number of correct answers missing at the line: {line_counter}")
+                    print(f"Error, number of correct answers missing at the line: {line_counter} in file {input_file_path}")
                     error = True
                     output_file.close()
                     os.remove(output_file.name)
@@ -151,7 +151,9 @@ def create_files_with_questions(config):
     """
 
     out_folder = "out"
+    moodle_folder = "moodle"
     os.makedirs(out_folder, exist_ok=True)
+    os.makedirs(moodle_folder, exist_ok=True)
 
     # 1. Concatenate all in files
     all_questions_text = ""
@@ -338,7 +340,7 @@ def create_files_with_questions(config):
         with open(os.path.join(out_folder, "file_quiz_last_questions"), 'w', encoding='utf-8') as f_last:
             for q in remaining_questions:
                 f_last.write(q['original_text'] + "\n")
-        to_moodle_format(os.path.join(out_folder, "file_quiz_last_questions"), os.path.join(out_folder, "moodle_file_quiz_last_questions.txt"))
+        to_moodle_format(os.path.join(out_folder, "file_quiz_last_questions"), os.path.join(moodle_folder, "moodle_file_quiz_last_questions.txt"))
 
 
     # 7. Write questions to output files
@@ -350,7 +352,7 @@ def create_files_with_questions(config):
             for question in questions_in_files[i]:
                 f_out.write(question['original_text'] + "\n")
         try:
-            to_moodle_format(out_filename, os.path.join(out_folder, "moodle_file_quiz_"+str(i + 1)+".txt"))
+            to_moodle_format(out_filename, os.path.join(moodle_folder, "moodle_file_quiz_"+str(i + 1)+".txt"))
         except Exception as e:
             print(f"Error converting to moodle format:{str(i + 1)} , {e} ")
 

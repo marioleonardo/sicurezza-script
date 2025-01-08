@@ -1,10 +1,87 @@
 
-$algoritmi, crypto, simmetrica
-_Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?2
-*AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
-*AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
--AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
--AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
+$crypto, simmetrica, asimmetrica
+_Quali affermazioni sulla crittografia sono corrette?4
+-La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
+*La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
+*La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
+*La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
+-Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
+*​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
+%
+
+$firewall, configurazione, iptables
+_Alice ha configurato il firewall del suo server con le seguenti regole:
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT  
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT  
+iptables -P INPUT DROP  
+Quali dei seguenti comportamenti sono veri?3
+*Il server accetta connessioni SSH sulla porta 22 e HTTP sulla porta 80.
+*Qualsiasi connessione in ingresso su altre porte verrà bloccata, inclusi i ping.
+-Alice può accedere da remoto al server tramite SSH solo se si trova nella stessa rete locale.
+*Le risposte alle connessioni HTTP stabilite dal server non sono influenzate da queste regole.
+-Le regole configurate garantiscono automaticamente protezione contro attacchi DoS.
+%
+
+$ids, firewall, reti
+_Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?3
+*Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
+*Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
+-Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
+*Integrare i log dell'IDS e del firewall in un sistema SIEM per una migliore analisi.
+-Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
+%
+
+$firewall, configurazione, reti
+_Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?3
+*Impostare una regola che accetti solo connessioni in uscita con destinazione porta 443 e stato "NEW".
+*Configurare una regola che consenta il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni.
+-Impostare una regola per consentire tutte le connessioni in uscita indipendentemente dalla porta.
+-Bloccare tutto il traffico in entrata, incluso il traffico correlato.
+*Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite.
+%
+
+$fasi,tls
+_Quali fasi compongono l’handshake TLS?4
+*Negoziazione dei parametri di cifratura.
+*Autenticazione del server (e opzionalmente del client).
+*Scambio di chiavi per la sessione.
+-Trasferimento di file tramite HTTP.
+-Utilizzo del protocollo IKE per la gestione delle SA.
+*Scambio di una Server Challenge Request/Response.
+%
+
+$firewall, iptables,configurazione
+_Alice ha configurato il firewall del suo sistema con i seguenti comandi:
+iptables -F
+iptables -P INPUT ACCEPT
+iptables -A INPUT -p tcp --syn -j DROP
+
+La configurazione risultante di iptables è la seguente:
+Chain INPUT (policy ACCEPT)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 DROP       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02 (SYN)
+
+Chain FORWARD (policy ACCEPT)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+ pkts bytes target     prot opt in     out     source               destination                       destination         
+
+Seleziona le affermazioni corrette:3
+*Tutto il traffico in uscita è consentito
+-Tutto il traffico in ingresso viene automaticamente inoltrato (default policy ACCEPT)
+-Alice non può connettersi ad un server di Bob, perché tutti i pacchetti TCP con flag SYN sono bloccati
+*Bob non può instaurare una nuova connessione TCP con Alice
+*Bob non può individuare i servizi esposti di Alice tramite SYN scan
+%
+
+$ids
+_Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?_2
+*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme.
+*Un IDS basato su anomalie combinato con un firewall stateful.
+-Un IDS configurato per monitorare solo i log del traffico HTTPS.
+-Una combinazione di proxy server e NAT senza alcun sistema di rilevamento attivo.
+*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.
 %
 
 $crypto, simmetrica
@@ -15,20 +92,95 @@ _Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?2
 -Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
 %
 
-$crypto, rsa, asimmetrica, autenticazione
-_Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?2
-*Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
-*Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
--Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
--Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
--Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
+$hash, funzioni di hash, crypto
+_Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?2
+*Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
+*Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
+-Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
+-L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
+-Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
 %
 
-$crypto, simmetrica
-_Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?2
-*Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
-*In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
--Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
--Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
--Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
+$algoritmi, crypto, simmetrica
+_Quali delle seguenti affermazioni su RC4 e AES sono vere?2
+*RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
+*AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
+-RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
+-AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
+-Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
+%
+
+$ipsec, sicurezza
+_Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
+*Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
+*Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
+-Disabilitare il supporto a TLS 1.3.
+-Usare IPsec solo in transport mode.
+-Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
+*Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
+-Usare sempre e solo AH in IPsec.
+-Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
+%
+
+$tls, sicurezza
+_Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?2
+*In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
+-TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
+-Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
+-Entrambi mantengono un canale sicuro dall’inizio della connessione.
+*STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
+%
+
+$firewall, iptables, configurazione
+_Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  *      *       IP_Alice             0.0.0.0/0           tcp dpt:80
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP_Alice            tcp spt:80
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Frank ha configurato il firewall eseguendo i seguenti comandi:
+iptables -P FORWARD DROP
+iptables -A FORWARD -p tcp -s IP Alice --dport 80 -j ACCEPT 
+iptables -A FORWARD -p tcp -d IP Alice --sport 80 -j ACCEPT
+
+Seleziona le affermazioni corrette:2
+-Alice può collegarsi solo al server web di Bob
+-Bob può collegarsi al server web di Alice con qualunque porta
+*Ogni pacchetto TCP inviato a Frank da Alice viene automaticamente inoltrato a Bob se la porta di destinazione è 80
+-Bob non può inviare richieste HTTP verso qualsiasi server web esterno, ma solo verso Alice
+*Qualsiasi altro tipo di traffico (sia in ingresso che in uscita) tra Bob e Alice viene bloccato dalla policy DROP della chain FORWARD.
+%
+
+$algoritmi, crypto, simmetrica
+_Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?2
+*AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
+*AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
+-AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
+-AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
+%
+
+$firewall, ids, sicurezza
+_Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?2
+*Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
+*Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
+-Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
+-Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
+*Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
+
+%
+%
+
+$vpn, ipsec
+_Quale delle seguenti affermazioni sulle VPN è corretta?2
+-Le VPN operano esclusivamente a livello applicativo per la protezione dei dati.
+*OpenVPN può essere preferibile ad IPsec in reti complesse o eterogenee
+*IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
+-OpenVPN supporta nativamente sia modalità transport che tunnel
+-Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
 %

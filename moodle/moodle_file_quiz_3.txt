@@ -1,0 +1,113 @@
+// question: 1  name: Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?
+// [tag:ipsec] [tag:ah] [tag:esp] [tag:ike] [tag:sicurezza] [tag:protocollo] 
+::Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?::[html]<p><strong>Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?</strong></p>{
+	~[moodle]TCP
+	~%33.33333%[moodle]AH (Authentication Header)
+	~%33.33333%[moodle]ESP (Encapsulating Security Payload)
+	~[moodle]HTTPS
+	~[moodle]RSSA
+	~%33.33333%[moodle]IKE (Internet Key Exchange)
+}
+
+// question: 2  name: Bob ha implementato un IDS basato su anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?
+// [tag:ids] 
+::Bob ha implementato un IDS basato su anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?::[html]<p><strong>Bob ha implementato un IDS basato su anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?</strong></p>{
+	~%33.33333%[moodle]Regolare la soglia di rilevamento dell'IDS per ridurre i falsi positivi.
+	~%33.33333%[moodle]Analizzare i log storici per identificare pattern normali e aggiornare i profili di base.
+	~%33.33333%[moodle]Consultare un esperto di sicurezza per verificare se il traffico sia effettivamente legittimo.
+	~[moodle]Disabilitare temporaneamente l'IDS fino a quando il problema non viene risolto.
+	~[moodle]Configurare l'IDS per ignorare completamente il traffico proveniente dal server critico.
+}
+
+// question: 3  name: Indica quali delle seguenti affermazioni sul formato MIME sono vere: 
+// [tag:mime] [tag:email] [tag:formato] [tag:header] [tag:body] 
+::Indica quali delle seguenti affermazioni sul formato MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul formato MIME sono vere: </strong></p>{
+	~%33.33333%[moodle] MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
+	~%33.33333%[moodle] I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
+	~%33.33333%[moodle] MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
+	~[moodle] Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
+	~[moodle] MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
+	~[moodle] MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
+}
+
+// question: 4  name: Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.
+// [tag:sicurezza] [tag: email] [tag: messaggi] 
+::Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.::[html]<p><strong>Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.</strong></p>{
+	~%50.00000%[moodle]Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
+	~[moodle]Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
+	~%50.00000%[moodle]Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
+	~[moodle]Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
+	~[moodle]Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
+}
+
+// question: 5  name: Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?
+// [tag:sicurezza] [tag: tls] [tag: email] [tag: smtp] 
+::Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?::[html]<p><strong>Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?</strong></p>{
+	~%33.33333%[moodle]Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
+	~%33.33333%[moodle]Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
+	~[moodle]Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
+	~%33.33333%[moodle]Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
+}
+
+// question: 6  name: Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?
+// [tag:crypto] [tag: rsa] [tag: asimmetrica] [tag: autenticazione] 
+::Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?::[html]<p><strong>Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?</strong></p>{
+	~%50.00000%[moodle]Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
+	~%50.00000%[moodle]Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
+	~[moodle]Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
+	~[moodle]Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
+	~[moodle]Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
+}
+
+// question: 7  name: Indica quali delle seguenti affermazioni su PKCS sono vere: 
+// [tag:pkcs12] [tag: pkcs7] [tag: pkcs] [tag: chiavi] [tag:certificati] [tag:crittografia] 
+::Indica quali delle seguenti affermazioni su PKCS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su PKCS sono vere: </strong></p>{
+	~%33.33333%[moodle] PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
+	~%33.33333%[moodle] I file PKCS #12 sono comunemente usati per esportare e importare identità digitali.
+	~%33.33333%[moodle] PKCS #12 è ampiamente supportato dai browser web e dai client di posta elettronica.
+	~[moodle] PKCS #7 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
+	~[moodle] I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
+	~[moodle] PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
+	~[moodle] I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
+}
+
+// question: 8  name: Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?
+// [tag:diffiehellman] [tag: asimmetrica] 
+::Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?</strong></p>{
+	~%50.00000%[moodle]Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
+	~%50.00000%[moodle]La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
+	~[moodle]Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
+	~[moodle]La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+}
+
+// question: 9  name: Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: 
+// [tag:ipsec] [tag: sicurezza] [tag: ah] [tag: attacchi] [tag: integrità] [tag: autenticazione] 
+::Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: ::[html]<p><strong>Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: </strong></p>{
+	~[moodle]Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
+	~[moodle]Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
+	~[moodle]Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
+	~%50.00000%[moodle]Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
+	~%50.00000%[moodle]IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
+}
+
+// question: 10  name: Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?
+// [tag:ipsec] [tag: tls] [tag: differenze] [tag: sicurezza] 
+::Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?::[html]<p><strong>Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?</strong></p>{
+	~%33.33333%[moodle]IPsec opera a livello di rete, mentre TLS opera a livello di trasporto, rendendo TLS più adatto per la protezione di applicazioni specifiche all’interno dello stesso server.
+	~%33.33333%[moodle]IPsec può fornire sicurezza per tutto il traffico di rete (unicast), inclusi protocolli non orientati alla connessione, mentre TLS protegge solo protocolli basati su TCP.
+	~%33.33333%[moodle]L'autenticazione in TLS è spesso basata su certificati, mentre IPsec può supportare autenticazione con chiavi precondivise o certificati.
+	~[moodle]TLS può essere utilizzato per proteggere il traffico multicast, mentre IPsec no.
+	~[moodle]IPsec è ottimale per la protezione di pagine web dinamiche come HTTPS, mentre TLS non è progettato per questo.
+}
+
+// question: 11  name: Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: 
+// [tag:smime] [tag:pgp] [tag:sicurezza] [tag:email] [tag:standard] [tag:smime] 
+::Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: </strong></p>{
+	~%50.00000%[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
+	~[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
+	~[moodle] L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
+	~%50.00000%[moodle] A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
+}
+

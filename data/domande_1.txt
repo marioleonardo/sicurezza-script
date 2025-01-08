@@ -429,6 +429,164 @@ _Indica quali delle seguenti affermazioni su PKCS sono vere:3
 - PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
 - I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
 
+%
+$iptables, firewall, icmp, packetfilter
+_Alice ha configurato il firewall del suo sistema con i seguenti comandi:
+iptables -F 
+iptables -P INPUT DROP
+iptables -A INPUT -p icmp -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+La configurazione risultante di iptables è la seguente:
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+Quali problemi ci sono con questa configurazione?3
+*Alice non riesce ad avviare una connessione SSH verso Bob perché la policy DROP della chain INPUT blocca i pacchetti di risposta (SYN+ACK).
+-Bob non riesce a eseguire una scansione delle porte di Alice.
+*Le risposte ai ping inviati da Bob vengono accettate, ma le risposte ai pacchetti TCP (ad esempio HTTPS sulla porta 443 o SSH sulla porta 21) non vengono gestite correttamente.
+*Alice non ha configurato una regola per consentire il traffico correlato (RELATED, ESTABLISHED), rendendo il firewall inefficace per connessioni bidirezionali.
+-La policy DROP della chain INPUT blocca tutto il traffico, inclusi i pacchetti ICMP accettati dalla regola esplicita
+-Alice non può creare nuove chain per gestire altri tipi di traffico
 
+%
+$firewall, iptables,configurazione
+_Alice ha configurato il firewall del suo sistema con i seguenti comandi:
+iptables -F
+iptables -P INPUT ACCEPT
+iptables -A INPUT -p tcp --syn -j DROP
 
+La configurazione risultante di iptables è la seguente:
+Chain INPUT (policy ACCEPT)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 DROP       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02 (SYN)
+
+Chain FORWARD (policy ACCEPT)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+ pkts bytes target     prot opt in     out     source               destination                       destination         
+
+Seleziona le affermazioni corrette:3
+*Tutto il traffico in uscita è consentito
+-Tutto il traffico in ingresso viene automaticamente inoltrato (default policy ACCEPT)
+-Alice non può connettersi ad un server di Bob, perché tutti i pacchetti TCP con flag SYN sono bloccati
+*Bob non può instaurare una nuova connessione TCP con Alice
+*Bob non può individuare i servizi esposti di Alice tramite SYN scan
+%
+$firewall, iptables, configurazione
+_Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  *      *       IP_Alice             0.0.0.0/0           tcp dpt:80
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP_Alice            tcp spt:80
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Frank ha configurato il firewall eseguendo i seguenti comandi:
+iptables -P FORWARD DROP
+iptables -A FORWARD -p tcp -s IP Alice --dport 80 -j ACCEPT 
+iptables -A FORWARD -p tcp -d IP Alice --sport 80 -j ACCEPT
+
+Seleziona le affermazioni corrette:2
+-Alice può collegarsi solo al server web di Bob
+-Bob può collegarsi al server web di Alice con qualunque porta
+*Ogni pacchetto TCP inviato a Frank da Alice viene automaticamente inoltrato a Bob se la porta di destinazione è 80
+-Bob non può inviare richieste HTTP verso qualsiasi server web esterno, ma solo verso Alice
+*Qualsiasi altro tipo di traffico (sia in ingresso che in uscita) tra Bob e Alice viene bloccato dalla policy DROP della chain FORWARD.
+%
+
+$firewall, configurazione, iptables
+_Alice ha configurato il firewall del suo server con le seguenti regole:
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT  
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT  
+iptables -P INPUT DROP  
+Quali dei seguenti comportamenti sono veri?3
+*Il server accetta connessioni SSH sulla porta 22 e HTTP sulla porta 80.
+*Qualsiasi connessione in ingresso su altre porte verrà bloccata, inclusi i ping.
+-Alice può accedere da remoto al server tramite SSH solo se si trova nella stessa rete locale.
+*Le risposte alle connessioni HTTP stabilite dal server non sono influenzate da queste regole.
+-Le regole configurate garantiscono automaticamente protezione contro attacchi DoS.
+%
+
+$firewall, configurazione, reti
+_Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?3
+*Impostare una regola che accetti solo connessioni in uscita con destinazione porta 443 e stato "NEW".
+*Configurare una regola che consenta il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni.
+-Impostare una regola per consentire tutte le connessioni in uscita indipendentemente dalla porta.
+-Bloccare tutto il traffico in entrata, incluso il traffico correlato.
+*Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite.
+%
+$ids
+_Bob ha implementato un IDS basato su anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?3
+*Regolare la soglia di rilevamento dell'IDS per ridurre i falsi positivi.
+*Analizzare i log storici per identificare pattern normali e aggiornare i profili di base.
+*Consultare un esperto di sicurezza per verificare se il traffico sia effettivamente legittimo.
+-Disabilitare temporaneamente l'IDS fino a quando il problema non viene risolto.
+-Configurare l'IDS per ignorare completamente il traffico proveniente dal server critico.
+%
+
+$ids
+_Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?_2
+*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme.
+*Un IDS basato su anomalie combinato con un firewall stateful.
+-Un IDS configurato per monitorare solo i log del traffico HTTPS.
+-Una combinazione di proxy server e NAT senza alcun sistema di rilevamento attivo.
+*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.
+%
+
+$firewall, architettura, sicurezza
+_Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?2
+*Isolamento dei server pubblici per ridurre l'accesso diretto alla rete interna.
+*Facilità di applicazione di policy di sicurezza specifiche per ciascun segmento di rete.
+-Maggiore velocità di trasmissione rispetto a un firewall con DMZ singola.
+-I server nella DMZ possono comunicare direttamente con la rete interna senza ulteriori configurazioni.
+*Possibilità di monitorare e analizzare il traffico verso i server pubblici senza esporre la rete interna.
+%
+
+$firewall, configurazione, iptables
+_Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?3
+*iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+*iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+*iptables -P INPUT DROP
+-iptables -P OUTPUT ACCEPT
+-iptables -A FORWARD -j ACCEPT
+%
+$ids, firewall, reti
+_Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?3
+*Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
+*Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
+-Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
+*Integrare i log dell'IDS e del firewall in un sistema SIEM per una migliore analisi.
+-Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
+
+%
+
+$firewall, vulnerabilità, reti
+_Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?3
+*Impostare una regola per bloccare pacchetti SYN con flag incoerenti.
+*Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
+-Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
+-Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
+*Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
+
+%
+
+$firewall, ids, sicurezza
+_Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?2
+*Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
+*Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
+-Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
+-Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
+*Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
+
+%
 

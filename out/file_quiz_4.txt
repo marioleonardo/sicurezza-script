@@ -1,83 +1,62 @@
 
-$hash, autenticazione, tls, collisioni
-_Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?3
-*Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
-*Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
--Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
--L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
-*TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
+$sicurezza,rsa,tls
+_Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?3
+-Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
+*Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
+-Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
+-Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
+*Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
 %
 
-$tls, sicurezza
-_Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?2
-*In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
--TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
--Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
--Entrambi mantengono un canale sicuro dall’inizio della connessione.
-*STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
+$sicurezza,tls,http,email
+_Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere:3
+* Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
+- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
+* Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
+* L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
+- S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
 %
 
-$crypto, simmetrica, asimmetrica
-_Quali affermazioni sulla crittografia sono corrette?4
--La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
-*La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
-*La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
-*La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
--Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
-*​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
+$crittografia,sicurezza,email,prestazioni,anti-spam,ipsec,tls,attacchi
+_Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere:3
+* La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
+* L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
+- L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
+* Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
+- Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
 %
 
-$diffiehellman, asimmetrica
-_Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
-*Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
-*La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
--Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
--La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+$firewall, vulnerabilità, reti
+_Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?3
+*Impostare una regola per bloccare pacchetti SYN con flag incoerenti.
+*Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
+-Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
+-Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
+*Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
 %
 
-$ah, ipsec
-_Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?2
-*AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
-*AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
--AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
--AH richiede un certificato digitale per autenticare gli utenti.
--AH supporta Perfect Forward Secrecy come ESP.
-%
-
-$smime,email,sicurezza,integrità,autenticazione,non ripudio,riservatezza,cms
-_Indica quali delle seguenti affermazioni su S/MIME sono vere:4
-* S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
-- S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
-* S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
-- La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
-* S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
-* CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
-%
-
-$algoritmi, crypto, simmetrica
-_Quali delle seguenti affermazioni su RC4 e AES sono vere?2
-*RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
-*AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
--RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
--AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
--Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
-%
-
-$sicurezza, email, messaggi
-_Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.2
-*Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
--Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
-*Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
--Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
--Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
-% 
-
-$sicurezza, tls, email, smtp
-_Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?3
-*Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
-*Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
--Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
-*Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
+$iptables, firewall, icmp, packetfilter
+_Alice ha configurato il firewall del suo sistema con i seguenti comandi:
+iptables -F 
+iptables -P INPUT DROP
+iptables -A INPUT -p icmp -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+La configurazione risultante di iptables è la seguente:
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+Quali problemi ci sono con questa configurazione?3
+*Alice non riesce ad avviare una connessione SSH verso Bob perché la policy DROP della chain INPUT blocca i pacchetti di risposta (SYN+ACK).
+-Bob non riesce a eseguire una scansione delle porte di Alice.
+*Le risposte ai ping inviati da Bob vengono accettate, ma le risposte ai pacchetti TCP (ad esempio HTTPS sulla porta 443 o SSH sulla porta 21) non vengono gestite correttamente.
+*Alice non ha configurato una regola per consentire il traffico correlato (RELATED, ESTABLISHED), rendendo il firewall inefficace per connessioni bidirezionali.
+-La policy DROP della chain INPUT blocca tutto il traffico, inclusi i pacchetti ICMP accettati dalla regola esplicita
+-Alice non può creare nuove chain per gestire altri tipi di traffico
 %
 
 $esp, ipsec
@@ -89,11 +68,37 @@ _Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
 -ESPv3+ non può essere utilizzato insieme al protocollo AH.
 %
 
-$simmetrica
-_Quali delle seguenti sono tecniche di crittografia simmetrica?2
-*AES (Advanced Encryption Standard)
-*DES (Data Encryption Standard)
--RSA
--ECC (Elliptic Curve Cryptography)
--Elgamal
+$hash, autenticazione, tls, collisioni
+_Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?3
+*Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
+*Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
+-Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
+-L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
+*TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
+%
+
+$ipsec, tls, sicurezza
+_Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?3
+*IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
+*IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
+*TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
+-IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
+%
+
+$firewall, configurazione, iptables
+_Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?3
+*iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+*iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+*iptables -P INPUT DROP
+-iptables -P OUTPUT ACCEPT
+-iptables -A FORWARD -j ACCEPT
+%
+
+$spam,tecniche,email,sicurezza
+_Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere:3
+- Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
+* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
 %
