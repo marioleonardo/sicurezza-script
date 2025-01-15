@@ -1,25 +1,14 @@
-// question: 1  name: Indica quali delle seguenti affermazioni su PKCS sono vere: 
-// [tag:pkcs12] [tag: pkcs7] [tag: pkcs] [tag: chiavi] [tag:certificati] [tag:crittografia] 
-::Indica quali delle seguenti affermazioni su PKCS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su PKCS sono vere: </strong></p>{
-	~%33.33333%[moodle] PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-	~%33.33333%[moodle] I file PKCS #12 sono comunemente usati per esportare e importare identità digitali.
-	~%33.33333%[moodle] PKCS #12 è ampiamente supportato dai browser web e dai client di posta elettronica.
-	~[moodle] PKCS #7 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-	~[moodle] I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
-	~[moodle] PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
-	~[moodle] I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
+// question: 1  name: Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.<br>Alice quindi esegue i seguenti comandi:<br>ip xfrm state add sic IP Alice dst IP Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm state add sc IP Bob dst IP Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required<br>ip xfrm policy add sic IP Bob dst IP Alice dir in tmpl proto esp mode transport level required<br>Mentre Bob esegue i seguenti comandi:<br>ip xfrm state add sc IP Alice dst IP Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd<br>ip xfrm state add src IP Bob dst IP Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd<br>ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required<br>Seleziona le affermazioni corrette:
+// [tag:ipsec] 
+::Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.<br>Alice quindi esegue i seguenti comandi:<br>ip xfrm state add sic IP Alice dst IP Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm state add sc IP Bob dst IP Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required<br>ip xfrm policy add sic IP Bob dst IP Alice dir in tmpl proto esp mode transport level required<br>Mentre Bob esegue i seguenti comandi:<br>ip xfrm state add sc IP Alice dst IP Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd<br>ip xfrm state add src IP Bob dst IP Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd<br>ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required<br>Seleziona le affermazioni corrette::[html]<p><strong>Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.<br>Alice quindi esegue i seguenti comandi:<br>ip xfrm state add sic IP Alice dst IP Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm state add sc IP Bob dst IP Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required<br>ip xfrm policy add sic IP Bob dst IP Alice dir in tmpl proto esp mode transport level required<br>Mentre Bob esegue i seguenti comandi:<br>ip xfrm state add sc IP Alice dst IP Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd<br>ip xfrm state add src IP Bob dst IP Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd<br>ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required<br>Seleziona le affermazioni corrette:</strong></p>{
+	~%33.33333%[moodle]Sono presenti in totale 4 SA e 4 SP
+	~[moodle]Le SP sono 2 in totale perché, a differenza delle SA, sono bidirezionali
+	~[moodle]Bob ha sbagliato la sua configurazione perchè non ha specificato l’algoritmo crittografico da utilizzare
+	~%33.33333%[moodle]La configurazione è vantaggiosa perchè protegge sia l’integrità del messaggio che la segretezza del payload usando un singolo algoritmo e una singola chiave
+	~%33.33333%[moodle]La configurazione di Bob garantisce solo integrità e autenticità, mentre quella di Alice garantisce anche la confidenzialità dei dati trasmessi.
 }
 
-// question: 2  name: Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?
-// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
-::Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?</strong></p>{
-	~%50.00000%[moodle]AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
-	~%50.00000%[moodle]AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
-	~[moodle]AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
-	~[moodle]AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
-}
-
-// question: 3  name: Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?
+// question: 2  name: Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?
 // [tag:ipsec] [tag: tls] [tag: differenze] [tag: sicurezza] 
 ::Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?::[html]<p><strong>Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?</strong></p>{
 	~%33.33333%[moodle]IPsec opera a livello di rete, mentre TLS opera a livello di trasporto, rendendo TLS più adatto per la protezione di applicazioni specifiche all’interno dello stesso server.
@@ -29,7 +18,7 @@
 	~[moodle]IPsec è ottimale per la protezione di pagine web dinamiche come HTTPS, mentre TLS non è progettato per questo.
 }
 
-// question: 4  name: Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: 
+// question: 3  name: Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: 
 // [tag:spam] [tag:email] [tag:blacklisting] [tag:greylisting] [tag:sicurezza] 
 ::Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: </strong></p>{
 	~%20.00000%[moodle] Lo spam si riferisce a email di massa non richieste, spesso di natura commerciale.
@@ -40,51 +29,9 @@
 	~[moodle] Blacklist e Greylisting vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
 }
 
-// question: 5  name: Indica quali delle seguenti affermazioni sul formato MIME sono vere: 
-// [tag:mime] [tag:email] [tag:formato] [tag:header] [tag:body] 
-::Indica quali delle seguenti affermazioni sul formato MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul formato MIME sono vere: </strong></p>{
-	~%33.33333%[moodle] MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
-	~%33.33333%[moodle] I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
-	~%33.33333%[moodle] MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
-	~[moodle] Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
-	~[moodle] MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
-	~[moodle] MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
-}
-
-// question: 6  name: Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?
-// [tag:firewall] [tag: ids] [tag: sicurezza] 
-::Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?::[html]<p><strong>Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?</strong></p>{
-	~%50.00000%[moodle]Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
-	~%50.00000%[moodle]Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
-	~[moodle]Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
-	~[moodle]Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
-	~%50.00000%[moodle]Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
-}
-
-// question: 7  name: Quali affermazioni sulla crittografia sono corrette?
-// [tag:crypto] [tag: simmetrica] [tag: asimmetrica] 
-::Quali affermazioni sulla crittografia sono corrette?::[html]<p><strong>Quali affermazioni sulla crittografia sono corrette?</strong></p>{
-	~[moodle]La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
-	~%25.00000%[moodle]La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
-	~%25.00000%[moodle]La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
-	~%25.00000%[moodle]La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
-	~[moodle]Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
-	~%25.00000%[moodle]​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
-}
-
-// question: 8  name: Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?
-// [tag:hash] [tag: autenticazione] [tag: tls] [tag: collisioni] 
-::Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?::[html]<p><strong>Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?</strong></p>{
-	~%33.33333%[moodle]Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
-	~%33.33333%[moodle]Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
-	~[moodle]Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
-	~[moodle]L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
-	~%33.33333%[moodle]TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
-}
-
-// question: 9  name: Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?
-// [tag:firewall] [tag: architettura] [tag: sicurezza] 
-::Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?::[html]<p><strong>Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?</strong></p>{
+// question: 4  name: Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?2<br>*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme.<br>*Un IDS basato su anomalie combinato con un firewall stateful.<br>-Un IDS configurato per monitorare solo i log del traffico HTTPS.<br>-Una combinazione di proxy server e NAT senza alcun sistema di rilevamento attivo.<br>*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.<br>%<br><br>$firewall, architettura, sicurezza<br>Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?
+// [tag:ids] 
+::Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?2<br>*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme.<br>*Un IDS basato su anomalie combinato con un firewall stateful.<br>-Un IDS configurato per monitorare solo i log del traffico HTTPS.<br>-Una combinazione di proxy server e NAT senza alcun sistema di rilevamento attivo.<br>*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.<br>%<br><br>$firewall, architettura, sicurezza<br>Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?::[html]<p><strong>Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?2<br>*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme.<br>*Un IDS basato su anomalie combinato con un firewall stateful.<br>-Un IDS configurato per monitorare solo i log del traffico HTTPS.<br>-Una combinazione di proxy server e NAT senza alcun sistema di rilevamento attivo.<br>*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.<br>%<br><br>$firewall, architettura, sicurezza<br>Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?</strong></p>{
 	~%50.00000%[moodle]Isolamento dei server pubblici per ridurre l'accesso diretto alla rete interna.
 	~%50.00000%[moodle]Facilità di applicazione di policy di sicurezza specifiche per ciascun segmento di rete.
 	~[moodle]Maggiore velocità di trasmissione rispetto a un firewall con DMZ singola.
@@ -92,16 +39,55 @@
 	~%50.00000%[moodle]Possibilità di monitorare e analizzare il traffico verso i server pubblici senza esporre la rete interna.
 }
 
-// question: 10  name: Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?
-// [tag:ipsec] [tag: sicurezza] 
-::Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?::[html]<p><strong>Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?</strong></p>{
-	~%33.33333%[moodle]Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
-	~%33.33333%[moodle]Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
-	~[moodle]Disabilitare il supporto a TLS 1.3.
-	~[moodle]Usare IPsec solo in transport mode.
-	~[moodle]Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
-	~%33.33333%[moodle]Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
-	~[moodle]Usare sempre e solo AH in IPsec.
-	~[moodle]Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
+// question: 5  name: Quali delle seguenti affermazioni su RC4 e AES sono vere?
+// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
+::Quali delle seguenti affermazioni su RC4 e AES sono vere?::[html]<p><strong>Quali delle seguenti affermazioni su RC4 e AES sono vere?</strong></p>{
+	~%50.00000%[moodle]RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
+	~%50.00000%[moodle]AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
+	~[moodle]RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
+	~[moodle]AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
+	~[moodle]Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
+}
+
+// question: 6  name: Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?
+// [tag:crypto] [tag: autenticazione] [tag: chiavi] [tag: tls] 
+::Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?::[html]<p><strong>Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?</strong></p>{
+	~%50.00000%[moodle]Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
+	~%50.00000%[moodle]Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
+	~[moodle]I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
+	~[moodle]I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
+	~[moodle]TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
+}
+
+// question: 7  name: Indica quali delle seguenti affermazioni su S/MIME sono vere: 
+// [tag:smime] [tag:email] [tag:sicurezza] [tag:integrità] [tag:autenticazione] [tag:non ripudio] [tag:riservatezza] [tag:cms] 
+::Indica quali delle seguenti affermazioni su S/MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su S/MIME sono vere: </strong></p>{
+	~%25.00000%[moodle] S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
+	~[moodle] S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
+	~%25.00000%[moodle] S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
+	~[moodle] La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
+	~%25.00000%[moodle] S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
+	~%25.00000%[moodle] CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+}
+
+// question: 8  name: Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: 
+// [tag:ipsec] [tag: sicurezza] [tag: ah] [tag: attacchi] [tag: integrità] [tag: autenticazione] 
+::Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: ::[html]<p><strong>Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: </strong></p>{
+	~[moodle]Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
+	~[moodle]Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
+	~[moodle]Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
+	~%50.00000%[moodle]Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
+	~%50.00000%[moodle]IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
+}
+
+// question: 9  name: Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: 
+// [tag:smime] [tag:pgp] [tag:sicurezza] [tag:email] [tag:standard] [tag:smime] 
+::Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: </strong></p>{
+	~%50.00000%[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
+	~[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
+	~[moodle] L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
+	~%50.00000%[moodle] A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
 }
 

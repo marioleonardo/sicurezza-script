@@ -1,14 +1,101 @@
-// question: 1  name: Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: 
-// [tag:ipsec] [tag: sicurezza] [tag: ah] [tag: attacchi] [tag: integrità] [tag: autenticazione] 
-::Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: ::[html]<p><strong>Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: </strong></p>{
-	~[moodle]Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
-	~[moodle]Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
-	~[moodle]Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
-	~%50.00000%[moodle]Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
-	~%50.00000%[moodle]IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
+// question: 1  name: Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: 
+// [tag:cms] [tag:crittografia] [tag:struttura] [tag:firma digitale] [tag:sicurezza] 
+::Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: </strong></p>{
+	~[moodle] CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+	~%50.00000%[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+	~%50.00000%[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+	~[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+	~[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+	~[moodle] CMS supporta solo un singolo destinatario per i messaggi crittografati.
 }
 
-// question: 2  name: Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: 
+// question: 2  name: Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere: 
+// [tag:crittografia] [tag:sicurezza] [tag:email] [tag:prestazioni] [tag:anti-spam] [tag:ipsec] [tag:tls] [tag:attacchi] 
+::Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere: </strong></p>{
+	~%33.33333%[moodle] La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
+	~%33.33333%[moodle] L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
+	~[moodle] L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
+	~%33.33333%[moodle] Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
+	~[moodle] Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
+}
+
+// question: 3  name: Indica quali delle seguenti affermazioni su PKCS sono vere: 
+// [tag:pkcs12] [tag: pkcs7] [tag: pkcs] [tag: chiavi] [tag:certificati] [tag:crittografia] 
+::Indica quali delle seguenti affermazioni su PKCS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su PKCS sono vere: </strong></p>{
+	~%33.33333%[moodle] PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
+	~%33.33333%[moodle] I file PKCS #12 sono comunemente usati per esportare e importare identità digitali.
+	~%33.33333%[moodle] PKCS #12 è ampiamente supportato dai browser web e dai client di posta elettronica.
+	~[moodle] PKCS #7 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
+	~[moodle] I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
+	~[moodle] PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
+	~[moodle] I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
+}
+
+// question: 4  name: Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.
+// [tag:sicurezza] [tag: email] [tag: messaggi] 
+::Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.::[html]<p><strong>Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.</strong></p>{
+	~%50.00000%[moodle]Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
+	~[moodle]Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
+	~%50.00000%[moodle]Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
+	~[moodle]Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
+	~[moodle]Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
+}
+
+// question: 5  name: Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?
+// [tag:sicurezza] [tag: tls] [tag: email] [tag: smtp] 
+::Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?::[html]<p><strong>Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?</strong></p>{
+	~%33.33333%[moodle]Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
+	~%33.33333%[moodle]Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
+	~[moodle]Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
+	~%33.33333%[moodle]Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
+}
+
+// question: 6  name: Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?
+// [tag:ipsec] [tag:ah] [tag:esp] [tag:ike] [tag:sicurezza] [tag:protocollo] 
+::Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?::[html]<p><strong>Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?</strong></p>{
+	~[moodle]TCP
+	~%33.33333%[moodle]AH (Authentication Header)
+	~%33.33333%[moodle]ESP (Encapsulating Security Payload)
+	~[moodle]HTTPS
+	~[moodle]RSSA
+	~%33.33333%[moodle]IKE (Internet Key Exchange)
+}
+
+// question: 7  name: Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?
+// [tag:ah] [tag: ipsec] 
+::Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?</strong></p>{
+	~%50.00000%[moodle]AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
+	~%50.00000%[moodle]AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
+	~[moodle]AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
+	~[moodle]AH richiede un certificato digitale per autenticare gli utenti.
+	~[moodle]AH supporta Perfect Forward Secrecy come ESP.
+}
+
+// question: 8  name: Quali affermazioni riguardanti la crittografia a stream sono corrette?
+// [tag:crypto] [tag: stream] [tag: simmetrica] 
+::Quali affermazioni riguardanti la crittografia a stream sono corrette?::[html]<p><strong>Quali affermazioni riguardanti la crittografia a stream sono corrette?</strong></p>{
+	~[moodle]Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
+	~[moodle]Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
+	~[moodle]Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
+	~%50.00000%[moodle]Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
+	~[moodle]Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
+	~[moodle] L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
+	~%50.00000%[moodle]Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+}
+
+// question: 9  name: Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: 
+// [tag:email] [tag:protocollo] [tag:mta] [tag:msa] [tag:mua] [tag:smtp] [tag:tls] 
+::Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: </strong></p>{
+	~%20.00000%[moodle] MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
+	~%20.00000%[moodle] SMTP è un protocollo orientato alla connessione utilizzato per l'invio di email.
+	~%20.00000%[moodle] Una sfida nella sicurezza della posta elettronica è la presenza di MTA potenzialmente non attendibili nella catena di consegna.
+	~%20.00000%[moodle] ESMTP è un'estensione di SMTP che introduce funzionalità aggiuntive, incluso il supporto per miglioramenti della sicurezza.
+	~[moodle] Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+	~[moodle] Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
+	~%20.00000%[moodle] TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
+}
+
+// question: 10  name: Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: 
 // [tag:dnssec] [tag:hash] [tag:certificati] [tag:greylisting] [tag:attacchi] [tag:sicurezza] [tag:email] 
 ::Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: </strong></p>{
 	~%20.00000%[moodle] La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
@@ -20,84 +107,13 @@
 	~%20.00000%[moodle] Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
 }
 
-// question: 3  name: Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?
-// [tag:ipsec] [tag: tls] [tag: sicurezza] 
-::Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?::[html]<p><strong>Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?</strong></p>{
-	~%33.33333%[moodle]IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
-	~%33.33333%[moodle]IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
-	~%33.33333%[moodle]TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
-	~[moodle]IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
-}
-
-// question: 4  name: Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?
-// [tag:ipsec] [tag:esp] [tag: transportmode] [tag:tunnelmode] [tag:sicurezza] [tag:funzionamento] 
-::Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?::[html]<p><strong>Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?</strong></p>{
-	~%50.00000%[moodle]Transport Mode: Solo il payload del pacchetto IP è crittografato.
-	~%50.00000%[moodle]Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
-	~[moodle]Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
-	~[moodle]Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
-	~[moodle]Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
-	~[moodle]Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
-}
-
-// question: 5  name: Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: 
-// [tag:cms] [tag:crittografia] [tag:struttura] [tag:firma digitale] [tag:sicurezza] 
-::Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: </strong></p>{
-	~[moodle] CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
-	~%50.00000%[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-	~%50.00000%[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-	~[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-	~[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-	~[moodle] CMS supporta solo un singolo destinatario per i messaggi crittografati.
-}
-
-// question: 6  name: Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?
-// [tag:crypto] [tag: autenticazione] [tag: chiavi] [tag: tls] 
-::Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?::[html]<p><strong>Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?</strong></p>{
-	~%50.00000%[moodle]Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
-	~%50.00000%[moodle]Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
-	~[moodle]I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
-	~[moodle]I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
-	~[moodle]TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
-}
-
-// question: 7  name: Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?
-// [tag:crypto] [tag: rsa] [tag: asimmetrica] [tag: autenticazione] 
-::Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?::[html]<p><strong>Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?</strong></p>{
-	~%50.00000%[moodle]Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
-	~%50.00000%[moodle]Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
-	~[moodle]Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
-	~[moodle]Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
-	~[moodle]Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
-}
-
-// question: 8  name: Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere: 
-// [tag:crittografia] [tag:sicurezza] [tag:email] [tag:prestazioni] [tag:anti-spam] [tag:ipsec] [tag:tls] [tag:attacchi] 
-::Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere: </strong></p>{
-	~%33.33333%[moodle] La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
-	~%33.33333%[moodle] L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
-	~[moodle] L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
-	~%33.33333%[moodle] Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
-	~[moodle] Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
-}
-
-// question: 9  name: Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?
-// [tag:crypto] [tag: algoritmi] 
-::Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?</strong></p>{
-	~%50.00000%[moodle]Il principio di Kerckhoffs afferma che un sistema crittografico deve essere sicuro anche se l’algoritmo è pubblico, purché la chiave sia segreta.
-	~%50.00000%[moodle]L’applicazione del principio di Kerckhoffs ha portato alla trasparenza nello sviluppo degli algoritmi crittografici moderni come AES.
-	~[moodle]La segretezza dell’algoritmo garantisce sempre un livello aggiuntivo di sicurezza rispetto alla trasparenza dell’algoritmo.
-	~[moodle]Il principio di Kerckhoffs richiede che l’algoritmo di crittografia e le chiavi siano mantenuti segreti per garantire sicurezza.
-	~[moodle]Le vulnerabilità negli algoritmi pubblici sono inevitabili e non possono essere mitigate con il solo uso di chiavi sicure.
-}
-
-// question: 10  name: Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?
-// [tag:firewall] [tag: configurazione] [tag: iptables] 
-::Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?::[html]<p><strong>Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?</strong></p>{
-	~%33.33333%[moodle]iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-	~%33.33333%[moodle]iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-	~%33.33333%[moodle]iptables -P INPUT DROP
-	~[moodle]iptables -P OUTPUT ACCEPT
-	~[moodle]iptables -A FORWARD -j ACCEPT
+// question: 11  name: Quali delle seguenti sono tecniche di crittografia simmetrica?
+// [tag:simmetrica] 
+::Quali delle seguenti sono tecniche di crittografia simmetrica?::[html]<p><strong>Quali delle seguenti sono tecniche di crittografia simmetrica?</strong></p>{
+	~%50.00000%[moodle]AES (Advanced Encryption Standard)
+	~%50.00000%[moodle]DES (Data Encryption Standard)
+	~[moodle]RSA
+	~[moodle]ECC (Elliptic Curve Cryptography)
+	~[moodle]Elgamal
 }
 

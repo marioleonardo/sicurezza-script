@@ -1,32 +1,31 @@
-// question: 1  name: Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: 
-// [tag:email] [tag:protocollo] [tag:mta] [tag:msa] [tag:mua] [tag:smtp] [tag:tls] 
-::Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: </strong></p>{
-	~%20.00000%[moodle] MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
-	~%20.00000%[moodle] SMTP è un protocollo orientato alla connessione utilizzato per l'invio di email.
-	~%20.00000%[moodle] Una sfida nella sicurezza della posta elettronica è la presenza di MTA potenzialmente non attendibili nella catena di consegna.
-	~%20.00000%[moodle] ESMTP è un'estensione di SMTP che introduce funzionalità aggiuntive, incluso il supporto per miglioramenti della sicurezza.
-	~[moodle] Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
-	~[moodle] Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
-	~%20.00000%[moodle] TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
+// question: 1  name: Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?
+// [tag:ipsec] [tag:esp] [tag: transportmode] [tag:tunnelmode] [tag:sicurezza] [tag:funzionamento] 
+::Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?::[html]<p><strong>Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?</strong></p>{
+	~%50.00000%[moodle]Transport Mode: Solo il payload del pacchetto IP è crittografato.
+	~%50.00000%[moodle]Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
+	~[moodle]Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
+	~[moodle]Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
+	~[moodle]Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
+	~[moodle]Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
 }
 
-// question: 2  name: Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: 
-// [tag:tls] [tag: starttls] [tag: email] [tag: sicurezza] [tag: protocollo] 
-::Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: </strong></p>{
-	=[moodle]Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
-	~[moodle] Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
-	~[moodle]La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
-	~[moodle]SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
+// question: 2  name: Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?
+// [tag:ipsec] [tag: tls] [tag: sicurezza] 
+::Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?::[html]<p><strong>Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?</strong></p>{
+	~%33.33333%[moodle]IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
+	~%33.33333%[moodle]IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
+	~%33.33333%[moodle]TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
+	~[moodle]IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
 }
 
-// question: 3  name: Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?
-// [tag:esp] [tag: ipsec] 
-::Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?</strong></p>{
-	~%50.00000%[moodle]ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
-	~%50.00000%[moodle]ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
-	~[moodle]ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
-	~[moodle]ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
-	~[moodle]ESPv3+ non può essere utilizzato insieme al protocollo AH.
+// question: 3  name: Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?
+// [tag:hash] [tag: autenticazione] [tag: tls] [tag: collisioni] 
+::Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?::[html]<p><strong>Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?</strong></p>{
+	~%33.33333%[moodle]Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
+	~%33.33333%[moodle]Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
+	~[moodle]Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
+	~[moodle]L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
+	~%33.33333%[moodle]TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
 }
 
 // question: 4  name: Quale delle seguenti affermazioni sulle VPN è corretta?
@@ -39,15 +38,13 @@
 	~[moodle]Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
 }
 
-// question: 5  name: Quale ruolo svolge il protocollo IKE in IPsec?
-// [tag:ipsec] [tag:ike] [tag:sicurezza ] [tag:autenticazione] 
-::Quale ruolo svolge il protocollo IKE in IPsec?::[html]<p><strong>Quale ruolo svolge il protocollo IKE in IPsec?</strong></p>{
-	~%33.33333%[moodle]Negoziazione dei parametri di sicurezza tra i peer.
-	~%33.33333%[moodle]Gestione delle chiavi crittografiche.
-	~[moodle]Fornisce cifratura end-to-end per i dati.
-	~[moodle]Configura le policy DNS per la risoluzione dei peer.
-	~[moodle]Crea AH header e trailer.
-	~%33.33333%[moodle]Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
+// question: 5  name: Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: 
+// [tag:tls] [tag: starttls] [tag: email] [tag: sicurezza] [tag: protocollo] 
+::Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: </strong></p>{
+	=[moodle]Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
+	~[moodle] Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+	~[moodle]La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
+	~[moodle]SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
 }
 
 // question: 6  name: Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: 
@@ -60,46 +57,44 @@
 	~%33.33333%[moodle] Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
 }
 
-// question: 7  name: Indica quali delle seguenti affermazioni su S/MIME sono vere: 
-// [tag:smime] [tag:email] [tag:sicurezza] [tag:integrità] [tag:autenticazione] [tag:non ripudio] [tag:riservatezza] [tag:cms] 
-::Indica quali delle seguenti affermazioni su S/MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su S/MIME sono vere: </strong></p>{
-	~%25.00000%[moodle] S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
-	~[moodle] S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
-	~%25.00000%[moodle] S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
-	~[moodle] La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
-	~%25.00000%[moodle] S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
-	~%25.00000%[moodle] CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+// question: 7  name: Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?
+// [tag:ids] [tag: firewall] [tag: reti] 
+::Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?::[html]<p><strong>Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?</strong></p>{
+	~%33.33333%[moodle]Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
+	~%33.33333%[moodle]Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
+	~[moodle]Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
+	~%33.33333%[moodle]Integrare i log dell'IDS e del firewall in un sistema SIEM per una migliore analisi.
+	~[moodle]Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
 }
 
-// question: 8  name: Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?
-// [tag:ah] [tag: ipsec] 
-::Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?</strong></p>{
-	~%50.00000%[moodle]AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
-	~%50.00000%[moodle]AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
-	~[moodle]AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
-	~[moodle]AH richiede un certificato digitale per autenticare gli utenti.
-	~[moodle]AH supporta Perfect Forward Secrecy come ESP.
+// question: 8  name: Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?
+// [tag:crypto] [tag: simmetrica] 
+::Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?</strong></p>{
+	~%50.00000%[moodle]Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
+	~%50.00000%[moodle]In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
+	~[moodle]Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
+	~[moodle]Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
+	~[moodle]Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
 }
 
-// question: 9  name: Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: 
-// [tag:smime] [tag:pgp] [tag:sicurezza] [tag:email] [tag:standard] [tag:smime] 
-::Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: </strong></p>{
-	~%50.00000%[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
-	~[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
-	~[moodle] L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
-	~%50.00000%[moodle] A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
-	~[moodle] A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
-	~[moodle] La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
+// question: 9  name: Indica quali delle seguenti affermazioni sul formato MIME sono vere: 
+// [tag:mime] [tag:email] [tag:formato] [tag:header] [tag:body] 
+::Indica quali delle seguenti affermazioni sul formato MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul formato MIME sono vere: </strong></p>{
+	~%33.33333%[moodle] MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
+	~%33.33333%[moodle] I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
+	~%33.33333%[moodle] MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
+	~[moodle] Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
+	~[moodle] MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
+	~[moodle] MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
 }
 
-// question: 10  name: Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?
-// [tag:ipsec] [tag:ah] [tag:esp] [tag:ike] [tag:sicurezza] [tag:protocollo] 
-::Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?::[html]<p><strong>Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?</strong></p>{
-	~[moodle]TCP
-	~%33.33333%[moodle]AH (Authentication Header)
-	~%33.33333%[moodle]ESP (Encapsulating Security Payload)
-	~[moodle]HTTPS
-	~[moodle]RSSA
-	~%33.33333%[moodle]IKE (Internet Key Exchange)
+// question: 10  name: Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: 
+// [tag:sicurezza] [tag:tls] [tag:http] [tag:email] 
+::Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: </strong></p>{
+	~%33.33333%[moodle] Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
+	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
+	~%33.33333%[moodle] Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
+	~%33.33333%[moodle] L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
+	~[moodle] S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
 }
 

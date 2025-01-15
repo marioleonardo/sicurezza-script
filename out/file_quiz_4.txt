@@ -1,100 +1,94 @@
 
-$ids, firewall, reti
-_Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?3
-*Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
-*Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
--Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
-*Integrare i log dell'IDS e del firewall in un sistema SIEM per una migliore analisi.
--Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
+$fasi,tls
+_Quali fasi compongono l’handshake TLS?4
+*Negoziazione dei parametri di cifratura.
+*Autenticazione del server (e opzionalmente del client).
+*Scambio di chiavi per la sessione.
+-Trasferimento di file tramite HTTP.
+-Utilizzo del protocollo IKE per la gestione delle SA.
+*Scambio di una Server Challenge Request/Response.
 %
 
-$ipsec, retecore
-_Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?3
-*Configurare la modalità Transport anziché Tunnel per traffico specifico.
--Utilizzare algoritmi di hashing più complessi come SHA-512.
--Abilitare il rinnovo delle chiavi con IKE ogni 10 pacchetti.
-*Ottimizzare i percorsi di instradamento per ridurre i ritardi.
-*Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
-*Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
+$crypto, rsa, asimmetrica, autenticazione
+_Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?2
+*Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
+*Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
+-Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
+-Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
+-Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
 %
 
-$sicurezza, email, messaggi
-_Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.2
-*Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
--Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
-*Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
--Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
--Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
-% 
-
-$sicurezza, tls, email, smtp
-_Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?3
-*Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
-*Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
--Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
-*Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
+$hash, funzioni di hash, crypto
+_Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?2
+*Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
+*Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
+-Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
+-L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
+-Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
 %
 
-$tls,certificati
-_Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?2
-*RSA
--DES
--X.509
--AES
--SHA (utilizzato solo come hash ma non per l'autenticazione)
-*AEAD nell’ultima versione di TLS
+$algoritmi, crypto, simmetrica
+_Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?2
+*AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
+*AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
+-AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
+-AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
 %
 
-$crypto, simmetrica
-_Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?2
-*La crittografia simmetrica richiede una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati.
-*Gli algoritmi simmetrici come AES sono generalmente più efficienti di quelli asimmetrici per grandi volumi di dati.
--La distribuzione sicura delle chiavi nella crittografia simmetrica è facilmente risolvibile senza l’uso di ulteriori protocolli.
--Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
+$ipsec,ike,sicurezza ,autenticazione
+_Quale ruolo svolge il protocollo IKE in IPsec?3
+*Negoziazione dei parametri di sicurezza tra i peer.
+*Gestione delle chiavi crittografiche.
+-Fornisce cifratura end-to-end per i dati.
+-Configura le policy DNS per la risoluzione dei peer.
+-Crea AH header e trailer.
+*Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
 %
 
-$sicurezza,tls,http,email
-_Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere:3
-* Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
-- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
-* Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
-* L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
-- S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
+$firewall, configurazione, reti
+_Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?3
+*Impostare una regola che accetti solo connessioni in uscita con destinazione porta 443 e stato "NEW".
+*Configurare una regola che consenta il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni.
+-Impostare una regola per consentire tutte le connessioni in uscita indipendentemente dalla porta.
+-Bloccare tutto il traffico in entrata, incluso il traffico correlato.
+*Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite.
 %
 
-$sicurezza,rsa,tls
-_Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?3
--Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
-*Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
--Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
--Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
-*Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
+$ipsec
+_In quale scenario è più appropriato utilizzare TLS anziché IPsec?3
+*Comunicazioni tra un server e dei client non noti a priori.
+*Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
+-Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
+*In un’app mobile per accedere ad un server FTP.
 %
 
-$diffiehellman, asimmetrica
-_Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
-*Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
-*La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
--Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
--La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+$ipsec, sicurezza
+_Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
+*Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
+*Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
+-Disabilitare il supporto a TLS 1.3.
+-Usare IPsec solo in transport mode.
+-Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
+*Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
+-Usare sempre e solo AH in IPsec.
+-Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
 %
 
-$firewall, vulnerabilità, reti
-_Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?3
-*Impostare una regola per bloccare pacchetti SYN con flag incoerenti.
-*Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
--Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
--Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
-*Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
+$crypto, simmetrica, asimmetrica
+_Quali affermazioni sulla crittografia sono corrette?4
+-La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
+*La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
+*La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
+*La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
+-Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
+*​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
 %
 
-$crypto, stream, simmetrica
-_Quali affermazioni riguardanti la crittografia a stream sono corrette?2
--Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
--Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
--Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
-*Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
--Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
-- L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
-*Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+$firewall, ids, sicurezza
+_Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?2
+*Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
+*Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
+-Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
+-Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
+*Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
 %

@@ -1,111 +1,104 @@
-// question: 1  name: Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?
-// [tag:ids] [tag: firewall] [tag: reti] 
-::Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?::[html]<p><strong>Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?</strong></p>{
-	~%33.33333%[moodle]Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
-	~%33.33333%[moodle]Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
-	~[moodle]Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
-	~%33.33333%[moodle]Integrare i log dell'IDS e del firewall in un sistema SIEM per una migliore analisi.
-	~[moodle]Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
+// question: 1  name: Quali fasi compongono l’handshake TLS?
+// [tag:fasi] [tag:tls] 
+::Quali fasi compongono l’handshake TLS?::[html]<p><strong>Quali fasi compongono l’handshake TLS?</strong></p>{
+	~%25.00000%[moodle]Negoziazione dei parametri di cifratura.
+	~%25.00000%[moodle]Autenticazione del server (e opzionalmente del client).
+	~%25.00000%[moodle]Scambio di chiavi per la sessione.
+	~[moodle]Trasferimento di file tramite HTTP.
+	~[moodle]Utilizzo del protocollo IKE per la gestione delle SA.
+	~%25.00000%[moodle]Scambio di una Server Challenge Request/Response.
 }
 
-// question: 2  name: Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?
-// [tag:ipsec] [tag: retecore] 
-::Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?::[html]<p><strong>Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?</strong></p>{
-	~%33.33333%[moodle]Configurare la modalità Transport anziché Tunnel per traffico specifico.
-	~[moodle]Utilizzare algoritmi di hashing più complessi come SHA-512.
-	~[moodle]Abilitare il rinnovo delle chiavi con IKE ogni 10 pacchetti.
-	~%33.33333%[moodle]Ottimizzare i percorsi di instradamento per ridurre i ritardi.
-	~%33.33333%[moodle]Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
-	~%33.33333%[moodle]Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
+// question: 2  name: Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?
+// [tag:crypto] [tag: rsa] [tag: asimmetrica] [tag: autenticazione] 
+::Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?::[html]<p><strong>Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?</strong></p>{
+	~%50.00000%[moodle]Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
+	~%50.00000%[moodle]Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
+	~[moodle]Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
+	~[moodle]Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
+	~[moodle]Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
 }
 
-// question: 3  name: Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.
-// [tag:sicurezza] [tag: email] [tag: messaggi] 
-::Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.::[html]<p><strong>Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.</strong></p>{
-	~%50.00000%[moodle]Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
-	~[moodle]Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
-	~%50.00000%[moodle]Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
-	~[moodle]Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
-	~[moodle]Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
+// question: 3  name: Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?
+// [tag:hash] [tag: funzioni di hash] [tag: crypto] 
+::Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?</strong></p>{
+	~%50.00000%[moodle]Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
+	~%50.00000%[moodle]Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
+	~[moodle]Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
+	~[moodle]L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
+	~[moodle]Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
 }
 
-// question: 4  name: Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?
-// [tag:sicurezza] [tag: tls] [tag: email] [tag: smtp] 
-::Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?::[html]<p><strong>Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?</strong></p>{
-	~%33.33333%[moodle]Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
-	~%33.33333%[moodle]Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
-	~[moodle]Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
-	~%33.33333%[moodle]Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
+// question: 4  name: Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?
+// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
+::Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?</strong></p>{
+	~%50.00000%[moodle]AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
+	~%50.00000%[moodle]AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
+	~[moodle]AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
+	~[moodle]AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
 }
 
-// question: 5  name: Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?
-// [tag:tls] [tag:certificati] 
-::Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?::[html]<p><strong>Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?</strong></p>{
-	~%50.00000%[moodle]RSA
-	~[moodle]DES
-	~[moodle]X.509
-	~[moodle]AES
-	~[moodle]SHA (utilizzato solo come hash ma non per l'autenticazione)
-	~%50.00000%[moodle]AEAD nell’ultima versione di TLS
+// question: 5  name: Quale ruolo svolge il protocollo IKE in IPsec?
+// [tag:ipsec] [tag:ike] [tag:sicurezza ] [tag:autenticazione] 
+::Quale ruolo svolge il protocollo IKE in IPsec?::[html]<p><strong>Quale ruolo svolge il protocollo IKE in IPsec?</strong></p>{
+	~%33.33333%[moodle]Negoziazione dei parametri di sicurezza tra i peer.
+	~%33.33333%[moodle]Gestione delle chiavi crittografiche.
+	~[moodle]Fornisce cifratura end-to-end per i dati.
+	~[moodle]Configura le policy DNS per la risoluzione dei peer.
+	~[moodle]Crea AH header e trailer.
+	~%33.33333%[moodle]Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
 }
 
-// question: 6  name: Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?
-// [tag:crypto] [tag: simmetrica] 
-::Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?</strong></p>{
-	~%50.00000%[moodle]La crittografia simmetrica richiede una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati.
-	~%50.00000%[moodle]Gli algoritmi simmetrici come AES sono generalmente più efficienti di quelli asimmetrici per grandi volumi di dati.
-	~[moodle]La distribuzione sicura delle chiavi nella crittografia simmetrica è facilmente risolvibile senza l’uso di ulteriori protocolli.
-	~[moodle]Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
+// question: 6  name: Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?
+// [tag:firewall] [tag: configurazione] [tag: reti] 
+::Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?::[html]<p><strong>Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?</strong></p>{
+	~%33.33333%[moodle]Impostare una regola che accetti solo connessioni in uscita con destinazione porta 443 e stato "NEW".
+	~%33.33333%[moodle]Configurare una regola che consenta il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni.
+	~[moodle]Impostare una regola per consentire tutte le connessioni in uscita indipendentemente dalla porta.
+	~[moodle]Bloccare tutto il traffico in entrata, incluso il traffico correlato.
+	~%33.33333%[moodle]Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite.
 }
 
-// question: 7  name: Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: 
-// [tag:sicurezza] [tag:tls] [tag:http] [tag:email] 
-::Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: </strong></p>{
-	~%33.33333%[moodle] Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
-	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
-	~%33.33333%[moodle] Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
-	~%33.33333%[moodle] L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
-	~[moodle] S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
+// question: 7  name: In quale scenario è più appropriato utilizzare TLS anziché IPsec?
+// [tag:ipsec] 
+::In quale scenario è più appropriato utilizzare TLS anziché IPsec?::[html]<p><strong>In quale scenario è più appropriato utilizzare TLS anziché IPsec?</strong></p>{
+	~%33.33333%[moodle]Comunicazioni tra un server e dei client non noti a priori.
+	~%33.33333%[moodle]Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
+	~[moodle]Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
+	~%33.33333%[moodle]In un’app mobile per accedere ad un server FTP.
 }
 
-// question: 8  name: Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?
-// [tag:sicurezza] [tag:rsa] [tag:tls] 
-::Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?::[html]<p><strong>Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?</strong></p>{
-	~[moodle]Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
-	~%33.33333%[moodle]Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
-	~[moodle]Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
-	~[moodle]Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
-	~%33.33333%[moodle]Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
+// question: 8  name: Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?
+// [tag:ipsec] [tag: sicurezza] 
+::Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?::[html]<p><strong>Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?</strong></p>{
+	~%33.33333%[moodle]Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
+	~%33.33333%[moodle]Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
+	~[moodle]Disabilitare il supporto a TLS 1.3.
+	~[moodle]Usare IPsec solo in transport mode.
+	~[moodle]Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
+	~%33.33333%[moodle]Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
+	~[moodle]Usare sempre e solo AH in IPsec.
+	~[moodle]Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
 }
 
-// question: 9  name: Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?
-// [tag:diffiehellman] [tag: asimmetrica] 
-::Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?</strong></p>{
-	~%50.00000%[moodle]Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
-	~%50.00000%[moodle]La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
-	~[moodle]Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
-	~[moodle]La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+// question: 9  name: Quali affermazioni sulla crittografia sono corrette?
+// [tag:crypto] [tag: simmetrica] [tag: asimmetrica] 
+::Quali affermazioni sulla crittografia sono corrette?::[html]<p><strong>Quali affermazioni sulla crittografia sono corrette?</strong></p>{
+	~[moodle]La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
+	~%25.00000%[moodle]La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
+	~%25.00000%[moodle]La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
+	~%25.00000%[moodle]La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
+	~[moodle]Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
+	~%25.00000%[moodle]​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
 }
 
-// question: 10  name: Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?
-// [tag:firewall] [tag: vulnerabilità] [tag: reti] 
-::Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?::[html]<p><strong>Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?</strong></p>{
-	~%33.33333%[moodle]Impostare una regola per bloccare pacchetti SYN con flag incoerenti.
-	~%33.33333%[moodle]Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
-	~[moodle]Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
-	~[moodle]Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
-	~%33.33333%[moodle]Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
-}
-
-// question: 11  name: Quali affermazioni riguardanti la crittografia a stream sono corrette?
-// [tag:crypto] [tag: stream] [tag: simmetrica] 
-::Quali affermazioni riguardanti la crittografia a stream sono corrette?::[html]<p><strong>Quali affermazioni riguardanti la crittografia a stream sono corrette?</strong></p>{
-	~[moodle]Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
-	~[moodle]Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
-	~[moodle]Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
-	~%50.00000%[moodle]Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
-	~[moodle]Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
-	~[moodle] L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
-	~%50.00000%[moodle]Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+// question: 10  name: Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?
+// [tag:firewall] [tag: ids] [tag: sicurezza] 
+::Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?::[html]<p><strong>Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?</strong></p>{
+	~%50.00000%[moodle]Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
+	~%50.00000%[moodle]Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
+	~[moodle]Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
+	~[moodle]Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
+	~%50.00000%[moodle]Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
 }
 

@@ -502,4 +502,25 @@ _Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewal
 -Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
 *Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
 
+%
+
+$ipsec 
+__Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.
+Alice quindi esegue i seguenti comandi:
+ip xfrm state add sic IP Alice dst IP Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128
+ip xfrm state add sc IP Bob dst IP Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128
+ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required
+ip xfrm policy add sic IP Bob dst IP Alice dir in tmpl proto esp mode transport level required
+Mentre Bob esegue i seguenti comandi:
+ip xfrm state add sc IP Alice dst IP Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd
+ip xfrm state add src IP Bob dst IP Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd
+ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required
+ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required
+Seleziona le affermazioni corrette!_3
+*Sono presenti in totale 4 SA e 4 SP
+-Le SP sono 2 in totale perché, a differenza delle SA, sono bidirezionali
+-Bob ha sbagliato la sua configurazione perchè non ha specificato l’algoritmo crittografico da utilizzare
+*La configurazione è vantaggiosa perchè protegge sia l’integrità del messaggio che la segretezza del payload usando un singolo algoritmo e una singola chiave
+*La configurazione di Bob garantisce solo integrità e autenticità, mentre quella di Alice garantisce anche la confidenzialità dei dati trasmessi.
+
 

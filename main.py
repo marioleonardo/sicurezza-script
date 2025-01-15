@@ -6,15 +6,14 @@ import time
 
 
 def to_moodle_format(input_file_path, output_file):
+    import os
 
     if not os.path.exists(input_file_path):
         print("Error, file not found")
         return
 
-    #input_file = open(file_path, "r", encoding='utf-8-sig')
     input_file = open(input_file_path, "r")
     output_file = open(output_file, "w")
-    
 
     score = -1
     counter = 0
@@ -26,6 +25,9 @@ def to_moodle_format(input_file_path, output_file):
     error = False
 
     separator = True
+    inside_multiline_question = False
+    multiline_question_buffer = []
+
     for line in input_file:
         line_counter += 1
 
@@ -36,35 +38,79 @@ def to_moodle_format(input_file_path, output_file):
         if line.__contains__("}"):
             line = line.replace("}", "\\}")
 
-        if line[0] == '_':  # question case
-            inSpecificFeedback = False
-            inGenericFeedback = False
-            if separator:  # check if there is a separator before current question
-                separator = False  # set separator to False for future checks
-                line = line.strip()
-                question = line[1:-1]
+        if inside_multiline_question:
+            if "_" in line:
+                multiline_question_buffer.append(line.strip())
+                question = "\n".join(multiline_question_buffer).replace("_","")
+                inside_multiline_question = False
+
+                # Process the multiline question
                 counter += 1
+                if question[-1] == ':':
+                    question += " "
 
-                if question[-1] == ':':  # add a space if there's a : as last character to avoid import errors
-                    question = question + " "
-
-                if not line[-1].isdigit():  # check if there's the number of correct answers
-                    print(f"Error, number of correct answers missing at the line: {line_counter} in file {input_file_path}")
+                if not question[-1].isdigit():
+                    print(question + ("+"))
+                    print(f"Error, number of correct multiline answers missing at the line: {line_counter} in file {input_file_path}")
                     error = True
                     output_file.close()
                     os.remove(output_file.name)
                     break
-                n_corr = int(line[-1])
 
-                if n_corr > 1:  # divide the score by the number of correct answers
+                n_corr = int(question[-1])
+
+                question = question[:-1]
+                question=question.replace("\n", "<br>")
+
+                if n_corr > 1:
                     score = 100 / n_corr
+
                 output_file.write(f"// question: {counter}  name: {question}\n")
                 if len(tags) > 0:
                     output_file.write("// ")
                     for tag in tags:
                         output_file.write(f"[tag:{tag}] ")
                     output_file.write("\n")
-                output_file.write(f"::{question}::[html]<p><strong>{question}</strong></p>" + '{\n')
+                output_file.write(f"::{question}::[html]<p><strong>{question}</strong></p>{{\n")
+            else:
+                multiline_question_buffer.append(line.strip())
+            continue
+
+        if line[0] == '_':  # question case
+            inSpecificFeedback = False
+            inGenericFeedback = False
+            if separator:
+                separator = False
+                if line.count("_") >= 2:  # Multiline question case
+                    inside_multiline_question = True
+                    multiline_question_buffer = [line.strip()]
+                else:
+                    line = line.strip()
+                    question = line[1:-1]
+                    counter += 1
+
+                    if question[-1] == ':':
+                        question += " "
+
+                    if not line[-1].isdigit():
+                        print(f"Error, number of correct answers missing at the line: {line_counter} in file {input_file_path}")
+                        error = True
+                        output_file.close()
+                        os.remove(output_file.name)
+                        break
+
+                    n_corr = int(line[-1])
+
+                    if n_corr > 1:
+                        score = 100 / n_corr
+
+                    output_file.write(f"// question: {counter}  name: {question}\n")
+                    if len(tags) > 0:
+                        output_file.write("// ")
+                        for tag in tags:
+                            output_file.write(f"[tag:{tag}] ")
+                        output_file.write("\n")
+                    output_file.write(f"::{question}::[html]<p><strong>{question}</strong></p>{{\n")
 
             else:
                 print(f"Error, missing separator before line: {line_counter}")
@@ -72,11 +118,12 @@ def to_moodle_format(input_file_path, output_file):
                 output_file.close()
                 os.remove(output_file.name)
                 break
+
         elif line[0] == '$':
             tags = line[1:].strip().split(",")
             tags = list(filter(lambda t: t != "", tags))
 
-        elif line[0] == '*':  # right answer case
+        elif line[0] == '*':
             inSpecificFeedback = False
             inGenericFeedback = False
             correct_answer = line[1:]
@@ -85,13 +132,13 @@ def to_moodle_format(input_file_path, output_file):
             else:
                 output_file.write(f"\t=[moodle]{correct_answer}")
 
-        elif line[0] == '-':  # wrong answer case
+        elif line[0] == '-':
             inSpecificFeedback = False
             inGenericFeedback = False
             wrong_answer = line[1:]
             output_file.write(f"\t~[moodle]{wrong_answer}")
 
-        elif line[0] == '#':  # feedback answer case
+        elif line[0] == '#':
             feedback = line[1:]
             inSpecificFeedback = False
             if not inGenericFeedback:
@@ -109,7 +156,7 @@ def to_moodle_format(input_file_path, output_file):
             else:
                 output_file.write(f"\t{feedback}")
 
-        elif line[0] == '+':  # t/f answer case
+        elif line[0] == '+':
             inSpecificFeedback = False
             inGenericFeedback = False
             answer = line[1]
@@ -121,7 +168,7 @@ def to_moodle_format(input_file_path, output_file):
                 print("Error, wrong answer format")
                 error = True
 
-        elif line[0] == '%':  # end of question case
+        elif line[0] == '%':
             inSpecificFeedback = False
             inGenericFeedback = False
             sep_counter += 1
@@ -130,7 +177,7 @@ def to_moodle_format(input_file_path, output_file):
             score = -1
 
         else:
-            if len(line.strip()) > 0:  # case of formatting error, only if not empty line
+            if len(line.strip()) > 0:
                 print(f"Error: missing symbol indicator at line {line_counter}\n\t{line}")
                 error = True
                 output_file.close()
@@ -144,6 +191,7 @@ def to_moodle_format(input_file_path, output_file):
             os.remove(output_file.name)
         else:
             print(f"You just created {counter} questions")
+
 
 def create_files_with_questions(config):
     """
