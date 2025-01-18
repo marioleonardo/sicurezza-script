@@ -1,4 +1,25 @@
 
+$dnssec,hash,certificati,greylisting,attacchi,sicurezza,email
+_Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere:5
+* La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
+* L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
+- Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
+- Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
+* Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
+* Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
+* Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
+%
+
+$ipsec,ah,esp,ike,sicurezza,protocollo
+_Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?3
+-TCP
+*AH (Authentication Header)
+*ESP (Encapsulating Security Payload)
+-HTTPS
+-RSSA
+*IKE (Internet Key Exchange)
+%
+
 $ipsec,esp, transportmode,tunnelmode,sicurezza,funzionamento
 _Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?2
 *Transport Mode: Solo il payload del pacchetto IP è crittografato.
@@ -9,21 +30,95 @@ _Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento d
 -Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
 %
 
-$ipsec, tls, sicurezza
-_Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?3
-*IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
-*IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
-*TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
--IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
+$iptables, firewall, icmp,
+__Alice ha configurato la seguente regola iptables sul suo sistema. 
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination   
+
+Analizza la configurazione riportata e seleziona le affermazioni corrette:_3      
+*Tutti i pacchetti in ingresso verranno bloccati, a meno che non corrispondano ad una regola esplicita
+-Bob non è in grado di inviare Ping ad Alice
+*Bob è in grado di connettersi via HTTP alla macchina di Alice sulla porta 80
+*Il traffico in uscita è completamente consentito
+-Tutto il traffico mandato ad Alice che non corrisponde ad alcuna delle regole viene inoltrato automaticamente
+#Laboratorio 4 Sez 2
 %
 
-$hash, autenticazione, tls, collisioni
-_Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?3
-*Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
-*Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
--Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
--L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
-*TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
+$smime,pgp,sicurezza,email,standard
+_Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere:2
+* Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
+- Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
+- L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
+* A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
+- A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
+- La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
+%
+
+$crypto,simmetrica,asimmetrica, chiavi
+__Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi
+-rsa.key.alice
+-rsapub.key.alice
+quindi, esegue i seguenti comandi:
+echo chiave > aeskey
+openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0
+openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa
+Poi invia a Bob i tre file seguenti:
+-msg.enc
+-aeskey.rsa
+-rsa.key.alice
+Quali errori ha commesso Alice?_3
+*La chiave simmetrica la può leggere solo chi possiede la sua chiave privata
+-Ha scelto l’IV in maniera non casuale ma non l’ha riutilizzato
+*Ha condiviso la chiave sbagliata
+*Non ha comunicato l’IV a Bob
+-Ha condiviso la chiave simmetrica
+-Ha utilizzato un algoritmo di cifratura non abbastanza sicuro
+#Laboratorio 3 Sez. 2
+%
+
+$crypto, rsa, asimmetrica, autenticazione
+_Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?2
+*Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
+*Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
+-Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
+-Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
+-Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
+%
+
+$sicurezza, autenticazione, cifratura, TLS, RSA, AES
+_Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?2
+-Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
+*Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
+-Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
+-Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
+*Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
+%
+
+$standard, certificazioni, IDS
+_Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?3
+*Analizzare regolarmente i log generati dall’IDS per identificare potenziali minacce.
+*Integrare l'IDS con un sistema SIEM per garantire una gestione centralizzata degli eventi.
+-Impostare l'IDS per ignorare automaticamente tutto il traffico autorizzato, senza generare log.
+*Definire politiche documentate per l’uso dell’IDS e la gestione delle sue configurazioni.
+#Ripetere Standard e Certificazioni [Slide 10], IDS [Slide 9]
+%
+
+$firewall, ids, sicurezza
+_Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?3
+*Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
+*Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
+-Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
+-Configurare solo un firewall stateless e aggiornare periodicamente le regole corrispondenti agli attacchi.
+*Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
+#Ripetere firewall [Slide 9]
 %
 
 $vpn, ipsec
@@ -33,58 +128,4 @@ _Quale delle seguenti affermazioni sulle VPN è corretta?2
 *IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
 -OpenVPN supporta nativamente sia modalità transport che tunnel
 -Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
-%
-
-$tls, starttls, email, sicurezza, protocollo
-_Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere:1
-*Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
-- Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
--La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
--SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
-%
-
-$spam,tecniche,email,sicurezza
-_Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere:3
-- Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
-* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
-%
-
-$ids, firewall, reti
-_Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?3
-*Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
-*Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
--Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
-*Integrare i log dell'IDS e del firewall in un sistema SIEM per una migliore analisi.
--Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
-%
-
-$crypto, simmetrica
-_Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?2
-*Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
-*In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
--Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
--Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
--Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
-%
-
-$mime,email,formato,header,body
-_Indica quali delle seguenti affermazioni sul formato MIME sono vere:3
-* MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
-* I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
-* MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
-- Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
-- MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
-- MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
-%
-
-$sicurezza,tls,http,email
-_Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere:3
-* Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
-- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
-* Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
-* L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
-- S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
 %

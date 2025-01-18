@@ -1,4 +1,27 @@
-// question: 1  name: Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?
+// question: 1  name: Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: 
+// [tag:dnssec] [tag:hash] [tag:certificati] [tag:greylisting] [tag:attacchi] [tag:sicurezza] [tag:email] 
+::Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: </strong></p>{
+	~%20.00000%[moodle] La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
+	~%20.00000%[moodle] L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
+	~[moodle] Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
+	~[moodle] Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
+	~%20.00000%[moodle] Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
+	~%20.00000%[moodle] Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
+	~%20.00000%[moodle] Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
+}
+
+// question: 2  name: Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?
+// [tag:ipsec] [tag:ah] [tag:esp] [tag:ike] [tag:sicurezza] [tag:protocollo] 
+::Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?::[html]<p><strong>Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?</strong></p>{
+	~[moodle]TCP
+	~%33.33333%[moodle]AH (Authentication Header)
+	~%33.33333%[moodle]ESP (Encapsulating Security Payload)
+	~[moodle]HTTPS
+	~[moodle]RSSA
+	~%33.33333%[moodle]IKE (Internet Key Exchange)
+}
+
+// question: 3  name: Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?
 // [tag:ipsec] [tag:esp] [tag: transportmode] [tag:tunnelmode] [tag:sicurezza] [tag:funzionamento] 
 ::Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?::[html]<p><strong>Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?</strong></p>{
 	~%50.00000%[moodle]Transport Mode: Solo il payload del pacchetto IP è crittografato.
@@ -9,26 +32,82 @@
 	~[moodle]Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
 }
 
-// question: 2  name: Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?
-// [tag:ipsec] [tag: tls] [tag: sicurezza] 
-::Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?::[html]<p><strong>Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?</strong></p>{
-	~%33.33333%[moodle]IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
-	~%33.33333%[moodle]IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
-	~%33.33333%[moodle]TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
-	~[moodle]IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
+// question: 4  name: Alice ha configurato la seguente regola iptables sul suo sistema.<br>Chain INPUT (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80<br><br>Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Analizza la configurazione riportata e seleziona le affermazioni corrette:
+// [tag:iptables] [tag: firewall] [tag: icmp] 
+::Alice ha configurato la seguente regola iptables sul suo sistema.<br>Chain INPUT (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80<br><br>Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Analizza la configurazione riportata e seleziona le affermazioni corrette:::[html]<p><strong>Alice ha configurato la seguente regola iptables sul suo sistema.<br>Chain INPUT (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80<br><br>Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Analizza la configurazione riportata e seleziona le affermazioni corrette:</strong></p>{
+	~%33.33333%[moodle]Tutti i pacchetti in ingresso verranno bloccati, a meno che non corrispondano ad una regola esplicita
+	~[moodle]Bob non è in grado di inviare Ping ad Alice
+	~%33.33333%[moodle]Bob è in grado di connettersi via HTTP alla macchina di Alice sulla porta 80
+	~%33.33333%[moodle]Il traffico in uscita è completamente consentito
+	~[moodle]Tutto il traffico mandato ad Alice che non corrisponde ad alcuna delle regole viene inoltrato automaticamente
+	####[moodle]Laboratorio 4 Sez 2
 }
 
-// question: 3  name: Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?
-// [tag:hash] [tag: autenticazione] [tag: tls] [tag: collisioni] 
-::Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?::[html]<p><strong>Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?</strong></p>{
-	~%33.33333%[moodle]Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
-	~%33.33333%[moodle]Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
-	~[moodle]Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
-	~[moodle]L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
-	~%33.33333%[moodle]TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
+// question: 5  name: Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: 
+// [tag:smime] [tag:pgp] [tag:sicurezza] [tag:email] [tag:standard] 
+::Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: </strong></p>{
+	~%50.00000%[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
+	~[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
+	~[moodle] L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
+	~%50.00000%[moodle] A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
 }
 
-// question: 4  name: Quale delle seguenti affermazioni sulle VPN è corretta?
+// question: 6  name: Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa<br>Poi invia a Bob i tre file seguenti:<br>-msg.enc<br>-aeskey.rsa<br>-rsa.key.alice<br>Quali errori ha commesso Alice?
+// [tag:crypto] [tag:simmetrica] [tag:asimmetrica] [tag: chiavi] 
+::Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa<br>Poi invia a Bob i tre file seguenti:<br>-msg.enc<br>-aeskey.rsa<br>-rsa.key.alice<br>Quali errori ha commesso Alice?::[html]<p><strong>Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa<br>Poi invia a Bob i tre file seguenti:<br>-msg.enc<br>-aeskey.rsa<br>-rsa.key.alice<br>Quali errori ha commesso Alice?</strong></p>{
+	~%33.33333%[moodle]La chiave simmetrica la può leggere solo chi possiede la sua chiave privata
+	~[moodle]Ha scelto l’IV in maniera non casuale ma non l’ha riutilizzato
+	~%33.33333%[moodle]Ha condiviso la chiave sbagliata
+	~%33.33333%[moodle]Non ha comunicato l’IV a Bob
+	~[moodle]Ha condiviso la chiave simmetrica
+	~[moodle]Ha utilizzato un algoritmo di cifratura non abbastanza sicuro
+	####[moodle]Laboratorio 3 Sez. 2
+}
+
+// question: 7  name: Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?
+// [tag:crypto] [tag: rsa] [tag: asimmetrica] [tag: autenticazione] 
+::Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?::[html]<p><strong>Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?</strong></p>{
+	~%50.00000%[moodle]Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
+	~%50.00000%[moodle]Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
+	~[moodle]Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
+	~[moodle]Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
+	~[moodle]Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
+}
+
+// question: 8  name: Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?
+// [tag:sicurezza] [tag: autenticazione] [tag: cifratura] [tag: TLS] [tag: RSA] [tag: AES] 
+::Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?::[html]<p><strong>Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?</strong></p>{
+	~[moodle]Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
+	~%50.00000%[moodle]Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
+	~[moodle]Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
+	~[moodle]Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
+	~%50.00000%[moodle]Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
+}
+
+// question: 9  name: Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?
+// [tag:standard] [tag: certificazioni] [tag: IDS] 
+::Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?::[html]<p><strong>Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?</strong></p>{
+	~%33.33333%[moodle]Analizzare regolarmente i log generati dall’IDS per identificare potenziali minacce.
+	~%33.33333%[moodle]Integrare l'IDS con un sistema SIEM per garantire una gestione centralizzata degli eventi.
+	~[moodle]Impostare l'IDS per ignorare automaticamente tutto il traffico autorizzato, senza generare log.
+	~%33.33333%[moodle]Definire politiche documentate per l’uso dell’IDS e la gestione delle sue configurazioni.
+	####[moodle]Ripetere Standard e Certificazioni [Slide 10], IDS [Slide 9]
+}
+
+// question: 10  name: Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?
+// [tag:firewall] [tag: ids] [tag: sicurezza] 
+::Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?::[html]<p><strong>Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?</strong></p>{
+	~%33.33333%[moodle]Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
+	~%33.33333%[moodle]Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
+	~[moodle]Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
+	~[moodle]Configurare solo un firewall stateless e aggiornare periodicamente le regole corrispondenti agli attacchi.
+	~%33.33333%[moodle]Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
+	####[moodle]Ripetere firewall [Slide 9]
+}
+
+// question: 11  name: Quale delle seguenti affermazioni sulle VPN è corretta?
 // [tag:vpn] [tag: ipsec] 
 ::Quale delle seguenti affermazioni sulle VPN è corretta?::[html]<p><strong>Quale delle seguenti affermazioni sulle VPN è corretta?</strong></p>{
 	~[moodle]Le VPN operano esclusivamente a livello applicativo per la protezione dei dati.
@@ -36,65 +115,5 @@
 	~%50.00000%[moodle]IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
 	~[moodle]OpenVPN supporta nativamente sia modalità transport che tunnel
 	~[moodle]Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
-}
-
-// question: 5  name: Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: 
-// [tag:tls] [tag: starttls] [tag: email] [tag: sicurezza] [tag: protocollo] 
-::Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: </strong></p>{
-	=[moodle]Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
-	~[moodle] Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
-	~[moodle]La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
-	~[moodle]SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
-}
-
-// question: 6  name: Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: 
-// [tag:spam] [tag:tecniche] [tag:email] [tag:sicurezza] 
-::Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: </strong></p>{
-	~[moodle] Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
-	~%33.33333%[moodle] Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-	~%33.33333%[moodle] Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-	~%33.33333%[moodle] Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
-}
-
-// question: 7  name: Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?
-// [tag:ids] [tag: firewall] [tag: reti] 
-::Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?::[html]<p><strong>Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?</strong></p>{
-	~%33.33333%[moodle]Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
-	~%33.33333%[moodle]Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
-	~[moodle]Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
-	~%33.33333%[moodle]Integrare i log dell'IDS e del firewall in un sistema SIEM per una migliore analisi.
-	~[moodle]Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
-}
-
-// question: 8  name: Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?
-// [tag:crypto] [tag: simmetrica] 
-::Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?</strong></p>{
-	~%50.00000%[moodle]Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
-	~%50.00000%[moodle]In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
-	~[moodle]Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
-	~[moodle]Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
-	~[moodle]Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
-}
-
-// question: 9  name: Indica quali delle seguenti affermazioni sul formato MIME sono vere: 
-// [tag:mime] [tag:email] [tag:formato] [tag:header] [tag:body] 
-::Indica quali delle seguenti affermazioni sul formato MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul formato MIME sono vere: </strong></p>{
-	~%33.33333%[moodle] MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
-	~%33.33333%[moodle] I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
-	~%33.33333%[moodle] MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
-	~[moodle] Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
-	~[moodle] MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
-	~[moodle] MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
-}
-
-// question: 10  name: Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: 
-// [tag:sicurezza] [tag:tls] [tag:http] [tag:email] 
-::Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: </strong></p>{
-	~%33.33333%[moodle] Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
-	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
-	~%33.33333%[moodle] Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
-	~%33.33333%[moodle] L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
-	~[moodle] S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
 }
 

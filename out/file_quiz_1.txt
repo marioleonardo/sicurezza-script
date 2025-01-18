@@ -1,79 +1,84 @@
 
-$cms,crittografia,struttura,firma digitale,sicurezza
-_Indica quali delle seguenti affermazioni sulla struttura CMS sono vere:2
-- CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
-* La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-* La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-- La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-- La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-- CMS supporta solo un singolo destinatario per i messaggi crittografati.
+$tls, vulnerabilità,
+_Quali vulnerabilità sono associate a una configurazione TLS debole?3
+*Uso di algoritmi deboli come MD5 per hash.
+*Mancato controllo della revoca del certificato.
+-Uso di session resumption per ottimizzare le prestazioni.
+*Supporto a TLS 1.0 o SSL 3.0.
+-Supporto a TLS 1.3
 %
 
-$crittografia,sicurezza,email,prestazioni,anti-spam,ipsec,tls,attacchi
-_Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere:3
-* La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
-* L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
-- L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
-* Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
-- Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
+$firewall, certificazioni, GDPR
+_Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?3
+*Configurare il firewall per registrare i log tecnici necessari alla sicurezza della rete, assicurandosi che siano conservati per un periodo proporzionato e con scopo dichiarato
+-Impostare una regola per registrare tutti i dettagli del traffico, inclusi dati personali, per un periodo illimitato
+*Implementare politiche di accesso basate su principi di "least privilege" per ridurre l'accesso non necessario ai log del firewall
+*Utilizzare un SIEM (Security Information and Event Management) per analizzare i log generati, rispettando le normative sulla gestione dei dati personali.
+-Consentire il traffico in entrata su tutte le porte per facilitare la trasparenza delle comunicazioni.
+#Ripetere GDPR [Slide 13]
 %
 
-$pkcs12, pkcs7, pkcs, chiavi,certificati,crittografia
-_Indica quali delle seguenti affermazioni su PKCS sono vere:3
-* PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-* I file PKCS #12 sono comunemente usati per esportare e importare identità digitali.
-* PKCS #12 è ampiamente supportato dai browser web e dai client di posta elettronica.
-- PKCS #7 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-- I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
-- PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
-- I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
+$crypto, simmetrica
+_Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?2
+*Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
+*In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
+-Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
+-Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
+-Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
 %
 
-$sicurezza, email, messaggi
-_Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.2
-*Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
--Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
-*Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
--Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
--Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
-% 
-
-$sicurezza, tls, email, smtp
-_Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?3
-*Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
-*Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
--Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
-*Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
+$esp, ipsec
+_Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
+*ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
+*ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
+-ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
+-ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
+-ESPv3+ non può essere utilizzato insieme al protocollo AH.
 %
 
-$ipsec,ah,esp,ike,sicurezza,protocollo
-_Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?3
--TCP
-*AH (Authentication Header)
-*ESP (Encapsulating Security Payload)
--HTTPS
--RSSA
-*IKE (Internet Key Exchange)
+$firewall
+_indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette:4
+* Netfilter/IPtables è un software che fornisce funzionalità di manipolazione e filtraggio di pacchetti IP all'interno del kernel Linux.
+-La catena INPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena OUTPUT gestisce i pacchetti in ingresso.
+* La politica di default di una catena IPtables determina l'azione intrapresa se nessuna regola nella catena corrisponde al pacchetto.
+-Il comando "iptables -F" elimina tutte le regole nella catena specificata e ripristina automaticamente la politica di default della catena a ACCEPT.e una singola macchina.
+- In uno stateless packet filter, la regola "iptables -A FORWARD -p tcp -s IP-Alice --sport 80 --dport 22 -j ACCEPT" permette ad Alice di navigare su qualsiasi sito web esterno, a patto che la destinazione sia la porta 80.
+- Con uno stateless packet filter, la porta sorgente 80 può essere utilizzata da Bob per instaurare una connessione verso Alice se è presente una regola che accetta pacchetti con porta sorgente 80. Uno stateful packet filter, invece, può distinguere tra connessioni in entrata e in uscita.
+* Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
+*La catena OUTPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena INPUT gestisce i pacchetti in ingresso.
+#Ripetere Netfilter/IPtables e configurazioni base [Lab 04, Slide 09]
 %
 
-$ah, ipsec
-_Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?2
-*AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
-*AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
--AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
--AH richiede un certificato digitale per autenticare gli utenti.
--AH supporta Perfect Forward Secrecy come ESP.
+$analisi dei rischi, firewall, DMZ
+_Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?3
+*Configurare il firewall per consentire solo traffico specifico verso i server pubblici che intende posizionare nella DMZ.
+*Implementare un IDS per monitorare il traffico in entrata e in uscita dalla DMZ.
+-Impostare regole per consentire traffico diretto dalla DMZ alla rete interna senza restrizioni.
+*Eseguire test di penetrazione regolari per identificare vulnerabilità nei server della DMZ.
+-Registrare tutti i dettagli del traffico, inclusi dati personali, senza limiti di tempo.
+#Ripetere Firewall [Slide 9], DMZ [Slide 9]
 %
 
-$crypto, stream, simmetrica
-_Quali affermazioni riguardanti la crittografia a stream sono corrette?2
--Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
--Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
--Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
-*Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
--Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
-- L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
-*Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+$firewall
+_Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?4
+*I firewall packet filter operano a livello di rete (L3) e ispezionano l'header di ogni pacchetto IP.  
+-I circuit-level gateway esaminano il contenuto dei pacchetti a livello applicativo per identificare e bloccare minacce specifiche.  
+*Un proxy application-aware capisce il protocollo applicativo e può quindi applicare regole di sicurezza più specifiche.  
+-I packet filter con funzioni di stateful inspection hanno prestazioni significativamente inferiori rispetto ai packet filter stateless a causa della maggiore complessità.  
+*Un WAF è un tipo specifico di firewall progettato per proteggere le applicazioni web da attacchi come SQL injection e cross-site scripting.
+-I componenti di firewall che operano a livello di trasporto (L4) possono autenticare gli utenti direttamente basandosi sulle informazioni contenute nei pacchetti TCP/UDP senza richiedere modifiche alle applicazioni.  
+*I componenti di firewall che operano usando il protocollo SOCKS creano un "circuito" a livello di trasporto tra client e server, senza necessariamente ispezionare il contenuto dei dati applicativi.  
+#Ripetere tipologie e funzionamento dei firewall (L3, L4, proxy, WAF) [Slide 9 e 10]
+%
+
+$ipsec,ike,sicurezza autenticazione
+_Quale ruolo svolge il protocollo IKE in IPsec?3
+*Negoziazione dei parametri di sicurezza tra i peer.
+*Gestione delle chiavi crittografiche.
+-Fornisce cifratura end-to-end per i dati.
+-Configura le policy DNS per la risoluzione dei peer.
+-Crea AH header e trailer.
+*Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
 %
 
 $email,protocollo,mta,msa,mua,smtp,tls
@@ -87,22 +92,21 @@ _Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della
 * TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
 %
 
-$dnssec,hash,certificati,greylisting,attacchi,sicurezza,email
-_Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere:5
-* La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
-* L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
-- Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
-- Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
-* Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
-* Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
-* Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
+$firewall, configurazione, iptables
+_Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?3
+*iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+*iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+*iptables -P INPUT DROP
+-iptables -P OUTPUT ACCEPT
+-iptables -A FORWARD -j ACCEPT
+#Laboratorio 4
 %
 
-$simmetrica
-_Quali delle seguenti sono tecniche di crittografia simmetrica?2
-*AES (Advanced Encryption Standard)
-*DES (Data Encryption Standard)
--RSA
--ECC (Elliptic Curve Cryptography)
--Elgamal
+$ipsec, sicurezza, ah, attacchi, integrità, autenticazione
+_Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti:2
+-Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
+-Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
+-Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
+*Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
+*IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
 %

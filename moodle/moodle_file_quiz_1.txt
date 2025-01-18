@@ -1,86 +1,91 @@
-// question: 1  name: Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: 
-// [tag:cms] [tag:crittografia] [tag:struttura] [tag:firma digitale] [tag:sicurezza] 
-::Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: </strong></p>{
-	~[moodle] CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
-	~%50.00000%[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-	~%50.00000%[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-	~[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-	~[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-	~[moodle] CMS supporta solo un singolo destinatario per i messaggi crittografati.
+// question: 1  name: Quali vulnerabilità sono associate a una configurazione TLS debole?
+// [tag:tls] [tag: vulnerabilità] 
+::Quali vulnerabilità sono associate a una configurazione TLS debole?::[html]<p><strong>Quali vulnerabilità sono associate a una configurazione TLS debole?</strong></p>{
+	~%33.33333%[moodle]Uso di algoritmi deboli come MD5 per hash.
+	~%33.33333%[moodle]Mancato controllo della revoca del certificato.
+	~[moodle]Uso di session resumption per ottimizzare le prestazioni.
+	~%33.33333%[moodle]Supporto a TLS 1.0 o SSL 3.0.
+	~[moodle]Supporto a TLS 1.3
 }
 
-// question: 2  name: Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere: 
-// [tag:crittografia] [tag:sicurezza] [tag:email] [tag:prestazioni] [tag:anti-spam] [tag:ipsec] [tag:tls] [tag:attacchi] 
-::Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere: </strong></p>{
-	~%33.33333%[moodle] La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
-	~%33.33333%[moodle] L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
-	~[moodle] L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
-	~%33.33333%[moodle] Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
-	~[moodle] Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
+// question: 2  name: Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?
+// [tag:firewall] [tag: certificazioni] [tag: GDPR] 
+::Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?::[html]<p><strong>Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?</strong></p>{
+	~%33.33333%[moodle]Configurare il firewall per registrare i log tecnici necessari alla sicurezza della rete, assicurandosi che siano conservati per un periodo proporzionato e con scopo dichiarato
+	~[moodle]Impostare una regola per registrare tutti i dettagli del traffico, inclusi dati personali, per un periodo illimitato
+	~%33.33333%[moodle]Implementare politiche di accesso basate su principi di "least privilege" per ridurre l'accesso non necessario ai log del firewall
+	~%33.33333%[moodle]Utilizzare un SIEM (Security Information and Event Management) per analizzare i log generati, rispettando le normative sulla gestione dei dati personali.
+	~[moodle]Consentire il traffico in entrata su tutte le porte per facilitare la trasparenza delle comunicazioni.
+	####[moodle]Ripetere GDPR [Slide 13]
 }
 
-// question: 3  name: Indica quali delle seguenti affermazioni su PKCS sono vere: 
-// [tag:pkcs12] [tag: pkcs7] [tag: pkcs] [tag: chiavi] [tag:certificati] [tag:crittografia] 
-::Indica quali delle seguenti affermazioni su PKCS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su PKCS sono vere: </strong></p>{
-	~%33.33333%[moodle] PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-	~%33.33333%[moodle] I file PKCS #12 sono comunemente usati per esportare e importare identità digitali.
-	~%33.33333%[moodle] PKCS #12 è ampiamente supportato dai browser web e dai client di posta elettronica.
-	~[moodle] PKCS #7 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-	~[moodle] I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
-	~[moodle] PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
-	~[moodle] I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
+// question: 3  name: Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?
+// [tag:crypto] [tag: simmetrica] 
+::Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?</strong></p>{
+	~%50.00000%[moodle]Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
+	~%50.00000%[moodle]In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
+	~[moodle]Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
+	~[moodle]Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
+	~[moodle]Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
 }
 
-// question: 4  name: Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.
-// [tag:sicurezza] [tag: email] [tag: messaggi] 
-::Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.::[html]<p><strong>Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.</strong></p>{
-	~%50.00000%[moodle]Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
-	~[moodle]Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
-	~%50.00000%[moodle]Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
-	~[moodle]Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
-	~[moodle]Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
+// question: 4  name: Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?
+// [tag:esp] [tag: ipsec] 
+::Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?</strong></p>{
+	~%50.00000%[moodle]ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
+	~%50.00000%[moodle]ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
+	~[moodle]ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
+	~[moodle]ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
+	~[moodle]ESPv3+ non può essere utilizzato insieme al protocollo AH.
 }
 
-// question: 5  name: Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?
-// [tag:sicurezza] [tag: tls] [tag: email] [tag: smtp] 
-::Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?::[html]<p><strong>Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?</strong></p>{
-	~%33.33333%[moodle]Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
-	~%33.33333%[moodle]Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
-	~[moodle]Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
-	~%33.33333%[moodle]Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
+// question: 5  name: indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette: 
+// [tag:firewall] 
+::indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette: ::[html]<p><strong>indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette: </strong></p>{
+	~%25.00000%[moodle] Netfilter/IPtables è un software che fornisce funzionalità di manipolazione e filtraggio di pacchetti IP all'interno del kernel Linux.
+	~[moodle]La catena INPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena OUTPUT gestisce i pacchetti in ingresso.
+	~%25.00000%[moodle] La politica di default di una catena IPtables determina l'azione intrapresa se nessuna regola nella catena corrisponde al pacchetto.
+	~[moodle]Il comando "iptables -F" elimina tutte le regole nella catena specificata e ripristina automaticamente la politica di default della catena a ACCEPT.e una singola macchina.
+	~[moodle] In uno stateless packet filter, la regola "iptables -A FORWARD -p tcp -s IP-Alice --sport 80 --dport 22 -j ACCEPT" permette ad Alice di navigare su qualsiasi sito web esterno, a patto che la destinazione sia la porta 80.
+	~[moodle] Con uno stateless packet filter, la porta sorgente 80 può essere utilizzata da Bob per instaurare una connessione verso Alice se è presente una regola che accetta pacchetti con porta sorgente 80. Uno stateful packet filter, invece, può distinguere tra connessioni in entrata e in uscita.
+	~%25.00000%[moodle] Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
+	~%25.00000%[moodle]La catena OUTPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena INPUT gestisce i pacchetti in ingresso.
+	####[moodle]Ripetere Netfilter/IPtables e configurazioni base [Lab 04, Slide 09]
 }
 
-// question: 6  name: Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?
-// [tag:ipsec] [tag:ah] [tag:esp] [tag:ike] [tag:sicurezza] [tag:protocollo] 
-::Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?::[html]<p><strong>Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?</strong></p>{
-	~[moodle]TCP
-	~%33.33333%[moodle]AH (Authentication Header)
-	~%33.33333%[moodle]ESP (Encapsulating Security Payload)
-	~[moodle]HTTPS
-	~[moodle]RSSA
-	~%33.33333%[moodle]IKE (Internet Key Exchange)
+// question: 6  name: Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?
+// [tag:analisi dei rischi] [tag: firewall] [tag: DMZ] 
+::Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?::[html]<p><strong>Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?</strong></p>{
+	~%33.33333%[moodle]Configurare il firewall per consentire solo traffico specifico verso i server pubblici che intende posizionare nella DMZ.
+	~%33.33333%[moodle]Implementare un IDS per monitorare il traffico in entrata e in uscita dalla DMZ.
+	~[moodle]Impostare regole per consentire traffico diretto dalla DMZ alla rete interna senza restrizioni.
+	~%33.33333%[moodle]Eseguire test di penetrazione regolari per identificare vulnerabilità nei server della DMZ.
+	~[moodle]Registrare tutti i dettagli del traffico, inclusi dati personali, senza limiti di tempo.
+	####[moodle]Ripetere Firewall [Slide 9], DMZ [Slide 9]
 }
 
-// question: 7  name: Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?
-// [tag:ah] [tag: ipsec] 
-::Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?</strong></p>{
-	~%50.00000%[moodle]AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
-	~%50.00000%[moodle]AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
-	~[moodle]AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
-	~[moodle]AH richiede un certificato digitale per autenticare gli utenti.
-	~[moodle]AH supporta Perfect Forward Secrecy come ESP.
+// question: 7  name: Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?
+// [tag:firewall] 
+::Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?::[html]<p><strong>Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?</strong></p>{
+	~%25.00000%[moodle]I firewall packet filter operano a livello di rete (L3) e ispezionano l'header di ogni pacchetto IP.  
+	~[moodle]I circuit-level gateway esaminano il contenuto dei pacchetti a livello applicativo per identificare e bloccare minacce specifiche.  
+	~%25.00000%[moodle]Un proxy application-aware capisce il protocollo applicativo e può quindi applicare regole di sicurezza più specifiche.  
+	~[moodle]I packet filter con funzioni di stateful inspection hanno prestazioni significativamente inferiori rispetto ai packet filter stateless a causa della maggiore complessità.  
+	~%25.00000%[moodle]Un WAF è un tipo specifico di firewall progettato per proteggere le applicazioni web da attacchi come SQL injection e cross-site scripting.
+	~[moodle]I componenti di firewall che operano a livello di trasporto (L4) possono autenticare gli utenti direttamente basandosi sulle informazioni contenute nei pacchetti TCP/UDP senza richiedere modifiche alle applicazioni.  
+	~%25.00000%[moodle]I componenti di firewall che operano usando il protocollo SOCKS creano un "circuito" a livello di trasporto tra client e server, senza necessariamente ispezionare il contenuto dei dati applicativi.  
+	####[moodle]Ripetere tipologie e funzionamento dei firewall (L3, L4, proxy, WAF) [Slide 9 e 10]
 }
 
-// question: 8  name: Quali affermazioni riguardanti la crittografia a stream sono corrette?
-// [tag:crypto] [tag: stream] [tag: simmetrica] 
-::Quali affermazioni riguardanti la crittografia a stream sono corrette?::[html]<p><strong>Quali affermazioni riguardanti la crittografia a stream sono corrette?</strong></p>{
-	~[moodle]Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
-	~[moodle]Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
-	~[moodle]Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
-	~%50.00000%[moodle]Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
-	~[moodle]Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
-	~[moodle] L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
-	~%50.00000%[moodle]Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+// question: 8  name: Quale ruolo svolge il protocollo IKE in IPsec?
+// [tag:ipsec] [tag:ike] [tag:sicurezza autenticazione] 
+::Quale ruolo svolge il protocollo IKE in IPsec?::[html]<p><strong>Quale ruolo svolge il protocollo IKE in IPsec?</strong></p>{
+	~%33.33333%[moodle]Negoziazione dei parametri di sicurezza tra i peer.
+	~%33.33333%[moodle]Gestione delle chiavi crittografiche.
+	~[moodle]Fornisce cifratura end-to-end per i dati.
+	~[moodle]Configura le policy DNS per la risoluzione dei peer.
+	~[moodle]Crea AH header e trailer.
+	~%33.33333%[moodle]Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
 }
 
 // question: 9  name: Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: 
@@ -95,25 +100,24 @@
 	~%20.00000%[moodle] TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
 }
 
-// question: 10  name: Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: 
-// [tag:dnssec] [tag:hash] [tag:certificati] [tag:greylisting] [tag:attacchi] [tag:sicurezza] [tag:email] 
-::Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: </strong></p>{
-	~%20.00000%[moodle] La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
-	~%20.00000%[moodle] L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
-	~[moodle] Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
-	~[moodle] Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
-	~%20.00000%[moodle] Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
-	~%20.00000%[moodle] Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
-	~%20.00000%[moodle] Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
+// question: 10  name: Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?
+// [tag:firewall] [tag: configurazione] [tag: iptables] 
+::Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?::[html]<p><strong>Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?</strong></p>{
+	~%33.33333%[moodle]iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+	~%33.33333%[moodle]iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+	~%33.33333%[moodle]iptables -P INPUT DROP
+	~[moodle]iptables -P OUTPUT ACCEPT
+	~[moodle]iptables -A FORWARD -j ACCEPT
+	####[moodle]Laboratorio 4
 }
 
-// question: 11  name: Quali delle seguenti sono tecniche di crittografia simmetrica?
-// [tag:simmetrica] 
-::Quali delle seguenti sono tecniche di crittografia simmetrica?::[html]<p><strong>Quali delle seguenti sono tecniche di crittografia simmetrica?</strong></p>{
-	~%50.00000%[moodle]AES (Advanced Encryption Standard)
-	~%50.00000%[moodle]DES (Data Encryption Standard)
-	~[moodle]RSA
-	~[moodle]ECC (Elliptic Curve Cryptography)
-	~[moodle]Elgamal
+// question: 11  name: Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: 
+// [tag:ipsec] [tag: sicurezza] [tag: ah] [tag: attacchi] [tag: integrità] [tag: autenticazione] 
+::Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: ::[html]<p><strong>Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: </strong></p>{
+	~[moodle]Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
+	~[moodle]Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
+	~[moodle]Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
+	~%50.00000%[moodle]Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
+	~%50.00000%[moodle]IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
 }
 

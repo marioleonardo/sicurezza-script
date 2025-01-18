@@ -1,0 +1,111 @@
+// question: 1  name: Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?
+// [tag:tls] [tag:certificati] 
+::Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?::[html]<p><strong>Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?</strong></p>{
+	~%50.00000%[moodle]RSA
+	~[moodle]DES
+	~[moodle]X.509
+	~[moodle]AES
+	~[moodle]SHA (utilizzato solo come hash ma non per l'autenticazione)
+	~%50.00000%[moodle]AEAD nell’ultima versione di TLS
+}
+
+// question: 2  name: Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?
+// [tag:firewall] [tag: architettura] [tag: sicurezza] 
+::Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?::[html]<p><strong>Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?</strong></p>{
+	~%33.33333%[moodle]Isolamento dei server pubblici dato il divieto di accesso diretto alla rete interna.
+	~%33.33333%[moodle]Facilità di applicazione di policy di sicurezza specifiche per ciascun segmento di rete.
+	~[moodle]Maggiore velocità di trasmissione rispetto a un firewall con DMZ singola.
+	~[moodle]I server nella DMZ possono comunicare direttamente con la rete interna senza ulteriori configurazioni.
+	~%33.33333%[moodle]Possibilità di monitorare e analizzare il traffico verso i server pubblici senza esporre la rete interna.
+	####[moodle]Ripetere Firewall [Slide 9]
+}
+
+// question: 3  name: Alice ha configurato il firewall del suo server con le seguenti regole:<br>iptables -A INPUT -p tcp --dport 22 -j ACCEPT<br>iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br>iptables -P INPUT DROP<br><br>Quali dei seguenti comportamenti sono veri?
+// [tag:firewall] [tag: configurazione] [tag: iptables] 
+::Alice ha configurato il firewall del suo server con le seguenti regole:<br>iptables -A INPUT -p tcp --dport 22 -j ACCEPT<br>iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br>iptables -P INPUT DROP<br><br>Quali dei seguenti comportamenti sono veri?::[html]<p><strong>Alice ha configurato il firewall del suo server con le seguenti regole:<br>iptables -A INPUT -p tcp --dport 22 -j ACCEPT<br>iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br>iptables -P INPUT DROP<br><br>Quali dei seguenti comportamenti sono veri?</strong></p>{
+	~%33.33333%[moodle]Il server accetta connessioni SSH sulla porta 22 e HTTP sulla porta 80.
+	~%33.33333%[moodle]Qualsiasi connessione in ingresso su altre porte verrà bloccata, inclusi i ping.
+	~[moodle]Alice può accedere da remoto al server tramite SSH solo se si trova nella stessa rete locale.
+	~%33.33333%[moodle]Le risposte alle connessioni HTTP stabilite dal server non sono influenzate da queste regole.
+	~[moodle]Le regole configurate garantiscono automaticamente protezione contro attacchi DoS.
+	####[moodle]Laboratorio 4
+}
+
+// question: 4  name: Quali delle seguenti affermazioni su RC4 e AES sono vere?
+// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
+::Quali delle seguenti affermazioni su RC4 e AES sono vere?::[html]<p><strong>Quali delle seguenti affermazioni su RC4 e AES sono vere?</strong></p>{
+	~%50.00000%[moodle]RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
+	~%50.00000%[moodle]AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
+	~[moodle]RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
+	~[moodle]AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
+	~[moodle]Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
+}
+
+// question: 5  name: Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?
+// [tag:asimmetrica] 
+::Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?::[html]<p><strong>Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?</strong></p>{
+	~%50.00000%[moodle]Una chiave pubblica che può essere usata per cifrare i dati.
+	~[moodle]Una chiave privata che può essere usata solo per decifrare i dati.
+	~[moodle]Le chiavi pubbliche e private per alcuni algoritmi sono identiche.
+	~[moodle]Una chiave asimmetrica condivisa tra mittente e destinatario.
+	~[moodle]Una chiave di sessione generata casualmente.
+	~%50.00000%[moodle]Due chiavi matematicamente legate da un problema matematico.
+}
+
+// question: 6  name: Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?
+// [tag:ipsec] [tag: sicurezza] 
+::Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?::[html]<p><strong>Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?</strong></p>{
+	~%33.33333%[moodle]Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
+	~%33.33333%[moodle]Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
+	~[moodle]Disabilitare il supporto a TLS 1.3.
+	~[moodle]Usare IPsec solo in transport mode.
+	~[moodle]Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
+	~%33.33333%[moodle]Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
+	~[moodle]Usare sempre e solo AH in IPsec.
+	~[moodle]Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
+}
+
+// question: 7  name: Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?
+// [tag:ah] [tag: ipsec] 
+::Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?</strong></p>{
+	~%50.00000%[moodle]AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
+	~%50.00000%[moodle]AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
+	~[moodle]AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
+	~[moodle]AH richiede un certificato digitale per autenticare gli utenti.
+	~[moodle]AH supporta Perfect Forward Secrecy come ESP.
+}
+
+// question: 8  name: Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?
+// [tag:hash] [tag: funzioni di hash] [tag: crypto] 
+::Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?</strong></p>{
+	~%50.00000%[moodle]Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
+	~%50.00000%[moodle]Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
+	~[moodle]Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
+	~[moodle]L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
+	~[moodle]Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
+}
+
+// question: 9  name: Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: 
+// [tag:ipsec] [tag:tls] [tag:ike] 
+::Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: </strong></p>{
+	~[moodle] Il comando "ip xfrm state flush" è usato per cancellare il Database delle Politiche di Sicurezza (SPD).
+	~%25.00000%[moodle] Il comando "ip xfrm policy list" mostra le politiche di sicurezza IPsec correnti.
+	~%25.00000%[moodle] Il comando "ipsec start" è usato per avviare il demone strongSwan.
+	~[moodle] Dopo aver modificato il file "/etc/ipsec.conf", devi usare il comando "ipsec update" perché le modifiche abbiano effetto immediatamente.
+	~%25.00000%[moodle] Il comando "openssl s_server -www" avvia un semplice server TLS che mostra le informazioni di connessione in formato HTML.
+	~[moodle] In una VPN IPsec site-to-site, ogni gateway necessita solo di una singola Associazione di Sicurezza (SA) per gestire il traffico in entrambe le direzioni.
+	~%25.00000%[moodle] Per usare certificati con strongSwan devi posizionare il certificato CA nella directory "/etc/ipsec.d/cacerts"
+	####[moodle]Rivedere materiale laboratorio riguardo Ipsec e TLS
+}
+
+// question: 10  name: Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:<br>Chain INPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain FORWARD (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     tcp  --  *      *       IP-Alice             0.0.0.0/0           tcp dpt:80<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP-Alice            tcp spt:80<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Frank ha configurato il firewall eseguendo i seguenti comandi:<br>iptables -P FORWARD DROP<br>iptables -A FORWARD -p tcp -s IP-Alice --dport 80 -j ACCEPT<br>iptables -A FORWARD -p tcp -d IP-Alice --sport 80 -j ACCEPT<br><br>Seleziona le affermazioni corrette:
+// [tag:firewall] [tag: iptables] [tag: configurazione] 
+::Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:<br>Chain INPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain FORWARD (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     tcp  --  *      *       IP-Alice             0.0.0.0/0           tcp dpt:80<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP-Alice            tcp spt:80<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Frank ha configurato il firewall eseguendo i seguenti comandi:<br>iptables -P FORWARD DROP<br>iptables -A FORWARD -p tcp -s IP-Alice --dport 80 -j ACCEPT<br>iptables -A FORWARD -p tcp -d IP-Alice --sport 80 -j ACCEPT<br><br>Seleziona le affermazioni corrette:::[html]<p><strong>Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:<br>Chain INPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain FORWARD (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     tcp  --  *      *       IP-Alice             0.0.0.0/0           tcp dpt:80<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP-Alice            tcp spt:80<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Frank ha configurato il firewall eseguendo i seguenti comandi:<br>iptables -P FORWARD DROP<br>iptables -A FORWARD -p tcp -s IP-Alice --dport 80 -j ACCEPT<br>iptables -A FORWARD -p tcp -d IP-Alice --sport 80 -j ACCEPT<br><br>Seleziona le affermazioni corrette:</strong></p>{
+	~[moodle]Alice può collegarsi solo al server web di Bob
+	~[moodle]Bob può collegarsi al server web di Alice con qualunque porta
+	~%50.00000%[moodle]Ogni pacchetto TCP inviato a Frank da Alice viene automaticamente inoltrato a Bob se la porta di destinazione è 80
+	~[moodle]Bob non può inviare richieste HTTP verso qualsiasi server web esterno, ma solo verso Alice
+	~%50.00000%[moodle]Qualsiasi altro tipo di traffico (sia in ingresso che in uscita) tra Bob e Alice viene bloccato dalla policy DROP della chain FORWARD.
+	####[moodle]Laboratorio 4
+}
+

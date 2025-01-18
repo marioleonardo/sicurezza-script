@@ -1,4 +1,3 @@
-
 $ipsec,ah,esp,ike,sicurezza,protocollo
 _Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?3
 -TCP
@@ -17,7 +16,7 @@ _Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento d
 -Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
 -Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
 %
-$ipsec,ike,sicurezza ,autenticazione
+$ipsec,ike,sicurezza autenticazione
 _Quale ruolo svolge il protocollo IKE in IPsec?3
 *Negoziazione dei parametri di sicurezza tra i peer.
 *Gestione delle chiavi crittografiche.
@@ -78,13 +77,6 @@ _Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-si
 *Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
 *Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
 %
-$ipsec
-_In quale scenario è più appropriato utilizzare TLS anziché IPsec?3
-*Comunicazioni tra un server e dei client non noti a priori.
-*Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
--Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
-*In un’app mobile per accedere ad un server FTP.
-%
 $ipsec, sicurezza
 _Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
 *Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
@@ -123,8 +115,6 @@ _Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti:2
 *Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
 *IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
 %
-
-
 $crypto, algoritmi
 _Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?2
 *Il principio di Kerckhoffs afferma che un sistema crittografico deve essere sicuro anche se l’algoritmo è pubblico, purché la chiave sia segreta.
@@ -132,16 +122,13 @@ _Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono 
 -La segretezza dell’algoritmo garantisce sempre un livello aggiuntivo di sicurezza rispetto alla trasparenza dell’algoritmo.
 -Il principio di Kerckhoffs richiede che l’algoritmo di crittografia e le chiavi siano mantenuti segreti per garantire sicurezza.
 -Le vulnerabilità negli algoritmi pubblici sono inevitabili e non possono essere mitigate con il solo uso di chiavi sicure.
-
 %
-
 $crypto, simmetrica
 _Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?2
 *La crittografia simmetrica richiede una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati.
 *Gli algoritmi simmetrici come AES sono generalmente più efficienti di quelli asimmetrici per grandi volumi di dati.
 -La distribuzione sicura delle chiavi nella crittografia simmetrica è facilmente risolvibile senza l’uso di ulteriori protocolli.
 -Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
-
 %
 $diffiehellman, asimmetrica
 _Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
@@ -149,7 +136,6 @@ _Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono ve
 *La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
 -Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
 -La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
-
 %
 $ah, ipsec
 _Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?2
@@ -158,19 +144,14 @@ _Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication
 -AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
 -AH richiede un certificato digitale per autenticare gli utenti.
 -AH supporta Perfect Forward Secrecy come ESP.
-
 %
-
 $ipsec, tls, sicurezza
 _Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?3
 *IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
 *IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
 *TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
 -IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
-
 %
-
-
 $esp, ipsec
 _Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
 *ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
@@ -179,7 +160,6 @@ _Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
 -ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
 -ESPv3+ non può essere utilizzato insieme al protocollo AH.
 %
-
 $algoritmi, crypto, simmetrica
 _Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?2
 *AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
@@ -187,7 +167,6 @@ _Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?2
 -AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
 -AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
 %
-
 $hash, funzioni di hash, crypto
 _Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?2
 *Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
@@ -196,7 +175,6 @@ _Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?
 -L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
 -Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
 %
-
 $crypto, simmetrica
 _Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?2
 *Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
@@ -205,7 +183,6 @@ _Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi son
 -Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
 -Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
 %
-
 $algoritmi, crypto, simmetrica
 _Quali delle seguenti affermazioni su RC4 e AES sono vere?2
 *RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
@@ -238,7 +215,6 @@ _Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di can
 -Entrambi mantengono un canale sicuro dall’inizio della connessione.
 *STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
 %
-
 $crypto, rsa, asimmetrica, autenticazione
 _Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?2
 *Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
@@ -246,7 +222,6 @@ _Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile s
 -Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
 -Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
 -Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
-
 %
 $ipsec, tls, differenze, sicurezza
 _Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?3
@@ -255,7 +230,6 @@ _Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicu
 *L'autenticazione in TLS è spesso basata su certificati, mentre IPsec può supportare autenticazione con chiavi precondivise o certificati.
 -TLS può essere utilizzato per proteggere il traffico multicast, mentre IPsec no.
 -IPsec è ottimale per la protezione di pagine web dinamiche come HTTPS, mentre TLS non è progettato per questo.
-
 %
 $hash, autenticazione, tls, collisioni
 _Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?3
@@ -272,9 +246,7 @@ _Alice vuole configurare un server per autenticare in modo sicuro i client con T
 -I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
 -I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
 -TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
-
 %
-
 $mime,email,formato,header,body
 _Indica quali delle seguenti affermazioni sul formato MIME sono vere:3
 * MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
@@ -284,7 +256,6 @@ _Indica quali delle seguenti affermazioni sul formato MIME sono vere:3
 - MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
 - MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
 %
-
 $smime,email,sicurezza,integrità,autenticazione,non ripudio,riservatezza,cms
 _Indica quali delle seguenti affermazioni su S/MIME sono vere:4
 * S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
@@ -293,8 +264,6 @@ _Indica quali delle seguenti affermazioni su S/MIME sono vere:4
 - La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
 * S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
 * CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
-
-
 %
 $spam,email,blacklisting,greylisting,sicurezza
 _Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere:5
@@ -304,9 +273,7 @@ _Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam 
 * Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
 * Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
 - Blacklist e Greylisting vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-
 %
-
 $spam,tecniche,email,sicurezza
 _Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere:3
 - Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
@@ -314,10 +281,8 @@ _Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere:3
 * Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
 * Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
 * Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
-
 %
-
-$smime,pgp,sicurezza,email,standard,smime
+$smime,pgp,sicurezza,email,standard
 _Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere:2
 * Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
 - Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
@@ -325,9 +290,7 @@ _Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altr
 * A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
 - A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
 - La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
-
 %
-
 $crittografia,sicurezza,email,prestazioni,anti-spam,ipsec,tls,attacchi
 _Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere:3
 * La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
@@ -335,9 +298,7 @@ _Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti
 - L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
 * Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
 - Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
-
 %
-
 $dnssec,hash,certificati,greylisting,attacchi,sicurezza,email
 _Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere:5
 * La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
@@ -347,9 +308,7 @@ _Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash cri
 * Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
 * Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
 * Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
-
 %
-
 $email,protocollo,mta,msa,mua,smtp,tls
 _Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere:5
 * MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
@@ -359,9 +318,7 @@ _Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della
 - Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
 - Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
 * TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
-
 %
-
 $cms,crittografia,struttura,firma digitale,sicurezza
 _Indica quali delle seguenti affermazioni sulla struttura CMS sono vere:2
 - CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
@@ -370,9 +327,8 @@ _Indica quali delle seguenti affermazioni sulla struttura CMS sono vere:2
 - La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
 - La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
 - CMS supporta solo un singolo destinatario per i messaggi crittografati.
-
 %
-$sicurezza, email, messaggi
+$sicurezza
 _Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.2
 *Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
 -Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
@@ -380,45 +336,36 @@ _Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.2
 -Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
 -Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
 % 
-
 $sicurezza, tls, email, smtp
 _Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?3
 *Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
 *Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
 -Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
 *Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
-
 %
-
-$sicurezza,rsa,tls
-_Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?3
+$sicurezza, autenticazione, cifratura, TLS, RSA, AES
+_Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?2
 -Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
 *Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
 -Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
 -Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
 *Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
-
 %
-
-$sicurezza,tls,http,email
+$sicurezza, messaggi, TLS, riservatezza, integrità, autenticazione
 _Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere:3
 * Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
 - I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
 * Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
 * L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
 - S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
-
 %
-
 $tls, starttls, email, sicurezza, protocollo
 _Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere:1
 *Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
 - Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
 -La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
 -SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
-
 %
-
 $pkcs12, pkcs7, pkcs, chiavi,certificati,crittografia
 _Indica quali delle seguenti affermazioni su PKCS sono vere:3
 * PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
@@ -428,44 +375,218 @@ _Indica quali delle seguenti affermazioni su PKCS sono vere:3
 - I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
 - PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
 - I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
+%
+$crypto,simmetrica,asimmetrica, chiavi
+__Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi
+-rsa.key.alice
+-rsapub.key.alice
+quindi, esegue i seguenti comandi:
+echo chiave > aeskey
+openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0
+openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa
+Poi invia a Bob i tre file seguenti:
+-msg.enc
+-aeskey.rsa
+-rsa.key.alice
+Quali errori ha commesso Alice?_3
+*La chiave simmetrica la può leggere solo chi possiede la sua chiave privata
+-Ha scelto l’IV in maniera non casuale ma non l’ha riutilizzato
+*Ha condiviso la chiave sbagliata
+*Non ha comunicato l’IV a Bob
+-Ha condiviso la chiave simmetrica
+-Ha utilizzato un algoritmo di cifratura non abbastanza sicuro
+#Laboratorio 3 Sez. 2
+%
+$crypto, simmetrica, chiavi, attacchi
+__Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi
+-rsa.key.alice
+-rsapub.key.alice
+quindi, esegue i seguenti comandi:
+echo chiave > aeskey
+openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey
+openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.bob -out aeskey.enc
+Poi invia a Bob i seguenti file:
+-msg.enc
+-aeskey.enc
+Seleziona le risposte corrette:_2
+*Questa procedura è vulnerabile ad un attacco Man In the Middle
+-Questa procedura è vulnerabile ad un attacco IP Spoofing
+-Bob deve sapere l’IV per decifrare la chiave
+*Bob deve decifrare prima la chiave con la sua chiave privata e poi usare quella chiave per decifrare il messaggio
+-Bob deve decifrare prima la chiave con la chiave pubblica di Alice e poi usare quella chiave per decifrare il messaggio
+#Laboratorio 3 Sez. 2
 
 %
 
+$certificati, pkcs, formato, firma
+__Alice desidera ottenere un certificato da Carl, il quale svolge il ruolo di Certification Authority (CA). Per procedere, Carl esegue il seguente comando:
+openssl ca -in alice.certeq.pem -out alice.x509cert.pem
+Quali delle seguenti affermazioni sono corrette?_4
+-Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS #10.
+-In OpenSSL, Alice può ottenere un certificato da Carl anche senza sottomettere una richiesta di certificato.
+*La richiesta di certificato deve essere firmata da Alice per garantire l’integrità della richiesta.
+*Carl dispone di una base dati che tiene traccia dei certificati emessi e del loro stato, aggiornata automaticamente dopo l’esecuzione del comando.
+*Il certificato emesso da Carl utilizzerà un numero di serie assegnato automaticamente dal file accessorio serial.
+*Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS10
+#Laboratorio 3 Es. 3.2
+
+%
+
+$iptables, firewall, icmp, 
+__Alice ha configurato la seguente regola iptables sul suo sistema. 
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination   
+
+Analizza la configurazione riportata e seleziona le affermazioni corrette:_3      
+*Tutti i pacchetti in ingresso verranno bloccati, a meno che non corrispondano ad una regola esplicita
+-Bob non è in grado di inviare Ping ad Alice
+*Bob è in grado di connettersi via HTTP alla macchina di Alice sulla porta 80
+*Il traffico in uscita è completamente consentito
+-Tutto il traffico mandato ad Alice che non corrisponde ad alcuna delle regole viene inoltrato automaticamente
+#Laboratorio 4 Sez 2
+
+%
+$iptables, firewall, icmp, packetfilter
+__Alice ha configurato il firewall del suo sistema con i seguenti comandi:
+iptables -F 
+iptables -P INPUT DROP
+iptables -A INPUT -p icmp -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
+La configurazione risultante di iptables è la seguente:
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Quali problemi ci sono con questa configurazione?_3
+*Alice non riesce ad avviare una connessione SSH verso Bob perché la default policy DROP della chain INPUT blocca i pacchetti di risposta (SYN+ACK).
+-Bob non riesce a eseguire una scansione delle porte di Alice.
+*Le risposte ai ping inviati da Bob vengono accettate, ma le risposte ai pacchetti TCP (ad esempio HTTPS sulla porta 443 o SSH sulla porta 21) non vengono gestite correttamente.
+*Alice non ha configurato una regola per consentire il traffico correlato (es. RELATED, ESTABLISHED), rendendo il firewall inefficace per connessioni bidirezionali.
+-La policy DROP della chain INPUT blocca tutto il traffico, inclusi i pacchetti ICMP accettati dalla regola esplicita
+-Alice non può creare nuove chain per gestire altri tipi di traffico
+#Laboratorio 4 Sez. 2
+
+%
+
+$firewall, iptables,configurazione
+__Alice ha configurato il firewall del suo sistema con i seguenti comandi:
+iptables -F
+iptables -P INPUT ACCEPT
+iptables -A INPUT -p tcp --syn -j DROP
+
+La configurazione risultante di iptables è la seguente:
+Chain INPUT (policy ACCEPT)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 DROP       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02 (SYN)
+
+Chain FORWARD (policy ACCEPT)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+ pkts bytes target     prot opt in     out     source               destination                       destination         
+
+Seleziona le affermazioni corrette:_3
+*Tutto il traffico in uscita è consentito
+-Tutto il traffico in ingresso viene automaticamente inoltrato (default policy ACCEPT)
+-Alice non può connettersi ad un server di Bob, perché tutti i pacchetti TCP con flag SYN sono bloccati
+*Bob non può instaurare una nuova connessione TCP con Alice
+*Bob non può individuare i servizi esposti di Alice tramite SYN scan
+#Laboratorio 4 Sez.2
+
+%
+
+$firewall, iptables, configurazione
+__Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  *      *       IP-Alice             0.0.0.0/0           tcp dpt:80
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP-Alice            tcp spt:80
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Frank ha configurato il firewall eseguendo i seguenti comandi:
+iptables -P FORWARD DROP
+iptables -A FORWARD -p tcp -s IP-Alice --dport 80 -j ACCEPT 
+iptables -A FORWARD -p tcp -d IP-Alice --sport 80 -j ACCEPT
+
+Seleziona le affermazioni corrette:_2
+-Alice può collegarsi solo al server web di Bob
+-Bob può collegarsi al server web di Alice con qualunque porta
+*Ogni pacchetto TCP inviato a Frank da Alice viene automaticamente inoltrato a Bob se la porta di destinazione è 80
+-Bob non può inviare richieste HTTP verso qualsiasi server web esterno, ma solo verso Alice
+*Qualsiasi altro tipo di traffico (sia in ingresso che in uscita) tra Bob e Alice viene bloccato dalla policy DROP della chain FORWARD.
+#Laboratorio 4 
+%
+$firewall, configurazione, iptables
+__Alice ha configurato il firewall del suo server con le seguenti regole:
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT  
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT  
+iptables -P INPUT DROP  
+
+Quali dei seguenti comportamenti sono veri?_3
+*Il server accetta connessioni SSH sulla porta 22 e HTTP sulla porta 80.
+*Qualsiasi connessione in ingresso su altre porte verrà bloccata, inclusi i ping.
+-Alice può accedere da remoto al server tramite SSH solo se si trova nella stessa rete locale.
+*Le risposte alle connessioni HTTP stabilite dal server non sono influenzate da queste regole.
+-Le regole configurate garantiscono automaticamente protezione contro attacchi DoS.
+#Laboratorio 4
+%
 $firewall, configurazione, reti
 _Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?3
-*Impostare una regola che accetti solo connessioni in uscita con destinazione porta 443 e stato "NEW".
-*Configurare una regola che consenta il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni.
--Impostare una regola per consentire tutte le connessioni in uscita indipendentemente dalla porta.
--Bloccare tutto il traffico in entrata, incluso il traffico correlato.
-*Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite.
+*Impostare una regola che accetti solo connessioni in uscita verso destinazione porta 443 con stato “NEW” e sorgente interna, e bloccare connessioni con porte diverse.
+*Configurare una regola che consenta esclusivamente il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni per completare le risposte HTTPS.
+-Bloccare tutto il traffico in ingresso e in uscita, inclusi i pacchetti correlati (RELATED, ESTABLISHED), come misura di sicurezza predefinita.
+-Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite, e ALLOW per le connessioni in ingresso.
+*Consentire connessioni HTTPS in uscita e configurare una regola per registrare (log) i pacchetti bloccati al fine di monitorare tentativi di connessione non autorizzati.
+#Laboratorio 4
 %
 $ids
-_Bob ha implementato un IDS basato su anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?3
+_Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?3
 *Regolare la soglia di rilevamento dell'IDS per ridurre i falsi positivi.
 *Analizzare i log storici per identificare pattern normali e aggiornare i profili di base.
-*Consultare un esperto di sicurezza per verificare se il traffico sia effettivamente legittimo.
+*Aggiornare le firme o il modello di rilevamento dell’IDS  per migliorare l’accuratezza del sistema.
 -Disabilitare temporaneamente l'IDS fino a quando il problema non viene risolto.
--Configurare l'IDS per ignorare completamente il traffico proveniente dal server critico.
+-Configurare l'IDS per ignorare completamente gli alert dell’IDS relativi al server critico.
+#Ripetere IDS [Slide 9]
 %
-
 $ids
-_Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?_2
-*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme.
-*Un IDS basato su anomalie combinato con un firewall stateful.
--Un IDS configurato per monitorare solo i log del traffico HTTPS.
--Una combinazione di proxy server e NAT senza alcun sistema di rilevamento attivo.
+_Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?_3
+*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme di attacco.
+*Un IDS basato su anomalie combinato con un firewall che includa componenti stateful.
+-Un IDS configurato per monitorare i log del traffico HTTPS.
+-Una combinazione di proxy server (screened subnet) ma è rischioso collegarlo a sistema di rilevamento attivo.
 *Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.
+#Ripetere IDS [Slide 9]
 %
-
 $firewall, architettura, sicurezza
-_Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?2
-*Isolamento dei server pubblici per ridurre l'accesso diretto alla rete interna.
+_Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?3
+*Isolamento dei server pubblici dato il divieto di accesso diretto alla rete interna.
 *Facilità di applicazione di policy di sicurezza specifiche per ciascun segmento di rete.
 -Maggiore velocità di trasmissione rispetto a un firewall con DMZ singola.
 -I server nella DMZ possono comunicare direttamente con la rete interna senza ulteriori configurazioni.
 *Possibilità di monitorare e analizzare il traffico verso i server pubblici senza esporre la rete interna.
+#Ripetere Firewall [Slide 9]
 %
-
 $firewall, configurazione, iptables
 _Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?3
 *iptables -A INPUT -p tcp --dport 22 -j ACCEPT
@@ -473,54 +594,384 @@ _Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP
 *iptables -P INPUT DROP
 -iptables -P OUTPUT ACCEPT
 -iptables -A FORWARD -j ACCEPT
+#Laboratorio 4
 %
 $ids, firewall, reti
 _Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?3
 *Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
 *Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
 -Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
-*Integrare i log dell'IDS e del firewall in un sistema SIEM per una migliore analisi.
+*Utilizzare un sistema SIEM per correlare i log dell’IDS e del firewall, permettendo un’analisi approfondita.
 -Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
-
+#Ripetere IDS, Firewall e SIEM [Slide 9]
 %
-
 $firewall, vulnerabilità, reti
 _Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?3
-*Impostare una regola per bloccare pacchetti SYN con flag incoerenti.
+*Impostare una regola per bloccare i pacchetti con flag incoerenti.
 *Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
 -Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
 -Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
 *Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
-
+#Firewall [Slide 9]
 %
-
 $firewall, ids, sicurezza
-_Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?2
+_Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?3
 *Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
 *Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
 -Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
--Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
+-Configurare solo un firewall stateless e aggiornare periodicamente le regole corrispondenti agli attacchi.
 *Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
-
+#Ripetere firewall [Slide 9]
 %
-
+$firewall, configurazione, forwarding
+__Bob configura il suo firewall con la seguente regola:
+iptables -A FORWARD -p tcp --dport 22 -s 192.168.1.0/24 -d 10.0.0.1 -j ACCEPT
+Quali delle seguenti affermazioni sono vere?_3
+*Il traffico SSH dalla rete 192.168.1.0/24 verso il server 10.0.0.1 è consentito.
+-Il traffico HTTP tra la rete interna e 10.0.0.1 è bloccato dalla configurazione.
+*Bob può monitorare l'attività di questa regola aggiungendo una regola di LOG prima di essa.
+*Il firewall inoltra i pacchetti solo se la policy predefinita della chain FORWARD è ACCEPT o se esistono regole aggiuntive che consentono esplicitamente il traffico.
+-La regola consente connessioni in entrata su tutte le porte dal server 10.0.0.1.
+#Ripetere configurazione di IPtables, forwarding e regole di logging [Lab 04, Slide 9]
+%
+$firewall
+_Indica quali sono le risposte corrette sui firewall e la loro architettura nelle reti?5
+*Un firewall stateful tiene traccia dello stato delle connessioni, migliorando la sicurezza rispetto ai firewall stateless.  
+-I firewall di livello applicativo (L7) sono più veloci dei firewall packet filter (L4) perché analizzano dati meglio strutturati.  
+*Un firewall con architettura a "tre gambe" espone una interfaccia di rete per ospitare server pubblici creando una DMZ (De-Militarized Zone).  
+-Usare un firewall con architettura a “screening router” permette di creare una DMZ (De-Militarized Zone) per ospitare server pubblici.  
+-Un bastion host è un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.  
+-Un firewall di tipo stealth non ha un indirizzo IP configurato sulla scheda rete, ma modifica attivamente il traffico per nascondere la rete interna.
+*Il principio "blacklisting" offre minore sicurezza ma è più facile da gestire rispetto al principio opposto detto “whitelisting”. 
+-L'utilizzo di un router come firewall è una soluzione sufficientemente sicura, è quindi consigliabile in ambito aziendale.  
+*Un personal firewall è installato direttamente sul nodo da difendere e può essere usato per autorizzare le comunicazioni dei processi in esecuzione.
+-Lo scopo di un firewall è bloccare il traffico in ingresso non autorizzato, serve meno attenzione nel controllo del traffico in uscita.
+*Un honey pot può essere un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.
+#Ripetere tipi di firewall, architetture e concetti di sicurezza [Slide 9 e 10, Lab 04]
+%
+$firewall
+_Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?4
+*I firewall packet filter operano a livello di rete (L3) e ispezionano l'header di ogni pacchetto IP.  
+-I circuit-level gateway esaminano il contenuto dei pacchetti a livello applicativo per identificare e bloccare minacce specifiche.  
+*Un proxy application-aware capisce il protocollo applicativo e può quindi applicare regole di sicurezza più specifiche.  
+-I packet filter con funzioni di stateful inspection hanno prestazioni significativamente inferiori rispetto ai packet filter stateless a causa della maggiore complessità.  
+*Un WAF è un tipo specifico di firewall progettato per proteggere le applicazioni web da attacchi come SQL injection e cross-site scripting.
+-I componenti di firewall che operano a livello di trasporto (L4) possono autenticare gli utenti direttamente basandosi sulle informazioni contenute nei pacchetti TCP/UDP senza richiedere modifiche alle applicazioni.  
+*I componenti di firewall che operano usando il protocollo SOCKS creano un "circuito" a livello di trasporto tra client e server, senza necessariamente ispezionare il contenuto dei dati applicativi.  
+#Ripetere tipologie e funzionamento dei firewall (L3, L4, proxy, WAF) [Slide 9 e 10]
+%
+$IDS, IPS, sicurezza  
+_Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?4  
+*Un IDS passivo si limita a rilevare e segnalare attività sospette, senza intervenire attivamente.  
+*Gli NGFW vengono venduti e pubblicizzati come in grado di identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
+-Un IPS è sempre preferibile a un IDS perché previene attivamente le intrusioni, senza rischio di falsi positivi.
+*Gli IDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
+*Un sensore IDS può essere posizionato sia per monitorare tratti di rete che su un singolo host.
+-I NIDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log file monitor, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
+-Gli IDS/IPS possono identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
+-L'integrazione di firewall, VPN e IDPS in un unico dispositivo (UTM) comporta un aumento dei costi di gestione a causa della maggiore complessità dei task che il dispositivo è in grado di svolgere.
+#Ripetere concetti di IDS/IPS e differenze con NGFW e UTM [Slide 10]
+%
+$incident,SOC,sicurezza  
+_Indica quali affermazioni relative alla risposta agli incidenti, ai SOC e alla sicurezza informatica sono vere?4
+*Un data breach si riferisce ad una divulgazione non autorizzata di dati sensibili.  
+-La preparazione alla risposta agli incidenti è una fase che può essere ignorata se l'organizzazione dispone di strumenti avanzati per il blocco degli attacchi.  
+*Un Incident Response Team ha il compito di definire politiche di risposta agli incidenti e piani di azione.  
+-Un data disclosure si riferisce ad una esposizione di dati sensibili.  
+-L'obiettivo principale di un SIEM è bloccare attivamente gli attacchi informatici in tempo reale.
+*Un SOC include diverse figure professionali impegnate anche a monitorare continuamente la sicurezza di un sistema informativo.
+-Il personale del SOC è responsabile solo dell'implementazione di misure preventive, mentre la gestione degli incidenti è compito dell’incident response team.
+*Un honeypot è un sistema progettato per simulare risorse legittime, attrarre attività malevole e consentire l'analisi di eventi in tempo reale per migliorare la sicurezza complessiva.
+#Ripetere concetti relativi a SOC, Incident Response e SIEM [Slide 12]
+%
+$firewall, proxy, DMZ  
+_Indica quali delle seguenti affermazioni su firewall, proxy e DMZ sono corrette?4
+*Un forward proxy si trova tra i client di una rete esterna e i server esterni, inoltrando le richieste dei client.  
+-Un reverse proxy si limita a bilanciare il carico tra più server interni, senza fornire alcuna funzionalità di sicurezza aggiuntiva.  
+*L'utilizzo di una DMZ (De-Militarized Zone) permette di isolare i server pubblici dalla rete interna, aumentando la sicurezza.
+-In un'architettura firewall con DMZ, il gateway è sempre posizionato all'interno della rete interna per garantire una maggiore protezione.
+*Un firewall "a tre gambe" è un'architettura che usa un unico gateway per generare una DMZ e isolare la rete interna.  
+-Il mascheramento degli indirizzi IP interni (NAPT) è una funzionalità esclusiva dei proxy application layer.
+*I firewall possono essere implementati come software, appliance hardware o servizi cloud.  
+-Un firewall che contiene componenti di tipo application layer filter è in grado di ispezionare il traffico crittografato senza necessità di decifrarlo.
+-I firewall possono essere implementati come app mobile o servizi cloud.
+#Ripetere concetti su firewall, proxy e DMZ [Slide 09]
+%
+$firewall
+Perché è pericoloso abilitare il traffico ICMP senza restrizioni?3
+*può portare a leakage di informazioni.
+*può portare a attacchi di tipo ICMP redirect.
+*può portare a attacchi DoS di tipo Smurf.
+-può portare a attacchi brute force per scoprire le chiavi SSH
+-può comportare il lo svuotamente delle regole di iptables
+-può portare ad attacchi al DNS
+#Ripetere ICMP e attacchi correlati (DoS, Smurf) [Slide 09]
+%
+$firewall
+_indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette:4
+* Netfilter/IPtables è un software che fornisce funzionalità di manipolazione e filtraggio di pacchetti IP all'interno del kernel Linux.
+-La catena INPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena OUTPUT gestisce i pacchetti in ingresso.
+* La politica di default di una catena IPtables determina l'azione intrapresa se nessuna regola nella catena corrisponde al pacchetto.
+-Il comando "iptables -F" elimina tutte le regole nella catena specificata e ripristina automaticamente la politica di default della catena a ACCEPT.e una singola macchina.
+- In uno stateless packet filter, la regola "iptables -A FORWARD -p tcp -s IP-Alice --sport 80 --dport 22 -j ACCEPT" permette ad Alice di navigare su qualsiasi sito web esterno, a patto che la destinazione sia la porta 80.
+- Con uno stateless packet filter, la porta sorgente 80 può essere utilizzata da Bob per instaurare una connessione verso Alice se è presente una regola che accetta pacchetti con porta sorgente 80. Uno stateful packet filter, invece, può distinguere tra connessioni in entrata e in uscita.
+* Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
+*La catena OUTPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena INPUT gestisce i pacchetti in ingresso.
+#Ripetere Netfilter/IPtables e configurazioni base [Lab 04, Slide 09]
+%
+$firewall
+_indica quali delle seguenti affermazioni sul laboratorio sui firewall sono corrette:6
+* Il comando "iptables -A FORWARD -p icmp -s IP-Alice --icmp-type echo-request -j ACCEPT" permette ad Alice di inviare pacchetti ping (echo-request).
+* Abilitare il traffico ICMP senza restrizioni può essere pericoloso perché può portare a leakage di informazioni, attacchi di tipo ICMP redirect e attacchi DoS di tipo Smurf.
+* Uno stateful packet filter può accettare tutto il traffico associato alle connessioni stabilite, risolvendo il problema di dover aprire porte specifiche per il traffico di ritorno.
+- Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute --limit-burst 1 -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
+* HTTPtunnel può essere utilizzato per creare un tunnel HTTP che permette di aggirare le politiche di un firewall, consentendo, ad esempio, una connessione SSH attraverso la porta 80.
+* Ptunnel incapsula il traffico TCP all'interno di pacchetti ICMP echo request ed echo reply, e questo può essere un modo per aggirare le politiche di un firewall che permette il traffico ICMP.
+- La funzionalità di "dynamic port forwarding" di SSH crea un socket in ascolto in locale e inoltra le connessioni su un canale sicuro SSH, agendo come un circuit-level gateway.
+* Un application-level gateway come Apache con mod_proxy può fornire filtri applicativi, filtraggio di contenuti e una maggiore protezione contro le vulnerabilità specifiche di determinate applicazioni.
+#Ripetere IPtables, ICMP, stateful packet filter, e tunneling [Lab 04, Slide 09]
+%
+$firewall, certificazioni, GDPR
+_Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?3
+*Configurare il firewall per registrare i log tecnici necessari alla sicurezza della rete, assicurandosi che siano conservati per un periodo proporzionato e con scopo dichiarato
+-Impostare una regola per registrare tutti i dettagli del traffico, inclusi dati personali, per un periodo illimitato
+*Implementare politiche di accesso basate su principi di "least privilege" per ridurre l'accesso non necessario ai log del firewall
+*Utilizzare un SIEM (Security Information and Event Management) per analizzare i log generati, rispettando le normative sulla gestione dei dati personali.
+-Consentire il traffico in entrata su tutte le porte per facilitare la trasparenza delle comunicazioni.
+#Ripetere GDPR [Slide 13]
+%
+$ids, analisi dei rischi, reti
+_Bob vuole migliorare la sicurezza della sua rete aziendale implementando un IDS. Durante un’analisi dei rischi, nota che i server contengono dati sensibili. Quale strategia dovrebbe adottare per ridurre i rischi?3
+*Posizionare un NIDS sulla DMZ per monitorare il traffico verso i server e identificare potenziali anomalie di accesso.
+*Configurare l'IDS per segnalare tentativi di accesso non autorizzati, ma non per bloccare automaticamente i pacchetti senza ulteriore analisi.
+-Impostare l'IDS per interrompere automaticamente qualsiasi connessione con attività insolita senza tenere conto di falsi positivi.
+*Integrare l'IDS con un sistema SIEM per correlare eventi e rilevare modelli di comportamento sospetti.
+-Consentire traffico "trusted" ai server da indirizzi IP interni senza ulteriori verifiche, basandosi sulla segmentazione di rete per la protezione.
+#Ripetere utilizzo di NIDS, correlazione con SIEM e gestione dei falsi positivi [Slide 09-13]
+%
+$certificazioni, standard, firewall
+_Alice sta configurando il firewall aziendale per soddisfare gli standard ISO/IEC 27001 relativi alla sicurezza delle informazioni. Quali delle seguenti azioni sono coerenti con i requisiti dello standard?3
+*Implementare regole per limitare l’accesso ai server critici solo a indirizzi IP autorizzati.
+*Documentare e aggiornare regolarmente le regole del firewall per garantire conformità agli standard.
+-Impostare il firewall per registrare i tentativi di connessione riusciti, ignorando quelli bloccati.
+*Effettuare revisioni periodiche delle configurazioni del firewall come parte dell’audit di sicurezza.
+-Configurare il firewall per accettare tutto il traffico proveniente da dispositivi certificati ISO/IEC 27001, eliminando ulteriori controlli.
+#Ripetere gestione regole firewall e audit di sicurezza [Slide 09, Slide 10]
+%
+$gdpr, crittografia, firewall
+_Alice vuole configurare una rete aziendale che protegga i dati personali in transito e in conformità al GDPR. Quali misure tecniche dovrebbe adottare?3
+*Configurare il firewall per consentire solo traffico crittografato tramite TLS verso i server aziendali.
+*Implementare la crittografia end-to-end per proteggere i dati in transito.
+-Registrare nei log i contenuti cifrati dei pacchetti per verificare la conformità ai requisiti GDPR.
+*Implementare politiche di gestione delle chiavi per garantire la sicurezza dei certificati crittografici utilizzati.
+-Implementare regole per accettare solo pacchetti con chiavi di cifratura statiche condivise tra client e server.
+#Ripetere GDPR [Slide 13], Firewall [Slide 9], Sicurezza di Canale [Slide 7]
+%
+$analisi dei rischi, firewall, DMZ
+_Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?3
+*Configurare il firewall per consentire solo traffico specifico verso i server pubblici che intende posizionare nella DMZ.
+*Implementare un IDS per monitorare il traffico in entrata e in uscita dalla DMZ.
+-Impostare regole per consentire traffico diretto dalla DMZ alla rete interna senza restrizioni.
+*Eseguire test di penetrazione regolari per identificare vulnerabilità nei server della DMZ.
+-Registrare tutti i dettagli del traffico, inclusi dati personali, senza limiti di tempo.
+#Ripetere Firewall [Slide 9], DMZ [Slide 9]
+%
+$standard, certificazioni, IDS
+_Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?3
+*Analizzare regolarmente i log generati dall’IDS per identificare potenziali minacce.
+*Integrare l'IDS con un sistema SIEM per garantire una gestione centralizzata degli eventi.
+-Impostare l'IDS per ignorare automaticamente tutto il traffico autorizzato, senza generare log.
+*Definire politiche documentate per l’uso dell’IDS e la gestione delle sue configurazioni.
+#Ripetere Standard e Certificazioni [Slide 10], IDS [Slide 9]
+%
+$standard, sicurezza, analisi dei rischi
+_Alice sta implementando un sistema di gestione della sicurezza delle informazioni (ISMS) conforme alla ISO/IEC 27001. Quali delle seguenti affermazioni sono corrette?_3
+*Un ISMS efficace deve essere basato su un’analisi dei rischi documentata e continuamente aggiornata.
+*La certificazione ISO/IEC 27001 implica che l'organizzazione sia in grado di gestire correttamente i rischi associati alle informazioni sensibili.
+-La conformità alla ISO/IEC 27001 garantisce protezione contro le vulnerabilità software.
+*La scelta delle misure di sicurezza deve tenere conto del contesto aziendale e delle esigenze specifiche dei processi.
+-Si può evitare di aggiornare l’analisi dei rischi se l’organizzazione implementa tutte le misure idonee identificate durante il processo di certificazione.
+#Ripetere Standard e Certificazioni [Slide 10]
+%
+$gdpr, sicurezza, crittografia
+_Bob deve implementare la crittografia per proteggere i dati personali trattati dalla sua azienda. Quali delle seguenti affermazioni rispettano il GDPR?3
+*La crittografia è una misura di sicurezza appropriata, ma non obbligatoria per tutti i tipi di dati personali in transit.
+*Se i dati personali crittografati vengono rubati, l'obbligo di notifica può essere evitato in alcuni casi se opportunamente documentati dal DPO.
+-Se si scelgono algoritmi forti, l’uso della crittografia garantisce che l’organizzazione non sia responsabile per una violazione dei dati.
+*Anche se i dati sono cifrati, devono essere accessibili solo agli utenti autorizzati, garantendo riservatezza e disponibilità.
+-Il GDPR richiede che tutti i dati personali, indipendentemente dal loro livello di sensibilità, siano crittografati at rest senza eccezioni.
+#Ripetere GDPR [Slide 13]
+%
+$analisi dei rischi, firewall, GDPR
+_Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?3
+*Il firewall deve bloccare il traffico non autorizzato e registrare i tentativi di accesso.
+*La configurazione del firewall deve essere documentata come parte delle misure di sicurezza adottate.
+-Il GDPR richiede che i log del firewall includano i dati personali completi degli utenti per scopi di verifica (deep packet inspection).
+*Il firewall deve essere aggiornato regolarmente per proteggere i dati personali da attacchi noti.
+-L'uso di un firewall e la sua corretta configurazione rendono superfluo adottare ulteriori misure di sicurezza per proteggere i dati personali.
+#La configurazione del firewall deve essere documentata: Per una gestione efficace della sicurezza e per garantire la continuità operativa in caso di problemi.
+#Il firewall deve essere aggiornato regolarmente: Per proteggere i sistemi da vulnerabilità note e nuove minacce.
+%
+$standard, analisi dei rischi, GDPR
+_Bob sta lavorando per ottenere la certificazione ISO/IEC 27001 e garantire la conformità al GDPR. Quali delle seguenti affermazioni sono corrette?3
+*I rischi identificati devono essere documentati e gestiti attraverso misure tecniche e organizzative.
+*La protezione dei dati personali deve essere integrata nel sistema di gestione della sicurezza delle informazioni (ISMS).
+-Aver ottenuto una certificazione ISO/IEC 27001 garantisce la conformità al GDPR.
+*Le valutazioni periodiche dell'efficacia delle misure adottate sono obbligatorie sia per la ISO/IEC 27001 che per il GDPR.
+-I dati personali protetti da crittografia non richiedono un adeguamento periodico dell’'analisi dei rischi.
+#La certificazione ISO 27001 attesta un buon sistema di gestione della sicurezza, ma il GDPR ha requisiti specifici sulla protezione dei dati personali che vanno oltre.
+#La crittografia riduce alcuni rischi, ma non li elimina completamente, quindi l'analisi dei rischi deve essere rivista periodicamente in ogni caso.
+%
+$standard, sicurezza, certificazioni
+_Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?3
+*La certificazione richiede una verifica indipendente da parte di un ente accreditato.
+*L’ottenimento della certificazione dipende dall’implementazione di un ISMS adeguata con una adeguata gestione dei rischi post-analisi.
+-Una volta ottenuta, la certificazione è valida per un tempo illimitato.
+*La conformità allo standard include la preparazione alla risposta agli incidenti di sicurezza.
+-L'implementazione delle misure minime consigliate dalla norma garantisce la certificazione senza bisogno di adattamenti.
+%
+$gdpr, analisi dei rischi, sicurezza
+_Alice sta valutando i rischi legati al trattamento dei dati personali in conformità al GDPR. Quali delle seguenti azioni rappresentano buone pratiche?3
+*Considerare l'impatto di una violazione dei dati sia a livello finanziario che reputazionale.
+*Coinvolgere i responsabili delle aree interessate nel processo di analisi dei rischi.
+-Documentare i rischi associati ai dati sensibili è necessario, mentre gli altri tipi di dati non sono tutelati dal GPDR è pertanto l’adeguata documentazione risulta opzionale.
+*Valutare regolarmente l'efficacia delle misure tecniche e organizzative adottate.
+-Concludere l'analisi dei rischi una volta definite le misure di protezione iniziali.
+%
+$ipsec,tls,ike
+_Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette:4
+- Il comando "ip xfrm state flush" è usato per cancellare il Database delle Politiche di Sicurezza (SPD).
+* Il comando "ip xfrm policy list" mostra le politiche di sicurezza IPsec correnti.
+* Il comando "ipsec start" è usato per avviare il demone strongSwan.
+- Dopo aver modificato il file "/etc/ipsec.conf", devi usare il comando "ipsec update" perché le modifiche abbiano effetto immediatamente.
+* Il comando "openssl s_server -www" avvia un semplice server TLS che mostra le informazioni di connessione in formato HTML.
+- In una VPN IPsec site-to-site, ogni gateway necessita solo di una singola Associazione di Sicurezza (SA) per gestire il traffico in entrambe le direzioni.
+* Per usare certificati con strongSwan devi posizionare il certificato CA nella directory "/etc/ipsec.d/cacerts"
+#Rivedere materiale laboratorio riguardo Ipsec e TLS
+%
+$ipsec,tls,ike
+_indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette:3
+- L'opzione “-CAfile” nel comando “openssl s_client” specifica il file contenente la chiave privata del client.
+* L'opzione “-cipher” in “openssl s_client” ti permette di specificare la lista di ciphersuite che il client dovrebbe usare.
+- Per abilitare l'autenticazione del client in una configurazione Apache TLS, devi cambiare la direttiva “SSLVerifyClient” in “require”.
+* Il comando “openssl rsa -in client_pkey.pem -out client_decrypted_pkey.pem” può essere usato per decriptare una chiave privata RSA.
+- Per catturare il traffico durante un attacco MITM con "ettercap" su una connessione TLS, devi prima usare “openssl” per generare un certificato valido firmato da una CA di fiducia.
+* Il comando "ipsec up host-host" è usato per iniziare una connessione IKE definita in "ipsec.conf" come una connessione chiamata "host-host"
+#Rivedere materiale laboratorio riguardo Ipsec e TLS 
+%
+$ipsec,tls,ike
+__Ti è stato assegnato il compito di impostare un canale di comunicazione sicuro tra due host, Alice e Bob, usando IPsec. Hai deciso di usare strongSwan per la negoziazione IKE e hai già configurato i file /etc/ipsec.conf e /etc/ipsec.secrets su entrambe le macchine. Alice deve iniziare la connessione con Bob. Sono disponibili sia una chiave pre-condivisa che dei certificati. Usi il comando ipsec up host-host per iniziare la connessione. Quali affermazioni sono corrette?_4
+* Prima di eseguire "ipsec up host-host", devi assicurarti che il servizio strongSwan sia in esecuzione, cosa che può essere verificata usando il comando "ipsec start".
+- Se il comando "ipsec up host-host" fallisce, la prima cosa da controllare è la connettività di rete tra Alice e Bob usando il comando "ping".
+* Dopo aver stabilito con successo il tunnel IPsec, puoi usare il comando "ip xfrm state list" sia su Alice che su Bob per verificare che le Associazioni di Sicurezza (SA) siano state create.
+- Se vuoi usare l'autenticazione basata su certificati invece della PSK, puoi modificare il comando "ipsec up" includendo l'opzione "--cert" seguita dal percorso del file del certificato.
+- Il comando "ip xfrm policy list" può essere usato per controllare se il traffico tra Alice e Bob è indirizzato attraverso il tunnel IPsec.
+* Se la connessione viene stabilita con successo, ma il traffico non è cifrato, dovresti controllare che su Bob il file "/etc/ipsec.conf" abbia il parametro "type" impostato a "start" per la connessione "host-host".
+* Per assicurare che la connessione IPsec sia ristabilita automaticamente dopo un riavvio, dovresti modificare il file "/etc/ipsec.conf" sia su Alice che su Bob per includere la riga "auto=start" all'interno della definizione della connessione.
+- Se vuoi proteggere solo il traffico TCP, devi aggiungere una riga con il parametro "proto tcp" al comando "ip xfrm state add".
+%
+$ipsec 
+__Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Alice esegue i seguenti comandi:
+ip xfrm state flush 
+ip xfrm policy flush 
+ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff 
+ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff 
+ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required 
+ip xfrm policy add src IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required
+Seleziona le risposte corrette:_2
+*Grazie all’utilizzo di IPsec in transport mode, Alice ottiene confidenzialità e protezione dagli attacchi replay
+-Viene utilizzato l’algoritmo des per la crittografia
+-Quando Alice invia un nuovo pacchetto IP a Bob saranno considerate la SP relativa a “in” più la corrispondente SA, se presente
+*Quando Alice riceve un nuovo pacchetto IP saranno considerate la SP relativa a “in” più la corrispondente SA
+-I comandi contengono due SA ridondanti, che possono essere ridotta ad una sola per la configurazione del canale sicuro
+%
+$ipsec 
+__Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Bob esegue i seguenti comandi:
+ip xfrm state flush 
+ip xfrm policy flush 
+ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff 
+ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff 
+ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto esp mode transport level required ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto esp mode transport level required
+Seleziona le risposte corrette:_3
+*Vengono create 2 SA e 2 SP
+*Le SA contengono 2 SPI differenti perchè identificano la direzione
+*Le Security Policies (SP) configurate stabiliscono che il traffico tra Alice e Bob deve essere cifrato utilizzando ESP in modalità transport, senza coinvolgere l’intero pacchetto IP.
+-Le SA configurate utilizzano lo stesso SPI per entrambe le direzioni, perché l’algoritmo AES richiede univocità solo a livello di chiave crittografica.
+-Le Security Associations (SA) configurate permettono di proteggere il traffico solo nella direzione da Bob a Alice, mentre il traffico nella direzione opposta rimane non protetto.
+%
 $ipsec 
 __Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.
 Alice quindi esegue i seguenti comandi:
-ip xfrm state add sic IP Alice dst IP Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128
-ip xfrm state add sc IP Bob dst IP Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128
+ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128
+ip xfrm state add sc IP-Bob dst IP-Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128
 ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required
-ip xfrm policy add sic IP Bob dst IP Alice dir in tmpl proto esp mode transport level required
+ip xfrm policy add sic IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required
 Mentre Bob esegue i seguenti comandi:
-ip xfrm state add sc IP Alice dst IP Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd
-ip xfrm state add src IP Bob dst IP Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd
+ip xfrm state add sc IP-Alice dst IP-Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd
+ip xfrm state add src IP-Bob dst IP-Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd
 ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required
 ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required
-Seleziona le affermazioni corrette!_3
+Seleziona le affermazioni corrette:_3
 *Sono presenti in totale 4 SA e 4 SP
 -Le SP sono 2 in totale perché, a differenza delle SA, sono bidirezionali
 -Bob ha sbagliato la sua configurazione perchè non ha specificato l’algoritmo crittografico da utilizzare
 *La configurazione è vantaggiosa perchè protegge sia l’integrità del messaggio che la segretezza del payload usando un singolo algoritmo e una singola chiave
 *La configurazione di Bob garantisce solo integrità e autenticità, mentre quella di Alice garantisce anche la confidenzialità dei dati trasmessi.
-
+%
+Quali delle seguenti affermazioni sul GDPR sono corrette?5
+*Il GDPR si applica esclusivamente ai sistemi di acquisizione dati informatici, escludendo quelli manuali.
+-Il DPO (Data Protection Officer) è un ruolo che può essere ricoperto solo da un soggetto esterno all'organizzazione.
+*L'obbligo di minimizzazione dei dati implica che si debbano raccogliere solo i dati strettamente necessari per le finalità dichiarate.
+*Il principio di "Privacy by Default" richiede che i sistemi siano configurati con le impostazioni di privacy più restrittive fin dall'inizio.
+*Il concetto di "Privacy embedded into design" si riferisce all'integrazione della protezione dei dati solo nella fase di implementazione del sistema.
+-L'obiettivo del "Full Functionality" nel Privacy by Design è quello di limitare le funzionalità del sistema per massimizzare la privacy.
+*Il "Full lifecycle protection" richiede di proteggere i dati personali durante tutto il loro ciclo di vita, dalla raccolta alla cancellazione.
+-Vieta l’utilizzo di alcuni algoritmi come sha1 perchè ormai obsoleti e non abbastanza sicuri
+%
+_Quali delle seguenti affermazioni sul GDPR sono corrette?5
+-La notifica di un "personal data breach" deve essere fatta esclusivamente all'autorità di supervisione, senza obbligo di informare gli interessati.
+*Il GDPR impone restrizioni significative al trasferimento di dati personali al di fuori della UE, a meno che non siano garantiti standard di protezione equivalenti.
+- La Commissione Europea fornisce una lista esaustiva di tutti gli stati non-UE che non offrono una protezione adeguata dei dati.
+*L'analisi di impatto sulla protezione dei dati (DPIA) è un processo necessario solo se il trattamento dei dati comporta rischi elevati per i diritti degli interessati.
+*Il principio di accountability impone al responsabile del trattamento l'obbligo di dimostrare la conformità al GDPR attraverso la documentazione e le procedure implementate.
+- L'istituzione dell'Agenzia per la Cybersicurezza Nazionale (ACN) ha c*omportato un allentamento della collaborazione tra le istituzioni UE nel contrasto agli attacchi informatici.
+-Obbliga le aziende ad anonimizzare qualsiasi tipo di dato personale salvato sui database
+*L'ENISA, istituita nel 2004, è diventata un'agenzia dell'UE focalizzata sulla cybersecurity a seguito del Cybersecurity Act.
+*La transizione da certificazioni nazionali a europee nel campo della cybersecurity ha lo scopo di promuovere un mercato unico digitale più sicuro.
+- Il DPCM del 2017 individua solo le infrastrutture critiche e non le aziende che operano in settori ad alto rischio.
+%
+_Quali delle seguenti affermazioni sul GDPR sono corrette?6
+*Il GDPR si concentra unicamente sulla protezione dei dati dei cittadini europei e non si estende a dati di soggetti non residenti.
+*La "special category personal data" richiede un livello di protezione maggiore rispetto ai dati personali comuni, e include dati come l'origine razziale o etnica.
+*I principi di minimizzazione e precisione dei dati sono finalizzati a ridurre il rischio di errori e violazioni della privacy.
+*Il reporting, come parte del concetto di accountability, è finalizzato a fornire evidenze del rispetto dei principi GDPR alle autorità competenti.
+- Il Cyber Resilience Act ha come obiettivo principale quello di definire un insieme di regole per la tutela degli utenti da attacchi informatici.
+*Il Cyber Solidarity Act punta a rafforzare la cooperazione tra gli stati membri dell'UE in caso di incidenti cyber di ampia portata.
+*L'introduzione della figura del DPO è pensata per garantire un controllo indipendente sulla gestione dei dati personali.
+- Il GDPR prevede che il data controller e il data processor siano sempre soggetti interni alla stessa organizzazione.
+-Contiene al suo interno una serie di regole volte a regolamentare l’uso dell’intelligenza artificiale sul suolo della UE
+%
+$pia, analisi 
+_Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?3
+*Il PIA è obbligatorio quando il trattamento dei dati personali comporta rischi elevati per i diritti e le libertà degli interessati.
+-Il PIA si occupa esclusivamente di proteggere gli asset fisici e digitali di un’organizzazione.
+-L’analisi dei rischi del RMF si applica solo ai dati personali.
+*Entrambi i processi prevedono una fase di identificazione dei rischi e delle contromisure.
+*Il PIA richiede un coinvolgimento diretto dei rappresentanti legali e degli interessati.
+%
+$pia, analisi 
+_Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?2
+-Il RMF fornisce un framework obbligatorio per la gestione dei rischi legati alla privacy nelle organizzazioni.
+*Il PIA include una valutazione dell’impatto sui diritti degli individui, mentre il RMF si concentra sull’impatto sui sistemi e sugli asset organizzativi.
+-L’output del PIA è un documento che descrive esclusivamente le vulnerabilità tecniche dei sistemi.
+-Il RMF prevede un monitoraggio continuo per aggiornare le strategie di mitigazione, mentre il PIA si limita a una valutazione iniziale.
+*l PIA e il RMF sono processi complementari e possono essere utilizzati insieme in un’organizzazione.
+%
+$tls 
+_Seleziona quali parametri della sessione TLS cambiano quando viene sfruttato un SessionID.2
+-protocollo
+*chiavi derivate
+-ciphersuite
+-master key
+*numeri casuali
 

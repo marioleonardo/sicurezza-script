@@ -12,8 +12,8 @@ def to_moodle_format(input_file_path, output_file):
         print("Error, file not found")
         return
 
-    input_file = open(input_file_path, "r")
-    output_file = open(output_file, "w")
+    input_file = open(input_file_path, "r",encoding='utf8')
+    output_file = open(output_file, "w",encoding='utf8')
 
     score = -1
     counter = 0
@@ -512,10 +512,10 @@ def parse_questions(text, blacklist):
 
 if __name__ == "__main__":
     config = {
-        'num_in_files': 3,
+        'num_in_files': 1,
         'in_folder': 'data',
-        'num_out_files': 4,
-        'questions_per_out': {'min': 10, 'max': 10},
+        'num_out_files': 8,
+        'questions_per_out': {'min': 9, 'max': 11},
         'distribution': 1,  # 0 -> don't mix, 1 -> distribute evenly, intermediate values for a degree of mixing
         'repeat': False,
         'high_distribution': True,

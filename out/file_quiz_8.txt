@@ -1,0 +1,108 @@
+
+$firewall, vulnerabilità, reti
+_Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?3
+*Impostare una regola per bloccare i pacchetti con flag incoerenti.
+*Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
+-Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
+-Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
+*Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
+#Firewall [Slide 9]
+%
+
+$crypto, simmetrica
+_Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?2
+*La crittografia simmetrica richiede una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati.
+*Gli algoritmi simmetrici come AES sono generalmente più efficienti di quelli asimmetrici per grandi volumi di dati.
+-La distribuzione sicura delle chiavi nella crittografia simmetrica è facilmente risolvibile senza l’uso di ulteriori protocolli.
+-Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
+%
+
+$ipsec,tls,ike
+_indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette:3
+- L'opzione “-CAfile” nel comando “openssl s_client” specifica il file contenente la chiave privata del client.
+* L'opzione “-cipher” in “openssl s_client” ti permette di specificare la lista di ciphersuite che il client dovrebbe usare.
+- Per abilitare l'autenticazione del client in una configurazione Apache TLS, devi cambiare la direttiva “SSLVerifyClient” in “require”.
+* Il comando “openssl rsa -in client_pkey.pem -out client_decrypted_pkey.pem” può essere usato per decriptare una chiave privata RSA.
+- Per catturare il traffico durante un attacco MITM con "ettercap" su una connessione TLS, devi prima usare “openssl” per generare un certificato valido firmato da una CA di fiducia.
+* Il comando "ipsec up host-host" è usato per iniziare una connessione IKE definita in "ipsec.conf" come una connessione chiamata "host-host"
+#Rivedere materiale laboratorio riguardo Ipsec e TLS
+%
+
+$ids
+_Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?3
+*Regolare la soglia di rilevamento dell'IDS per ridurre i falsi positivi.
+*Analizzare i log storici per identificare pattern normali e aggiornare i profili di base.
+*Aggiornare le firme o il modello di rilevamento dell’IDS  per migliorare l’accuratezza del sistema.
+-Disabilitare temporaneamente l'IDS fino a quando il problema non viene risolto.
+-Configurare l'IDS per ignorare completamente gli alert dell’IDS relativi al server critico.
+#Ripetere IDS [Slide 9]
+%
+
+$firewall, configurazione, reti
+_Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?3
+*Impostare una regola che accetti solo connessioni in uscita verso destinazione porta 443 con stato “NEW” e sorgente interna, e bloccare connessioni con porte diverse.
+*Configurare una regola che consenta esclusivamente il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni per completare le risposte HTTPS.
+-Bloccare tutto il traffico in ingresso e in uscita, inclusi i pacchetti correlati (RELATED, ESTABLISHED), come misura di sicurezza predefinita.
+-Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite, e ALLOW per le connessioni in ingresso.
+*Consentire connessioni HTTPS in uscita e configurare una regola per registrare (log) i pacchetti bloccati al fine di monitorare tentativi di connessione non autorizzati.
+#Laboratorio 4
+%
+
+$ids
+_Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?_3
+*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme di attacco.
+*Un IDS basato su anomalie combinato con un firewall che includa componenti stateful.
+-Un IDS configurato per monitorare i log del traffico HTTPS.
+-Una combinazione di proxy server (screened subnet) ma è rischioso collegarlo a sistema di rilevamento attivo.
+*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.
+#Ripetere IDS [Slide 9]
+%
+
+$ipsec, retecore
+_Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?3
+*Configurare la modalità Transport anziché Tunnel per traffico specifico.
+-Utilizzare algoritmi di hashing più complessi come SHA-512.
+-Abilitare il rinnovo delle chiavi con IKE ogni 10 pacchetti.
+*Ottimizzare i percorsi di instradamento per ridurre i ritardi.
+*Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
+*Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
+%
+
+$simmetrica
+_Quali delle seguenti sono tecniche di crittografia simmetrica?2
+*AES (Advanced Encryption Standard)
+*DES (Data Encryption Standard)
+-RSA
+-ECC (Elliptic Curve Cryptography)
+-Elgamal
+%
+
+$pia, analisi
+_Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?2
+-Il RMF fornisce un framework obbligatorio per la gestione dei rischi legati alla privacy nelle organizzazioni.
+*Il PIA include una valutazione dell’impatto sui diritti degli individui, mentre il RMF si concentra sull’impatto sui sistemi e sugli asset organizzativi.
+-L’output del PIA è un documento che descrive esclusivamente le vulnerabilità tecniche dei sistemi.
+-Il RMF prevede un monitoraggio continuo per aggiornare le strategie di mitigazione, mentre il PIA si limita a una valutazione iniziale.
+*l PIA e il RMF sono processi complementari e possono essere utilizzati insieme in un’organizzazione.
+%
+
+$pia, analisi
+_Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?3
+*Il PIA è obbligatorio quando il trattamento dei dati personali comporta rischi elevati per i diritti e le libertà degli interessati.
+-Il PIA si occupa esclusivamente di proteggere gli asset fisici e digitali di un’organizzazione.
+-L’analisi dei rischi del RMF si applica solo ai dati personali.
+*Entrambi i processi prevedono una fase di identificazione dei rischi e delle contromisure.
+*Il PIA richiede un coinvolgimento diretto dei rappresentanti legali e degli interessati.
+%
+
+$ipsec,tls,ike
+__Ti è stato assegnato il compito di impostare un canale di comunicazione sicuro tra due host, Alice e Bob, usando IPsec. Hai deciso di usare strongSwan per la negoziazione IKE e hai già configurato i file /etc/ipsec.conf e /etc/ipsec.secrets su entrambe le macchine. Alice deve iniziare la connessione con Bob. Sono disponibili sia una chiave pre-condivisa che dei certificati. Usi il comando ipsec up host-host per iniziare la connessione. Quali affermazioni sono corrette?_4
+* Prima di eseguire "ipsec up host-host", devi assicurarti che il servizio strongSwan sia in esecuzione, cosa che può essere verificata usando il comando "ipsec start".
+- Se il comando "ipsec up host-host" fallisce, la prima cosa da controllare è la connettività di rete tra Alice e Bob usando il comando "ping".
+* Dopo aver stabilito con successo il tunnel IPsec, puoi usare il comando "ip xfrm state list" sia su Alice che su Bob per verificare che le Associazioni di Sicurezza (SA) siano state create.
+- Se vuoi usare l'autenticazione basata su certificati invece della PSK, puoi modificare il comando "ipsec up" includendo l'opzione "--cert" seguita dal percorso del file del certificato.
+- Il comando "ip xfrm policy list" può essere usato per controllare se il traffico tra Alice e Bob è indirizzato attraverso il tunnel IPsec.
+* Se la connessione viene stabilita con successo, ma il traffico non è cifrato, dovresti controllare che su Bob il file "/etc/ipsec.conf" abbia il parametro "type" impostato a "start" per la connessione "host-host".
+* Per assicurare che la connessione IPsec sia ristabilita automaticamente dopo un riavvio, dovresti modificare il file "/etc/ipsec.conf" sia su Alice che su Bob per includere la riga "auto=start" all'interno della definizione della connessione.
+- Se vuoi proteggere solo il traffico TCP, devi aggiungere una riga con il parametro "proto tcp" al comando "ip xfrm state add".
+%

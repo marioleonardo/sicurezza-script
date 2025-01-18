@@ -1,4 +1,111 @@
-// question: 1  name: Quali fasi compongono l’handshake TLS?
+// question: 1  name: Quali affermazioni riguardanti la crittografia a stream sono corrette?
+// [tag:crypto] [tag: stream] [tag: simmetrica] 
+::Quali affermazioni riguardanti la crittografia a stream sono corrette?::[html]<p><strong>Quali affermazioni riguardanti la crittografia a stream sono corrette?</strong></p>{
+	~[moodle]Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
+	~[moodle]Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
+	~[moodle]Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
+	~%50.00000%[moodle]Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
+	~[moodle]Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
+	~[moodle] L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
+	~%50.00000%[moodle]Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+}
+
+// question: 2  name: Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?
+// [tag:crypto] [tag: autenticazione] [tag: chiavi] [tag: tls] 
+::Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?::[html]<p><strong>Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?</strong></p>{
+	~%50.00000%[moodle]Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
+	~%50.00000%[moodle]Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
+	~[moodle]I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
+	~[moodle]I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
+	~[moodle]TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
+}
+
+// question: 3  name: Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: 
+// [tag:cms] [tag:crittografia] [tag:struttura] [tag:firma digitale] [tag:sicurezza] 
+::Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura CMS sono vere: </strong></p>{
+	~[moodle] CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+	~%50.00000%[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+	~%50.00000%[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+	~[moodle] La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+	~[moodle] La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+	~[moodle] CMS supporta solo un singolo destinatario per i messaggi crittografati.
+}
+
+// question: 4  name: Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?
+// [tag:ids] [tag: firewall] [tag: reti] 
+::Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?::[html]<p><strong>Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?</strong></p>{
+	~%33.33333%[moodle]Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
+	~%33.33333%[moodle]Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
+	~[moodle]Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
+	~%33.33333%[moodle]Utilizzare un sistema SIEM per correlare i log dell’IDS e del firewall, permettendo un’analisi approfondita.
+	~[moodle]Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
+	####[moodle]Ripetere IDS, Firewall e SIEM [Slide 9]
+}
+
+// question: 5  name: Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?
+// [tag:analisi dei rischi] [tag: firewall] [tag: GDPR] 
+::Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?::[html]<p><strong>Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?</strong></p>{
+	~%33.33333%[moodle]Il firewall deve bloccare il traffico non autorizzato e registrare i tentativi di accesso.
+	~%33.33333%[moodle]La configurazione del firewall deve essere documentata come parte delle misure di sicurezza adottate.
+	~[moodle]Il GDPR richiede che i log del firewall includano i dati personali completi degli utenti per scopi di verifica (deep packet inspection).
+	~%33.33333%[moodle]Il firewall deve essere aggiornato regolarmente per proteggere i dati personali da attacchi noti.
+	~[moodle]L'uso di un firewall e la sua corretta configurazione rendono superfluo adottare ulteriori misure di sicurezza per proteggere i dati personali.
+	####[moodle]La configurazione del firewall deve essere documentata: Per una gestione efficace della sicurezza e per garantire la continuità operativa in caso di problemi.
+	Il firewall deve essere aggiornato regolarmente: Per proteggere i sistemi da vulnerabilità note e nuove minacce.
+}
+
+// question: 6  name: Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?
+// [tag:diffiehellman] [tag: asimmetrica] 
+::Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?</strong></p>{
+	~%50.00000%[moodle]Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
+	~%50.00000%[moodle]La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
+	~[moodle]Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
+	~[moodle]La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+}
+
+// question: 7  name: Alice sta configurando il firewall aziendale per soddisfare gli standard ISO/IEC 27001 relativi alla sicurezza delle informazioni. Quali delle seguenti azioni sono coerenti con i requisiti dello standard?
+// [tag:certificazioni] [tag: standard] [tag: firewall] 
+::Alice sta configurando il firewall aziendale per soddisfare gli standard ISO/IEC 27001 relativi alla sicurezza delle informazioni. Quali delle seguenti azioni sono coerenti con i requisiti dello standard?::[html]<p><strong>Alice sta configurando il firewall aziendale per soddisfare gli standard ISO/IEC 27001 relativi alla sicurezza delle informazioni. Quali delle seguenti azioni sono coerenti con i requisiti dello standard?</strong></p>{
+	~%33.33333%[moodle]Implementare regole per limitare l’accesso ai server critici solo a indirizzi IP autorizzati.
+	~%33.33333%[moodle]Documentare e aggiornare regolarmente le regole del firewall per garantire conformità agli standard.
+	~[moodle]Impostare il firewall per registrare i tentativi di connessione riusciti, ignorando quelli bloccati.
+	~%33.33333%[moodle]Effettuare revisioni periodiche delle configurazioni del firewall come parte dell’audit di sicurezza.
+	~[moodle]Configurare il firewall per accettare tutto il traffico proveniente da dispositivi certificati ISO/IEC 27001, eliminando ulteriori controlli.
+	####[moodle]Ripetere gestione regole firewall e audit di sicurezza [Slide 09, Slide 10]
+}
+
+// question: 8  name: Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: 
+// [tag:sicurezza] [tag: messaggi] [tag: TLS] [tag: riservatezza] [tag: integrità] [tag: autenticazione] 
+::Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: </strong></p>{
+	~%33.33333%[moodle] Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
+	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
+	~%33.33333%[moodle] Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
+	~%33.33333%[moodle] L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
+	~[moodle] S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
+}
+
+// question: 9  name: Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: 
+// [tag:spam] [tag:email] [tag:blacklisting] [tag:greylisting] [tag:sicurezza] 
+::Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere: </strong></p>{
+	~%20.00000%[moodle] Lo spam si riferisce a email di massa non richieste, spesso di natura commerciale.
+	~%20.00000%[moodle] Una tattica comune degli spammer è quella di nascondere la vera identità del mittente e falsificare le intestazioni delle email.
+	~%20.00000%[moodle] Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
+	~%20.00000%[moodle] Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+	~%20.00000%[moodle] Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+	~[moodle] Blacklist e Greylisting vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+}
+
+// question: 10  name: Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?
+// [tag:tls] [tag: sicurezza] 
+::Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?::[html]<p><strong>Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?</strong></p>{
+	~%50.00000%[moodle]In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
+	~[moodle]TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
+	~[moodle]Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
+	~[moodle]Entrambi mantengono un canale sicuro dall’inizio della connessione.
+	~%50.00000%[moodle]STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
+}
+
+// question: 11  name: Quali fasi compongono l’handshake TLS?
 // [tag:fasi] [tag:tls] 
 ::Quali fasi compongono l’handshake TLS?::[html]<p><strong>Quali fasi compongono l’handshake TLS?</strong></p>{
 	~%25.00000%[moodle]Negoziazione dei parametri di cifratura.
@@ -7,98 +114,5 @@
 	~[moodle]Trasferimento di file tramite HTTP.
 	~[moodle]Utilizzo del protocollo IKE per la gestione delle SA.
 	~%25.00000%[moodle]Scambio di una Server Challenge Request/Response.
-}
-
-// question: 2  name: Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?
-// [tag:crypto] [tag: rsa] [tag: asimmetrica] [tag: autenticazione] 
-::Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?::[html]<p><strong>Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?</strong></p>{
-	~%50.00000%[moodle]Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
-	~%50.00000%[moodle]Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
-	~[moodle]Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
-	~[moodle]Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
-	~[moodle]Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
-}
-
-// question: 3  name: Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?
-// [tag:hash] [tag: funzioni di hash] [tag: crypto] 
-::Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?</strong></p>{
-	~%50.00000%[moodle]Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
-	~%50.00000%[moodle]Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
-	~[moodle]Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
-	~[moodle]L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
-	~[moodle]Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
-}
-
-// question: 4  name: Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?
-// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
-::Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?</strong></p>{
-	~%50.00000%[moodle]AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
-	~%50.00000%[moodle]AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
-	~[moodle]AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
-	~[moodle]AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
-}
-
-// question: 5  name: Quale ruolo svolge il protocollo IKE in IPsec?
-// [tag:ipsec] [tag:ike] [tag:sicurezza ] [tag:autenticazione] 
-::Quale ruolo svolge il protocollo IKE in IPsec?::[html]<p><strong>Quale ruolo svolge il protocollo IKE in IPsec?</strong></p>{
-	~%33.33333%[moodle]Negoziazione dei parametri di sicurezza tra i peer.
-	~%33.33333%[moodle]Gestione delle chiavi crittografiche.
-	~[moodle]Fornisce cifratura end-to-end per i dati.
-	~[moodle]Configura le policy DNS per la risoluzione dei peer.
-	~[moodle]Crea AH header e trailer.
-	~%33.33333%[moodle]Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
-}
-
-// question: 6  name: Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?
-// [tag:firewall] [tag: configurazione] [tag: reti] 
-::Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?::[html]<p><strong>Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?</strong></p>{
-	~%33.33333%[moodle]Impostare una regola che accetti solo connessioni in uscita con destinazione porta 443 e stato "NEW".
-	~%33.33333%[moodle]Configurare una regola che consenta il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni.
-	~[moodle]Impostare una regola per consentire tutte le connessioni in uscita indipendentemente dalla porta.
-	~[moodle]Bloccare tutto il traffico in entrata, incluso il traffico correlato.
-	~%33.33333%[moodle]Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite.
-}
-
-// question: 7  name: In quale scenario è più appropriato utilizzare TLS anziché IPsec?
-// [tag:ipsec] 
-::In quale scenario è più appropriato utilizzare TLS anziché IPsec?::[html]<p><strong>In quale scenario è più appropriato utilizzare TLS anziché IPsec?</strong></p>{
-	~%33.33333%[moodle]Comunicazioni tra un server e dei client non noti a priori.
-	~%33.33333%[moodle]Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
-	~[moodle]Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
-	~%33.33333%[moodle]In un’app mobile per accedere ad un server FTP.
-}
-
-// question: 8  name: Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?
-// [tag:ipsec] [tag: sicurezza] 
-::Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?::[html]<p><strong>Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?</strong></p>{
-	~%33.33333%[moodle]Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
-	~%33.33333%[moodle]Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
-	~[moodle]Disabilitare il supporto a TLS 1.3.
-	~[moodle]Usare IPsec solo in transport mode.
-	~[moodle]Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
-	~%33.33333%[moodle]Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
-	~[moodle]Usare sempre e solo AH in IPsec.
-	~[moodle]Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
-}
-
-// question: 9  name: Quali affermazioni sulla crittografia sono corrette?
-// [tag:crypto] [tag: simmetrica] [tag: asimmetrica] 
-::Quali affermazioni sulla crittografia sono corrette?::[html]<p><strong>Quali affermazioni sulla crittografia sono corrette?</strong></p>{
-	~[moodle]La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
-	~%25.00000%[moodle]La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
-	~%25.00000%[moodle]La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
-	~%25.00000%[moodle]La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
-	~[moodle]Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
-	~%25.00000%[moodle]​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
-}
-
-// question: 10  name: Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?
-// [tag:firewall] [tag: ids] [tag: sicurezza] 
-::Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?::[html]<p><strong>Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?</strong></p>{
-	~%50.00000%[moodle]Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
-	~%50.00000%[moodle]Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
-	~[moodle]Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
-	~[moodle]Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
-	~%50.00000%[moodle]Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
 }
 

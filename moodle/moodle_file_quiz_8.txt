@@ -1,0 +1,95 @@
+// question: 1  name: Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?
+// [tag:firewall] [tag: vulnerabilità] [tag: reti] 
+::Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?::[html]<p><strong>Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?</strong></p>{
+	~%33.33333%[moodle]Impostare una regola per bloccare i pacchetti con flag incoerenti.
+	~%33.33333%[moodle]Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
+	~[moodle]Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
+	~[moodle]Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
+	~%33.33333%[moodle]Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
+	####[moodle]Firewall [Slide 9]
+}
+
+// question: 2  name: Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?
+// [tag:crypto] [tag: simmetrica] 
+::Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?</strong></p>{
+	~%50.00000%[moodle]La crittografia simmetrica richiede una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati.
+	~%50.00000%[moodle]Gli algoritmi simmetrici come AES sono generalmente più efficienti di quelli asimmetrici per grandi volumi di dati.
+	~[moodle]La distribuzione sicura delle chiavi nella crittografia simmetrica è facilmente risolvibile senza l’uso di ulteriori protocolli.
+	~[moodle]Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
+}
+
+// question: 3  name: indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: 
+// [tag:ipsec] [tag:tls] [tag:ike] 
+::indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: ::[html]<p><strong>indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: </strong></p>{
+	~[moodle] L'opzione “-CAfile” nel comando “openssl s_client” specifica il file contenente la chiave privata del client.
+	~%33.33333%[moodle] L'opzione “-cipher” in “openssl s_client” ti permette di specificare la lista di ciphersuite che il client dovrebbe usare.
+	~[moodle] Per abilitare l'autenticazione del client in una configurazione Apache TLS, devi cambiare la direttiva “SSLVerifyClient” in “require”.
+	~%33.33333%[moodle] Il comando “openssl rsa -in client_pkey.pem -out client_decrypted_pkey.pem” può essere usato per decriptare una chiave privata RSA.
+	~[moodle] Per catturare il traffico durante un attacco MITM con "ettercap" su una connessione TLS, devi prima usare “openssl” per generare un certificato valido firmato da una CA di fiducia.
+	~%33.33333%[moodle] Il comando "ipsec up host-host" è usato per iniziare una connessione IKE definita in "ipsec.conf" come una connessione chiamata "host-host"
+	####[moodle]Rivedere materiale laboratorio riguardo Ipsec e TLS
+}
+
+// question: 4  name: Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?
+// [tag:ids] 
+::Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?::[html]<p><strong>Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?</strong></p>{
+	~%33.33333%[moodle]Regolare la soglia di rilevamento dell'IDS per ridurre i falsi positivi.
+	~%33.33333%[moodle]Analizzare i log storici per identificare pattern normali e aggiornare i profili di base.
+	~%33.33333%[moodle]Aggiornare le firme o il modello di rilevamento dell’IDS  per migliorare l’accuratezza del sistema.
+	~[moodle]Disabilitare temporaneamente l'IDS fino a quando il problema non viene risolto.
+	~[moodle]Configurare l'IDS per ignorare completamente gli alert dell’IDS relativi al server critico.
+	####[moodle]Ripetere IDS [Slide 9]
+}
+
+// question: 5  name: Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?
+// [tag:firewall] [tag: configurazione] [tag: reti] 
+::Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?::[html]<p><strong>Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?</strong></p>{
+	~%33.33333%[moodle]Impostare una regola che accetti solo connessioni in uscita verso destinazione porta 443 con stato “NEW” e sorgente interna, e bloccare connessioni con porte diverse.
+	~%33.33333%[moodle]Configurare una regola che consenta esclusivamente il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni per completare le risposte HTTPS.
+	~[moodle]Bloccare tutto il traffico in ingresso e in uscita, inclusi i pacchetti correlati (RELATED, ESTABLISHED), come misura di sicurezza predefinita.
+	~[moodle]Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite, e ALLOW per le connessioni in ingresso.
+	~%33.33333%[moodle]Consentire connessioni HTTPS in uscita e configurare una regola per registrare (log) i pacchetti bloccati al fine di monitorare tentativi di connessione non autorizzati.
+	####[moodle]Laboratorio 4
+}
+
+// question: 6  name: Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?3<br>*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme di attacco.<br>*Un IDS basato su anomalie combinato con un firewall che includa componenti stateful.<br>-Un IDS configurato per monitorare i log del traffico HTTPS.<br>-Una combinazione di proxy server (screened subnet) ma è rischioso collegarlo a sistema di rilevamento attivo.<br>*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.<br>#Ripetere IDS [Slide 9]<br>%<br><br>$ipsec, retecore<br>Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?
+// [tag:ids] 
+::Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?3<br>*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme di attacco.<br>*Un IDS basato su anomalie combinato con un firewall che includa componenti stateful.<br>-Un IDS configurato per monitorare i log del traffico HTTPS.<br>-Una combinazione di proxy server (screened subnet) ma è rischioso collegarlo a sistema di rilevamento attivo.<br>*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.<br>#Ripetere IDS [Slide 9]<br>%<br><br>$ipsec, retecore<br>Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?::[html]<p><strong>Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?3<br>*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme di attacco.<br>*Un IDS basato su anomalie combinato con un firewall che includa componenti stateful.<br>-Un IDS configurato per monitorare i log del traffico HTTPS.<br>-Una combinazione di proxy server (screened subnet) ma è rischioso collegarlo a sistema di rilevamento attivo.<br>*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.<br>#Ripetere IDS [Slide 9]<br>%<br><br>$ipsec, retecore<br>Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?</strong></p>{
+	~%33.33333%[moodle]Configurare la modalità Transport anziché Tunnel per traffico specifico.
+	~[moodle]Utilizzare algoritmi di hashing più complessi come SHA-512.
+	~[moodle]Abilitare il rinnovo delle chiavi con IKE ogni 10 pacchetti.
+	~%33.33333%[moodle]Ottimizzare i percorsi di instradamento per ridurre i ritardi.
+	~%33.33333%[moodle]Usare solo ESP per Autenticazione e confidenzialità invece di usare anche AH.
+	~%33.33333%[moodle]Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
+}
+
+// question: 7  name: Quali delle seguenti sono tecniche di crittografia simmetrica?
+// [tag:simmetrica] 
+::Quali delle seguenti sono tecniche di crittografia simmetrica?::[html]<p><strong>Quali delle seguenti sono tecniche di crittografia simmetrica?</strong></p>{
+	~%50.00000%[moodle]AES (Advanced Encryption Standard)
+	~%50.00000%[moodle]DES (Data Encryption Standard)
+	~[moodle]RSA
+	~[moodle]ECC (Elliptic Curve Cryptography)
+	~[moodle]Elgamal
+}
+
+// question: 8  name: Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?
+// [tag:pia] [tag: analisi] 
+::Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?::[html]<p><strong>Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?</strong></p>{
+	~[moodle]Il RMF fornisce un framework obbligatorio per la gestione dei rischi legati alla privacy nelle organizzazioni.
+	~%50.00000%[moodle]Il PIA include una valutazione dell’impatto sui diritti degli individui, mentre il RMF si concentra sull’impatto sui sistemi e sugli asset organizzativi.
+	~[moodle]L’output del PIA è un documento che descrive esclusivamente le vulnerabilità tecniche dei sistemi.
+	~[moodle]Il RMF prevede un monitoraggio continuo per aggiornare le strategie di mitigazione, mentre il PIA si limita a una valutazione iniziale.
+	~%50.00000%[moodle]l PIA e il RMF sono processi complementari e possono essere utilizzati insieme in un’organizzazione.
+}
+
+// question: 9  name: Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?
+// [tag:pia] [tag: analisi] 
+::Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?::[html]<p><strong>Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?</strong></p>{
+	~%33.33333%[moodle]Il PIA è obbligatorio quando il trattamento dei dati personali comporta rischi elevati per i diritti e le libertà degli interessati.
+	~[moodle]Il PIA si occupa esclusivamente di proteggere gli asset fisici e digitali di un’organizzazione.
+	~[moodle]L’analisi dei rischi del RMF si applica solo ai dati personali.
+	~%33.33333%[moodle]Entrambi i processi prevedono una fase di identificazione dei rischi e delle contromisure.
+	~%33.33333%[moodle]Il PIA richiede un coinvolgimento diretto dei rappresentanti legali e degli interessati.
+}
+

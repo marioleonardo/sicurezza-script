@@ -1,0 +1,133 @@
+
+$tls,certificati
+_Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?2
+*RSA
+-DES
+-X.509
+-AES
+-SHA (utilizzato solo come hash ma non per l'autenticazione)
+*AEAD nell’ultima versione di TLS
+%
+
+$firewall, architettura, sicurezza
+_Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?3
+*Isolamento dei server pubblici dato il divieto di accesso diretto alla rete interna.
+*Facilità di applicazione di policy di sicurezza specifiche per ciascun segmento di rete.
+-Maggiore velocità di trasmissione rispetto a un firewall con DMZ singola.
+-I server nella DMZ possono comunicare direttamente con la rete interna senza ulteriori configurazioni.
+*Possibilità di monitorare e analizzare il traffico verso i server pubblici senza esporre la rete interna.
+#Ripetere Firewall [Slide 9]
+%
+
+$firewall, configurazione, iptables
+__Alice ha configurato il firewall del suo server con le seguenti regole:
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT  
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT  
+iptables -P INPUT DROP  
+
+Quali dei seguenti comportamenti sono veri?_3
+*Il server accetta connessioni SSH sulla porta 22 e HTTP sulla porta 80.
+*Qualsiasi connessione in ingresso su altre porte verrà bloccata, inclusi i ping.
+-Alice può accedere da remoto al server tramite SSH solo se si trova nella stessa rete locale.
+*Le risposte alle connessioni HTTP stabilite dal server non sono influenzate da queste regole.
+-Le regole configurate garantiscono automaticamente protezione contro attacchi DoS.
+#Laboratorio 4
+%
+
+$algoritmi, crypto, simmetrica
+_Quali delle seguenti affermazioni su RC4 e AES sono vere?2
+*RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
+*AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
+-RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
+-AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
+-Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
+%
+
+$asimmetrica
+_Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?2
+*Una chiave pubblica che può essere usata per cifrare i dati.
+-Una chiave privata che può essere usata solo per decifrare i dati.
+-Le chiavi pubbliche e private per alcuni algoritmi sono identiche.
+-Una chiave asimmetrica condivisa tra mittente e destinatario.
+-Una chiave di sessione generata casualmente.
+*Due chiavi matematicamente legate da un problema matematico.
+%
+
+$ipsec, sicurezza
+_Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
+*Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
+*Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
+-Disabilitare il supporto a TLS 1.3.
+-Usare IPsec solo in transport mode.
+-Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
+*Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
+-Usare sempre e solo AH in IPsec.
+-Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
+%
+
+$ah, ipsec
+_Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?2
+*AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
+*AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
+-AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
+-AH richiede un certificato digitale per autenticare gli utenti.
+-AH supporta Perfect Forward Secrecy come ESP.
+%
+
+$hash, funzioni di hash, crypto
+_Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?2
+*Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
+*Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
+-Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
+-L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
+-Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
+%
+
+$ipsec,tls,ike
+_Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette:4
+- Il comando "ip xfrm state flush" è usato per cancellare il Database delle Politiche di Sicurezza (SPD).
+* Il comando "ip xfrm policy list" mostra le politiche di sicurezza IPsec correnti.
+* Il comando "ipsec start" è usato per avviare il demone strongSwan.
+- Dopo aver modificato il file "/etc/ipsec.conf", devi usare il comando "ipsec update" perché le modifiche abbiano effetto immediatamente.
+* Il comando "openssl s_server -www" avvia un semplice server TLS che mostra le informazioni di connessione in formato HTML.
+- In una VPN IPsec site-to-site, ogni gateway necessita solo di una singola Associazione di Sicurezza (SA) per gestire il traffico in entrambe le direzioni.
+* Per usare certificati con strongSwan devi posizionare il certificato CA nella directory "/etc/ipsec.d/cacerts"
+#Rivedere materiale laboratorio riguardo Ipsec e TLS
+%
+
+$firewall, iptables, configurazione
+__Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  *      *       IP-Alice             0.0.0.0/0           tcp dpt:80
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP-Alice            tcp spt:80
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Frank ha configurato il firewall eseguendo i seguenti comandi:
+iptables -P FORWARD DROP
+iptables -A FORWARD -p tcp -s IP-Alice --dport 80 -j ACCEPT 
+iptables -A FORWARD -p tcp -d IP-Alice --sport 80 -j ACCEPT
+
+Seleziona le affermazioni corrette:_2
+-Alice può collegarsi solo al server web di Bob
+-Bob può collegarsi al server web di Alice con qualunque porta
+*Ogni pacchetto TCP inviato a Frank da Alice viene automaticamente inoltrato a Bob se la porta di destinazione è 80
+-Bob non può inviare richieste HTTP verso qualsiasi server web esterno, ma solo verso Alice
+*Qualsiasi altro tipo di traffico (sia in ingresso che in uscita) tra Bob e Alice viene bloccato dalla policy DROP della chain FORWARD.
+#Laboratorio 4
+%
+
+$standard, sicurezza, analisi dei rischi
+_Alice sta implementando un sistema di gestione della sicurezza delle informazioni (ISMS) conforme alla ISO/IEC 27001. Quali delle seguenti affermazioni sono corrette?_3
+*Un ISMS efficace deve essere basato su un’analisi dei rischi documentata e continuamente aggiornata.
+*La certificazione ISO/IEC 27001 implica che l'organizzazione sia in grado di gestire correttamente i rischi associati alle informazioni sensibili.
+-La conformità alla ISO/IEC 27001 garantisce protezione contro le vulnerabilità software.
+*La scelta delle misure di sicurezza deve tenere conto del contesto aziendale e delle esigenze specifiche dei processi.
+-Si può evitare di aggiornare l’analisi dei rischi se l’organizzazione implementa tutte le misure idonee identificate durante il processo di certificazione.
+#Ripetere Standard e Certificazioni [Slide 10]
+%

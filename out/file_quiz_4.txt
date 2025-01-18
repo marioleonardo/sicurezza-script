@@ -1,4 +1,101 @@
 
+$crypto, stream, simmetrica
+_Quali affermazioni riguardanti la crittografia a stream sono corrette?2
+-Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
+-Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
+-Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
+*Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
+-Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
+- L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
+*Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+%
+
+$crypto, autenticazione, chiavi, tls
+_Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?2
+*Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
+*Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
+-I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
+-I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
+-TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
+%
+
+$cms,crittografia,struttura,firma digitale,sicurezza
+_Indica quali delle seguenti affermazioni sulla struttura CMS sono vere:2
+- CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+* La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+* La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+- La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+- La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+- CMS supporta solo un singolo destinatario per i messaggi crittografati.
+%
+
+$ids, firewall, reti
+_Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?3
+*Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
+*Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
+-Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
+*Utilizzare un sistema SIEM per correlare i log dell’IDS e del firewall, permettendo un’analisi approfondita.
+-Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
+#Ripetere IDS, Firewall e SIEM [Slide 9]
+%
+
+$analisi dei rischi, firewall, GDPR
+_Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?3
+*Il firewall deve bloccare il traffico non autorizzato e registrare i tentativi di accesso.
+*La configurazione del firewall deve essere documentata come parte delle misure di sicurezza adottate.
+-Il GDPR richiede che i log del firewall includano i dati personali completi degli utenti per scopi di verifica (deep packet inspection).
+*Il firewall deve essere aggiornato regolarmente per proteggere i dati personali da attacchi noti.
+-L'uso di un firewall e la sua corretta configurazione rendono superfluo adottare ulteriori misure di sicurezza per proteggere i dati personali.
+#La configurazione del firewall deve essere documentata: Per una gestione efficace della sicurezza e per garantire la continuità operativa in caso di problemi.
+#Il firewall deve essere aggiornato regolarmente: Per proteggere i sistemi da vulnerabilità note e nuove minacce.
+%
+
+$diffiehellman, asimmetrica
+_Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
+*Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
+*La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
+-Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
+-La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+%
+
+$certificazioni, standard, firewall
+_Alice sta configurando il firewall aziendale per soddisfare gli standard ISO/IEC 27001 relativi alla sicurezza delle informazioni. Quali delle seguenti azioni sono coerenti con i requisiti dello standard?3
+*Implementare regole per limitare l’accesso ai server critici solo a indirizzi IP autorizzati.
+*Documentare e aggiornare regolarmente le regole del firewall per garantire conformità agli standard.
+-Impostare il firewall per registrare i tentativi di connessione riusciti, ignorando quelli bloccati.
+*Effettuare revisioni periodiche delle configurazioni del firewall come parte dell’audit di sicurezza.
+-Configurare il firewall per accettare tutto il traffico proveniente da dispositivi certificati ISO/IEC 27001, eliminando ulteriori controlli.
+#Ripetere gestione regole firewall e audit di sicurezza [Slide 09, Slide 10]
+%
+
+$sicurezza, messaggi, TLS, riservatezza, integrità, autenticazione
+_Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere:3
+* Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
+- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
+* Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
+* L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
+- S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
+%
+
+$spam,email,blacklisting,greylisting,sicurezza
+_Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere:5
+* Lo spam si riferisce a email di massa non richieste, spesso di natura commerciale.
+* Una tattica comune degli spammer è quella di nascondere la vera identità del mittente e falsificare le intestazioni delle email.
+* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
+* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+- Blacklist e Greylisting vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+%
+
+$tls, sicurezza
+_Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?2
+*In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
+-TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
+-Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
+-Entrambi mantengono un canale sicuro dall’inizio della connessione.
+*STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
+%
+
 $fasi,tls
 _Quali fasi compongono l’handshake TLS?4
 *Negoziazione dei parametri di cifratura.
@@ -7,88 +104,4 @@ _Quali fasi compongono l’handshake TLS?4
 -Trasferimento di file tramite HTTP.
 -Utilizzo del protocollo IKE per la gestione delle SA.
 *Scambio di una Server Challenge Request/Response.
-%
-
-$crypto, rsa, asimmetrica, autenticazione
-_Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?2
-*Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
-*Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
--Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
--Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
--Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
-%
-
-$hash, funzioni di hash, crypto
-_Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?2
-*Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
-*Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
--Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
--L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
--Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
-%
-
-$algoritmi, crypto, simmetrica
-_Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?2
-*AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
-*AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
--AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
--AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
-%
-
-$ipsec,ike,sicurezza ,autenticazione
-_Quale ruolo svolge il protocollo IKE in IPsec?3
-*Negoziazione dei parametri di sicurezza tra i peer.
-*Gestione delle chiavi crittografiche.
--Fornisce cifratura end-to-end per i dati.
--Configura le policy DNS per la risoluzione dei peer.
--Crea AH header e trailer.
-*Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
-%
-
-$firewall, configurazione, reti
-_Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?3
-*Impostare una regola che accetti solo connessioni in uscita con destinazione porta 443 e stato "NEW".
-*Configurare una regola che consenta il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni.
--Impostare una regola per consentire tutte le connessioni in uscita indipendentemente dalla porta.
--Bloccare tutto il traffico in entrata, incluso il traffico correlato.
-*Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite.
-%
-
-$ipsec
-_In quale scenario è più appropriato utilizzare TLS anziché IPsec?3
-*Comunicazioni tra un server e dei client non noti a priori.
-*Protezione dei dati scambiati tra embedded devices il cui indirizzo IP non è noto.
--Implementazione di una VPN site-to-site dove la sicurezza è critica e i gateway sono noti.
-*In un’app mobile per accedere ad un server FTP.
-%
-
-$ipsec, sicurezza
-_Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
-*Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
-*Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
--Disabilitare il supporto a TLS 1.3.
--Usare IPsec solo in transport mode.
--Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
-*Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
--Usare sempre e solo AH in IPsec.
--Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
-%
-
-$crypto, simmetrica, asimmetrica
-_Quali affermazioni sulla crittografia sono corrette?4
--La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
-*La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
-*La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
-*La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
--Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
-*​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
-%
-
-$firewall, ids, sicurezza
-_Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?2
-*Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
-*Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
--Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
--Configurare solo un firewall stateless e fare affidamento esclusivo su aggiornamenti delle regole.
-*Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
 %
