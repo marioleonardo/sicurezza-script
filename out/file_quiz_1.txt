@@ -1,84 +1,61 @@
 
-$tls, vulnerabilità,
-_Quali vulnerabilità sono associate a una configurazione TLS debole?3
-*Uso di algoritmi deboli come MD5 per hash.
-*Mancato controllo della revoca del certificato.
--Uso di session resumption per ottimizzare le prestazioni.
-*Supporto a TLS 1.0 o SSL 3.0.
--Supporto a TLS 1.3
+$standard, sicurezza, analisi dei rischi
+_Alice sta implementando un sistema di gestione della sicurezza delle informazioni (ISMS) conforme alla ISO/IEC 27001. Quali delle seguenti affermazioni sono corrette?_3
+*Un ISMS efficace deve essere basato su un’analisi dei rischi documentata e continuamente aggiornata.
+*La certificazione ISO/IEC 27001 implica che l'organizzazione sia in grado di gestire correttamente i rischi associati alle informazioni sensibili.
+-La conformità alla ISO/IEC 27001 garantisce protezione contro le vulnerabilità software.
+*La scelta delle misure di sicurezza deve tenere conto del contesto aziendale e delle esigenze specifiche dei processi.
+-Si può evitare di aggiornare l’analisi dei rischi se l’organizzazione implementa tutte le misure idonee identificate durante il processo di certificazione.
+#Ripetere Standard e Certificazioni [Slide 10]
 %
 
-$firewall, certificazioni, GDPR
-_Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?3
-*Configurare il firewall per registrare i log tecnici necessari alla sicurezza della rete, assicurandosi che siano conservati per un periodo proporzionato e con scopo dichiarato
--Impostare una regola per registrare tutti i dettagli del traffico, inclusi dati personali, per un periodo illimitato
-*Implementare politiche di accesso basate su principi di "least privilege" per ridurre l'accesso non necessario ai log del firewall
-*Utilizzare un SIEM (Security Information and Event Management) per analizzare i log generati, rispettando le normative sulla gestione dei dati personali.
--Consentire il traffico in entrata su tutte le porte per facilitare la trasparenza delle comunicazioni.
-#Ripetere GDPR [Slide 13]
+$tls, sicurezza
+_Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?2
+*In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
+-TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
+-Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
+-Entrambi mantengono un canale sicuro dall’inizio della connessione.
+*STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
 %
 
-$crypto, simmetrica
-_Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?2
-*Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
-*In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
--Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
--Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
--Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
+$crypto, simmetrica, asimmetrica
+_Quali affermazioni sulla crittografia sono corrette?4
+-La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
+*La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
+*La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
+*La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
+-Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
+*​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
 %
 
-$esp, ipsec
-_Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
-*ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
-*ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
--ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
--ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
--ESPv3+ non può essere utilizzato insieme al protocollo AH.
+$pia, analisi
+_Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?3
+*Il PIA è obbligatorio quando il trattamento dei dati personali comporta rischi elevati per i diritti e le libertà degli interessati.
+-Il PIA si occupa esclusivamente di proteggere gli asset fisici e digitali di un’organizzazione.
+-L’analisi dei rischi del RMF si applica solo ai dati personali.
+*Entrambi i processi prevedono una fase di identificazione dei rischi e delle contromisure.
+*Il PIA richiede un coinvolgimento diretto dei rappresentanti legali e degli interessati.
 %
 
-$firewall
-_indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette:4
-* Netfilter/IPtables è un software che fornisce funzionalità di manipolazione e filtraggio di pacchetti IP all'interno del kernel Linux.
--La catena INPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena OUTPUT gestisce i pacchetti in ingresso.
-* La politica di default di una catena IPtables determina l'azione intrapresa se nessuna regola nella catena corrisponde al pacchetto.
--Il comando "iptables -F" elimina tutte le regole nella catena specificata e ripristina automaticamente la politica di default della catena a ACCEPT.e una singola macchina.
-- In uno stateless packet filter, la regola "iptables -A FORWARD -p tcp -s IP-Alice --sport 80 --dport 22 -j ACCEPT" permette ad Alice di navigare su qualsiasi sito web esterno, a patto che la destinazione sia la porta 80.
-- Con uno stateless packet filter, la porta sorgente 80 può essere utilizzata da Bob per instaurare una connessione verso Alice se è presente una regola che accetta pacchetti con porta sorgente 80. Uno stateful packet filter, invece, può distinguere tra connessioni in entrata e in uscita.
-* Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
-*La catena OUTPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena INPUT gestisce i pacchetti in ingresso.
-#Ripetere Netfilter/IPtables e configurazioni base [Lab 04, Slide 09]
+$dnssec,hash,certificati,greylisting,attacchi,sicurezza,email
+_Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere:5
+* La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
+* L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
+- Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
+- Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
+* Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
+* Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
+* Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
 %
 
-$analisi dei rischi, firewall, DMZ
-_Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?3
-*Configurare il firewall per consentire solo traffico specifico verso i server pubblici che intende posizionare nella DMZ.
-*Implementare un IDS per monitorare il traffico in entrata e in uscita dalla DMZ.
--Impostare regole per consentire traffico diretto dalla DMZ alla rete interna senza restrizioni.
-*Eseguire test di penetrazione regolari per identificare vulnerabilità nei server della DMZ.
--Registrare tutti i dettagli del traffico, inclusi dati personali, senza limiti di tempo.
-#Ripetere Firewall [Slide 9], DMZ [Slide 9]
-%
-
-$firewall
-_Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?4
-*I firewall packet filter operano a livello di rete (L3) e ispezionano l'header di ogni pacchetto IP.  
--I circuit-level gateway esaminano il contenuto dei pacchetti a livello applicativo per identificare e bloccare minacce specifiche.  
-*Un proxy application-aware capisce il protocollo applicativo e può quindi applicare regole di sicurezza più specifiche.  
--I packet filter con funzioni di stateful inspection hanno prestazioni significativamente inferiori rispetto ai packet filter stateless a causa della maggiore complessità.  
-*Un WAF è un tipo specifico di firewall progettato per proteggere le applicazioni web da attacchi come SQL injection e cross-site scripting.
--I componenti di firewall che operano a livello di trasporto (L4) possono autenticare gli utenti direttamente basandosi sulle informazioni contenute nei pacchetti TCP/UDP senza richiedere modifiche alle applicazioni.  
-*I componenti di firewall che operano usando il protocollo SOCKS creano un "circuito" a livello di trasporto tra client e server, senza necessariamente ispezionare il contenuto dei dati applicativi.  
-#Ripetere tipologie e funzionamento dei firewall (L3, L4, proxy, WAF) [Slide 9 e 10]
-%
-
-$ipsec,ike,sicurezza autenticazione
-_Quale ruolo svolge il protocollo IKE in IPsec?3
-*Negoziazione dei parametri di sicurezza tra i peer.
-*Gestione delle chiavi crittografiche.
--Fornisce cifratura end-to-end per i dati.
--Configura le policy DNS per la risoluzione dei peer.
--Crea AH header e trailer.
-*Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
+$ids, firewall, reti
+_Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?3
+*Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
+*Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
+-Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
+*Utilizzare un sistema SIEM per correlare i log dell’IDS e del firewall, permettendo un’analisi approfondita.
+-Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
+#Ripetere IDS, Firewall e SIEM [Slide 9]
 %
 
 $email,protocollo,mta,msa,mua,smtp,tls
@@ -93,20 +70,47 @@ _Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della
 %
 
 $firewall, configurazione, iptables
-_Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?3
-*iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-*iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-*iptables -P INPUT DROP
--iptables -P OUTPUT ACCEPT
--iptables -A FORWARD -j ACCEPT
+__Alice ha configurato il firewall del suo server con le seguenti regole:
+iptables -A INPUT -p tcp --dport 22 -j ACCEPT  
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT  
+iptables -P INPUT DROP  
+
+Quali dei seguenti comportamenti sono veri?_3
+*Il server accetta connessioni SSH sulla porta 22 e HTTP sulla porta 80.
+*Qualsiasi connessione in ingresso su altre porte verrà bloccata, inclusi i ping.
+-Alice può accedere da remoto al server tramite SSH solo se si trova nella stessa rete locale.
+*Le risposte alle connessioni HTTP stabilite dal server non sono influenzate da queste regole.
+-Le regole configurate garantiscono automaticamente protezione contro attacchi DoS.
 #Laboratorio 4
 %
 
-$ipsec, sicurezza, ah, attacchi, integrità, autenticazione
-_Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti:2
--Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
--Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
--Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
-*Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
-*IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
+$firewall
+_Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?4
+*I firewall packet filter operano a livello di rete (L3) e ispezionano l'header di ogni pacchetto IP.  
+-I circuit-level gateway esaminano il contenuto dei pacchetti a livello applicativo per identificare e bloccare minacce specifiche.  
+*Un proxy application-aware capisce il protocollo applicativo e può quindi applicare regole di sicurezza più specifiche.  
+-I packet filter con funzioni di stateful inspection hanno prestazioni significativamente inferiori rispetto ai packet filter stateless a causa della maggiore complessità.  
+*Un WAF è un tipo specifico di firewall progettato per proteggere le applicazioni web da attacchi come SQL injection e cross-site scripting.
+-I componenti di firewall che operano a livello di trasporto (L4) possono autenticare gli utenti direttamente basandosi sulle informazioni contenute nei pacchetti TCP/UDP senza richiedere modifiche alle applicazioni.  
+*I componenti di firewall che operano usando il protocollo SOCKS creano un "circuito" a livello di trasporto tra client e server, senza necessariamente ispezionare il contenuto dei dati applicativi.  
+#Ripetere tipologie e funzionamento dei firewall (L3, L4, proxy, WAF) [Slide 9 e 10]
+%
+
+$ipsec,esp, transportmode,tunnelmode,sicurezza,funzionamento
+_Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?2
+*Transport Mode: Solo il payload del pacchetto IP è crittografato.
+*Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
+-Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
+-Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
+-Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
+-Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
+%
+
+$sicurezza, messaggi, TLS, riservatezza, integrità, autenticazione
+_Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere:3
+* Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
+- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
+* Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
+* L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
+- S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
 %

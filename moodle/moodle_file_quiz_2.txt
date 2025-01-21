@@ -1,119 +1,118 @@
-// question: 1  name: Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: 
-// [tag:dnssec] [tag:hash] [tag:certificati] [tag:greylisting] [tag:attacchi] [tag:sicurezza] [tag:email] 
-::Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: </strong></p>{
-	~%20.00000%[moodle] La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
-	~%20.00000%[moodle] L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
-	~[moodle] Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
-	~[moodle] Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
-	~%20.00000%[moodle] Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
-	~%20.00000%[moodle] Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
-	~%20.00000%[moodle] Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
+// question: 1  name: Quali delle seguenti affermazioni su RC4 e AES sono vere?
+// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
+::Quali delle seguenti affermazioni su RC4 e AES sono vere?::[html]<p><strong>Quali delle seguenti affermazioni su RC4 e AES sono vere?</strong></p>{
+	~%50.00000%[moodle]RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
+	~%50.00000%[moodle]AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
+	~[moodle]RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
+	~[moodle]AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
+	~[moodle]Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
 }
 
-// question: 2  name: Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?
-// [tag:ipsec] [tag:ah] [tag:esp] [tag:ike] [tag:sicurezza] [tag:protocollo] 
-::Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?::[html]<p><strong>Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?</strong></p>{
-	~[moodle]TCP
-	~%33.33333%[moodle]AH (Authentication Header)
-	~%33.33333%[moodle]ESP (Encapsulating Security Payload)
-	~[moodle]HTTPS
-	~[moodle]RSSA
-	~%33.33333%[moodle]IKE (Internet Key Exchange)
+// question: 2  name: Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?
+// [tag:analisi dei rischi] [tag: firewall] [tag: DMZ] 
+::Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?::[html]<p><strong>Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?</strong></p>{
+	~%33.33333%[moodle]Configurare il firewall per consentire solo traffico specifico verso i server pubblici che intende posizionare nella DMZ.
+	~%33.33333%[moodle]Implementare un IDS per monitorare il traffico in entrata e in uscita dalla DMZ.
+	~[moodle]Impostare regole per consentire traffico diretto dalla DMZ alla rete interna senza restrizioni.
+	~%33.33333%[moodle]Eseguire test di penetrazione regolari per identificare vulnerabilità nei server della DMZ.
+	~[moodle]Registrare tutti i dettagli del traffico, inclusi dati personali, senza limiti di tempo.
+	####[moodle]Ripetere Firewall [Slide 9], DMZ [Slide 9]
 }
 
-// question: 3  name: Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?
-// [tag:ipsec] [tag:esp] [tag: transportmode] [tag:tunnelmode] [tag:sicurezza] [tag:funzionamento] 
-::Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?::[html]<p><strong>Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?</strong></p>{
-	~%50.00000%[moodle]Transport Mode: Solo il payload del pacchetto IP è crittografato.
-	~%50.00000%[moodle]Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
-	~[moodle]Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
-	~[moodle]Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
-	~[moodle]Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
-	~[moodle]Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
+// question: 3  name: Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?
+// [tag:ipsec] [tag: sicurezza] 
+::Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?::[html]<p><strong>Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?</strong></p>{
+	~%33.33333%[moodle]Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
+	~%33.33333%[moodle]Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
+	~[moodle]Disabilitare il supporto a TLS 1.3.
+	~[moodle]Usare IPsec solo in transport mode.
+	~[moodle]Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
+	~%33.33333%[moodle]Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
+	~[moodle]Usare sempre e solo AH in IPsec.
+	~[moodle]Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
 }
 
-// question: 4  name: Alice ha configurato la seguente regola iptables sul suo sistema.<br>Chain INPUT (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80<br><br>Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Analizza la configurazione riportata e seleziona le affermazioni corrette:
-// [tag:iptables] [tag: firewall] [tag: icmp] 
-::Alice ha configurato la seguente regola iptables sul suo sistema.<br>Chain INPUT (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80<br><br>Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Analizza la configurazione riportata e seleziona le affermazioni corrette:::[html]<p><strong>Alice ha configurato la seguente regola iptables sul suo sistema.<br>Chain INPUT (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80<br><br>Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Analizza la configurazione riportata e seleziona le affermazioni corrette:</strong></p>{
-	~%33.33333%[moodle]Tutti i pacchetti in ingresso verranno bloccati, a meno che non corrispondano ad una regola esplicita
-	~[moodle]Bob non è in grado di inviare Ping ad Alice
-	~%33.33333%[moodle]Bob è in grado di connettersi via HTTP alla macchina di Alice sulla porta 80
-	~%33.33333%[moodle]Il traffico in uscita è completamente consentito
-	~[moodle]Tutto il traffico mandato ad Alice che non corrisponde ad alcuna delle regole viene inoltrato automaticamente
-	####[moodle]Laboratorio 4 Sez 2
+// question: 4  name: Alice desidera ottenere un certificato da Carl, il quale svolge il ruolo di Certification Authority (CA). Per procedere, Carl esegue il seguente comando:<br>openssl ca -in alice.certeq.pem -out alice.x509cert.pem<br>Quali delle seguenti affermazioni sono corrette?
+// [tag:certificati] [tag: pkcs] [tag: formato] [tag: firma] 
+::Alice desidera ottenere un certificato da Carl, il quale svolge il ruolo di Certification Authority (CA). Per procedere, Carl esegue il seguente comando:<br>openssl ca -in alice.certeq.pem -out alice.x509cert.pem<br>Quali delle seguenti affermazioni sono corrette?::[html]<p><strong>Alice desidera ottenere un certificato da Carl, il quale svolge il ruolo di Certification Authority (CA). Per procedere, Carl esegue il seguente comando:<br>openssl ca -in alice.certeq.pem -out alice.x509cert.pem<br>Quali delle seguenti affermazioni sono corrette?</strong></p>{
+	~[moodle]Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS #10.
+	~[moodle]In OpenSSL, Alice può ottenere un certificato da Carl anche senza sottomettere una richiesta di certificato.
+	~%25.00000%[moodle]La richiesta di certificato deve essere firmata da Alice per garantire l’integrità della richiesta.
+	~%25.00000%[moodle]Carl dispone di una base dati che tiene traccia dei certificati emessi e del loro stato, aggiornata automaticamente dopo l’esecuzione del comando.
+	~%25.00000%[moodle]Il certificato emesso da Carl utilizzerà un numero di serie assegnato automaticamente dal file accessorio serial.
+	~%25.00000%[moodle]Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS10
+	####[moodle]Laboratorio 3 Es. 3.2
 }
 
-// question: 5  name: Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: 
-// [tag:smime] [tag:pgp] [tag:sicurezza] [tag:email] [tag:standard] 
-::Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: </strong></p>{
-	~%50.00000%[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
-	~[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
-	~[moodle] L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
-	~%50.00000%[moodle] A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
-	~[moodle] A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
-	~[moodle] La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
+// question: 5  name: Alice vuole configurare una rete aziendale che protegga i dati personali in transito e in conformità al GDPR. Quali misure tecniche dovrebbe adottare?
+// [tag:gdpr] [tag: crittografia] [tag: firewall] 
+::Alice vuole configurare una rete aziendale che protegga i dati personali in transito e in conformità al GDPR. Quali misure tecniche dovrebbe adottare?::[html]<p><strong>Alice vuole configurare una rete aziendale che protegga i dati personali in transito e in conformità al GDPR. Quali misure tecniche dovrebbe adottare?</strong></p>{
+	~%33.33333%[moodle]Configurare il firewall per consentire solo traffico crittografato tramite TLS verso i server aziendali.
+	~%33.33333%[moodle]Implementare la crittografia end-to-end per proteggere i dati in transito.
+	~[moodle]Registrare nei log i contenuti cifrati dei pacchetti per verificare la conformità ai requisiti GDPR.
+	~%33.33333%[moodle]Implementare politiche di gestione delle chiavi per garantire la sicurezza dei certificati crittografici utilizzati.
+	~[moodle]Implementare regole per accettare solo pacchetti con chiavi di cifratura statiche condivise tra client e server.
+	####[moodle]Ripetere GDPR [Slide 13], Firewall [Slide 9], Sicurezza di Canale [Slide 7]
 }
 
-// question: 6  name: Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa<br>Poi invia a Bob i tre file seguenti:<br>-msg.enc<br>-aeskey.rsa<br>-rsa.key.alice<br>Quali errori ha commesso Alice?
-// [tag:crypto] [tag:simmetrica] [tag:asimmetrica] [tag: chiavi] 
-::Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa<br>Poi invia a Bob i tre file seguenti:<br>-msg.enc<br>-aeskey.rsa<br>-rsa.key.alice<br>Quali errori ha commesso Alice?::[html]<p><strong>Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa<br>Poi invia a Bob i tre file seguenti:<br>-msg.enc<br>-aeskey.rsa<br>-rsa.key.alice<br>Quali errori ha commesso Alice?</strong></p>{
-	~%33.33333%[moodle]La chiave simmetrica la può leggere solo chi possiede la sua chiave privata
-	~[moodle]Ha scelto l’IV in maniera non casuale ma non l’ha riutilizzato
-	~%33.33333%[moodle]Ha condiviso la chiave sbagliata
-	~%33.33333%[moodle]Non ha comunicato l’IV a Bob
-	~[moodle]Ha condiviso la chiave simmetrica
-	~[moodle]Ha utilizzato un algoritmo di cifratura non abbastanza sicuro
-	####[moodle]Laboratorio 3 Sez. 2
+// question: 6  name: Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: 
+// [tag:spam] [tag:tecniche] [tag:email] [tag:sicurezza] 
+::Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: </strong></p>{
+	~[moodle] Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
+	~%33.33333%[moodle] Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+	~%33.33333%[moodle] Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+	~%33.33333%[moodle] Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
 }
 
-// question: 7  name: Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?
-// [tag:crypto] [tag: rsa] [tag: asimmetrica] [tag: autenticazione] 
-::Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?::[html]<p><strong>Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?</strong></p>{
-	~%50.00000%[moodle]Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
-	~%50.00000%[moodle]Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
-	~[moodle]Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
-	~[moodle]Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
-	~[moodle]Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
+// question: 7  name: Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: 
+// [tag:tls] [tag: starttls] [tag: email] [tag: sicurezza] [tag: protocollo] 
+::Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: </strong></p>{
+	=[moodle]Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
+	~[moodle] Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+	~[moodle]La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
+	~[moodle]SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
 }
 
-// question: 8  name: Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?
-// [tag:sicurezza] [tag: autenticazione] [tag: cifratura] [tag: TLS] [tag: RSA] [tag: AES] 
-::Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?::[html]<p><strong>Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?</strong></p>{
-	~[moodle]Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
-	~%50.00000%[moodle]Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
-	~[moodle]Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
-	~[moodle]Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
-	~%50.00000%[moodle]Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
+// question: 8  name: Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Alice esegue i seguenti comandi:<br>ip xfrm state flush<br>ip xfrm policy flush<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff<br>ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff<br>ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required<br>ip xfrm policy add src IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required<br>Seleziona le risposte corrette:
+// [tag:ipsec] 
+::Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Alice esegue i seguenti comandi:<br>ip xfrm state flush<br>ip xfrm policy flush<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff<br>ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff<br>ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required<br>ip xfrm policy add src IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required<br>Seleziona le risposte corrette:::[html]<p><strong>Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Alice esegue i seguenti comandi:<br>ip xfrm state flush<br>ip xfrm policy flush<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff<br>ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff<br>ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required<br>ip xfrm policy add src IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required<br>Seleziona le risposte corrette:</strong></p>{
+	~%50.00000%[moodle]Grazie all’utilizzo di IPsec in transport mode, Alice ottiene confidenzialità e protezione dagli attacchi replay
+	~[moodle]Viene utilizzato l’algoritmo des per la crittografia
+	~[moodle]Quando Alice invia un nuovo pacchetto IP a Bob saranno considerate la SP relativa a “in” più la corrispondente SA, se presente
+	~%50.00000%[moodle]Quando Alice riceve un nuovo pacchetto IP saranno considerate la SP relativa a “in” più la corrispondente SA
+	~[moodle]I comandi contengono due SA ridondanti, che possono essere ridotta ad una sola per la configurazione del canale sicuro
 }
 
-// question: 9  name: Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?
-// [tag:standard] [tag: certificazioni] [tag: IDS] 
-::Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?::[html]<p><strong>Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?</strong></p>{
-	~%33.33333%[moodle]Analizzare regolarmente i log generati dall’IDS per identificare potenziali minacce.
-	~%33.33333%[moodle]Integrare l'IDS con un sistema SIEM per garantire una gestione centralizzata degli eventi.
-	~[moodle]Impostare l'IDS per ignorare automaticamente tutto il traffico autorizzato, senza generare log.
-	~%33.33333%[moodle]Definire politiche documentate per l’uso dell’IDS e la gestione delle sue configurazioni.
-	####[moodle]Ripetere Standard e Certificazioni [Slide 10], IDS [Slide 9]
+// question: 9  name: Indica quali delle seguenti affermazioni su PKCS sono vere: 
+// [tag:pkcs12] [tag: pkcs7] [tag: pkcs] [tag: chiavi] [tag:certificati] [tag:crittografia] 
+::Indica quali delle seguenti affermazioni su PKCS sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su PKCS sono vere: </strong></p>{
+	~%33.33333%[moodle] PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
+	~%33.33333%[moodle] I file PKCS #12 sono comunemente usati per esportare e importare identità digitali.
+	~%33.33333%[moodle] PKCS #12 è ampiamente supportato dai browser web e dai client di posta elettronica.
+	~[moodle] PKCS #7 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
+	~[moodle] I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
+	~[moodle] PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
+	~[moodle] I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
 }
 
-// question: 10  name: Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?
-// [tag:firewall] [tag: ids] [tag: sicurezza] 
-::Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?::[html]<p><strong>Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?</strong></p>{
-	~%33.33333%[moodle]Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
-	~%33.33333%[moodle]Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
-	~[moodle]Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
-	~[moodle]Configurare solo un firewall stateless e aggiornare periodicamente le regole corrispondenti agli attacchi.
-	~%33.33333%[moodle]Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
-	####[moodle]Ripetere firewall [Slide 9]
+// question: 10  name: Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Bob esegue i seguenti comandi:<br>ip xfrm state flush<br>ip xfrm policy flush<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff<br>ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto esp mode transport level required ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto esp mode transport level required<br>Seleziona le risposte corrette:
+// [tag:ipsec] 
+::Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Bob esegue i seguenti comandi:<br>ip xfrm state flush<br>ip xfrm policy flush<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff<br>ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto esp mode transport level required ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto esp mode transport level required<br>Seleziona le risposte corrette:::[html]<p><strong>Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Bob esegue i seguenti comandi:<br>ip xfrm state flush<br>ip xfrm policy flush<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff<br>ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto esp mode transport level required ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto esp mode transport level required<br>Seleziona le risposte corrette:</strong></p>{
+	~%33.33333%[moodle]Vengono create 2 SA e 2 SP
+	~%33.33333%[moodle]Le SA contengono 2 SPI differenti perchè identificano la direzione
+	~%33.33333%[moodle]Le Security Policies (SP) configurate stabiliscono che il traffico tra Alice e Bob deve essere cifrato utilizzando ESP in modalità transport, senza coinvolgere l’intero pacchetto IP.
+	~[moodle]Le SA configurate utilizzano lo stesso SPI per entrambe le direzioni, perché l’algoritmo AES richiede univocità solo a livello di chiave crittografica.
+	~[moodle]Le Security Associations (SA) configurate permettono di proteggere il traffico solo nella direzione da Bob a Alice, mentre il traffico nella direzione opposta rimane non protetto.
 }
 
-// question: 11  name: Quale delle seguenti affermazioni sulle VPN è corretta?
-// [tag:vpn] [tag: ipsec] 
-::Quale delle seguenti affermazioni sulle VPN è corretta?::[html]<p><strong>Quale delle seguenti affermazioni sulle VPN è corretta?</strong></p>{
-	~[moodle]Le VPN operano esclusivamente a livello applicativo per la protezione dei dati.
-	~%50.00000%[moodle]OpenVPN può essere preferibile ad IPsec in reti complesse o eterogenee
-	~%50.00000%[moodle]IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
-	~[moodle]OpenVPN supporta nativamente sia modalità transport che tunnel
-	~[moodle]Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
+// question: 11  name: Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.<br>Alice quindi esegue i seguenti comandi:<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm state add sc IP-Bob dst IP-Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required<br>ip xfrm policy add sic IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required<br>Mentre Bob esegue i seguenti comandi:<br>ip xfrm state add sc IP-Alice dst IP-Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd<br>ip xfrm state add src IP-Bob dst IP-Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd<br>ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required<br>Seleziona le affermazioni corrette:
+// [tag:ipsec] 
+::Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.<br>Alice quindi esegue i seguenti comandi:<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm state add sc IP-Bob dst IP-Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required<br>ip xfrm policy add sic IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required<br>Mentre Bob esegue i seguenti comandi:<br>ip xfrm state add sc IP-Alice dst IP-Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd<br>ip xfrm state add src IP-Bob dst IP-Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd<br>ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required<br>Seleziona le affermazioni corrette:::[html]<p><strong>Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.<br>Alice quindi esegue i seguenti comandi:<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm state add sc IP-Bob dst IP-Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128<br>ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required<br>ip xfrm policy add sic IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required<br>Mentre Bob esegue i seguenti comandi:<br>ip xfrm state add sc IP-Alice dst IP-Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd<br>ip xfrm state add src IP-Bob dst IP-Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd<br>ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required<br>Seleziona le affermazioni corrette:</strong></p>{
+	~%33.33333%[moodle]Sono presenti in totale 4 SA e 4 SP
+	~[moodle]Le SP sono 2 in totale perché, a differenza delle SA, sono bidirezionali
+	~[moodle]Bob ha sbagliato la sua configurazione perchè non ha specificato l’algoritmo crittografico da utilizzare
+	~%33.33333%[moodle]La configurazione è vantaggiosa perchè protegge sia l’integrità del messaggio che la segretezza del payload usando un singolo algoritmo e una singola chiave
+	~%33.33333%[moodle]La configurazione di Bob garantisce solo integrità e autenticità, mentre quella di Alice garantisce anche la confidenzialità dei dati trasmessi.
 }
 

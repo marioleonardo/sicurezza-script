@@ -2,7 +2,7 @@
 **Legend:**
 
 -   `$`: Followed by comma-separated labels for the question (e.g., `$ chapter1, easy`).
--   `_`: Indicates the start of a question. For multiline questions, each line starts with `_` except for the last line, which indicates the number of correct answers.
+-   `_`: Indicates the start of a question. For multiline questions, first line starts with `__` then for the last line, which indicates the number of correct answers there is a ending '_'.
 -   `*`: Denotes a correct answer.
 -   `-`: Denotes a wrong answer.
 -   `#`: Followed by general feedback for the question.

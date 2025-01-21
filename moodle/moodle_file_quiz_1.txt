@@ -1,70 +1,81 @@
-// question: 1  name: Quali vulnerabilità sono associate a una configurazione TLS debole?
-// [tag:tls] [tag: vulnerabilità] 
-::Quali vulnerabilità sono associate a una configurazione TLS debole?::[html]<p><strong>Quali vulnerabilità sono associate a una configurazione TLS debole?</strong></p>{
-	~%33.33333%[moodle]Uso di algoritmi deboli come MD5 per hash.
-	~%33.33333%[moodle]Mancato controllo della revoca del certificato.
-	~[moodle]Uso di session resumption per ottimizzare le prestazioni.
-	~%33.33333%[moodle]Supporto a TLS 1.0 o SSL 3.0.
-	~[moodle]Supporto a TLS 1.3
+// question: 1  name: Alice sta implementando un sistema di gestione della sicurezza delle informazioni (ISMS) conforme alla ISO/IEC 27001. Quali delle seguenti affermazioni sono corrette?3<br>*Un ISMS efficace deve essere basato su un’analisi dei rischi documentata e continuamente aggiornata.<br>*La certificazione ISO/IEC 27001 implica che l'organizzazione sia in grado di gestire correttamente i rischi associati alle informazioni sensibili.<br>-La conformità alla ISO/IEC 27001 garantisce protezione contro le vulnerabilità software.<br>*La scelta delle misure di sicurezza deve tenere conto del contesto aziendale e delle esigenze specifiche dei processi.<br>-Si può evitare di aggiornare l’analisi dei rischi se l’organizzazione implementa tutte le misure idonee identificate durante il processo di certificazione.<br>#Ripetere Standard e Certificazioni [Slide 10]<br>%<br><br>$tls, sicurezza<br>Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?
+// [tag:standard] [tag: sicurezza] [tag: analisi dei rischi] 
+::Alice sta implementando un sistema di gestione della sicurezza delle informazioni (ISMS) conforme alla ISO/IEC 27001. Quali delle seguenti affermazioni sono corrette?3<br>*Un ISMS efficace deve essere basato su un’analisi dei rischi documentata e continuamente aggiornata.<br>*La certificazione ISO/IEC 27001 implica che l'organizzazione sia in grado di gestire correttamente i rischi associati alle informazioni sensibili.<br>-La conformità alla ISO/IEC 27001 garantisce protezione contro le vulnerabilità software.<br>*La scelta delle misure di sicurezza deve tenere conto del contesto aziendale e delle esigenze specifiche dei processi.<br>-Si può evitare di aggiornare l’analisi dei rischi se l’organizzazione implementa tutte le misure idonee identificate durante il processo di certificazione.<br>#Ripetere Standard e Certificazioni [Slide 10]<br>%<br><br>$tls, sicurezza<br>Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?::[html]<p><strong>Alice sta implementando un sistema di gestione della sicurezza delle informazioni (ISMS) conforme alla ISO/IEC 27001. Quali delle seguenti affermazioni sono corrette?3<br>*Un ISMS efficace deve essere basato su un’analisi dei rischi documentata e continuamente aggiornata.<br>*La certificazione ISO/IEC 27001 implica che l'organizzazione sia in grado di gestire correttamente i rischi associati alle informazioni sensibili.<br>-La conformità alla ISO/IEC 27001 garantisce protezione contro le vulnerabilità software.<br>*La scelta delle misure di sicurezza deve tenere conto del contesto aziendale e delle esigenze specifiche dei processi.<br>-Si può evitare di aggiornare l’analisi dei rischi se l’organizzazione implementa tutte le misure idonee identificate durante il processo di certificazione.<br>#Ripetere Standard e Certificazioni [Slide 10]<br>%<br><br>$tls, sicurezza<br>Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?</strong></p>{
+	~%50.00000%[moodle]In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
+	~[moodle]TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
+	~[moodle]Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
+	~[moodle]Entrambi mantengono un canale sicuro dall’inizio della connessione.
+	~%50.00000%[moodle]STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
 }
 
-// question: 2  name: Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?
-// [tag:firewall] [tag: certificazioni] [tag: GDPR] 
-::Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?::[html]<p><strong>Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?</strong></p>{
-	~%33.33333%[moodle]Configurare il firewall per registrare i log tecnici necessari alla sicurezza della rete, assicurandosi che siano conservati per un periodo proporzionato e con scopo dichiarato
-	~[moodle]Impostare una regola per registrare tutti i dettagli del traffico, inclusi dati personali, per un periodo illimitato
-	~%33.33333%[moodle]Implementare politiche di accesso basate su principi di "least privilege" per ridurre l'accesso non necessario ai log del firewall
-	~%33.33333%[moodle]Utilizzare un SIEM (Security Information and Event Management) per analizzare i log generati, rispettando le normative sulla gestione dei dati personali.
-	~[moodle]Consentire il traffico in entrata su tutte le porte per facilitare la trasparenza delle comunicazioni.
-	####[moodle]Ripetere GDPR [Slide 13]
+// question: 2  name: Quali affermazioni sulla crittografia sono corrette?
+// [tag:crypto] [tag: simmetrica] [tag: asimmetrica] 
+::Quali affermazioni sulla crittografia sono corrette?::[html]<p><strong>Quali affermazioni sulla crittografia sono corrette?</strong></p>{
+	~[moodle]La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
+	~%25.00000%[moodle]La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
+	~%25.00000%[moodle]La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
+	~%25.00000%[moodle]La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
+	~[moodle]Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
+	~%25.00000%[moodle]​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
 }
 
-// question: 3  name: Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?
-// [tag:crypto] [tag: simmetrica] 
-::Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?</strong></p>{
-	~%50.00000%[moodle]Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
-	~%50.00000%[moodle]In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
-	~[moodle]Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
-	~[moodle]Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
-	~[moodle]Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
+// question: 3  name: Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?
+// [tag:pia] [tag: analisi] 
+::Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?::[html]<p><strong>Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?</strong></p>{
+	~%33.33333%[moodle]Il PIA è obbligatorio quando il trattamento dei dati personali comporta rischi elevati per i diritti e le libertà degli interessati.
+	~[moodle]Il PIA si occupa esclusivamente di proteggere gli asset fisici e digitali di un’organizzazione.
+	~[moodle]L’analisi dei rischi del RMF si applica solo ai dati personali.
+	~%33.33333%[moodle]Entrambi i processi prevedono una fase di identificazione dei rischi e delle contromisure.
+	~%33.33333%[moodle]Il PIA richiede un coinvolgimento diretto dei rappresentanti legali e degli interessati.
 }
 
-// question: 4  name: Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?
-// [tag:esp] [tag: ipsec] 
-::Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?</strong></p>{
-	~%50.00000%[moodle]ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
-	~%50.00000%[moodle]ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
-	~[moodle]ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
-	~[moodle]ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
-	~[moodle]ESPv3+ non può essere utilizzato insieme al protocollo AH.
+// question: 4  name: Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: 
+// [tag:dnssec] [tag:hash] [tag:certificati] [tag:greylisting] [tag:attacchi] [tag:sicurezza] [tag:email] 
+::Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla firma digitale, DNSSEC, hash crittografici, certificati digitali, greylisting e attacchi replay sono vere: </strong></p>{
+	~%20.00000%[moodle] La firma digitale di un messaggio di posta elettronica garantisce l'integrità e l'autenticità del messaggio, ma non la sua riservatezza; per quest'ultima è necessaria la crittografia.
+	~%20.00000%[moodle] L'utilizzo di DNSSEC può migliorare la sicurezza della posta elettronica indirettamente, contribuendo a prevenire attacchi che reindirizzano il traffico email verso server malevoli.
+	~[moodle] Un hash crittografico di un messaggio è sempre più lungo del messaggio originale.
+	~[moodle] Se un certificato digitale è scaduto, la chiave pubblica contenuta nel certificato diventa automaticamente compromessa e inutilizzabile.
+	~%20.00000%[moodle] Il protocollo "greylisting" introduce intenzionalmente un ritardo nella consegna della mail per poter distinguere meglio i messaggi legittimi da quelli di spam, confidando sul fatto che i server di spam non ritentino l'invio.
+	~%20.00000%[moodle] Un attacco di tipo "replay" consiste nel riutilizzare un messaggio precedentemente inviato per ottenere un accesso non autorizzato o ingannare il destinatario: timestamp, sequence numbers e altri accorgimenti possono mitigarlo.
+	~%20.00000%[moodle] Anche se un messaggio è crittografato end-to-end, le informazioni di routing (mittente, destinatario, IP address) possono comunque essere visibili agli intermediari. Metadati e traffico sono problemi aperti.
 }
 
-// question: 5  name: indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette: 
-// [tag:firewall] 
-::indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette: ::[html]<p><strong>indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette: </strong></p>{
-	~%25.00000%[moodle] Netfilter/IPtables è un software che fornisce funzionalità di manipolazione e filtraggio di pacchetti IP all'interno del kernel Linux.
-	~[moodle]La catena INPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena OUTPUT gestisce i pacchetti in ingresso.
-	~%25.00000%[moodle] La politica di default di una catena IPtables determina l'azione intrapresa se nessuna regola nella catena corrisponde al pacchetto.
-	~[moodle]Il comando "iptables -F" elimina tutte le regole nella catena specificata e ripristina automaticamente la politica di default della catena a ACCEPT.e una singola macchina.
-	~[moodle] In uno stateless packet filter, la regola "iptables -A FORWARD -p tcp -s IP-Alice --sport 80 --dport 22 -j ACCEPT" permette ad Alice di navigare su qualsiasi sito web esterno, a patto che la destinazione sia la porta 80.
-	~[moodle] Con uno stateless packet filter, la porta sorgente 80 può essere utilizzata da Bob per instaurare una connessione verso Alice se è presente una regola che accetta pacchetti con porta sorgente 80. Uno stateful packet filter, invece, può distinguere tra connessioni in entrata e in uscita.
-	~%25.00000%[moodle] Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
-	~%25.00000%[moodle]La catena OUTPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena INPUT gestisce i pacchetti in ingresso.
-	####[moodle]Ripetere Netfilter/IPtables e configurazioni base [Lab 04, Slide 09]
+// question: 5  name: Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?
+// [tag:ids] [tag: firewall] [tag: reti] 
+::Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?::[html]<p><strong>Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?</strong></p>{
+	~%33.33333%[moodle]Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
+	~%33.33333%[moodle]Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
+	~[moodle]Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
+	~%33.33333%[moodle]Utilizzare un sistema SIEM per correlare i log dell’IDS e del firewall, permettendo un’analisi approfondita.
+	~[moodle]Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
+	####[moodle]Ripetere IDS, Firewall e SIEM [Slide 9]
 }
 
-// question: 6  name: Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?
-// [tag:analisi dei rischi] [tag: firewall] [tag: DMZ] 
-::Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?::[html]<p><strong>Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?</strong></p>{
-	~%33.33333%[moodle]Configurare il firewall per consentire solo traffico specifico verso i server pubblici che intende posizionare nella DMZ.
-	~%33.33333%[moodle]Implementare un IDS per monitorare il traffico in entrata e in uscita dalla DMZ.
-	~[moodle]Impostare regole per consentire traffico diretto dalla DMZ alla rete interna senza restrizioni.
-	~%33.33333%[moodle]Eseguire test di penetrazione regolari per identificare vulnerabilità nei server della DMZ.
-	~[moodle]Registrare tutti i dettagli del traffico, inclusi dati personali, senza limiti di tempo.
-	####[moodle]Ripetere Firewall [Slide 9], DMZ [Slide 9]
+// question: 6  name: Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: 
+// [tag:email] [tag:protocollo] [tag:mta] [tag:msa] [tag:mua] [tag:smtp] [tag:tls] 
+::Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: </strong></p>{
+	~%20.00000%[moodle] MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
+	~%20.00000%[moodle] SMTP è un protocollo orientato alla connessione utilizzato per l'invio di email.
+	~%20.00000%[moodle] Una sfida nella sicurezza della posta elettronica è la presenza di MTA potenzialmente non attendibili nella catena di consegna.
+	~%20.00000%[moodle] ESMTP è un'estensione di SMTP che introduce funzionalità aggiuntive, incluso il supporto per miglioramenti della sicurezza.
+	~[moodle] Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+	~[moodle] Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
+	~%20.00000%[moodle] TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
 }
 
-// question: 7  name: Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?
+// question: 7  name: Alice ha configurato il firewall del suo server con le seguenti regole:<br>iptables -A INPUT -p tcp --dport 22 -j ACCEPT<br>iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br>iptables -P INPUT DROP<br><br>Quali dei seguenti comportamenti sono veri?
+// [tag:firewall] [tag: configurazione] [tag: iptables] 
+::Alice ha configurato il firewall del suo server con le seguenti regole:<br>iptables -A INPUT -p tcp --dport 22 -j ACCEPT<br>iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br>iptables -P INPUT DROP<br><br>Quali dei seguenti comportamenti sono veri?::[html]<p><strong>Alice ha configurato il firewall del suo server con le seguenti regole:<br>iptables -A INPUT -p tcp --dport 22 -j ACCEPT<br>iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br>iptables -P INPUT DROP<br><br>Quali dei seguenti comportamenti sono veri?</strong></p>{
+	~%33.33333%[moodle]Il server accetta connessioni SSH sulla porta 22 e HTTP sulla porta 80.
+	~%33.33333%[moodle]Qualsiasi connessione in ingresso su altre porte verrà bloccata, inclusi i ping.
+	~[moodle]Alice può accedere da remoto al server tramite SSH solo se si trova nella stessa rete locale.
+	~%33.33333%[moodle]Le risposte alle connessioni HTTP stabilite dal server non sono influenzate da queste regole.
+	~[moodle]Le regole configurate garantiscono automaticamente protezione contro attacchi DoS.
+	####[moodle]Laboratorio 4
+}
+
+// question: 8  name: Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?
 // [tag:firewall] 
 ::Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?::[html]<p><strong>Indica quali affermazioni sui diversi tipi di firewall e il loro funzionamento sono corrette?</strong></p>{
 	~%25.00000%[moodle]I firewall packet filter operano a livello di rete (L3) e ispezionano l'header di ogni pacchetto IP.  
@@ -77,47 +88,24 @@
 	####[moodle]Ripetere tipologie e funzionamento dei firewall (L3, L4, proxy, WAF) [Slide 9 e 10]
 }
 
-// question: 8  name: Quale ruolo svolge il protocollo IKE in IPsec?
-// [tag:ipsec] [tag:ike] [tag:sicurezza autenticazione] 
-::Quale ruolo svolge il protocollo IKE in IPsec?::[html]<p><strong>Quale ruolo svolge il protocollo IKE in IPsec?</strong></p>{
-	~%33.33333%[moodle]Negoziazione dei parametri di sicurezza tra i peer.
-	~%33.33333%[moodle]Gestione delle chiavi crittografiche.
-	~[moodle]Fornisce cifratura end-to-end per i dati.
-	~[moodle]Configura le policy DNS per la risoluzione dei peer.
-	~[moodle]Crea AH header e trailer.
-	~%33.33333%[moodle]Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
+// question: 9  name: Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?
+// [tag:ipsec] [tag:esp] [tag: transportmode] [tag:tunnelmode] [tag:sicurezza] [tag:funzionamento] 
+::Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?::[html]<p><strong>Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?</strong></p>{
+	~%50.00000%[moodle]Transport Mode: Solo il payload del pacchetto IP è crittografato.
+	~%50.00000%[moodle]Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
+	~[moodle]Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
+	~[moodle]Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
+	~[moodle]Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
+	~[moodle]Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
 }
 
-// question: 9  name: Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: 
-// [tag:email] [tag:protocollo] [tag:mta] [tag:msa] [tag:mua] [tag:smtp] [tag:tls] 
-::Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere: </strong></p>{
-	~%20.00000%[moodle] MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
-	~%20.00000%[moodle] SMTP è un protocollo orientato alla connessione utilizzato per l'invio di email.
-	~%20.00000%[moodle] Una sfida nella sicurezza della posta elettronica è la presenza di MTA potenzialmente non attendibili nella catena di consegna.
-	~%20.00000%[moodle] ESMTP è un'estensione di SMTP che introduce funzionalità aggiuntive, incluso il supporto per miglioramenti della sicurezza.
-	~[moodle] Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
-	~[moodle] Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
-	~%20.00000%[moodle] TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
-}
-
-// question: 10  name: Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?
-// [tag:firewall] [tag: configurazione] [tag: iptables] 
-::Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?::[html]<p><strong>Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?</strong></p>{
-	~%33.33333%[moodle]iptables -A INPUT -p tcp --dport 22 -j ACCEPT
-	~%33.33333%[moodle]iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-	~%33.33333%[moodle]iptables -P INPUT DROP
-	~[moodle]iptables -P OUTPUT ACCEPT
-	~[moodle]iptables -A FORWARD -j ACCEPT
-	####[moodle]Laboratorio 4
-}
-
-// question: 11  name: Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: 
-// [tag:ipsec] [tag: sicurezza] [tag: ah] [tag: attacchi] [tag: integrità] [tag: autenticazione] 
-::Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: ::[html]<p><strong>Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti: </strong></p>{
-	~[moodle]Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
-	~[moodle]Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
-	~[moodle]Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
-	~%50.00000%[moodle]Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
-	~%50.00000%[moodle]IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
+// question: 10  name: Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: 
+// [tag:sicurezza] [tag: messaggi] [tag: TLS] [tag: riservatezza] [tag: integrità] [tag: autenticazione] 
+::Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere: </strong></p>{
+	~%33.33333%[moodle] Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
+	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
+	~%33.33333%[moodle] Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
+	~%33.33333%[moodle] L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
+	~[moodle] S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
 }
 

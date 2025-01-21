@@ -1,137 +1,132 @@
 
-$firewall
-_indica quali delle seguenti affermazioni sul laboratorio sui firewall sono corrette:6
-* Il comando "iptables -A FORWARD -p icmp -s IP-Alice --icmp-type echo-request -j ACCEPT" permette ad Alice di inviare pacchetti ping (echo-request).
-* Abilitare il traffico ICMP senza restrizioni può essere pericoloso perché può portare a leakage di informazioni, attacchi di tipo ICMP redirect e attacchi DoS di tipo Smurf.
-* Uno stateful packet filter può accettare tutto il traffico associato alle connessioni stabilite, risolvendo il problema di dover aprire porte specifiche per il traffico di ritorno.
-- Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute --limit-burst 1 -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
-* HTTPtunnel può essere utilizzato per creare un tunnel HTTP che permette di aggirare le politiche di un firewall, consentendo, ad esempio, una connessione SSH attraverso la porta 80.
-* Ptunnel incapsula il traffico TCP all'interno di pacchetti ICMP echo request ed echo reply, e questo può essere un modo per aggirare le politiche di un firewall che permette il traffico ICMP.
-- La funzionalità di "dynamic port forwarding" di SSH crea un socket in ascolto in locale e inoltra le connessioni su un canale sicuro SSH, agendo come un circuit-level gateway.
-* Un application-level gateway come Apache con mod_proxy può fornire filtri applicativi, filtraggio di contenuti e una maggiore protezione contro le vulnerabilità specifiche di determinate applicazioni.
-#Ripetere IPtables, ICMP, stateful packet filter, e tunneling [Lab 04, Slide 09]
+$smime,email,sicurezza,integrità,autenticazione,non ripudio,riservatezza,cms
+_Indica quali delle seguenti affermazioni su S/MIME sono vere:4
+* S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
+- S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
+* S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
+- La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
+* S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
+* CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
 %
 
-$crittografia,sicurezza,email,prestazioni,anti-spam,ipsec,tls,attacchi
-_Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere:3
-* La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
-* L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
-- L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
-* Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
-- Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
+$spam,email,blacklisting,greylisting,sicurezza
+_Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere:5
+* Lo spam si riferisce a email di massa non richieste, spesso di natura commerciale.
+* Una tattica comune degli spammer è quella di nascondere la vera identità del mittente e falsificare le intestazioni delle email.
+* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
+* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+- Blacklist e Greylisting vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
 %
 
-$ipsec
-__Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.
-Alice quindi esegue i seguenti comandi:
-ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128
-ip xfrm state add sc IP-Bob dst IP-Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128
-ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required
-ip xfrm policy add sic IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required
-Mentre Bob esegue i seguenti comandi:
-ip xfrm state add sc IP-Alice dst IP-Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd
-ip xfrm state add src IP-Bob dst IP-Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd
-ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required
-ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required
-Seleziona le affermazioni corrette:_3
-*Sono presenti in totale 4 SA e 4 SP
--Le SP sono 2 in totale perché, a differenza delle SA, sono bidirezionali
--Bob ha sbagliato la sua configurazione perchè non ha specificato l’algoritmo crittografico da utilizzare
-*La configurazione è vantaggiosa perchè protegge sia l’integrità del messaggio che la segretezza del payload usando un singolo algoritmo e una singola chiave
-*La configurazione di Bob garantisce solo integrità e autenticità, mentre quella di Alice garantisce anche la confidenzialità dei dati trasmessi.
+$sicurezza, autenticazione, cifratura, TLS, RSA, AES
+_Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?2
+-Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
+*Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
+-Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
+-Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
+*Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
 %
 
-$ipsec
-__Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Alice esegue i seguenti comandi:
-ip xfrm state flush 
-ip xfrm policy flush 
-ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff 
-ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff 
-ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required 
-ip xfrm policy add src IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required
+$pia, analisi
+_Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?2
+-Il RMF fornisce un framework obbligatorio per la gestione dei rischi legati alla privacy nelle organizzazioni.
+*Il PIA include una valutazione dell’impatto sui diritti degli individui, mentre il RMF si concentra sull’impatto sui sistemi e sugli asset organizzativi.
+-L’output del PIA è un documento che descrive esclusivamente le vulnerabilità tecniche dei sistemi.
+-Il RMF prevede un monitoraggio continuo per aggiornare le strategie di mitigazione, mentre il PIA si limita a una valutazione iniziale.
+*l PIA e il RMF sono processi complementari e possono essere utilizzati insieme in un’organizzazione.
+%
+
+$crypto, simmetrica
+_Quali tra le seguenti affermazioni sul padding nella crittografia a blocchi sono vere?2
+*Il padding garantisce che l’input della cifratura a blocchi sia un multiplo della lunghezza del blocco.
+*In CBC, il padding viene aggiunto solo al blocco finale, indipendentemente dalla lunghezza del messaggio.
+-Il padding è necessario in tutte le modalità operative della crittografia a blocchi.
+-Il padding è sempre utilizzato per garantire integrità dei dati cifrati.
+-Algoritmi come AES in modalità CBC non richiedono padding se la lunghezza del messaggio è nota.
+%
+
+$firewall, iptables, configurazione
+__Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  *      *       IP-Alice             0.0.0.0/0           tcp dpt:80
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP-Alice            tcp spt:80
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Frank ha configurato il firewall eseguendo i seguenti comandi:
+iptables -P FORWARD DROP
+iptables -A FORWARD -p tcp -s IP-Alice --dport 80 -j ACCEPT 
+iptables -A FORWARD -p tcp -d IP-Alice --sport 80 -j ACCEPT
+
+Seleziona le affermazioni corrette:_2
+-Alice può collegarsi solo al server web di Bob
+-Bob può collegarsi al server web di Alice con qualunque porta
+*Ogni pacchetto TCP inviato a Frank da Alice viene automaticamente inoltrato a Bob se la porta di destinazione è 80
+-Bob non può inviare richieste HTTP verso qualsiasi server web esterno, ma solo verso Alice
+*Qualsiasi altro tipo di traffico (sia in ingresso che in uscita) tra Bob e Alice viene bloccato dalla policy DROP della chain FORWARD.
+#Laboratorio 4
+%
+
+$ipsec, tls, sicurezza
+_Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?3
+*IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
+*IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
+*TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
+-IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
+%
+
+$crypto, simmetrica, chiavi, attacchi
+__Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi
+-rsa.key.alice
+-rsapub.key.alice
+quindi, esegue i seguenti comandi:
+echo chiave > aeskey
+openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey
+openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.bob -out aeskey.enc
+Poi invia a Bob i seguenti file:
+-msg.enc
+-aeskey.enc
 Seleziona le risposte corrette:_2
-*Grazie all’utilizzo di IPsec in transport mode, Alice ottiene confidenzialità e protezione dagli attacchi replay
--Viene utilizzato l’algoritmo des per la crittografia
--Quando Alice invia un nuovo pacchetto IP a Bob saranno considerate la SP relativa a “in” più la corrispondente SA, se presente
-*Quando Alice riceve un nuovo pacchetto IP saranno considerate la SP relativa a “in” più la corrispondente SA
--I comandi contengono due SA ridondanti, che possono essere ridotta ad una sola per la configurazione del canale sicuro
+*Questa procedura è vulnerabile ad un attacco Man In the Middle
+-Questa procedura è vulnerabile ad un attacco IP Spoofing
+-Bob deve sapere l’IV per decifrare la chiave
+*Bob deve decifrare prima la chiave con la sua chiave privata e poi usare quella chiave per decifrare il messaggio
+-Bob deve decifrare prima la chiave con la chiave pubblica di Alice e poi usare quella chiave per decifrare il messaggio
+#Laboratorio 3 Sez. 2
 %
 
-$mime,email,formato,header,body
-_Indica quali delle seguenti affermazioni sul formato MIME sono vere:3
-* MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
-* I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
-* MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
-- Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
-- MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
-- MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
+$ids
+_Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?3
+*Regolare la soglia di rilevamento dell'IDS per ridurre i falsi positivi.
+*Analizzare i log storici per identificare pattern normali e aggiornare i profili di base.
+*Aggiornare le firme o il modello di rilevamento dell’IDS  per migliorare l’accuratezza del sistema.
+-Disabilitare temporaneamente l'IDS fino a quando il problema non viene risolto.
+-Configurare l'IDS per ignorare completamente gli alert dell’IDS relativi al server critico.
+#Ripetere IDS [Slide 9]
 %
 
-$pkcs12, pkcs7, pkcs, chiavi,certificati,crittografia
-_Indica quali delle seguenti affermazioni su PKCS sono vere:3
-* PKCS #12 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-* I file PKCS #12 sono comunemente usati per esportare e importare identità digitali.
-* PKCS #12 è ampiamente supportato dai browser web e dai client di posta elettronica.
-- PKCS #7 è un formato standard per l'archiviazione e il trasporto di materiale crittografico, incluse chiavi private e certificati.
-- I file PKCS #7 sono comunemente usati per esportare e importare identità digitali.
-- PKCS #12 è considerata una soluzione di gestione delle chiavi altamente sicura e universalmente raccomandata per la sua efficienza.
-- I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
+$certificazioni, standard, firewall
+_Alice sta configurando il firewall aziendale per soddisfare gli standard ISO/IEC 27001 relativi alla sicurezza delle informazioni. Quali delle seguenti azioni sono coerenti con i requisiti dello standard?3
+*Implementare regole per limitare l’accesso ai server critici solo a indirizzi IP autorizzati.
+*Documentare e aggiornare regolarmente le regole del firewall per garantire conformità agli standard.
+-Impostare il firewall per registrare i tentativi di connessione riusciti, ignorando quelli bloccati.
+*Effettuare revisioni periodiche delle configurazioni del firewall come parte dell’audit di sicurezza.
+-Configurare il firewall per accettare tutto il traffico proveniente da dispositivi certificati ISO/IEC 27001, eliminando ulteriori controlli.
+#Ripetere gestione regole firewall e audit di sicurezza [Slide 09, Slide 10]
 %
 
-$gdpr, sicurezza, crittografia
-_Bob deve implementare la crittografia per proteggere i dati personali trattati dalla sua azienda. Quali delle seguenti affermazioni rispettano il GDPR?3
-*La crittografia è una misura di sicurezza appropriata, ma non obbligatoria per tutti i tipi di dati personali in transit.
-*Se i dati personali crittografati vengono rubati, l'obbligo di notifica può essere evitato in alcuni casi se opportunamente documentati dal DPO.
--Se si scelgono algoritmi forti, l’uso della crittografia garantisce che l’organizzazione non sia responsabile per una violazione dei dati.
-*Anche se i dati sono cifrati, devono essere accessibili solo agli utenti autorizzati, garantendo riservatezza e disponibilità.
--Il GDPR richiede che tutti i dati personali, indipendentemente dal loro livello di sensibilità, siano crittografati at rest senza eccezioni.
-#Ripetere GDPR [Slide 13]
-%
-
-$tls
-_Seleziona quali parametri della sessione TLS cambiano quando viene sfruttato un SessionID.2
--protocollo
-*chiavi derivate
--ciphersuite
--master key
-*numeri casuali
-%
-
-$firewall
-_Indica quali sono le risposte corrette sui firewall e la loro architettura nelle reti?5
-*Un firewall stateful tiene traccia dello stato delle connessioni, migliorando la sicurezza rispetto ai firewall stateless.  
--I firewall di livello applicativo (L7) sono più veloci dei firewall packet filter (L4) perché analizzano dati meglio strutturati.  
-*Un firewall con architettura a "tre gambe" espone una interfaccia di rete per ospitare server pubblici creando una DMZ (De-Militarized Zone).  
--Usare un firewall con architettura a “screening router” permette di creare una DMZ (De-Militarized Zone) per ospitare server pubblici.  
--Un bastion host è un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.  
--Un firewall di tipo stealth non ha un indirizzo IP configurato sulla scheda rete, ma modifica attivamente il traffico per nascondere la rete interna.
-*Il principio "blacklisting" offre minore sicurezza ma è più facile da gestire rispetto al principio opposto detto “whitelisting”. 
--L'utilizzo di un router come firewall è una soluzione sufficientemente sicura, è quindi consigliabile in ambito aziendale.  
-*Un personal firewall è installato direttamente sul nodo da difendere e può essere usato per autorizzare le comunicazioni dei processi in esecuzione.
--Lo scopo di un firewall è bloccare il traffico in ingresso non autorizzato, serve meno attenzione nel controllo del traffico in uscita.
-*Un honey pot può essere un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.
-#Ripetere tipi di firewall, architetture e concetti di sicurezza [Slide 9 e 10, Lab 04]
-%
-
-$incident,SOC,sicurezza
-_Indica quali affermazioni relative alla risposta agli incidenti, ai SOC e alla sicurezza informatica sono vere?4
-*Un data breach si riferisce ad una divulgazione non autorizzata di dati sensibili.  
--La preparazione alla risposta agli incidenti è una fase che può essere ignorata se l'organizzazione dispone di strumenti avanzati per il blocco degli attacchi.  
-*Un Incident Response Team ha il compito di definire politiche di risposta agli incidenti e piani di azione.  
--Un data disclosure si riferisce ad una esposizione di dati sensibili.  
--L'obiettivo principale di un SIEM è bloccare attivamente gli attacchi informatici in tempo reale.
-*Un SOC include diverse figure professionali impegnate anche a monitorare continuamente la sicurezza di un sistema informativo.
--Il personale del SOC è responsabile solo dell'implementazione di misure preventive, mentre la gestione degli incidenti è compito dell’incident response team.
-*Un honeypot è un sistema progettato per simulare risorse legittime, attrarre attività malevole e consentire l'analisi di eventi in tempo reale per migliorare la sicurezza complessiva.
-#Ripetere concetti relativi a SOC, Incident Response e SIEM [Slide 12]
-%
-
-$crypto, simmetrica, asimmetrica
-_Quali affermazioni sulla crittografia sono corrette?4
--La crittografia a curve ellittiche (ECC) è più efficiente della crittografia simmetrica per grandi volumi di dati.
-*La crittografia di flusso è preferibile alla crittografia a blocchi per proteggere le comunicazioni in tempo reale
-*La firma digitale garantisce autenticità e integrità, ma non confidenzialità del messaggio.
-*La crittografia simmetrica utilizza una sola chiave per cifrare e decifrare, rendendo critica la sua protezione.
--Un certificato digitale contiene solo la chiave pubblica e nessuna informazione sull’identità del proprietario.
-*​​La crittografia end-to-end nei tunnel VPN protegge i dati anche contro attacchi all’interno della rete.
+$cms,crittografia,struttura,firma digitale,sicurezza
+_Indica quali delle seguenti affermazioni sulla struttura CMS sono vere:2
+- CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+* La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+* La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+- La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
+- La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
+- CMS supporta solo un singolo destinatario per i messaggi crittografati.
 %

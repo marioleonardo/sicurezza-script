@@ -1,63 +1,67 @@
-// question: 1  name: Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: 
-// [tag:tls] [tag: starttls] [tag: email] [tag: sicurezza] [tag: protocollo] 
-::Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere: </strong></p>{
-	=[moodle]Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
-	~[moodle] Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
-	~[moodle]La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
-	~[moodle]SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
+// question: 1  name: Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?
+// [tag:firewall] [tag: configurazione] [tag: iptables] 
+::Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?::[html]<p><strong>Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?</strong></p>{
+	~%33.33333%[moodle]iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+	~%33.33333%[moodle]iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+	~%33.33333%[moodle]iptables -P INPUT DROP
+	~[moodle]iptables -P OUTPUT ACCEPT
+	~[moodle]iptables -A FORWARD -j ACCEPT
+	####[moodle]Laboratorio 4
 }
 
-// question: 2  name: Alice desidera ottenere un certificato da Carl, il quale svolge il ruolo di Certification Authority (CA). Per procedere, Carl esegue il seguente comando:<br>openssl ca -in alice.certeq.pem -out alice.x509cert.pem<br>Quali delle seguenti affermazioni sono corrette?
-// [tag:certificati] [tag: pkcs] [tag: formato] [tag: firma] 
-::Alice desidera ottenere un certificato da Carl, il quale svolge il ruolo di Certification Authority (CA). Per procedere, Carl esegue il seguente comando:<br>openssl ca -in alice.certeq.pem -out alice.x509cert.pem<br>Quali delle seguenti affermazioni sono corrette?::[html]<p><strong>Alice desidera ottenere un certificato da Carl, il quale svolge il ruolo di Certification Authority (CA). Per procedere, Carl esegue il seguente comando:<br>openssl ca -in alice.certeq.pem -out alice.x509cert.pem<br>Quali delle seguenti affermazioni sono corrette?</strong></p>{
-	~[moodle]Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS #10.
-	~[moodle]In OpenSSL, Alice può ottenere un certificato da Carl anche senza sottomettere una richiesta di certificato.
-	~%25.00000%[moodle]La richiesta di certificato deve essere firmata da Alice per garantire l’integrità della richiesta.
-	~%25.00000%[moodle]Carl dispone di una base dati che tiene traccia dei certificati emessi e del loro stato, aggiornata automaticamente dopo l’esecuzione del comando.
-	~%25.00000%[moodle]Il certificato emesso da Carl utilizzerà un numero di serie assegnato automaticamente dal file accessorio serial.
-	~%25.00000%[moodle]Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS10
-	####[moodle]Laboratorio 3 Es. 3.2
+// question: 2  name: Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?
+// [tag:firewall] [tag: vulnerabilità] [tag: reti] 
+::Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?::[html]<p><strong>Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?</strong></p>{
+	~%33.33333%[moodle]Impostare una regola per bloccare i pacchetti con flag incoerenti.
+	~%33.33333%[moodle]Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
+	~[moodle]Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
+	~[moodle]Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
+	~%33.33333%[moodle]Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
+	####[moodle]Firewall [Slide 9]
 }
 
-// question: 3  name: Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?
-// [tag:standard] [tag: sicurezza] [tag: certificazioni] 
-::Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?::[html]<p><strong>Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?</strong></p>{
-	~%33.33333%[moodle]La certificazione richiede una verifica indipendente da parte di un ente accreditato.
-	~%33.33333%[moodle]L’ottenimento della certificazione dipende dall’implementazione di un ISMS adeguata con una adeguata gestione dei rischi post-analisi.
-	~[moodle]Una volta ottenuta, la certificazione è valida per un tempo illimitato.
-	~%33.33333%[moodle]La conformità allo standard include la preparazione alla risposta agli incidenti di sicurezza.
-	~[moodle]L'implementazione delle misure minime consigliate dalla norma garantisce la certificazione senza bisogno di adattamenti.
+// question: 3  name: Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: 
+// [tag:smime] [tag:pgp] [tag:sicurezza] [tag:email] [tag:standard] 
+::Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere: </strong></p>{
+	~%50.00000%[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
+	~[moodle] Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
+	~[moodle] L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
+	~%50.00000%[moodle] A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
+	~[moodle] La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
 }
 
-// question: 4  name: Alice ha configurato il firewall del suo sistema con i seguenti comandi:<br>iptables -F<br>iptables -P INPUT DROP<br>iptables -A INPUT -p icmp -j ACCEPT<br>iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br><br>La configurazione risultante di iptables è la seguente:<br>Chain INPUT (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80<br><br>Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Quali problemi ci sono con questa configurazione?
-// [tag:iptables] [tag: firewall] [tag: icmp] [tag: packetfilter] 
-::Alice ha configurato il firewall del suo sistema con i seguenti comandi:<br>iptables -F<br>iptables -P INPUT DROP<br>iptables -A INPUT -p icmp -j ACCEPT<br>iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br><br>La configurazione risultante di iptables è la seguente:<br>Chain INPUT (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80<br><br>Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Quali problemi ci sono con questa configurazione?::[html]<p><strong>Alice ha configurato il firewall del suo sistema con i seguenti comandi:<br>iptables -F<br>iptables -P INPUT DROP<br>iptables -A INPUT -p icmp -j ACCEPT<br>iptables -A INPUT -p tcp --dport 80 -j ACCEPT<br><br>La configurazione risultante di iptables è la seguente:<br>Chain INPUT (policy DROP 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0<br>0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80<br><br>Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Quali problemi ci sono con questa configurazione?</strong></p>{
-	~%33.33333%[moodle]Alice non riesce ad avviare una connessione SSH verso Bob perché la default policy DROP della chain INPUT blocca i pacchetti di risposta (SYN+ACK).
-	~[moodle]Bob non riesce a eseguire una scansione delle porte di Alice.
-	~%33.33333%[moodle]Le risposte ai ping inviati da Bob vengono accettate, ma le risposte ai pacchetti TCP (ad esempio HTTPS sulla porta 443 o SSH sulla porta 21) non vengono gestite correttamente.
-	~%33.33333%[moodle]Alice non ha configurato una regola per consentire il traffico correlato (es. RELATED, ESTABLISHED), rendendo il firewall inefficace per connessioni bidirezionali.
-	~[moodle]La policy DROP della chain INPUT blocca tutto il traffico, inclusi i pacchetti ICMP accettati dalla regola esplicita
-	~[moodle]Alice non può creare nuove chain per gestire altri tipi di traffico
-	####[moodle]Laboratorio 4 Sez. 2
+// question: 4  name: Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?
+// [tag:firewall] [tag: certificazioni] [tag: GDPR] 
+::Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?::[html]<p><strong>Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?</strong></p>{
+	~%33.33333%[moodle]Configurare il firewall per registrare i log tecnici necessari alla sicurezza della rete, assicurandosi che siano conservati per un periodo proporzionato e con scopo dichiarato
+	~[moodle]Impostare una regola per registrare tutti i dettagli del traffico, inclusi dati personali, per un periodo illimitato
+	~%33.33333%[moodle]Implementare politiche di accesso basate su principi di "least privilege" per ridurre l'accesso non necessario ai log del firewall
+	~%33.33333%[moodle]Utilizzare un SIEM (Security Information and Event Management) per analizzare i log generati, rispettando le normative sulla gestione dei dati personali.
+	~[moodle]Consentire il traffico in entrata su tutte le porte per facilitare la trasparenza delle comunicazioni.
+	####[moodle]Ripetere GDPR [Slide 13]
 }
 
-// question: 5  name: Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?
-// [tag:ipsec] [tag: tls] [tag: sicurezza] 
-::Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?::[html]<p><strong>Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?</strong></p>{
-	~%33.33333%[moodle]IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
-	~%33.33333%[moodle]IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
-	~%33.33333%[moodle]TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
-	~[moodle]IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
+// question: 5  name: Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?
+// [tag:ipsec] [tag:ah] [tag:esp] [tag:ike] [tag:sicurezza] [tag:protocollo] 
+::Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?::[html]<p><strong>Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?</strong></p>{
+	~[moodle]TCP
+	~%33.33333%[moodle]AH (Authentication Header)
+	~%33.33333%[moodle]ESP (Encapsulating Security Payload)
+	~[moodle]HTTPS
+	~[moodle]RSSA
+	~%33.33333%[moodle]IKE (Internet Key Exchange)
 }
 
-// question: 6  name: Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?
-// [tag:hash] [tag: autenticazione] [tag: tls] [tag: collisioni] 
-::Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?::[html]<p><strong>Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?</strong></p>{
-	~%33.33333%[moodle]Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
-	~%33.33333%[moodle]Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
-	~[moodle]Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
-	~[moodle]L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
-	~%33.33333%[moodle]TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
+// question: 6  name: Indica quali delle seguenti affermazioni sul formato MIME sono vere: 
+// [tag:mime] [tag:email] [tag:formato] [tag:header] [tag:body] 
+::Indica quali delle seguenti affermazioni sul formato MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul formato MIME sono vere: </strong></p>{
+	~%33.33333%[moodle] MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
+	~%33.33333%[moodle] I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
+	~%33.33333%[moodle] MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
+	~[moodle] Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
+	~[moodle] MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
+	~[moodle] MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
 }
 
 // question: 7  name: Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.
@@ -79,44 +83,55 @@
 	~%33.33333%[moodle]Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
 }
 
-// question: 9  name: Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.bob -out aeskey.enc<br>Poi invia a Bob i seguenti file:<br>-msg.enc<br>-aeskey.enc<br>Seleziona le risposte corrette:
-// [tag:crypto] [tag: simmetrica] [tag: chiavi] [tag: attacchi] 
-::Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.bob -out aeskey.enc<br>Poi invia a Bob i seguenti file:<br>-msg.enc<br>-aeskey.enc<br>Seleziona le risposte corrette:::[html]<p><strong>Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.bob -out aeskey.enc<br>Poi invia a Bob i seguenti file:<br>-msg.enc<br>-aeskey.enc<br>Seleziona le risposte corrette:</strong></p>{
-	~%50.00000%[moodle]Questa procedura è vulnerabile ad un attacco Man In the Middle
-	~[moodle]Questa procedura è vulnerabile ad un attacco IP Spoofing
-	~[moodle]Bob deve sapere l’IV per decifrare la chiave
-	~%50.00000%[moodle]Bob deve decifrare prima la chiave con la sua chiave privata e poi usare quella chiave per decifrare il messaggio
-	~[moodle]Bob deve decifrare prima la chiave con la chiave pubblica di Alice e poi usare quella chiave per decifrare il messaggio
-	####[moodle]Laboratorio 3 Sez. 2
+// question: 9  name: Bob deve implementare la crittografia per proteggere i dati personali trattati dalla sua azienda. Quali delle seguenti affermazioni rispettano il GDPR?
+// [tag:gdpr] [tag: sicurezza] [tag: crittografia] 
+::Bob deve implementare la crittografia per proteggere i dati personali trattati dalla sua azienda. Quali delle seguenti affermazioni rispettano il GDPR?::[html]<p><strong>Bob deve implementare la crittografia per proteggere i dati personali trattati dalla sua azienda. Quali delle seguenti affermazioni rispettano il GDPR?</strong></p>{
+	~%33.33333%[moodle]La crittografia è una misura di sicurezza appropriata, ma non obbligatoria per tutti i tipi di dati personali in transit.
+	~%33.33333%[moodle]Se i dati personali crittografati vengono rubati, l'obbligo di notifica può essere evitato in alcuni casi se opportunamente documentati dal DPO.
+	~[moodle]Se si scelgono algoritmi forti, l’uso della crittografia garantisce che l’organizzazione non sia responsabile per una violazione dei dati.
+	~%33.33333%[moodle]Anche se i dati sono cifrati, devono essere accessibili solo agli utenti autorizzati, garantendo riservatezza e disponibilità.
+	~[moodle]Il GDPR richiede che tutti i dati personali, indipendentemente dal loro livello di sensibilità, siano crittografati at rest senza eccezioni.
+	####[moodle]Ripetere GDPR [Slide 13]
 }
 
-// question: 10  name: Alice vuole configurare una rete aziendale che protegga i dati personali in transito e in conformità al GDPR. Quali misure tecniche dovrebbe adottare?
-// [tag:gdpr] [tag: crittografia] [tag: firewall] 
-::Alice vuole configurare una rete aziendale che protegga i dati personali in transito e in conformità al GDPR. Quali misure tecniche dovrebbe adottare?::[html]<p><strong>Alice vuole configurare una rete aziendale che protegga i dati personali in transito e in conformità al GDPR. Quali misure tecniche dovrebbe adottare?</strong></p>{
-	~%33.33333%[moodle]Configurare il firewall per consentire solo traffico crittografato tramite TLS verso i server aziendali.
-	~%33.33333%[moodle]Implementare la crittografia end-to-end per proteggere i dati in transito.
-	~[moodle]Registrare nei log i contenuti cifrati dei pacchetti per verificare la conformità ai requisiti GDPR.
-	~%33.33333%[moodle]Implementare politiche di gestione delle chiavi per garantire la sicurezza dei certificati crittografici utilizzati.
-	~[moodle]Implementare regole per accettare solo pacchetti con chiavi di cifratura statiche condivise tra client e server.
-	####[moodle]Ripetere GDPR [Slide 13], Firewall [Slide 9], Sicurezza di Canale [Slide 7]
+// question: 10  name: Indica quali sono le risposte corrette sui firewall e la loro architettura nelle reti?
+// [tag:firewall] 
+::Indica quali sono le risposte corrette sui firewall e la loro architettura nelle reti?::[html]<p><strong>Indica quali sono le risposte corrette sui firewall e la loro architettura nelle reti?</strong></p>{
+	~%20.00000%[moodle]Un firewall stateful tiene traccia dello stato delle connessioni, migliorando la sicurezza rispetto ai firewall stateless.  
+	~[moodle]I firewall di livello applicativo (L7) sono più veloci dei firewall packet filter (L4) perché analizzano dati meglio strutturati.  
+	~%20.00000%[moodle]Un firewall con architettura a "tre gambe" espone una interfaccia di rete per ospitare server pubblici creando una DMZ (De-Militarized Zone).  
+	~[moodle]Usare un firewall con architettura a “screening router” permette di creare una DMZ (De-Militarized Zone) per ospitare server pubblici.  
+	~[moodle]Un bastion host è un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.  
+	~[moodle]Un firewall di tipo stealth non ha un indirizzo IP configurato sulla scheda rete, ma modifica attivamente il traffico per nascondere la rete interna.
+	~%20.00000%[moodle]Il principio "blacklisting" offre minore sicurezza ma è più facile da gestire rispetto al principio opposto detto “whitelisting”. 
+	~[moodle]L'utilizzo di un router come firewall è una soluzione sufficientemente sicura, è quindi consigliabile in ambito aziendale.  
+	~%20.00000%[moodle]Un personal firewall è installato direttamente sul nodo da difendere e può essere usato per autorizzare le comunicazioni dei processi in esecuzione.
+	~[moodle]Lo scopo di un firewall è bloccare il traffico in ingresso non autorizzato, serve meno attenzione nel controllo del traffico in uscita.
+	~%20.00000%[moodle]Un honey pot può essere un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.
+	####[moodle]Ripetere tipi di firewall, architetture e concetti di sicurezza [Slide 9 e 10, Lab 04]
 }
 
-// question: 11  name: Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Bob esegue i seguenti comandi:<br>ip xfrm state flush<br>ip xfrm policy flush<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff<br>ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto esp mode transport level required ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto esp mode transport level required<br>Seleziona le risposte corrette:
-// [tag:ipsec] 
-::Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Bob esegue i seguenti comandi:<br>ip xfrm state flush<br>ip xfrm policy flush<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff<br>ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto esp mode transport level required ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto esp mode transport level required<br>Seleziona le risposte corrette:::[html]<p><strong>Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Bob esegue i seguenti comandi:<br>ip xfrm state flush<br>ip xfrm policy flush<br>ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff<br>ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff<br>ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto esp mode transport level required ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto esp mode transport level required<br>Seleziona le risposte corrette:</strong></p>{
-	~%33.33333%[moodle]Vengono create 2 SA e 2 SP
-	~%33.33333%[moodle]Le SA contengono 2 SPI differenti perchè identificano la direzione
-	~%33.33333%[moodle]Le Security Policies (SP) configurate stabiliscono che il traffico tra Alice e Bob deve essere cifrato utilizzando ESP in modalità transport, senza coinvolgere l’intero pacchetto IP.
-	~[moodle]Le SA configurate utilizzano lo stesso SPI per entrambe le direzioni, perché l’algoritmo AES richiede univocità solo a livello di chiave crittografica.
-	~[moodle]Le Security Associations (SA) configurate permettono di proteggere il traffico solo nella direzione da Bob a Alice, mentre il traffico nella direzione opposta rimane non protetto.
+// question: 11  name: Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?
+// [tag:crypto] [tag: autenticazione] [tag: chiavi] [tag: tls] 
+::Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?::[html]<p><strong>Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?</strong></p>{
+	~%50.00000%[moodle]Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
+	~%50.00000%[moodle]Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
+	~[moodle]I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
+	~[moodle]I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
+	~[moodle]TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
 }
 
-// question: 12  name: Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?
-// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
-::Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?</strong></p>{
-	~%50.00000%[moodle]AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
-	~%50.00000%[moodle]AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
-	~[moodle]AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
-	~[moodle]AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
+// question: 12  name: Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?
+// [tag:IDS] [tag: IPS] [tag: sicurezza] 
+::Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?::[html]<p><strong>Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?</strong></p>{
+	~%25.00000%[moodle]Un IDS passivo si limita a rilevare e segnalare attività sospette, senza intervenire attivamente.  
+	~%25.00000%[moodle]Gli NGFW vengono venduti e pubblicizzati come in grado di identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
+	~[moodle]Un IPS è sempre preferibile a un IDS perché previene attivamente le intrusioni, senza rischio di falsi positivi.
+	~%25.00000%[moodle]Gli IDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
+	~%25.00000%[moodle]Un sensore IDS può essere posizionato sia per monitorare tratti di rete che su un singolo host.
+	~[moodle]I NIDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log file monitor, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
+	~[moodle]Gli IDS/IPS possono identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
+	~[moodle]L'integrazione di firewall, VPN e IDPS in un unico dispositivo (UTM) comporta un aumento dei costi di gestione a causa della maggiore complessità dei task che il dispositivo è in grado di svolgere.
+	####[moodle]Ripetere concetti di IDS/IPS e differenze con NGFW e UTM [Slide 10]
 }
 

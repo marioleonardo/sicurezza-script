@@ -1,4 +1,46 @@
 
+$diffiehellman, asimmetrica
+_Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
+*Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
+*La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
+-Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
+-La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+%
+
+$standard, analisi dei rischi, GDPR
+_Bob sta lavorando per ottenere la certificazione ISO/IEC 27001 e garantire la conformità al GDPR. Quali delle seguenti affermazioni sono corrette?3
+*I rischi identificati devono essere documentati e gestiti attraverso misure tecniche e organizzative.
+*La protezione dei dati personali deve essere integrata nel sistema di gestione della sicurezza delle informazioni (ISMS).
+-Aver ottenuto una certificazione ISO/IEC 27001 garantisce la conformità al GDPR.
+*Le valutazioni periodiche dell'efficacia delle misure adottate sono obbligatorie sia per la ISO/IEC 27001 che per il GDPR.
+-I dati personali protetti da crittografia non richiedono un adeguamento periodico dell’'analisi dei rischi.
+#La certificazione ISO 27001 attesta un buon sistema di gestione della sicurezza, ma il GDPR ha requisiti specifici sulla protezione dei dati personali che vanno oltre.
+#La crittografia riduce alcuni rischi, ma non li elimina completamente, quindi l'analisi dei rischi deve essere rivista periodicamente in ogni caso.
+%
+
+$firewall, proxy, DMZ
+_Indica quali delle seguenti affermazioni su firewall, proxy e DMZ sono corrette?4
+*Un forward proxy si trova tra i client di una rete esterna e i server esterni, inoltrando le richieste dei client.  
+-Un reverse proxy si limita a bilanciare il carico tra più server interni, senza fornire alcuna funzionalità di sicurezza aggiuntiva.  
+*L'utilizzo di una DMZ (De-Militarized Zone) permette di isolare i server pubblici dalla rete interna, aumentando la sicurezza.
+-In un'architettura firewall con DMZ, il gateway è sempre posizionato all'interno della rete interna per garantire una maggiore protezione.
+*Un firewall "a tre gambe" è un'architettura che usa un unico gateway per generare una DMZ e isolare la rete interna.  
+-Il mascheramento degli indirizzi IP interni (NAPT) è una funzionalità esclusiva dei proxy application layer.
+*I firewall possono essere implementati come software, appliance hardware o servizi cloud.  
+-Un firewall che contiene componenti di tipo application layer filter è in grado di ispezionare il traffico crittografato senza necessità di decifrarlo.
+-I firewall possono essere implementati come app mobile o servizi cloud.
+#Ripetere concetti su firewall, proxy e DMZ [Slide 09]
+%
+
+$esp, ipsec
+_Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
+*ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
+*ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
+-ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
+-ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
+-ESPv3+ non può essere utilizzato insieme al protocollo AH.
+%
+
 $tls,certificati
 _Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?2
 *RSA
@@ -9,125 +51,79 @@ _Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?2
 *AEAD nell’ultima versione di TLS
 %
 
-$firewall, architettura, sicurezza
-_Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?3
-*Isolamento dei server pubblici dato il divieto di accesso diretto alla rete interna.
-*Facilità di applicazione di policy di sicurezza specifiche per ciascun segmento di rete.
--Maggiore velocità di trasmissione rispetto a un firewall con DMZ singola.
--I server nella DMZ possono comunicare direttamente con la rete interna senza ulteriori configurazioni.
-*Possibilità di monitorare e analizzare il traffico verso i server pubblici senza esporre la rete interna.
-#Ripetere Firewall [Slide 9]
+$tls, vulnerabilità,
+_Quali vulnerabilità sono associate a una configurazione TLS debole?3
+*Uso di algoritmi deboli come MD5 per hash.
+*Mancato controllo della revoca del certificato.
+-Uso di session resumption per ottimizzare le prestazioni.
+*Supporto a TLS 1.0 o SSL 3.0.
+-Supporto a TLS 1.3
 %
 
-$firewall, configurazione, iptables
-__Alice ha configurato il firewall del suo server con le seguenti regole:
-iptables -A INPUT -p tcp --dport 22 -j ACCEPT  
-iptables -A INPUT -p tcp --dport 80 -j ACCEPT  
-iptables -P INPUT DROP  
-
-Quali dei seguenti comportamenti sono veri?_3
-*Il server accetta connessioni SSH sulla porta 22 e HTTP sulla porta 80.
-*Qualsiasi connessione in ingresso su altre porte verrà bloccata, inclusi i ping.
--Alice può accedere da remoto al server tramite SSH solo se si trova nella stessa rete locale.
-*Le risposte alle connessioni HTTP stabilite dal server non sono influenzate da queste regole.
--Le regole configurate garantiscono automaticamente protezione contro attacchi DoS.
-#Laboratorio 4
+$firewall, configurazione, forwarding
+__Bob configura il suo firewall con la seguente regola:
+iptables -A FORWARD -p tcp --dport 22 -s 192.168.1.0/24 -d 10.0.0.1 -j ACCEPT
+Quali delle seguenti affermazioni sono vere?_3
+*Il traffico SSH dalla rete 192.168.1.0/24 verso il server 10.0.0.1 è consentito.
+-Il traffico HTTP tra la rete interna e 10.0.0.1 è bloccato dalla configurazione.
+*Bob può monitorare l'attività di questa regola aggiungendo una regola di LOG prima di essa.
+*Il firewall inoltra i pacchetti solo se la policy predefinita della chain FORWARD è ACCEPT o se esistono regole aggiuntive che consentono esplicitamente il traffico.
+-La regola consente connessioni in entrata su tutte le porte dal server 10.0.0.1.
+#Ripetere configurazione di IPtables, forwarding e regole di logging [Lab 04, Slide 9]
 %
 
-$algoritmi, crypto, simmetrica
-_Quali delle seguenti affermazioni su RC4 e AES sono vere?2
-*RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
-*AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
--RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
--AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
--Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
+$incident,SOC,sicurezza
+_Indica quali affermazioni relative alla risposta agli incidenti, ai SOC e alla sicurezza informatica sono vere?4
+*Un data breach si riferisce ad una divulgazione non autorizzata di dati sensibili.  
+-La preparazione alla risposta agli incidenti è una fase che può essere ignorata se l'organizzazione dispone di strumenti avanzati per il blocco degli attacchi.  
+*Un Incident Response Team ha il compito di definire politiche di risposta agli incidenti e piani di azione.  
+-Un data disclosure si riferisce ad una esposizione di dati sensibili.  
+-L'obiettivo principale di un SIEM è bloccare attivamente gli attacchi informatici in tempo reale.
+*Un SOC include diverse figure professionali impegnate anche a monitorare continuamente la sicurezza di un sistema informativo.
+-Il personale del SOC è responsabile solo dell'implementazione di misure preventive, mentre la gestione degli incidenti è compito dell’incident response team.
+*Un honeypot è un sistema progettato per simulare risorse legittime, attrarre attività malevole e consentire l'analisi di eventi in tempo reale per migliorare la sicurezza complessiva.
+#Ripetere concetti relativi a SOC, Incident Response e SIEM [Slide 12]
 %
 
-$asimmetrica
-_Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?2
-*Una chiave pubblica che può essere usata per cifrare i dati.
--Una chiave privata che può essere usata solo per decifrare i dati.
--Le chiavi pubbliche e private per alcuni algoritmi sono identiche.
--Una chiave asimmetrica condivisa tra mittente e destinatario.
--Una chiave di sessione generata casualmente.
-*Due chiavi matematicamente legate da un problema matematico.
+$ids, analisi dei rischi, reti
+_Bob vuole migliorare la sicurezza della sua rete aziendale implementando un IDS. Durante un’analisi dei rischi, nota che i server contengono dati sensibili. Quale strategia dovrebbe adottare per ridurre i rischi?3
+*Posizionare un NIDS sulla DMZ per monitorare il traffico verso i server e identificare potenziali anomalie di accesso.
+*Configurare l'IDS per segnalare tentativi di accesso non autorizzati, ma non per bloccare automaticamente i pacchetti senza ulteriore analisi.
+-Impostare l'IDS per interrompere automaticamente qualsiasi connessione con attività insolita senza tenere conto di falsi positivi.
+*Integrare l'IDS con un sistema SIEM per correlare eventi e rilevare modelli di comportamento sospetti.
+-Consentire traffico "trusted" ai server da indirizzi IP interni senza ulteriori verifiche, basandosi sulla segmentazione di rete per la protezione.
+#Ripetere utilizzo di NIDS, correlazione con SIEM e gestione dei falsi positivi [Slide 09-13]
 %
 
-$ipsec, sicurezza
-_Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
-*Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
-*Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
--Disabilitare il supporto a TLS 1.3.
--Usare IPsec solo in transport mode.
--Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
-*Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
--Usare sempre e solo AH in IPsec.
--Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
-%
-
-$ah, ipsec
-_Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?2
-*AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
-*AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
--AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
--AH richiede un certificato digitale per autenticare gli utenti.
--AH supporta Perfect Forward Secrecy come ESP.
-%
-
-$hash, funzioni di hash, crypto
-_Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?2
-*Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
-*Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
--Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
--L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
--Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
-%
-
-$ipsec,tls,ike
-_Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette:4
-- Il comando "ip xfrm state flush" è usato per cancellare il Database delle Politiche di Sicurezza (SPD).
-* Il comando "ip xfrm policy list" mostra le politiche di sicurezza IPsec correnti.
-* Il comando "ipsec start" è usato per avviare il demone strongSwan.
-- Dopo aver modificato il file "/etc/ipsec.conf", devi usare il comando "ipsec update" perché le modifiche abbiano effetto immediatamente.
-* Il comando "openssl s_server -www" avvia un semplice server TLS che mostra le informazioni di connessione in formato HTML.
-- In una VPN IPsec site-to-site, ogni gateway necessita solo di una singola Associazione di Sicurezza (SA) per gestire il traffico in entrambe le direzioni.
-* Per usare certificati con strongSwan devi posizionare il certificato CA nella directory "/etc/ipsec.d/cacerts"
-#Rivedere materiale laboratorio riguardo Ipsec e TLS
-%
-
-$firewall, iptables, configurazione
-__Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:
-Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+$iptables, firewall, icmp,
+__Alice ha configurato la seguente regola iptables sul suo sistema. 
+Chain INPUT (policy DROP 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
 
-Chain FORWARD (policy DROP 0 packets, 0 bytes)
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
  pkts bytes target     prot opt in     out     source               destination         
-    0     0 ACCEPT     tcp  --  *      *       IP-Alice             0.0.0.0/0           tcp dpt:80
-    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP-Alice            tcp spt:80
 
 Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
+ pkts bytes target     prot opt in     out     source               destination   
 
-Frank ha configurato il firewall eseguendo i seguenti comandi:
-iptables -P FORWARD DROP
-iptables -A FORWARD -p tcp -s IP-Alice --dport 80 -j ACCEPT 
-iptables -A FORWARD -p tcp -d IP-Alice --sport 80 -j ACCEPT
-
-Seleziona le affermazioni corrette:_2
--Alice può collegarsi solo al server web di Bob
--Bob può collegarsi al server web di Alice con qualunque porta
-*Ogni pacchetto TCP inviato a Frank da Alice viene automaticamente inoltrato a Bob se la porta di destinazione è 80
--Bob non può inviare richieste HTTP verso qualsiasi server web esterno, ma solo verso Alice
-*Qualsiasi altro tipo di traffico (sia in ingresso che in uscita) tra Bob e Alice viene bloccato dalla policy DROP della chain FORWARD.
-#Laboratorio 4
+Analizza la configurazione riportata e seleziona le affermazioni corrette:_3      
+*Tutti i pacchetti in ingresso verranno bloccati, a meno che non corrispondano ad una regola esplicita
+-Bob non è in grado di inviare Ping ad Alice
+*Bob è in grado di connettersi via HTTP alla macchina di Alice sulla porta 80
+*Il traffico in uscita è completamente consentito
+-Tutto il traffico mandato ad Alice che non corrisponde ad alcuna delle regole viene inoltrato automaticamente
+#Laboratorio 4 Sez 2
 %
 
-$standard, sicurezza, analisi dei rischi
-_Alice sta implementando un sistema di gestione della sicurezza delle informazioni (ISMS) conforme alla ISO/IEC 27001. Quali delle seguenti affermazioni sono corrette?_3
-*Un ISMS efficace deve essere basato su un’analisi dei rischi documentata e continuamente aggiornata.
-*La certificazione ISO/IEC 27001 implica che l'organizzazione sia in grado di gestire correttamente i rischi associati alle informazioni sensibili.
--La conformità alla ISO/IEC 27001 garantisce protezione contro le vulnerabilità software.
-*La scelta delle misure di sicurezza deve tenere conto del contesto aziendale e delle esigenze specifiche dei processi.
--Si può evitare di aggiornare l’analisi dei rischi se l’organizzazione implementa tutte le misure idonee identificate durante il processo di certificazione.
-#Ripetere Standard e Certificazioni [Slide 10]
+$crypto, stream, simmetrica
+_Quali affermazioni riguardanti la crittografia a stream sono corrette?2
+-Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
+-Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
+-Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
+*Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
+-Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
+- L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
+*Nell’EBC blocchi di plaintext identici producono ciphertext identici.
 %

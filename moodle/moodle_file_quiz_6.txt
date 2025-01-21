@@ -1,98 +1,62 @@
-// question: 1  name: Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?
-// [tag:ipsec] [tag: tls] [tag: differenze] [tag: sicurezza] 
-::Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?::[html]<p><strong>Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?</strong></p>{
-	~%33.33333%[moodle]IPsec opera a livello di rete, mentre TLS opera a livello di trasporto, rendendo TLS più adatto per la protezione di applicazioni specifiche all’interno dello stesso server.
-	~%33.33333%[moodle]IPsec può fornire sicurezza per tutto il traffico di rete (unicast), inclusi protocolli non orientati alla connessione, mentre TLS protegge solo protocolli basati su TCP.
-	~%33.33333%[moodle]L'autenticazione in TLS è spesso basata su certificati, mentre IPsec può supportare autenticazione con chiavi precondivise o certificati.
-	~[moodle]TLS può essere utilizzato per proteggere il traffico multicast, mentre IPsec no.
-	~[moodle]IPsec è ottimale per la protezione di pagine web dinamiche come HTTPS, mentre TLS non è progettato per questo.
+// question: 1  name: Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa<br>Poi invia a Bob i tre file seguenti:<br>-msg.enc<br>-aeskey.rsa<br>-rsa.key.alice<br>Quali errori ha commesso Alice?
+// [tag:crypto] [tag:simmetrica] [tag:asimmetrica] [tag: chiavi] 
+::Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa<br>Poi invia a Bob i tre file seguenti:<br>-msg.enc<br>-aeskey.rsa<br>-rsa.key.alice<br>Quali errori ha commesso Alice?::[html]<p><strong>Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi<br>-rsa.key.alice<br>-rsapub.key.alice<br>quindi, esegue i seguenti comandi:<br>echo chiave > aeskey<br>openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0<br>openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa<br>Poi invia a Bob i tre file seguenti:<br>-msg.enc<br>-aeskey.rsa<br>-rsa.key.alice<br>Quali errori ha commesso Alice?</strong></p>{
+	~%33.33333%[moodle]La chiave simmetrica la può leggere solo chi possiede la sua chiave privata
+	~[moodle]Ha scelto l’IV in maniera non casuale ma non l’ha riutilizzato
+	~%33.33333%[moodle]Ha condiviso la chiave sbagliata
+	~%33.33333%[moodle]Non ha comunicato l’IV a Bob
+	~[moodle]Ha condiviso la chiave simmetrica
+	~[moodle]Ha utilizzato un algoritmo di cifratura non abbastanza sicuro
+	####[moodle]Laboratorio 3 Sez. 2
 }
 
-// question: 2  name: Bob vuole migliorare la sicurezza della sua rete aziendale implementando un IDS. Durante un’analisi dei rischi, nota che i server contengono dati sensibili. Quale strategia dovrebbe adottare per ridurre i rischi?
-// [tag:ids] [tag: analisi dei rischi] [tag: reti] 
-::Bob vuole migliorare la sicurezza della sua rete aziendale implementando un IDS. Durante un’analisi dei rischi, nota che i server contengono dati sensibili. Quale strategia dovrebbe adottare per ridurre i rischi?::[html]<p><strong>Bob vuole migliorare la sicurezza della sua rete aziendale implementando un IDS. Durante un’analisi dei rischi, nota che i server contengono dati sensibili. Quale strategia dovrebbe adottare per ridurre i rischi?</strong></p>{
-	~%33.33333%[moodle]Posizionare un NIDS sulla DMZ per monitorare il traffico verso i server e identificare potenziali anomalie di accesso.
-	~%33.33333%[moodle]Configurare l'IDS per segnalare tentativi di accesso non autorizzati, ma non per bloccare automaticamente i pacchetti senza ulteriore analisi.
-	~[moodle]Impostare l'IDS per interrompere automaticamente qualsiasi connessione con attività insolita senza tenere conto di falsi positivi.
-	~%33.33333%[moodle]Integrare l'IDS con un sistema SIEM per correlare eventi e rilevare modelli di comportamento sospetti.
-	~[moodle]Consentire traffico "trusted" ai server da indirizzi IP interni senza ulteriori verifiche, basandosi sulla segmentazione di rete per la protezione.
-	####[moodle]Ripetere utilizzo di NIDS, correlazione con SIEM e gestione dei falsi positivi [Slide 09-13]
+// question: 2  name: indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette: 
+// [tag:firewall] 
+::indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette: ::[html]<p><strong>indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette: </strong></p>{
+	~%25.00000%[moodle] Netfilter/IPtables è un software che fornisce funzionalità di manipolazione e filtraggio di pacchetti IP all'interno del kernel Linux.
+	~[moodle]La catena INPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena OUTPUT gestisce i pacchetti in ingresso.
+	~%25.00000%[moodle] La politica di default di una catena IPtables determina l'azione intrapresa se nessuna regola nella catena corrisponde al pacchetto.
+	~[moodle]Il comando "iptables -F" elimina tutte le regole nella catena specificata e ripristina automaticamente la politica di default della catena a ACCEPT.e una singola macchina.
+	~[moodle] In uno stateless packet filter, la regola "iptables -A FORWARD -p tcp -s IP-Alice --sport 80 --dport 22 -j ACCEPT" permette ad Alice di navigare su qualsiasi sito web esterno, a patto che la destinazione sia la porta 80.
+	~[moodle] Con uno stateless packet filter, la porta sorgente 80 può essere utilizzata da Bob per instaurare una connessione verso Alice se è presente una regola che accetta pacchetti con porta sorgente 80. Uno stateful packet filter, invece, può distinguere tra connessioni in entrata e in uscita.
+	~%25.00000%[moodle] Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
+	~%25.00000%[moodle]La catena OUTPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena INPUT gestisce i pacchetti in ingresso.
+	####[moodle]Ripetere Netfilter/IPtables e configurazioni base [Lab 04, Slide 09]
 }
 
-// question: 3  name: Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?
-// [tag:IDS] [tag: IPS] [tag: sicurezza] 
-::Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?::[html]<p><strong>Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?</strong></p>{
-	~%25.00000%[moodle]Un IDS passivo si limita a rilevare e segnalare attività sospette, senza intervenire attivamente.  
-	~%25.00000%[moodle]Gli NGFW vengono venduti e pubblicizzati come in grado di identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
-	~[moodle]Un IPS è sempre preferibile a un IDS perché previene attivamente le intrusioni, senza rischio di falsi positivi.
-	~%25.00000%[moodle]Gli IDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
-	~%25.00000%[moodle]Un sensore IDS può essere posizionato sia per monitorare tratti di rete che su un singolo host.
-	~[moodle]I NIDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log file monitor, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
-	~[moodle]Gli IDS/IPS possono identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
-	~[moodle]L'integrazione di firewall, VPN e IDPS in un unico dispositivo (UTM) comporta un aumento dei costi di gestione a causa della maggiore complessità dei task che il dispositivo è in grado di svolgere.
-	####[moodle]Ripetere concetti di IDS/IPS e differenze con NGFW e UTM [Slide 10]
+// question: 3  name: Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?
+// [tag:hash] [tag: funzioni di hash] [tag: crypto] 
+::Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?</strong></p>{
+	~%50.00000%[moodle]Gli algoritmi di hash, come SHA-256, generano un digest di lunghezza fissa indipendentemente dalla dimensione del messaggio in input.
+	~%50.00000%[moodle]Un hash crittografico è sicuro contro collisioni se non esistono metodi pratici per trovarne una in un tempo computazionale ragionevole.
+	~[moodle]Un hash crittografico può essere invertito con una chiave segreta utilizzando un algoritmo avanzato.
+	~[moodle]L’algoritmo di hashing MD5 è considerato ancora sicuro per applicazioni crittografiche che richiedono resistenza alle collisioni nel caso di second preimage attack.
+	~[moodle]Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
 }
 
-// question: 4  name: Indica quali delle seguenti affermazioni su S/MIME sono vere: 
-// [tag:smime] [tag:email] [tag:sicurezza] [tag:integrità] [tag:autenticazione] [tag:non ripudio] [tag:riservatezza] [tag:cms] 
-::Indica quali delle seguenti affermazioni su S/MIME sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni su S/MIME sono vere: </strong></p>{
-	~%25.00000%[moodle] S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
-	~[moodle] S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
-	~%25.00000%[moodle] S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
-	~[moodle] La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
-	~%25.00000%[moodle] S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
-	~%25.00000%[moodle] CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+// question: 4  name: indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: 
+// [tag:ipsec] [tag:tls] [tag:ike] 
+::indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: ::[html]<p><strong>indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: </strong></p>{
+	~[moodle] L'opzione “-CAfile” nel comando “openssl s_client” specifica il file contenente la chiave privata del client.
+	~%33.33333%[moodle] L'opzione “-cipher” in “openssl s_client” ti permette di specificare la lista di ciphersuite che il client dovrebbe usare.
+	~[moodle] Per abilitare l'autenticazione del client in una configurazione Apache TLS, devi cambiare la direttiva “SSLVerifyClient” in “require”.
+	~%33.33333%[moodle] Il comando “openssl rsa -in client_pkey.pem -out client_decrypted_pkey.pem” può essere usato per decriptare una chiave privata RSA.
+	~[moodle] Per catturare il traffico durante un attacco MITM con "ettercap" su una connessione TLS, devi prima usare “openssl” per generare un certificato valido firmato da una CA di fiducia.
+	~%33.33333%[moodle] Il comando "ipsec up host-host" è usato per iniziare una connessione IKE definita in "ipsec.conf" come una connessione chiamata "host-host"
+	####[moodle]Rivedere materiale laboratorio riguardo Ipsec e TLS
 }
 
-// question: 5  name: Bob configura il suo firewall con la seguente regola:<br>iptables -A FORWARD -p tcp --dport 22 -s 192.168.1.0/24 -d 10.0.0.1 -j ACCEPT<br>Quali delle seguenti affermazioni sono vere?
-// [tag:firewall] [tag: configurazione] [tag: forwarding] 
-::Bob configura il suo firewall con la seguente regola:<br>iptables -A FORWARD -p tcp --dport 22 -s 192.168.1.0/24 -d 10.0.0.1 -j ACCEPT<br>Quali delle seguenti affermazioni sono vere?::[html]<p><strong>Bob configura il suo firewall con la seguente regola:<br>iptables -A FORWARD -p tcp --dport 22 -s 192.168.1.0/24 -d 10.0.0.1 -j ACCEPT<br>Quali delle seguenti affermazioni sono vere?</strong></p>{
-	~%33.33333%[moodle]Il traffico SSH dalla rete 192.168.1.0/24 verso il server 10.0.0.1 è consentito.
-	~[moodle]Il traffico HTTP tra la rete interna e 10.0.0.1 è bloccato dalla configurazione.
-	~%33.33333%[moodle]Bob può monitorare l'attività di questa regola aggiungendo una regola di LOG prima di essa.
-	~%33.33333%[moodle]Il firewall inoltra i pacchetti solo se la policy predefinita della chain FORWARD è ACCEPT o se esistono regole aggiuntive che consentono esplicitamente il traffico.
-	~[moodle]La regola consente connessioni in entrata su tutte le porte dal server 10.0.0.1.
-	####[moodle]Ripetere configurazione di IPtables, forwarding e regole di logging [Lab 04, Slide 9]
+// question: 5  name: Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?
+// [tag:hash] [tag: autenticazione] [tag: tls] [tag: collisioni] 
+::Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?::[html]<p><strong>Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?</strong></p>{
+	~%33.33333%[moodle]Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
+	~%33.33333%[moodle]Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
+	~[moodle]Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
+	~[moodle]L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
+	~%33.33333%[moodle]TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
 }
 
-// question: 6  name: Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?
-// [tag:crypto] [tag: algoritmi] 
-::Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?</strong></p>{
-	~%50.00000%[moodle]Il principio di Kerckhoffs afferma che un sistema crittografico deve essere sicuro anche se l’algoritmo è pubblico, purché la chiave sia segreta.
-	~%50.00000%[moodle]L’applicazione del principio di Kerckhoffs ha portato alla trasparenza nello sviluppo degli algoritmi crittografici moderni come AES.
-	~[moodle]La segretezza dell’algoritmo garantisce sempre un livello aggiuntivo di sicurezza rispetto alla trasparenza dell’algoritmo.
-	~[moodle]Il principio di Kerckhoffs richiede che l’algoritmo di crittografia e le chiavi siano mantenuti segreti per garantire sicurezza.
-	~[moodle]Le vulnerabilità negli algoritmi pubblici sono inevitabili e non possono essere mitigate con il solo uso di chiavi sicure.
-}
-
-// question: 7  name: Indica quali delle seguenti affermazioni su firewall, proxy e DMZ sono corrette?
-// [tag:firewall] [tag: proxy] [tag: DMZ] 
-::Indica quali delle seguenti affermazioni su firewall, proxy e DMZ sono corrette?::[html]<p><strong>Indica quali delle seguenti affermazioni su firewall, proxy e DMZ sono corrette?</strong></p>{
-	~%25.00000%[moodle]Un forward proxy si trova tra i client di una rete esterna e i server esterni, inoltrando le richieste dei client.  
-	~[moodle]Un reverse proxy si limita a bilanciare il carico tra più server interni, senza fornire alcuna funzionalità di sicurezza aggiuntiva.  
-	~%25.00000%[moodle]L'utilizzo di una DMZ (De-Militarized Zone) permette di isolare i server pubblici dalla rete interna, aumentando la sicurezza.
-	~[moodle]In un'architettura firewall con DMZ, il gateway è sempre posizionato all'interno della rete interna per garantire una maggiore protezione.
-	~%25.00000%[moodle]Un firewall "a tre gambe" è un'architettura che usa un unico gateway per generare una DMZ e isolare la rete interna.  
-	~[moodle]Il mascheramento degli indirizzi IP interni (NAPT) è una funzionalità esclusiva dei proxy application layer.
-	~%25.00000%[moodle]I firewall possono essere implementati come software, appliance hardware o servizi cloud.  
-	~[moodle]Un firewall che contiene componenti di tipo application layer filter è in grado di ispezionare il traffico crittografato senza necessità di decifrarlo.
-	~[moodle]I firewall possono essere implementati come app mobile o servizi cloud.
-	####[moodle]Ripetere concetti su firewall, proxy e DMZ [Slide 09]
-}
-
-// question: 8  name: Bob sta lavorando per ottenere la certificazione ISO/IEC 27001 e garantire la conformità al GDPR. Quali delle seguenti affermazioni sono corrette?
-// [tag:standard] [tag: analisi dei rischi] [tag: GDPR] 
-::Bob sta lavorando per ottenere la certificazione ISO/IEC 27001 e garantire la conformità al GDPR. Quali delle seguenti affermazioni sono corrette?::[html]<p><strong>Bob sta lavorando per ottenere la certificazione ISO/IEC 27001 e garantire la conformità al GDPR. Quali delle seguenti affermazioni sono corrette?</strong></p>{
-	~%33.33333%[moodle]I rischi identificati devono essere documentati e gestiti attraverso misure tecniche e organizzative.
-	~%33.33333%[moodle]La protezione dei dati personali deve essere integrata nel sistema di gestione della sicurezza delle informazioni (ISMS).
-	~[moodle]Aver ottenuto una certificazione ISO/IEC 27001 garantisce la conformità al GDPR.
-	~%33.33333%[moodle]Le valutazioni periodiche dell'efficacia delle misure adottate sono obbligatorie sia per la ISO/IEC 27001 che per il GDPR.
-	~[moodle]I dati personali protetti da crittografia non richiedono un adeguamento periodico dell’'analisi dei rischi.
-	####[moodle]La certificazione ISO 27001 attesta un buon sistema di gestione della sicurezza, ma il GDPR ha requisiti specifici sulla protezione dei dati personali che vanno oltre.
-	La crittografia riduce alcuni rischi, ma non li elimina completamente, quindi l'analisi dei rischi deve essere rivista periodicamente in ogni caso.
-}
-
-// question: 9  name: Alice sta valutando i rischi legati al trattamento dei dati personali in conformità al GDPR. Quali delle seguenti azioni rappresentano buone pratiche?
+// question: 6  name: Alice sta valutando i rischi legati al trattamento dei dati personali in conformità al GDPR. Quali delle seguenti azioni rappresentano buone pratiche?
 // [tag:gdpr] [tag: analisi dei rischi] [tag: sicurezza] 
 ::Alice sta valutando i rischi legati al trattamento dei dati personali in conformità al GDPR. Quali delle seguenti azioni rappresentano buone pratiche?::[html]<p><strong>Alice sta valutando i rischi legati al trattamento dei dati personali in conformità al GDPR. Quali delle seguenti azioni rappresentano buone pratiche?</strong></p>{
 	~%33.33333%[moodle]Considerare l'impatto di una violazione dei dati sia a livello finanziario che reputazionale.
@@ -100,6 +64,39 @@
 	~[moodle]Documentare i rischi associati ai dati sensibili è necessario, mentre gli altri tipi di dati non sono tutelati dal GPDR è pertanto l’adeguata documentazione risulta opzionale.
 	~%33.33333%[moodle]Valutare regolarmente l'efficacia delle misure tecniche e organizzative adottate.
 	~[moodle]Concludere l'analisi dei rischi una volta definite le misure di protezione iniziali.
+}
+
+// question: 7  name: Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?
+// [tag:standard] [tag: sicurezza] [tag: certificazioni] 
+::Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?::[html]<p><strong>Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?</strong></p>{
+	~%33.33333%[moodle]La certificazione richiede una verifica indipendente da parte di un ente accreditato.
+	~%33.33333%[moodle]L’ottenimento della certificazione dipende dall’implementazione di un ISMS adeguata con una adeguata gestione dei rischi post-analisi.
+	~[moodle]Una volta ottenuta, la certificazione è valida per un tempo illimitato.
+	~%33.33333%[moodle]La conformità allo standard include la preparazione alla risposta agli incidenti di sicurezza.
+	~[moodle]L'implementazione delle misure minime consigliate dalla norma garantisce la certificazione senza bisogno di adattamenti.
+}
+
+// question: 8  name: Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?
+// [tag:analisi dei rischi] [tag: firewall] [tag: GDPR] 
+::Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?::[html]<p><strong>Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?</strong></p>{
+	~%33.33333%[moodle]Il firewall deve bloccare il traffico non autorizzato e registrare i tentativi di accesso.
+	~%33.33333%[moodle]La configurazione del firewall deve essere documentata come parte delle misure di sicurezza adottate.
+	~[moodle]Il GDPR richiede che i log del firewall includano i dati personali completi degli utenti per scopi di verifica (deep packet inspection).
+	~%33.33333%[moodle]Il firewall deve essere aggiornato regolarmente per proteggere i dati personali da attacchi noti.
+	~[moodle]L'uso di un firewall e la sua corretta configurazione rendono superfluo adottare ulteriori misure di sicurezza per proteggere i dati personali.
+	####[moodle]La configurazione del firewall deve essere documentata: Per una gestione efficace della sicurezza e per garantire la continuità operativa in caso di problemi.
+	Il firewall deve essere aggiornato regolarmente: Per proteggere i sistemi da vulnerabilità note e nuove minacce.
+}
+
+// question: 9  name: Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?
+// [tag:firewall] [tag: architettura] [tag: sicurezza] 
+::Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?::[html]<p><strong>Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?</strong></p>{
+	~%33.33333%[moodle]Isolamento dei server pubblici dato il divieto di accesso diretto alla rete interna.
+	~%33.33333%[moodle]Facilità di applicazione di policy di sicurezza specifiche per ciascun segmento di rete.
+	~[moodle]Maggiore velocità di trasmissione rispetto a un firewall con DMZ singola.
+	~[moodle]I server nella DMZ possono comunicare direttamente con la rete interna senza ulteriori configurazioni.
+	~%33.33333%[moodle]Possibilità di monitorare e analizzare il traffico verso i server pubblici senza esporre la rete interna.
+	####[moodle]Ripetere Firewall [Slide 9]
 }
 
 // question: 10  name: Alice ha configurato il firewall del suo sistema con i seguenti comandi:<br>iptables -F<br>iptables -P INPUT ACCEPT<br>iptables -A INPUT -p tcp --syn -j DROP<br><br>La configurazione risultante di iptables è la seguente:<br>Chain INPUT (policy ACCEPT)<br>pkts bytes target     prot opt in     out     source               destination<br>0     0 DROP       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02 (SYN)<br><br>Chain FORWARD (policy ACCEPT)<br>pkts bytes target     prot opt in     out     source               destination<br><br>Chain OUTPUT (policy ACCEPT)<br>pkts bytes target     prot opt in     out     source               destination                       destination<br><br>Seleziona le affermazioni corrette:
@@ -113,13 +110,16 @@
 	####[moodle]Laboratorio 4 Sez.2
 }
 
-// question: 11  name: Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: 
-// [tag:spam] [tag:tecniche] [tag:email] [tag:sicurezza] 
-::Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: ::[html]<p><strong>Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere: </strong></p>{
-	~[moodle] Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-	~[moodle] I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
-	~%33.33333%[moodle] Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-	~%33.33333%[moodle] Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-	~%33.33333%[moodle] Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
+// question: 11  name: Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: 
+// [tag:ipsec] [tag:tls] [tag:ike] 
+::Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: ::[html]<p><strong>Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: </strong></p>{
+	~[moodle] Il comando "ip xfrm state flush" è usato per cancellare il Database delle Politiche di Sicurezza (SPD).
+	~%25.00000%[moodle] Il comando "ip xfrm policy list" mostra le politiche di sicurezza IPsec correnti.
+	~%25.00000%[moodle] Il comando "ipsec start" è usato per avviare il demone strongSwan.
+	~[moodle] Dopo aver modificato il file "/etc/ipsec.conf", devi usare il comando "ipsec update" perché le modifiche abbiano effetto immediatamente.
+	~%25.00000%[moodle] Il comando "openssl s_server -www" avvia un semplice server TLS che mostra le informazioni di connessione in formato HTML.
+	~[moodle] In una VPN IPsec site-to-site, ogni gateway necessita solo di una singola Associazione di Sicurezza (SA) per gestire il traffico in entrambe le direzioni.
+	~%25.00000%[moodle] Per usare certificati con strongSwan devi posizionare il certificato CA nella directory "/etc/ipsec.d/cacerts"
+	####[moodle]Rivedere materiale laboratorio riguardo Ipsec e TLS
 }
 

@@ -1,78 +1,62 @@
 
-$tls, starttls, email, sicurezza, protocollo
-_Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere:1
-*Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
-- Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
--La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
--SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
+$firewall, configurazione, iptables
+_Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?3
+*iptables -A INPUT -p tcp --dport 22 -j ACCEPT
+*iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+*iptables -P INPUT DROP
+-iptables -P OUTPUT ACCEPT
+-iptables -A FORWARD -j ACCEPT
+#Laboratorio 4
 %
 
-$certificati, pkcs, formato, firma
-__Alice desidera ottenere un certificato da Carl, il quale svolge il ruolo di Certification Authority (CA). Per procedere, Carl esegue il seguente comando:
-openssl ca -in alice.certeq.pem -out alice.x509cert.pem
-Quali delle seguenti affermazioni sono corrette?_4
--Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS #10.
--In OpenSSL, Alice può ottenere un certificato da Carl anche senza sottomettere una richiesta di certificato.
-*La richiesta di certificato deve essere firmata da Alice per garantire l’integrità della richiesta.
-*Carl dispone di una base dati che tiene traccia dei certificati emessi e del loro stato, aggiornata automaticamente dopo l’esecuzione del comando.
-*Il certificato emesso da Carl utilizzerà un numero di serie assegnato automaticamente dal file accessorio serial.
-*Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS10
-#Laboratorio 3 Es. 3.2
+$firewall, vulnerabilità, reti
+_Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?3
+*Impostare una regola per bloccare i pacchetti con flag incoerenti.
+*Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
+-Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
+-Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
+*Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
+#Firewall [Slide 9]
 %
 
-$standard, sicurezza, certificazioni
-_Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?3
-*La certificazione richiede una verifica indipendente da parte di un ente accreditato.
-*L’ottenimento della certificazione dipende dall’implementazione di un ISMS adeguata con una adeguata gestione dei rischi post-analisi.
--Una volta ottenuta, la certificazione è valida per un tempo illimitato.
-*La conformità allo standard include la preparazione alla risposta agli incidenti di sicurezza.
--L'implementazione delle misure minime consigliate dalla norma garantisce la certificazione senza bisogno di adattamenti.
+$smime,pgp,sicurezza,email,standard
+_Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere:2
+* Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
+- Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
+- L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
+* A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
+- A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
+- La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
 %
 
-$iptables, firewall, icmp, packetfilter
-__Alice ha configurato il firewall del suo sistema con i seguenti comandi:
-iptables -F 
-iptables -P INPUT DROP
-iptables -A INPUT -p icmp -j ACCEPT
-iptables -A INPUT -p tcp --dport 80 -j ACCEPT
-
-La configurazione risultante di iptables è la seguente:
-Chain INPUT (policy DROP 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
-    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
-
-Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-
-Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-
-Quali problemi ci sono con questa configurazione?_3
-*Alice non riesce ad avviare una connessione SSH verso Bob perché la default policy DROP della chain INPUT blocca i pacchetti di risposta (SYN+ACK).
--Bob non riesce a eseguire una scansione delle porte di Alice.
-*Le risposte ai ping inviati da Bob vengono accettate, ma le risposte ai pacchetti TCP (ad esempio HTTPS sulla porta 443 o SSH sulla porta 21) non vengono gestite correttamente.
-*Alice non ha configurato una regola per consentire il traffico correlato (es. RELATED, ESTABLISHED), rendendo il firewall inefficace per connessioni bidirezionali.
--La policy DROP della chain INPUT blocca tutto il traffico, inclusi i pacchetti ICMP accettati dalla regola esplicita
--Alice non può creare nuove chain per gestire altri tipi di traffico
-#Laboratorio 4 Sez. 2
+$firewall, certificazioni, GDPR
+_Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?3
+*Configurare il firewall per registrare i log tecnici necessari alla sicurezza della rete, assicurandosi che siano conservati per un periodo proporzionato e con scopo dichiarato
+-Impostare una regola per registrare tutti i dettagli del traffico, inclusi dati personali, per un periodo illimitato
+*Implementare politiche di accesso basate su principi di "least privilege" per ridurre l'accesso non necessario ai log del firewall
+*Utilizzare un SIEM (Security Information and Event Management) per analizzare i log generati, rispettando le normative sulla gestione dei dati personali.
+-Consentire il traffico in entrata su tutte le porte per facilitare la trasparenza delle comunicazioni.
+#Ripetere GDPR [Slide 13]
 %
 
-$ipsec, tls, sicurezza
-_Quali differenze distinguono la sicurezza fornita da IPsec rispetto a TLS?3
-*IPsec opera al livello di rete (Layer 3), proteggendo tutto il traffico IP, mentre TLS protegge specifici protocolli applicativi come HTTPS.
-*IPsec può essere configurato per garantire sicurezza end-to-end o solo per una parte del percorso di trasmissione tramite VPN.
-*TLS utilizza metodi crittografici per autenticare le parti e negoziare chiavi di sessione simmetriche.
--IPsec richiede sempre un certificato digitale per autenticare gli utenti e scambiare le chiavi.
+$ipsec,ah,esp,ike,sicurezza,protocollo
+_Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?3
+-TCP
+*AH (Authentication Header)
+*ESP (Encapsulating Security Payload)
+-HTTPS
+-RSSA
+*IKE (Internet Key Exchange)
 %
 
-$hash, autenticazione, tls, collisioni
-_Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?3
-*Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
-*Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
--Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
--L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
-*TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
+$mime,email,formato,header,body
+_Indica quali delle seguenti affermazioni sul formato MIME sono vere:3
+* MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
+* I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
+* MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
+- Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
+- MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
+- MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
 %
 
 $sicurezza
@@ -91,55 +75,50 @@ _Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai
 *Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
 %
 
-$crypto, simmetrica, chiavi, attacchi
-__Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi
--rsa.key.alice
--rsapub.key.alice
-quindi, esegue i seguenti comandi:
-echo chiave > aeskey
-openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey
-openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.bob -out aeskey.enc
-Poi invia a Bob i seguenti file:
--msg.enc
--aeskey.enc
-Seleziona le risposte corrette:_2
-*Questa procedura è vulnerabile ad un attacco Man In the Middle
--Questa procedura è vulnerabile ad un attacco IP Spoofing
--Bob deve sapere l’IV per decifrare la chiave
-*Bob deve decifrare prima la chiave con la sua chiave privata e poi usare quella chiave per decifrare il messaggio
--Bob deve decifrare prima la chiave con la chiave pubblica di Alice e poi usare quella chiave per decifrare il messaggio
-#Laboratorio 3 Sez. 2
+$gdpr, sicurezza, crittografia
+_Bob deve implementare la crittografia per proteggere i dati personali trattati dalla sua azienda. Quali delle seguenti affermazioni rispettano il GDPR?3
+*La crittografia è una misura di sicurezza appropriata, ma non obbligatoria per tutti i tipi di dati personali in transit.
+*Se i dati personali crittografati vengono rubati, l'obbligo di notifica può essere evitato in alcuni casi se opportunamente documentati dal DPO.
+-Se si scelgono algoritmi forti, l’uso della crittografia garantisce che l’organizzazione non sia responsabile per una violazione dei dati.
+*Anche se i dati sono cifrati, devono essere accessibili solo agli utenti autorizzati, garantendo riservatezza e disponibilità.
+-Il GDPR richiede che tutti i dati personali, indipendentemente dal loro livello di sensibilità, siano crittografati at rest senza eccezioni.
+#Ripetere GDPR [Slide 13]
 %
 
-$gdpr, crittografia, firewall
-_Alice vuole configurare una rete aziendale che protegga i dati personali in transito e in conformità al GDPR. Quali misure tecniche dovrebbe adottare?3
-*Configurare il firewall per consentire solo traffico crittografato tramite TLS verso i server aziendali.
-*Implementare la crittografia end-to-end per proteggere i dati in transito.
--Registrare nei log i contenuti cifrati dei pacchetti per verificare la conformità ai requisiti GDPR.
-*Implementare politiche di gestione delle chiavi per garantire la sicurezza dei certificati crittografici utilizzati.
--Implementare regole per accettare solo pacchetti con chiavi di cifratura statiche condivise tra client e server.
-#Ripetere GDPR [Slide 13], Firewall [Slide 9], Sicurezza di Canale [Slide 7]
+$firewall
+_Indica quali sono le risposte corrette sui firewall e la loro architettura nelle reti?5
+*Un firewall stateful tiene traccia dello stato delle connessioni, migliorando la sicurezza rispetto ai firewall stateless.  
+-I firewall di livello applicativo (L7) sono più veloci dei firewall packet filter (L4) perché analizzano dati meglio strutturati.  
+*Un firewall con architettura a "tre gambe" espone una interfaccia di rete per ospitare server pubblici creando una DMZ (De-Militarized Zone).  
+-Usare un firewall con architettura a “screening router” permette di creare una DMZ (De-Militarized Zone) per ospitare server pubblici.  
+-Un bastion host è un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.  
+-Un firewall di tipo stealth non ha un indirizzo IP configurato sulla scheda rete, ma modifica attivamente il traffico per nascondere la rete interna.
+*Il principio "blacklisting" offre minore sicurezza ma è più facile da gestire rispetto al principio opposto detto “whitelisting”. 
+-L'utilizzo di un router come firewall è una soluzione sufficientemente sicura, è quindi consigliabile in ambito aziendale.  
+*Un personal firewall è installato direttamente sul nodo da difendere e può essere usato per autorizzare le comunicazioni dei processi in esecuzione.
+-Lo scopo di un firewall è bloccare il traffico in ingresso non autorizzato, serve meno attenzione nel controllo del traffico in uscita.
+*Un honey pot può essere un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.
+#Ripetere tipi di firewall, architetture e concetti di sicurezza [Slide 9 e 10, Lab 04]
 %
 
-$ipsec
-__Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Bob esegue i seguenti comandi:
-ip xfrm state flush 
-ip xfrm policy flush 
-ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff 
-ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff 
-ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto esp mode transport level required ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto esp mode transport level required
-Seleziona le risposte corrette:_3
-*Vengono create 2 SA e 2 SP
-*Le SA contengono 2 SPI differenti perchè identificano la direzione
-*Le Security Policies (SP) configurate stabiliscono che il traffico tra Alice e Bob deve essere cifrato utilizzando ESP in modalità transport, senza coinvolgere l’intero pacchetto IP.
--Le SA configurate utilizzano lo stesso SPI per entrambe le direzioni, perché l’algoritmo AES richiede univocità solo a livello di chiave crittografica.
--Le Security Associations (SA) configurate permettono di proteggere il traffico solo nella direzione da Bob a Alice, mentre il traffico nella direzione opposta rimane non protetto.
+$crypto, autenticazione, chiavi, tls
+_Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?2
+*Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
+*Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
+-I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
+-I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
+-TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
 %
 
-$algoritmi, crypto, simmetrica
-_Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?2
-*AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
-*AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
--AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
--AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
+$IDS, IPS, sicurezza
+_Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?4  
+*Un IDS passivo si limita a rilevare e segnalare attività sospette, senza intervenire attivamente.  
+*Gli NGFW vengono venduti e pubblicizzati come in grado di identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
+-Un IPS è sempre preferibile a un IDS perché previene attivamente le intrusioni, senza rischio di falsi positivi.
+*Gli IDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
+*Un sensore IDS può essere posizionato sia per monitorare tratti di rete che su un singolo host.
+-I NIDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log file monitor, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
+-Gli IDS/IPS possono identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
+-L'integrazione di firewall, VPN e IDPS in un unico dispositivo (UTM) comporta un aumento dei costi di gestione a causa della maggiore complessità dei task che il dispositivo è in grado di svolgere.
+#Ripetere concetti di IDS/IPS e differenze con NGFW e UTM [Slide 10]
 %

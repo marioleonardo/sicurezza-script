@@ -1,107 +1,125 @@
 
-$crypto, stream, simmetrica
-_Quali affermazioni riguardanti la crittografia a stream sono corrette?2
--Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
--Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
--Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
-*Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
--Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
-- L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
-*Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+$ipsec,tls,ike
+__Ti è stato assegnato il compito di impostare un canale di comunicazione sicuro tra due host, Alice e Bob, usando IPsec. Hai deciso di usare strongSwan per la negoziazione IKE e hai già configurato i file /etc/ipsec.conf e /etc/ipsec.secrets su entrambe le macchine. Alice deve iniziare la connessione con Bob. Sono disponibili sia una chiave pre-condivisa che dei certificati. Usi il comando ipsec up host-host per iniziare la connessione. Quali affermazioni sono corrette?_4
+* Prima di eseguire "ipsec up host-host", devi assicurarti che il servizio strongSwan sia in esecuzione, cosa che può essere verificata usando il comando "ipsec start".
+- Se il comando "ipsec up host-host" fallisce, la prima cosa da controllare è la connettività di rete tra Alice e Bob usando il comando "ping".
+* Dopo aver stabilito con successo il tunnel IPsec, puoi usare il comando "ip xfrm state list" sia su Alice che su Bob per verificare che le Associazioni di Sicurezza (SA) siano state create.
+- Se vuoi usare l'autenticazione basata su certificati invece della PSK, puoi modificare il comando "ipsec up" includendo l'opzione "--cert" seguita dal percorso del file del certificato.
+- Il comando "ip xfrm policy list" può essere usato per controllare se il traffico tra Alice e Bob è indirizzato attraverso il tunnel IPsec.
+* Se la connessione viene stabilita con successo, ma il traffico non è cifrato, dovresti controllare che su Bob il file "/etc/ipsec.conf" abbia il parametro "type" impostato a "start" per la connessione "host-host".
+* Per assicurare che la connessione IPsec sia ristabilita automaticamente dopo un riavvio, dovresti modificare il file "/etc/ipsec.conf" sia su Alice che su Bob per includere la riga "auto=start" all'interno della definizione della connessione.
+- Se vuoi proteggere solo il traffico TCP, devi aggiungere una riga con il parametro "proto tcp" al comando "ip xfrm state add".
 %
 
-$crypto, autenticazione, chiavi, tls
-_Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?2
-*Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
-*Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
--I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
--I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
--TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
+$ipsec,ike,sicurezza autenticazione
+_Quale ruolo svolge il protocollo IKE in IPsec?3
+*Negoziazione dei parametri di sicurezza tra i peer.
+*Gestione delle chiavi crittografiche.
+-Fornisce cifratura end-to-end per i dati.
+-Configura le policy DNS per la risoluzione dei peer.
+-Crea AH header e trailer.
+*Offre diversi metodi di autenticazione tra cui CRA asimmetrico.
 %
 
-$cms,crittografia,struttura,firma digitale,sicurezza
-_Indica quali delle seguenti affermazioni sulla struttura CMS sono vere:2
-- CMS sta per Cryptographic Mail Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
-* La struttura "signedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-* La struttura "envelopedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-- La struttura "envelopedData" in CMS contiene il contenuto del messaggio, gli algoritmi di digest, le firme digitali e le informazioni sul firmatario.
-- La struttura "signedData" in CMS contiene il contenuto del messaggio crittografato e la chiave di sessione crittografata.
-- CMS supporta solo un singolo destinatario per i messaggi crittografati.
+$simmetrica
+_Quali delle seguenti sono tecniche di crittografia simmetrica?2
+*AES (Advanced Encryption Standard)
+*DES (Data Encryption Standard)
+-RSA
+-ECC (Elliptic Curve Cryptography)
+-Elgamal
 %
 
-$ids, firewall, reti
-_Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?3
-*Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
-*Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
--Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
-*Utilizzare un sistema SIEM per correlare i log dell’IDS e del firewall, permettendo un’analisi approfondita.
--Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
-#Ripetere IDS, Firewall e SIEM [Slide 9]
+$iptables, firewall, icmp, packetfilter
+__Alice ha configurato il firewall del suo sistema con i seguenti comandi:
+iptables -F 
+iptables -P INPUT DROP
+iptables -A INPUT -p icmp -j ACCEPT
+iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
+La configurazione risultante di iptables è la seguente:
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Quali problemi ci sono con questa configurazione?_3
+*Alice non riesce ad avviare una connessione SSH verso Bob perché la default policy DROP della chain INPUT blocca i pacchetti di risposta (SYN+ACK).
+-Bob non riesce a eseguire una scansione delle porte di Alice.
+*Le risposte ai ping inviati da Bob vengono accettate, ma le risposte ai pacchetti TCP (ad esempio HTTPS sulla porta 443 o SSH sulla porta 21) non vengono gestite correttamente.
+*Alice non ha configurato una regola per consentire il traffico correlato (es. RELATED, ESTABLISHED), rendendo il firewall inefficace per connessioni bidirezionali.
+-La policy DROP della chain INPUT blocca tutto il traffico, inclusi i pacchetti ICMP accettati dalla regola esplicita
+-Alice non può creare nuove chain per gestire altri tipi di traffico
+#Laboratorio 4 Sez. 2
 %
 
-$analisi dei rischi, firewall, GDPR
-_Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?3
-*Il firewall deve bloccare il traffico non autorizzato e registrare i tentativi di accesso.
-*La configurazione del firewall deve essere documentata come parte delle misure di sicurezza adottate.
--Il GDPR richiede che i log del firewall includano i dati personali completi degli utenti per scopi di verifica (deep packet inspection).
-*Il firewall deve essere aggiornato regolarmente per proteggere i dati personali da attacchi noti.
--L'uso di un firewall e la sua corretta configurazione rendono superfluo adottare ulteriori misure di sicurezza per proteggere i dati personali.
-#La configurazione del firewall deve essere documentata: Per una gestione efficace della sicurezza e per garantire la continuità operativa in caso di problemi.
-#Il firewall deve essere aggiornato regolarmente: Per proteggere i sistemi da vulnerabilità note e nuove minacce.
+$crittografia,sicurezza,email,prestazioni,anti-spam,ipsec,tls,attacchi
+_Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere:3
+* La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
+* L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
+- L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
+* Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
+- Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
 %
 
-$diffiehellman, asimmetrica
-_Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
-*Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
-*La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
--Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
--La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+$ipsec, sicurezza, ah, attacchi, integrità, autenticazione
+_Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti:2
+-Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
+-Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
+-Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
+*Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
+*IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
 %
 
-$certificazioni, standard, firewall
-_Alice sta configurando il firewall aziendale per soddisfare gli standard ISO/IEC 27001 relativi alla sicurezza delle informazioni. Quali delle seguenti azioni sono coerenti con i requisiti dello standard?3
-*Implementare regole per limitare l’accesso ai server critici solo a indirizzi IP autorizzati.
-*Documentare e aggiornare regolarmente le regole del firewall per garantire conformità agli standard.
--Impostare il firewall per registrare i tentativi di connessione riusciti, ignorando quelli bloccati.
-*Effettuare revisioni periodiche delle configurazioni del firewall come parte dell’audit di sicurezza.
--Configurare il firewall per accettare tutto il traffico proveniente da dispositivi certificati ISO/IEC 27001, eliminando ulteriori controlli.
-#Ripetere gestione regole firewall e audit di sicurezza [Slide 09, Slide 10]
+$ipsec, tls, differenze, sicurezza
+_Bob gestisce un server che deve essere accessibile sia per connessioni VPN sicure che per accesso HTTPS per i clienti. Quali differenze fondamentali tra IPsec e TLS dovrebbero influenzare la sua configurazione?3
+*IPsec opera a livello di rete, mentre TLS opera a livello di trasporto, rendendo TLS più adatto per la protezione di applicazioni specifiche all’interno dello stesso server.
+*IPsec può fornire sicurezza per tutto il traffico di rete (unicast), inclusi protocolli non orientati alla connessione, mentre TLS protegge solo protocolli basati su TCP.
+*L'autenticazione in TLS è spesso basata su certificati, mentre IPsec può supportare autenticazione con chiavi precondivise o certificati.
+-TLS può essere utilizzato per proteggere il traffico multicast, mentre IPsec no.
+-IPsec è ottimale per la protezione di pagine web dinamiche come HTTPS, mentre TLS non è progettato per questo.
 %
 
-$sicurezza, messaggi, TLS, riservatezza, integrità, autenticazione
-_Indica quali delle seguenti affermazioni sulla sicurezza dei messaggi sono vere:3
-* Sicurezza di messaggio vuol dire richiedere di garantire alcune proprietà di sicurezza, tra le quali riservatezza, integrità, autenticazione e non ripudio.
-- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di protocolli di canale come TLS.
-* Il non ripudio nella posta elettronica significa che il mittente non può negare di aver inviato uno specifico messaggio di posta.
-* L'implementazione della sicurezza dei messaggi richiede modifiche alle applicazioni di posta elettronica esistenti.
-- S/HTTP è una versione più recente del protocollo HTTP sviluppata appositamente per funzionare con TLS.
+$vpn, ipsec
+_Quale delle seguenti affermazioni sulle VPN è corretta?2
+-Le VPN operano esclusivamente a livello applicativo per la protezione dei dati.
+*OpenVPN può essere preferibile ad IPsec in reti complesse o eterogenee
+*IPSec in modalità tunnel offre protezione completa incapsulando il pacchetto IP in un nuovo pacchetto IP.
+-OpenVPN supporta nativamente sia modalità transport che tunnel
+-Le VPN IPsec integrano meccanismi di crittografia per la protezione dei dati in maniera opzionale
 %
 
-$spam,email,blacklisting,greylisting,sicurezza
-_Indica quali delle seguenti affermazioni sullo spam e sulle tecniche anti-spam sono vere:5
-* Lo spam si riferisce a email di massa non richieste, spesso di natura commerciale.
-* Una tattica comune degli spammer è quella di nascondere la vera identità del mittente e falsificare le intestazioni delle email.
-* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
-* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-- Blacklist e Greylisting vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+$firewall, ids, sicurezza
+_Alice vuole migliorare la sicurezza della sua rete aziendale integrando firewall e IDS. Quali delle seguenti combinazioni rappresentano un buon compromesso tra prestazioni e sicurezza?3
+*Un firewall stateful con IDS basato su firme per bloccare traffico noto come malevolo.
+*Un firewall stateful con IDS basato su anomalie per rilevare comportamenti sospetti.
+-Un IDS host-based senza firewall per monitorare traffico locale su dispositivi critici.
+-Configurare solo un firewall stateless e aggiornare periodicamente le regole corrispondenti agli attacchi.
+*Un IDS di rete in modalità passiva con firewall configurato per analisi dei pacchetti correlati.
+#Ripetere firewall [Slide 9]
 %
 
-$tls, sicurezza
-_Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?2
-*In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
--TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
--Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
--Entrambi mantengono un canale sicuro dall’inizio della connessione.
-*STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
+$firewall, configurazione, reti
+_Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?3
+*Impostare una regola che accetti solo connessioni in uscita verso destinazione porta 443 con stato “NEW” e sorgente interna, e bloccare connessioni con porte diverse.
+*Configurare una regola che consenta esclusivamente il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni per completare le risposte HTTPS.
+-Bloccare tutto il traffico in ingresso e in uscita, inclusi i pacchetti correlati (RELATED, ESTABLISHED), come misura di sicurezza predefinita.
+-Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite, e ALLOW per le connessioni in ingresso.
+*Consentire connessioni HTTPS in uscita e configurare una regola per registrare (log) i pacchetti bloccati al fine di monitorare tentativi di connessione non autorizzati.
+#Laboratorio 4
 %
 
-$fasi,tls
-_Quali fasi compongono l’handshake TLS?4
-*Negoziazione dei parametri di cifratura.
-*Autenticazione del server (e opzionalmente del client).
-*Scambio di chiavi per la sessione.
--Trasferimento di file tramite HTTP.
--Utilizzo del protocollo IKE per la gestione delle SA.
-*Scambio di una Server Challenge Request/Response.
+$crypto, rsa, asimmetrica, autenticazione
+_Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?2
+*Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
+*Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
+-Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
+-Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
+-Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
 %

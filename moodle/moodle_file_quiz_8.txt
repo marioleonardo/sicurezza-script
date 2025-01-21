@@ -1,60 +1,68 @@
-// question: 1  name: Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?
-// [tag:firewall] [tag: vulnerabilità] [tag: reti] 
-::Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?::[html]<p><strong>Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?</strong></p>{
-	~%33.33333%[moodle]Impostare una regola per bloccare i pacchetti con flag incoerenti.
-	~%33.33333%[moodle]Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
-	~[moodle]Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
-	~[moodle]Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
-	~%33.33333%[moodle]Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
-	####[moodle]Firewall [Slide 9]
+// question: 1  name: Quali fasi compongono l’handshake TLS?
+// [tag:fasi] [tag:tls] 
+::Quali fasi compongono l’handshake TLS?::[html]<p><strong>Quali fasi compongono l’handshake TLS?</strong></p>{
+	~%25.00000%[moodle]Negoziazione dei parametri di cifratura.
+	~%25.00000%[moodle]Autenticazione del server (e opzionalmente del client).
+	~%25.00000%[moodle]Scambio di chiavi per la sessione.
+	~[moodle]Trasferimento di file tramite HTTP.
+	~[moodle]Utilizzo del protocollo IKE per la gestione delle SA.
+	~%25.00000%[moodle]Scambio di una Server Challenge Request/Response.
 }
 
-// question: 2  name: Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?
-// [tag:crypto] [tag: simmetrica] 
-::Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?</strong></p>{
-	~%50.00000%[moodle]La crittografia simmetrica richiede una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati.
-	~%50.00000%[moodle]Gli algoritmi simmetrici come AES sono generalmente più efficienti di quelli asimmetrici per grandi volumi di dati.
-	~[moodle]La distribuzione sicura delle chiavi nella crittografia simmetrica è facilmente risolvibile senza l’uso di ulteriori protocolli.
-	~[moodle]Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
+// question: 2  name: Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?
+// [tag:standard] [tag: certificazioni] [tag: IDS] 
+::Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?::[html]<p><strong>Alice vuole ottenere la certificazione ISO/IEC 27001 per la sua rete aziendale e decide di implementare un IDS per monitorare le attività sospette. Quali delle seguenti pratiche sono necessarie per la conformità allo standard?</strong></p>{
+	~%33.33333%[moodle]Analizzare regolarmente i log generati dall’IDS per identificare potenziali minacce.
+	~%33.33333%[moodle]Integrare l'IDS con un sistema SIEM per garantire una gestione centralizzata degli eventi.
+	~[moodle]Impostare l'IDS per ignorare automaticamente tutto il traffico autorizzato, senza generare log.
+	~%33.33333%[moodle]Definire politiche documentate per l’uso dell’IDS e la gestione delle sue configurazioni.
+	####[moodle]Ripetere Standard e Certificazioni [Slide 10], IDS [Slide 9]
 }
 
-// question: 3  name: indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: 
-// [tag:ipsec] [tag:tls] [tag:ike] 
-::indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: ::[html]<p><strong>indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette: </strong></p>{
-	~[moodle] L'opzione “-CAfile” nel comando “openssl s_client” specifica il file contenente la chiave privata del client.
-	~%33.33333%[moodle] L'opzione “-cipher” in “openssl s_client” ti permette di specificare la lista di ciphersuite che il client dovrebbe usare.
-	~[moodle] Per abilitare l'autenticazione del client in una configurazione Apache TLS, devi cambiare la direttiva “SSLVerifyClient” in “require”.
-	~%33.33333%[moodle] Il comando “openssl rsa -in client_pkey.pem -out client_decrypted_pkey.pem” può essere usato per decriptare una chiave privata RSA.
-	~[moodle] Per catturare il traffico durante un attacco MITM con "ettercap" su una connessione TLS, devi prima usare “openssl” per generare un certificato valido firmato da una CA di fiducia.
-	~%33.33333%[moodle] Il comando "ipsec up host-host" è usato per iniziare una connessione IKE definita in "ipsec.conf" come una connessione chiamata "host-host"
-	####[moodle]Rivedere materiale laboratorio riguardo Ipsec e TLS
+// question: 3  name: Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?
+// [tag:crypto] [tag: algoritmi] 
+::Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?</strong></p>{
+	~%50.00000%[moodle]Il principio di Kerckhoffs afferma che un sistema crittografico deve essere sicuro anche se l’algoritmo è pubblico, purché la chiave sia segreta.
+	~%50.00000%[moodle]L’applicazione del principio di Kerckhoffs ha portato alla trasparenza nello sviluppo degli algoritmi crittografici moderni come AES.
+	~[moodle]La segretezza dell’algoritmo garantisce sempre un livello aggiuntivo di sicurezza rispetto alla trasparenza dell’algoritmo.
+	~[moodle]Il principio di Kerckhoffs richiede che l’algoritmo di crittografia e le chiavi siano mantenuti segreti per garantire sicurezza.
+	~[moodle]Le vulnerabilità negli algoritmi pubblici sono inevitabili e non possono essere mitigate con il solo uso di chiavi sicure.
 }
 
-// question: 4  name: Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?
-// [tag:ids] 
-::Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?::[html]<p><strong>Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?</strong></p>{
-	~%33.33333%[moodle]Regolare la soglia di rilevamento dell'IDS per ridurre i falsi positivi.
-	~%33.33333%[moodle]Analizzare i log storici per identificare pattern normali e aggiornare i profili di base.
-	~%33.33333%[moodle]Aggiornare le firme o il modello di rilevamento dell’IDS  per migliorare l’accuratezza del sistema.
-	~[moodle]Disabilitare temporaneamente l'IDS fino a quando il problema non viene risolto.
-	~[moodle]Configurare l'IDS per ignorare completamente gli alert dell’IDS relativi al server critico.
-	####[moodle]Ripetere IDS [Slide 9]
+// question: 4  name: Seleziona quali parametri della sessione TLS cambiano quando viene sfruttato un SessionID.
+// [tag:tls] 
+::Seleziona quali parametri della sessione TLS cambiano quando viene sfruttato un SessionID.::[html]<p><strong>Seleziona quali parametri della sessione TLS cambiano quando viene sfruttato un SessionID.</strong></p>{
+	~[moodle]protocollo
+	~%50.00000%[moodle]chiavi derivate
+	~[moodle]ciphersuite
+	~[moodle]master key
+	~%50.00000%[moodle]numeri casuali
 }
 
-// question: 5  name: Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?
-// [tag:firewall] [tag: configurazione] [tag: reti] 
-::Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?::[html]<p><strong>Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?</strong></p>{
-	~%33.33333%[moodle]Impostare una regola che accetti solo connessioni in uscita verso destinazione porta 443 con stato “NEW” e sorgente interna, e bloccare connessioni con porte diverse.
-	~%33.33333%[moodle]Configurare una regola che consenta esclusivamente il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni per completare le risposte HTTPS.
-	~[moodle]Bloccare tutto il traffico in ingresso e in uscita, inclusi i pacchetti correlati (RELATED, ESTABLISHED), come misura di sicurezza predefinita.
-	~[moodle]Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite, e ALLOW per le connessioni in ingresso.
-	~%33.33333%[moodle]Consentire connessioni HTTPS in uscita e configurare una regola per registrare (log) i pacchetti bloccati al fine di monitorare tentativi di connessione non autorizzati.
-	####[moodle]Laboratorio 4
+// question: 5  name: Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?
+// [tag:ah] [tag: ipsec] 
+::Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?</strong></p>{
+	~%50.00000%[moodle]AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
+	~%50.00000%[moodle]AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
+	~[moodle]AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
+	~[moodle]AH richiede un certificato digitale per autenticare gli utenti.
+	~[moodle]AH supporta Perfect Forward Secrecy come ESP.
 }
 
-// question: 6  name: Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?3<br>*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme di attacco.<br>*Un IDS basato su anomalie combinato con un firewall che includa componenti stateful.<br>-Un IDS configurato per monitorare i log del traffico HTTPS.<br>-Una combinazione di proxy server (screened subnet) ma è rischioso collegarlo a sistema di rilevamento attivo.<br>*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.<br>#Ripetere IDS [Slide 9]<br>%<br><br>$ipsec, retecore<br>Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?
-// [tag:ids] 
-::Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?3<br>*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme di attacco.<br>*Un IDS basato su anomalie combinato con un firewall che includa componenti stateful.<br>-Un IDS configurato per monitorare i log del traffico HTTPS.<br>-Una combinazione di proxy server (screened subnet) ma è rischioso collegarlo a sistema di rilevamento attivo.<br>*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.<br>#Ripetere IDS [Slide 9]<br>%<br><br>$ipsec, retecore<br>Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?::[html]<p><strong>Bob vuole implementare un sistema di sicurezza che protegga attivamente la sua rete, bloccando attacchi in tempo reale e riducendo i falsi positivi. Quale soluzione è più adatta e perché?3<br>*Un IPS configurato con regole specifiche e aggiornamenti regolari delle firme di attacco.<br>*Un IDS basato su anomalie combinato con un firewall che includa componenti stateful.<br>-Un IDS configurato per monitorare i log del traffico HTTPS.<br>-Una combinazione di proxy server (screened subnet) ma è rischioso collegarlo a sistema di rilevamento attivo.<br>*Un IPS integrato con un sistema di machine learning per migliorare l'efficacia del rilevamento.<br>#Ripetere IDS [Slide 9]<br>%<br><br>$ipsec, retecore<br>Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?</strong></p>{
+// question: 6  name: Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?
+// [tag:asimmetrica] 
+::Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?::[html]<p><strong>Quale delle seguenti descrive correttamente le chiavi utilizzate nella crittografia asimmetrica?</strong></p>{
+	~%50.00000%[moodle]Una chiave pubblica che può essere usata per cifrare i dati.
+	~[moodle]Una chiave privata che può essere usata solo per decifrare i dati.
+	~[moodle]Le chiavi pubbliche e private per alcuni algoritmi sono identiche.
+	~[moodle]Una chiave asimmetrica condivisa tra mittente e destinatario.
+	~[moodle]Una chiave di sessione generata casualmente.
+	~%50.00000%[moodle]Due chiavi matematicamente legate da un problema matematico.
+}
+
+// question: 7  name: Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?
+// [tag:ipsec] [tag: retecore] 
+::Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?::[html]<p><strong>Quale approccio riduce al minimo la latenza in una connessione IPsec site-to-site?</strong></p>{
 	~%33.33333%[moodle]Configurare la modalità Transport anziché Tunnel per traffico specifico.
 	~[moodle]Utilizzare algoritmi di hashing più complessi come SHA-512.
 	~[moodle]Abilitare il rinnovo delle chiavi con IKE ogni 10 pacchetti.
@@ -63,33 +71,35 @@
 	~%33.33333%[moodle]Usare un VPN concentrator in tunnel mode invece di un server multipurpose.
 }
 
-// question: 7  name: Quali delle seguenti sono tecniche di crittografia simmetrica?
-// [tag:simmetrica] 
-::Quali delle seguenti sono tecniche di crittografia simmetrica?::[html]<p><strong>Quali delle seguenti sono tecniche di crittografia simmetrica?</strong></p>{
-	~%50.00000%[moodle]AES (Advanced Encryption Standard)
-	~%50.00000%[moodle]DES (Data Encryption Standard)
-	~[moodle]RSA
-	~[moodle]ECC (Elliptic Curve Cryptography)
-	~[moodle]Elgamal
+// question: 8  name: indica quali delle seguenti affermazioni sul laboratorio sui firewall sono corrette: 
+// [tag:firewall] 
+::indica quali delle seguenti affermazioni sul laboratorio sui firewall sono corrette: ::[html]<p><strong>indica quali delle seguenti affermazioni sul laboratorio sui firewall sono corrette: </strong></p>{
+	~%16.66667%[moodle] Il comando "iptables -A FORWARD -p icmp -s IP-Alice --icmp-type echo-request -j ACCEPT" permette ad Alice di inviare pacchetti ping (echo-request).
+	~%16.66667%[moodle] Abilitare il traffico ICMP senza restrizioni può essere pericoloso perché può portare a leakage di informazioni, attacchi di tipo ICMP redirect e attacchi DoS di tipo Smurf.
+	~%16.66667%[moodle] Uno stateful packet filter può accettare tutto il traffico associato alle connessioni stabilite, risolvendo il problema di dover aprire porte specifiche per il traffico di ritorno.
+	~[moodle] Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute --limit-burst 1 -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
+	~%16.66667%[moodle] HTTPtunnel può essere utilizzato per creare un tunnel HTTP che permette di aggirare le politiche di un firewall, consentendo, ad esempio, una connessione SSH attraverso la porta 80.
+	~%16.66667%[moodle] Ptunnel incapsula il traffico TCP all'interno di pacchetti ICMP echo request ed echo reply, e questo può essere un modo per aggirare le politiche di un firewall che permette il traffico ICMP.
+	~[moodle] La funzionalità di "dynamic port forwarding" di SSH crea un socket in ascolto in locale e inoltra le connessioni su un canale sicuro SSH, agendo come un circuit-level gateway.
+	~%16.66667%[moodle] Un application-level gateway come Apache con mod_proxy può fornire filtri applicativi, filtraggio di contenuti e una maggiore protezione contro le vulnerabilità specifiche di determinate applicazioni.
+	####[moodle]Ripetere IPtables, ICMP, stateful packet filter, e tunneling [Lab 04, Slide 09]
 }
 
-// question: 8  name: Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?
-// [tag:pia] [tag: analisi] 
-::Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?::[html]<p><strong>Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?</strong></p>{
-	~[moodle]Il RMF fornisce un framework obbligatorio per la gestione dei rischi legati alla privacy nelle organizzazioni.
-	~%50.00000%[moodle]Il PIA include una valutazione dell’impatto sui diritti degli individui, mentre il RMF si concentra sull’impatto sui sistemi e sugli asset organizzativi.
-	~[moodle]L’output del PIA è un documento che descrive esclusivamente le vulnerabilità tecniche dei sistemi.
-	~[moodle]Il RMF prevede un monitoraggio continuo per aggiornare le strategie di mitigazione, mentre il PIA si limita a una valutazione iniziale.
-	~%50.00000%[moodle]l PIA e il RMF sono processi complementari e possono essere utilizzati insieme in un’organizzazione.
+// question: 9  name: Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?
+// [tag:crypto] [tag: simmetrica] 
+::Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sulla crittografia simmetrica sono vere?</strong></p>{
+	~%50.00000%[moodle]La crittografia simmetrica richiede una chiave segreta condivisa tra mittente e destinatario per cifrare e decifrare i dati.
+	~%50.00000%[moodle]Gli algoritmi simmetrici come AES sono generalmente più efficienti di quelli asimmetrici per grandi volumi di dati.
+	~[moodle]La distribuzione sicura delle chiavi nella crittografia simmetrica è facilmente risolvibile senza l’uso di ulteriori protocolli.
+	~[moodle]Gli algoritmi di crittografia simmetrica non sono vulnerabili a brute force se la chiave è sufficientemente lunga.
 }
 
-// question: 9  name: Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?
-// [tag:pia] [tag: analisi] 
-::Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?::[html]<p><strong>Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?</strong></p>{
-	~%33.33333%[moodle]Il PIA è obbligatorio quando il trattamento dei dati personali comporta rischi elevati per i diritti e le libertà degli interessati.
-	~[moodle]Il PIA si occupa esclusivamente di proteggere gli asset fisici e digitali di un’organizzazione.
-	~[moodle]L’analisi dei rischi del RMF si applica solo ai dati personali.
-	~%33.33333%[moodle]Entrambi i processi prevedono una fase di identificazione dei rischi e delle contromisure.
-	~%33.33333%[moodle]Il PIA richiede un coinvolgimento diretto dei rappresentanti legali e degli interessati.
+// question: 10  name: Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?
+// [tag:algoritmi] [tag: crypto] [tag: simmetrica] 
+::Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?::[html]<p><strong>Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?</strong></p>{
+	~%50.00000%[moodle]AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
+	~%50.00000%[moodle]AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
+	~[moodle]AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
+	~[moodle]AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
 }
 
