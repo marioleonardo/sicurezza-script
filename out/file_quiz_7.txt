@@ -1,44 +1,21 @@
 
-$diffiehellman, asimmetrica
-_Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
-*Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
-*La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
--Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
--La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
+$crypto, algoritmi
+_Quali tra le seguenti affermazioni riguardanti il principio di Kerckhoffs sono vere?2
+*Il principio di Kerckhoffs afferma che un sistema crittografico deve essere sicuro anche se l’algoritmo è pubblico, purché la chiave sia segreta.
+*L’applicazione del principio di Kerckhoffs ha portato alla trasparenza nello sviluppo degli algoritmi crittografici moderni come AES.
+-La segretezza dell’algoritmo garantisce sempre un livello aggiuntivo di sicurezza rispetto alla trasparenza dell’algoritmo.
+-Il principio di Kerckhoffs richiede che l’algoritmo di crittografia e le chiavi siano mantenuti segreti per garantire sicurezza.
+-Le vulnerabilità negli algoritmi pubblici sono inevitabili e non possono essere mitigate con il solo uso di chiavi sicure.
 %
 
-$standard, analisi dei rischi, GDPR
-_Bob sta lavorando per ottenere la certificazione ISO/IEC 27001 e garantire la conformità al GDPR. Quali delle seguenti affermazioni sono corrette?3
-*I rischi identificati devono essere documentati e gestiti attraverso misure tecniche e organizzative.
-*La protezione dei dati personali deve essere integrata nel sistema di gestione della sicurezza delle informazioni (ISMS).
--Aver ottenuto una certificazione ISO/IEC 27001 garantisce la conformità al GDPR.
-*Le valutazioni periodiche dell'efficacia delle misure adottate sono obbligatorie sia per la ISO/IEC 27001 che per il GDPR.
--I dati personali protetti da crittografia non richiedono un adeguamento periodico dell’'analisi dei rischi.
-#La certificazione ISO 27001 attesta un buon sistema di gestione della sicurezza, ma il GDPR ha requisiti specifici sulla protezione dei dati personali che vanno oltre.
-#La crittografia riduce alcuni rischi, ma non li elimina completamente, quindi l'analisi dei rischi deve essere rivista periodicamente in ogni caso.
-%
-
-$firewall, proxy, DMZ
-_Indica quali delle seguenti affermazioni su firewall, proxy e DMZ sono corrette?4
-*Un forward proxy si trova tra i client di una rete esterna e i server esterni, inoltrando le richieste dei client.  
--Un reverse proxy si limita a bilanciare il carico tra più server interni, senza fornire alcuna funzionalità di sicurezza aggiuntiva.  
-*L'utilizzo di una DMZ (De-Militarized Zone) permette di isolare i server pubblici dalla rete interna, aumentando la sicurezza.
--In un'architettura firewall con DMZ, il gateway è sempre posizionato all'interno della rete interna per garantire una maggiore protezione.
-*Un firewall "a tre gambe" è un'architettura che usa un unico gateway per generare una DMZ e isolare la rete interna.  
--Il mascheramento degli indirizzi IP interni (NAPT) è una funzionalità esclusiva dei proxy application layer.
-*I firewall possono essere implementati come software, appliance hardware o servizi cloud.  
--Un firewall che contiene componenti di tipo application layer filter è in grado di ispezionare il traffico crittografato senza necessità di decifrarlo.
--I firewall possono essere implementati come app mobile o servizi cloud.
-#Ripetere concetti su firewall, proxy e DMZ [Slide 09]
-%
-
-$esp, ipsec
-_Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
-*ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
-*ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
--ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
--ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
--ESPv3+ non può essere utilizzato insieme al protocollo AH.
+$firewall, configurazione, reti
+_Alice sta configurando un firewall stateful per proteggere la sua rete aziendale. Vuole consentire solo connessioni HTTPS in uscita dai client interni e bloccare tutto il traffico non correlato. Quali delle seguenti configurazioni soddisfano questo requisito?3
+*Impostare una regola che accetti solo connessioni in uscita verso destinazione porta 443 con stato “NEW” e sorgente interna, e bloccare connessioni con porte diverse.
+*Configurare una regola che consenta esclusivamente il traffico correlato (RELATED, ESTABLISHED) in entrambe le direzioni per completare le risposte HTTPS.
+-Bloccare tutto il traffico in ingresso e in uscita, inclusi i pacchetti correlati (RELATED, ESTABLISHED), come misura di sicurezza predefinita.
+-Definire una policy predefinita di DROP per tutte le connessioni in uscita non esplicitamente consentite, e ALLOW per le connessioni in ingresso.
+*Consentire connessioni HTTPS in uscita e configurare una regola per registrare (log) i pacchetti bloccati al fine di monitorare tentativi di connessione non autorizzati.
+#Laboratorio 4
 %
 
 $tls,certificati
@@ -51,79 +28,82 @@ _Quali algoritmi vengono utilizzati nei certificati TLS per l'autenticazione?2
 *AEAD nell’ultima versione di TLS
 %
 
-$tls, vulnerabilità,
-_Quali vulnerabilità sono associate a una configurazione TLS debole?3
-*Uso di algoritmi deboli come MD5 per hash.
-*Mancato controllo della revoca del certificato.
--Uso di session resumption per ottimizzare le prestazioni.
-*Supporto a TLS 1.0 o SSL 3.0.
--Supporto a TLS 1.3
+$analisi dei rischi, firewall, DMZ
+_Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?3
+*Configurare il firewall per consentire solo traffico specifico verso i server pubblici che intende posizionare nella DMZ.
+*Implementare un IDS per monitorare il traffico in entrata e in uscita dalla DMZ.
+-Impostare regole per consentire traffico diretto dalla DMZ alla rete interna senza restrizioni.
+*Eseguire test di penetrazione regolari per identificare vulnerabilità nei server della DMZ.
+-Registrare tutti i dettagli del traffico, inclusi dati personali, senza limiti di tempo.
+#Ripetere Firewall [Slide 9], DMZ [Slide 9]
 %
 
-$firewall, configurazione, forwarding
-__Bob configura il suo firewall con la seguente regola:
-iptables -A FORWARD -p tcp --dport 22 -s 192.168.1.0/24 -d 10.0.0.1 -j ACCEPT
-Quali delle seguenti affermazioni sono vere?_3
-*Il traffico SSH dalla rete 192.168.1.0/24 verso il server 10.0.0.1 è consentito.
--Il traffico HTTP tra la rete interna e 10.0.0.1 è bloccato dalla configurazione.
-*Bob può monitorare l'attività di questa regola aggiungendo una regola di LOG prima di essa.
-*Il firewall inoltra i pacchetti solo se la policy predefinita della chain FORWARD è ACCEPT o se esistono regole aggiuntive che consentono esplicitamente il traffico.
--La regola consente connessioni in entrata su tutte le porte dal server 10.0.0.1.
-#Ripetere configurazione di IPtables, forwarding e regole di logging [Lab 04, Slide 9]
+$ipsec, sicurezza
+_Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
+*Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
+*Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
+-Disabilitare il supporto a TLS 1.3.
+-Usare IPsec solo in transport mode.
+-Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
+*Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
+-Usare sempre e solo AH in IPsec.
+-Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
 %
 
-$incident,SOC,sicurezza
-_Indica quali affermazioni relative alla risposta agli incidenti, ai SOC e alla sicurezza informatica sono vere?4
-*Un data breach si riferisce ad una divulgazione non autorizzata di dati sensibili.  
--La preparazione alla risposta agli incidenti è una fase che può essere ignorata se l'organizzazione dispone di strumenti avanzati per il blocco degli attacchi.  
-*Un Incident Response Team ha il compito di definire politiche di risposta agli incidenti e piani di azione.  
--Un data disclosure si riferisce ad una esposizione di dati sensibili.  
--L'obiettivo principale di un SIEM è bloccare attivamente gli attacchi informatici in tempo reale.
-*Un SOC include diverse figure professionali impegnate anche a monitorare continuamente la sicurezza di un sistema informativo.
--Il personale del SOC è responsabile solo dell'implementazione di misure preventive, mentre la gestione degli incidenti è compito dell’incident response team.
-*Un honeypot è un sistema progettato per simulare risorse legittime, attrarre attività malevole e consentire l'analisi di eventi in tempo reale per migliorare la sicurezza complessiva.
-#Ripetere concetti relativi a SOC, Incident Response e SIEM [Slide 12]
+$algoritmi, crypto, simmetrica
+_Quali delle seguenti affermazioni su RC4 e AES sono vere?2
+*RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
+*AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
+-RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
+-AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
+-Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
 %
 
-$ids, analisi dei rischi, reti
-_Bob vuole migliorare la sicurezza della sua rete aziendale implementando un IDS. Durante un’analisi dei rischi, nota che i server contengono dati sensibili. Quale strategia dovrebbe adottare per ridurre i rischi?3
-*Posizionare un NIDS sulla DMZ per monitorare il traffico verso i server e identificare potenziali anomalie di accesso.
-*Configurare l'IDS per segnalare tentativi di accesso non autorizzati, ma non per bloccare automaticamente i pacchetti senza ulteriore analisi.
--Impostare l'IDS per interrompere automaticamente qualsiasi connessione con attività insolita senza tenere conto di falsi positivi.
-*Integrare l'IDS con un sistema SIEM per correlare eventi e rilevare modelli di comportamento sospetti.
--Consentire traffico "trusted" ai server da indirizzi IP interni senza ulteriori verifiche, basandosi sulla segmentazione di rete per la protezione.
-#Ripetere utilizzo di NIDS, correlazione con SIEM e gestione dei falsi positivi [Slide 09-13]
+$ids
+_Bob ha acquistato un dispositivo con installato un IDS, addrestrato sul traffico reale per rilevare anomalie nella sua rete aziendale. Dopo alcuni giorni, l'IDS segnala costantemente attività sospette su un server critico, ma l'analisi manuale non rileva alcun attacco reale. Quali delle seguenti azioni dovrebbe intraprendere Bob?3
+*Regolare la soglia di rilevamento dell'IDS per ridurre i falsi positivi.
+*Analizzare i log storici per identificare pattern normali e aggiornare i profili di base.
+*Aggiornare le firme o il modello di rilevamento dell’IDS  per migliorare l’accuratezza del sistema.
+-Disabilitare temporaneamente l'IDS fino a quando il problema non viene risolto.
+-Configurare l'IDS per ignorare completamente gli alert dell’IDS relativi al server critico.
+#Ripetere IDS [Slide 9]
 %
 
-$iptables, firewall, icmp,
-__Alice ha configurato la seguente regola iptables sul suo sistema. 
-Chain INPUT (policy DROP 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
-    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
-
-Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination         
-
-Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
- pkts bytes target     prot opt in     out     source               destination   
-
-Analizza la configurazione riportata e seleziona le affermazioni corrette:_3      
-*Tutti i pacchetti in ingresso verranno bloccati, a meno che non corrispondano ad una regola esplicita
--Bob non è in grado di inviare Ping ad Alice
-*Bob è in grado di connettersi via HTTP alla macchina di Alice sulla porta 80
-*Il traffico in uscita è completamente consentito
--Tutto il traffico mandato ad Alice che non corrisponde ad alcuna delle regole viene inoltrato automaticamente
-#Laboratorio 4 Sez 2
+$standard, sicurezza, certificazioni
+_Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?3
+*La certificazione richiede una verifica indipendente da parte di un ente accreditato.
+*L’ottenimento della certificazione dipende dall’implementazione di un ISMS adeguata con una adeguata gestione dei rischi post-analisi.
+-Una volta ottenuta, la certificazione è valida per un tempo illimitato.
+*La conformità allo standard include la preparazione alla risposta agli incidenti di sicurezza.
+-L'implementazione delle misure minime consigliate dalla norma garantisce la certificazione senza bisogno di adattamenti.
 %
 
-$crypto, stream, simmetrica
-_Quali affermazioni riguardanti la crittografia a stream sono corrette?2
--Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
--Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
--Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
-*Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
--Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
-- L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
-*Nell’EBC blocchi di plaintext identici producono ciphertext identici.
+$firewall
+_indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette:4
+* Netfilter/IPtables è un software che fornisce funzionalità di manipolazione e filtraggio di pacchetti IP all'interno del kernel Linux.
+-La catena INPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena OUTPUT gestisce i pacchetti in ingresso.
+* La politica di default di una catena IPtables determina l'azione intrapresa se nessuna regola nella catena corrisponde al pacchetto.
+-Il comando "iptables -F" elimina tutte le regole nella catena specificata e ripristina automaticamente la politica di default della catena a ACCEPT.e una singola macchina.
+- In uno stateless packet filter, la regola "iptables -A FORWARD -p tcp -s IP-Alice --sport 80 --dport 22 -j ACCEPT" permette ad Alice di navigare su qualsiasi sito web esterno, a patto che la destinazione sia la porta 80.
+- Con uno stateless packet filter, la porta sorgente 80 può essere utilizzata da Bob per instaurare una connessione verso Alice se è presente una regola che accetta pacchetti con porta sorgente 80. Uno stateful packet filter, invece, può distinguere tra connessioni in entrata e in uscita.
+* Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
+*La catena OUTPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena INPUT gestisce i pacchetti in ingresso.
+#Ripetere Netfilter/IPtables e configurazioni base [Lab 04, Slide 09]
+%
+
+$ah, ipsec
+_Quali tra le seguenti affermazioni riguardanti il protocollo AH (Authentication Header) di IPsec sono vere?2
+*AH garantisce autenticità e integrità dei pacchetti IP tramite hash.
+*AH non fornisce riservatezza, poiché non cifra il payload del pacchetto.
+-AH può essere utilizzato per garantire riservatezza tramite crittografia simmetrica.
+-AH richiede un certificato digitale per autenticare gli utenti.
+-AH supporta Perfect Forward Secrecy come ESP.
+%
+
+$diffiehellman, asimmetrica
+_Quali tra le seguenti affermazioni relative all’uso di Diffie-Hellman sono vere?2
+*Diffie-Hellman consente lo scambio sicuro di chiavi senza che queste siano mai trasmesse direttamente.
+*La sicurezza del protocollo si basa sulla difficoltà computazionale del problema del logaritmo discreto.
+-Diffie-Hellman può essere utilizzato per cifrare i dati direttamente, senza ulteriori algoritmi.
+-La sicurezza di Diffie-Hellman è indipendente dalla lunghezza dei numeri primi utilizzati.
 %

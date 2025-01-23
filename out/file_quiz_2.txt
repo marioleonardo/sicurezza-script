@@ -1,89 +1,55 @@
 
-$algoritmi, crypto, simmetrica
-_Quali delle seguenti affermazioni su RC4 e AES sono vere?2
-*RC4 non richiede padding perché il keystream ha la stessa lunghezza del messaggio da cifrare.
-*AES, con l’opzione -nopad, può cifrare un messaggio solo se la sua lunghezza è un multiplo della lunghezza del blocco.
--RC4 richiede padding per cifrare correttamente messaggi più corti del keystream.
--AES è un algoritmo di cifratura di tipo stream, mentre RC4 è a blocchi.
--Sia RC4 che AES richiedono che il messaggio sia sempre un multiplo della lunghezza del blocco per essere cifrato.
+$IDS, IPS, sicurezza
+_Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?4  
+*Un IDS passivo si limita a rilevare e segnalare attività sospette, senza intervenire attivamente.  
+*Gli NGFW vengono venduti e pubblicizzati come in grado di identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
+-Un IPS è sempre preferibile a un IDS perché previene attivamente le intrusioni, senza rischio di falsi positivi.
+*Gli IDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
+*Un sensore IDS può essere posizionato sia per monitorare tratti di rete che su un singolo host.
+-I NIDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log file monitor, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
+-Gli IDS/IPS possono identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
+-L'integrazione di firewall, VPN e IDPS in un unico dispositivo (UTM) comporta un aumento dei costi di gestione a causa della maggiore complessità dei task che il dispositivo è in grado di svolgere.
+#Ripetere concetti di IDS/IPS e differenze con NGFW e UTM [Slide 10]
 %
 
-$analisi dei rischi, firewall, DMZ
-_Bob sta configurando una rete aziendale con una DMZ per ospitare server pubblici e decide di eseguire un’analisi dei rischi per determinare la configurazione ottimale. Quali misure di sicurezza dovrebbe implementare?3
-*Configurare il firewall per consentire solo traffico specifico verso i server pubblici che intende posizionare nella DMZ.
-*Implementare un IDS per monitorare il traffico in entrata e in uscita dalla DMZ.
--Impostare regole per consentire traffico diretto dalla DMZ alla rete interna senza restrizioni.
-*Eseguire test di penetrazione regolari per identificare vulnerabilità nei server della DMZ.
--Registrare tutti i dettagli del traffico, inclusi dati personali, senza limiti di tempo.
-#Ripetere Firewall [Slide 9], DMZ [Slide 9]
+$esp, ipsec
+_Quali tra le seguenti affermazioni sul protocollo ESP di IPsec sono vere?2
+*ESPv1+ fornisce riservatezza cifrando il payload del pacchetto IP.
+*ESPv2+ può essere configurato per garantire autenticità e integrità dei dati tramite algoritmi di keyed-hash.
+-ESPv1+ crittografa sempre l’intero pacchetto IP, inclusi gli header, indipendentemente dalla modalità utilizzata.
+-ESPv2 è progettato per funzionare esclusivamente in modalità Tunnel.
+-ESPv3+ non può essere utilizzato insieme al protocollo AH.
 %
 
-$ipsec, sicurezza
-_Quali tecniche migliorano la sicurezza complessiva di IPsec e TLS?3
-*Abilitare PFS (Perfect Forward Secrecy) per le sessioni.
-*Aggiornare regolarmente i certificati TLS con chiavi di lunghezza adeguata.
--Disabilitare il supporto a TLS 1.3.
--Usare IPsec solo in transport mode.
--Usare protocolli di hash più veloci per ridurre la possibilità di attacchi brute-force.
-*Disabilitare versioni obsolete come TLS 1.0 e IPsec con DES.
--Usare sempre e solo AH in IPsec.
--Cambiare spesso le SPD per evitare attacchi di tipo brute-force.
+$tls, sicurezza
+_Quali affermazioni descrivono meglio l’utilizzo di TLS nella sicurezza di canale e nella sicurezza di messaggio?2
+*In entrambe le situazioni, il certificato del server deve essere verificato esplicitamente per garantire l’autenticità.
+-TLS puro non può essere utilizzato nella sicurezza di messaggio a meno che non si usi STARTTLS o STLS con protocolli tipo SMTP o POP/IMAP.
+-Sono entrambi vulnerabili a downgrade della connessione o attacchi man-in-the-middle.
+-Entrambi mantengono un canale sicuro dall’inizio della connessione.
+*STARTTLS può permettere sia connessioni sicure che non sicure, dipende dalle ciphersuite scelte durante l’handshake.
 %
 
-$certificati, pkcs, formato, firma
-__Alice desidera ottenere un certificato da Carl, il quale svolge il ruolo di Certification Authority (CA). Per procedere, Carl esegue il seguente comando:
-openssl ca -in alice.certeq.pem -out alice.x509cert.pem
-Quali delle seguenti affermazioni sono corrette?_4
--Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS #10.
--In OpenSSL, Alice può ottenere un certificato da Carl anche senza sottomettere una richiesta di certificato.
-*La richiesta di certificato deve essere firmata da Alice per garantire l’integrità della richiesta.
-*Carl dispone di una base dati che tiene traccia dei certificati emessi e del loro stato, aggiornata automaticamente dopo l’esecuzione del comando.
-*Il certificato emesso da Carl utilizzerà un numero di serie assegnato automaticamente dal file accessorio serial.
-*Il file alice.certreq.pem rappresenta una richiesta di certificato in formato PKCS10
-#Laboratorio 3 Es. 3.2
+$analisi dei rischi, firewall, GDPR
+_Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?3
+*Il firewall deve bloccare il traffico non autorizzato e registrare i tentativi di accesso.
+*La configurazione del firewall deve essere documentata come parte delle misure di sicurezza adottate.
+-Il GDPR richiede che i log del firewall includano i dati personali completi degli utenti per scopi di verifica (deep packet inspection).
+*Il firewall deve essere aggiornato regolarmente per proteggere i dati personali da attacchi noti.
+-L'uso di un firewall e la sua corretta configurazione rendono superfluo adottare ulteriori misure di sicurezza per proteggere i dati personali.
+#La configurazione del firewall deve essere documentata: Per una gestione efficace della sicurezza e per garantire la continuità operativa in caso di problemi.
+#Il firewall deve essere aggiornato regolarmente: Per proteggere i sistemi da vulnerabilità note e nuove minacce.
 %
 
-$gdpr, crittografia, firewall
-_Alice vuole configurare una rete aziendale che protegga i dati personali in transito e in conformità al GDPR. Quali misure tecniche dovrebbe adottare?3
-*Configurare il firewall per consentire solo traffico crittografato tramite TLS verso i server aziendali.
-*Implementare la crittografia end-to-end per proteggere i dati in transito.
--Registrare nei log i contenuti cifrati dei pacchetti per verificare la conformità ai requisiti GDPR.
-*Implementare politiche di gestione delle chiavi per garantire la sicurezza dei certificati crittografici utilizzati.
--Implementare regole per accettare solo pacchetti con chiavi di cifratura statiche condivise tra client e server.
-#Ripetere GDPR [Slide 13], Firewall [Slide 9], Sicurezza di Canale [Slide 7]
-%
-
-$spam,tecniche,email,sicurezza
-_Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere:3
-- Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
-* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
-* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
-* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
-%
-
-$tls, starttls, email, sicurezza, protocollo
-_Indica quali delle seguenti affermazioni sull'uso di TLS e STARTTLS nella posta elettronica sono vere:1
-*Nei protocolli IMAP e POP3, l'uso di STARTTLS implica che la connessione viene prima stabilita in chiaro e solo successivamente, su richiesta del client, parte la negoziazione di un canale sicuro.
-- Il comando "EHLO" in SMTP viene utilizzato dal client per avviare una connessione TLS sicura.
--La differenza principale tra TLS e STARTTLS è che STARTTLS richiede una configurazione end-to-end mentre TLS opera solo a livello di trasporto.
--SMTP, nella sua versione base, offre nativamente crittografia obbligatoria su porta 25 per garantire sicurezza nei trasferimenti.
-%
-
-$ipsec
-__Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Alice esegue i seguenti comandi:
-ip xfrm state flush 
-ip xfrm policy flush 
-ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff 
-ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff 
-ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required 
-ip xfrm policy add src IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required
-Seleziona le risposte corrette:_2
-*Grazie all’utilizzo di IPsec in transport mode, Alice ottiene confidenzialità e protezione dagli attacchi replay
--Viene utilizzato l’algoritmo des per la crittografia
--Quando Alice invia un nuovo pacchetto IP a Bob saranno considerate la SP relativa a “in” più la corrispondente SA, se presente
-*Quando Alice riceve un nuovo pacchetto IP saranno considerate la SP relativa a “in” più la corrispondente SA
--I comandi contengono due SA ridondanti, che possono essere ridotta ad una sola per la configurazione del canale sicuro
+$email,protocollo,mta,msa,mua,smtp,tls
+_Indica quali delle seguenti affermazioni sulla struttura e sui protocolli della posta elettronica sono vere:5
+* MUA sta per Mail User Agent, MSA sta per Message Submission Agent e MTA sta per Message Transfer Agent.
+* SMTP è un protocollo orientato alla connessione utilizzato per l'invio di email.
+* Una sfida nella sicurezza della posta elettronica è la presenza di MTA potenzialmente non attendibili nella catena di consegna.
+* ESMTP è un'estensione di SMTP che introduce funzionalità aggiuntive, incluso il supporto per miglioramenti della sicurezza.
+- Il comando "EHLO" in ESMTP viene utilizzato dal client per avviare una connessione TLS sicura.
+- Il comando "HELO" in ESMTP viene utilizzato dal client per introdurre una nuova comunicazione tra due server.
+* TLS può essere utilizzato per proteggere il canale di comunicazione tra un MUA e un Mail Store (MS).
 %
 
 $pkcs12, pkcs7, pkcs, chiavi,certificati,crittografia
@@ -97,37 +63,49 @@ _Indica quali delle seguenti affermazioni su PKCS sono vere:3
 - I file PKCS #12 possono memorizzare solo una singola chiave privata e un singolo certificato.
 %
 
-$ipsec
-__Alice e Bob vogliono configurare un canale di comunicazione sicuro utilizzando IPSec. A questo proposito Bob esegue i seguenti comandi:
-ip xfrm state flush 
-ip xfrm policy flush 
-ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 enc aes Oxaa223344556677889900aabbccddeeff 
-ip xfrm state add sic IP-Bob dst IP-Alice proto esp spi 0x2000 enc aes 0xbb223344556677889900aabbccddeeff 
-ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto esp mode transport level required ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto esp mode transport level required
-Seleziona le risposte corrette:_3
-*Vengono create 2 SA e 2 SP
-*Le SA contengono 2 SPI differenti perchè identificano la direzione
-*Le Security Policies (SP) configurate stabiliscono che il traffico tra Alice e Bob deve essere cifrato utilizzando ESP in modalità transport, senza coinvolgere l’intero pacchetto IP.
--Le SA configurate utilizzano lo stesso SPI per entrambe le direzioni, perché l’algoritmo AES richiede univocità solo a livello di chiave crittografica.
--Le Security Associations (SA) configurate permettono di proteggere il traffico solo nella direzione da Bob a Alice, mentre il traffico nella direzione opposta rimane non protetto.
+$standard, sicurezza, analisi dei rischi
+_Alice sta implementando un sistema di gestione della sicurezza delle informazioni (ISMS) conforme alla ISO/IEC 27001. Quali delle seguenti affermazioni sono corrette?_3
+*Un ISMS efficace deve essere basato su un’analisi dei rischi documentata e continuamente aggiornata.
+*La certificazione ISO/IEC 27001 implica che l'organizzazione sia in grado di gestire correttamente i rischi associati alle informazioni sensibili.
+-La conformità alla ISO/IEC 27001 garantisce protezione contro le vulnerabilità software.
+*La scelta delle misure di sicurezza deve tenere conto del contesto aziendale e delle esigenze specifiche dei processi.
+-Si può evitare di aggiornare l’analisi dei rischi se l’organizzazione implementa tutte le misure idonee identificate durante il processo di certificazione.
+#Ripetere Standard e Certificazioni [Slide 10]
 %
 
-$ipsec
-__Alice e Bob vogliono configurare un canale di comunicazione sicuro, ma utilizzano configurazioni differenti. Alice sceglie ESP con AES-128-GCM (AEAD) , mentre Bob utilizza AH con HMAC-SHA1.
-Alice quindi esegue i seguenti comandi:
-ip xfrm state add sic IP-Alice dst IP-Bob proto esp spi 0x1000 aead "rfc4106 (gcm (aes)) "0x223344556677889900aabbccddeeffaabbccdd 128
-ip xfrm state add sc IP-Bob dst IP-Alice proto esp spi 0x2000 aead "rfc4106 (gcm (aes)) "0xbb223344556677889900aabbccddeeffaabbccdd 128
-ip xfrm policy add src IP-Alice dst IP-Bob dir out tmpl proto esp mode transport level required
-ip xfrm policy add sic IP-Bob dst IP-Alice dir in tmpl proto esp mode transport level required
-Mentre Bob esegue i seguenti comandi:
-ip xfrm state add sc IP-Alice dst IP-Bob proto ah spi 0x1000 auth "hmac (shal) " 0xaa1222333444555666777888999000aaabbbcccd
-ip xfrm state add src IP-Bob dst IP-Alice proto ah spi 0x2000 auth "hmac (shal)" 0xbb1222333444555666777888999000aaabbbcccd
-ip xfrm policy add src IP-Bob dst IP-Alice dir out tmpl proto ah mode transport level required
-ip xfrm policy add src IP-Alice dst IP-Bob dir in tmpl proto ah mode transport level required
-Seleziona le affermazioni corrette:_3
-*Sono presenti in totale 4 SA e 4 SP
--Le SP sono 2 in totale perché, a differenza delle SA, sono bidirezionali
--Bob ha sbagliato la sua configurazione perchè non ha specificato l’algoritmo crittografico da utilizzare
-*La configurazione è vantaggiosa perchè protegge sia l’integrità del messaggio che la segretezza del payload usando un singolo algoritmo e una singola chiave
-*La configurazione di Bob garantisce solo integrità e autenticità, mentre quella di Alice garantisce anche la confidenzialità dei dati trasmessi.
+$ipsec, sicurezza, ah, attacchi, integrità, autenticazione
+_Scegli le affermazioni corrette riguardo IPsec e la sicurezza delle reti:2
+-Durante l’invio di un pacchetto IPsec, il campo TTL errato causa un errore di integrità, scartando il pacchetto.
+-Il protocollo ARP è sicuro grazie a meccanismi di autenticazione AH che proteggono integrità e confidenzialità.
+-Gli attacchi di tipo replay non possono essere mitigati in IPsec senza algoritmi asimmetrici.
+*Gli attacchi di tipo replay su reti IP possono essere mitigati tramite numeri di sequenza e timestamp.
+*IPsec consente la protezione del traffico dati, ma anche integrità degli header tramite AH.
+%
+
+$crittografia,sicurezza,email,prestazioni,anti-spam,ipsec,tls,attacchi
+_Indica quali delle seguenti affermazioni sulla crittografia, il filtraggio anti-spam e altri aspetti della sicurezza della posta elettronica sono vere:3
+* La scelta tra crittografia simmetrica e asimmetrica in un sistema di posta elettronica sicura spesso dipende da un compromesso tra prestazioni e sicurezza: la simmetrica è più veloce, l'asimmetrica offre gestione delle chiavi più semplice e non ripudio ma non permette di cifrare grandi quantità di dati.
+* L'efficacia di un sistema di filtraggio anti-spam basato su blacklist dipende fortemente dalla sua capacità di aggiornamento costante e dalla precisione nel distinguere tra spam e messaggi legittimi.
+- L'implementazione di un sistema di autenticazione a due fattori per l'accesso alla posta elettronica elimina completamente il rischio di attacchi di phishing.
+* Mentre sia IPsec che TLS forniscono canali di comunicazione sicuri, IPsec opera a livello di rete (IP), proteggendo tutto il traffico tra due host, mentre TLS opera a livello di trasporto (TCP), proteggendo singole connessioni applicative.
+- Un attacco "man-in-the-middle" è più facilmente realizzabile su una connessione protetta con TLS che su una connessione protetta con IPsec.
+%
+
+$sicurezza, autenticazione, cifratura, TLS, RSA, AES
+_Alice sta configurando un server per trasferire file che devono rimanere confidenziali a Bob. Bob riferisce che i file inviati risultano leggibili da terzi. Alice esamina la configurazione e si accorge che mancano adeguate misure di autenticazione e cifratura. Quali modifiche potrebbe implementare per garantire la sicurezza del trasferimento?2
+-Configurare un sistema di protezione end-to-end, es. mediante RSA, per proteggere i file durante il trasferimento, usando chiavi pubbliche per la cifratura e chiavi private per la confidenzialità
+*Implementare l’autenticazione del server e del client tramite TLS, garantendo che entrambi possiedano certificati validi per verificare le rispettive identità.
+-Definire un metodo per condividere la chiave privata di Alice con Bob, garantendo che la cifratura avvenga in modo trasparente.
+-Imporre l’uso di funzioni di hash per garantire la riservatezza dei file durante la trasmissione.
+*Utilizzare cifratura simmetrica, come AES, per un trasferimento più efficiente, assicurandosi che le chiavi simmetriche siano scambiate in modo sicuro tramite un protocollo come Diffie-Hellman.
+%
+
+$firewall, certificazioni, GDPR
+_Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?3
+*Configurare il firewall per registrare i log tecnici necessari alla sicurezza della rete, assicurandosi che siano conservati per un periodo proporzionato e con scopo dichiarato
+-Impostare una regola per registrare tutti i dettagli del traffico, inclusi dati personali, per un periodo illimitato
+*Implementare politiche di accesso basate su principi di "least privilege" per ridurre l'accesso non necessario ai log del firewall
+*Utilizzare un SIEM (Security Information and Event Management) per analizzare i log generati, rispettando le normative sulla gestione dei dati personali.
+-Consentire il traffico in entrata su tutte le porte per facilitare la trasparenza delle comunicazioni.
+#Ripetere GDPR [Slide 13]
 %

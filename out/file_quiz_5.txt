@@ -1,4 +1,60 @@
 
+$smime,email,sicurezza,integrità,autenticazione,non ripudio,riservatezza,cms
+_Indica quali delle seguenti affermazioni su S/MIME sono vere:4
+* S/MIME fornisce servizi di sicurezza come integrità, autenticazione, non ripudio e, facoltativamente, riservatezza per i messaggi di posta elettronica.
+- S/MIME si basa esclusivamente su algoritmi a chiave simmetrica per la crittografia.
+* S/MIME utilizza certificati X.509 per gestire le chiavi pubbliche per la crittografia e le firme digitali.
+- La sicurezza dei messaggi S/MIME dipende dalla sicurezza di tutti gli MTA coinvolti nel percorso di consegna del messaggio.
+* S/MIME può essere utilizzato per creare messaggi firmati digitalmente, cifrati o firmati e cifrati.
+* CMS sta per Cryptographic Message Syntax ed è il formato per definire messaggi sicuri nelle ultime versioni di S/MIME.
+%
+
+$firewall, proxy, DMZ
+_Indica quali delle seguenti affermazioni su firewall, proxy e DMZ sono corrette?4
+*Un forward proxy si trova tra i client di una rete esterna e i server esterni, inoltrando le richieste dei client.  
+-Un reverse proxy si limita a bilanciare il carico tra più server interni, senza fornire alcuna funzionalità di sicurezza aggiuntiva.  
+*L'utilizzo di una DMZ (De-Militarized Zone) permette di isolare i server pubblici dalla rete interna, aumentando la sicurezza.
+-In un'architettura firewall con DMZ, il gateway è sempre posizionato all'interno della rete interna per garantire una maggiore protezione.
+*Un firewall "a tre gambe" è un'architettura che usa un unico gateway per generare una DMZ e isolare la rete interna.  
+-Il mascheramento degli indirizzi IP interni (NAPT) è una funzionalità esclusiva dei proxy application layer.
+*I firewall possono essere implementati come software, appliance hardware o servizi cloud.  
+-Un firewall che contiene componenti di tipo application layer filter è in grado di ispezionare il traffico crittografato senza necessità di decifrarlo.
+-I firewall possono essere implementati come app mobile o servizi cloud.
+#Ripetere concetti su firewall, proxy e DMZ [Slide 09]
+%
+
+$fasi,tls
+_Quali fasi compongono l’handshake TLS?4
+*Negoziazione dei parametri di cifratura.
+*Autenticazione del server (e opzionalmente del client).
+*Scambio di chiavi per la sessione.
+-Trasferimento di file tramite HTTP.
+-Utilizzo del protocollo IKE per la gestione delle SA.
+*Scambio di una Server Challenge Request/Response.
+%
+
+$iptables, firewall, icmp,
+__Alice ha configurato la seguente regola iptables sul suo sistema. 
+Chain INPUT (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     icmp --  *      *       0.0.0.0/0            0.0.0.0/0           
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp dpt:80
+
+Chain FORWARD (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination   
+
+Analizza la configurazione riportata e seleziona le affermazioni corrette:_3      
+*Tutti i pacchetti in ingresso verranno bloccati, a meno che non corrispondano ad una regola esplicita
+-Bob non è in grado di inviare Ping ad Alice
+*Bob è in grado di connettersi via HTTP alla macchina di Alice sulla porta 80
+*Il traffico in uscita è completamente consentito
+-Tutto il traffico mandato ad Alice che non corrisponde ad alcuna delle regole viene inoltrato automaticamente
+#Laboratorio 4 Sez 2
+%
+
 $firewall, configurazione, iptables
 _Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP in ingresso, bloccando tutte le altre connessioni. Quali regole dovrebbe utilizzare?3
 *iptables -A INPUT -p tcp --dport 22 -j ACCEPT
@@ -9,116 +65,81 @@ _Alice desidera configurare un firewall che permetta solo connessioni SSH e HTTP
 #Laboratorio 4
 %
 
-$firewall, vulnerabilità, reti
-_Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?3
-*Impostare una regola per bloccare i pacchetti con flag incoerenti.
-*Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
--Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
--Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
-*Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
-#Firewall [Slide 9]
-%
+$firewall, iptables, configurazione
+__Alice e Bob utilizzano Frank come firewall. La configurazione di iptables su Frank è la seguente:
+Chain INPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
 
-$smime,pgp,sicurezza,email,standard
-_Indica quali delle seguenti affermazioni sul confronto tra S/MIME e PGP, e altri aspetti della sicurezza della posta elettronica, sono vere:2
-* Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, S/MIME è stato standardizzato dall IETF.
-- Sebbene sia S/MIME che PGP forniscano servizi di sicurezza per la posta elettronica, PGP è stato standardizzato dall IETF.
-- L'utilizzo di una VPN garantisce la sicurezza end-to-end dei messaggi di posta elettronica, indipendentemente dal client e dal server utilizzati.
-* A differenza di TLS, che protegge la comunicazione in transito, S/MIME protegge il messaggio stesso, indipendentemente dal percorso che compie.
-- A differenza di S/MIME, che protegge la comunicazione in transito, TLS protegge il messaggio stesso, indipendentemente dal percorso che compie.
-- La crittografia a chiave simmetrica è intrinsecamente più sicura della crittografia a chiave asimmetrica perché utilizza chiavi più lunghe e complesse.
-%
+Chain FORWARD (policy DROP 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
+    0     0 ACCEPT     tcp  --  *      *       IP-Alice             0.0.0.0/0           tcp dpt:80
+    0     0 ACCEPT     tcp  --  *      *       0.0.0.0/0            IP-Alice            tcp spt:80
 
-$firewall, certificazioni, GDPR
-_Alice gestisce una rete aziendale e vuole usare un firewall per proteggere i dati personali dei clienti in maniera conforme alle normative GDPR. Quali delle seguenti configurazioni e misure sono corrette?3
-*Configurare il firewall per registrare i log tecnici necessari alla sicurezza della rete, assicurandosi che siano conservati per un periodo proporzionato e con scopo dichiarato
--Impostare una regola per registrare tutti i dettagli del traffico, inclusi dati personali, per un periodo illimitato
-*Implementare politiche di accesso basate su principi di "least privilege" per ridurre l'accesso non necessario ai log del firewall
-*Utilizzare un SIEM (Security Information and Event Management) per analizzare i log generati, rispettando le normative sulla gestione dei dati personali.
--Consentire il traffico in entrata su tutte le porte per facilitare la trasparenza delle comunicazioni.
-#Ripetere GDPR [Slide 13]
-%
+Chain OUTPUT (policy ACCEPT 0 packets, 0 bytes)
+ pkts bytes target     prot opt in     out     source               destination         
 
-$ipsec,ah,esp,ike,sicurezza,protocollo
-_Quali protocolli vengono utilizzati da IPsec per garantire sicurezza?3
--TCP
-*AH (Authentication Header)
-*ESP (Encapsulating Security Payload)
--HTTPS
--RSSA
-*IKE (Internet Key Exchange)
-%
+Frank ha configurato il firewall eseguendo i seguenti comandi:
+iptables -P FORWARD DROP
+iptables -A FORWARD -p tcp -s IP-Alice --dport 80 -j ACCEPT 
+iptables -A FORWARD -p tcp -d IP-Alice --sport 80 -j ACCEPT
 
-$mime,email,formato,header,body
-_Indica quali delle seguenti affermazioni sul formato MIME sono vere:3
-* MIME è stato introdotto per superare le limitazioni del formato email originale, come la restrizione ai caratteri ASCII a 7 bit.
-* I messaggi MIME sono composti da un header e un body, dove l'header contiene metadati e il body contiene il contenuto del messaggio.
-* MIME supporta i messaggi multipart, consentendo l'inclusione di vari tipi di contenuto e allegati.
-- Gli header MIME non includono campi per specificare il mittente o il destinatario del messaggio che sono invece usati solo dal formato RFC822.
-- MIME viene utilizzato solo per email basate su testo e non supporta allegati binari.
-- MIME viene utilizzato per email basate su testo, ma è ormai obsoleto perché non permette di allegare immagini.
-%
-
-$sicurezza
-_Seleziona le affermazioni corrette sulle tipologie di messaggi sicuri.2
-*Con il tipo di messaggio Clear-Signed, il contenuto del messaggio è leggibile da chiunque, anche se qualcuno potrebbe non riuscire a validare la firma digitale.
--Grazie a messaggi di tipo EnvelopedData, si garantiscono autenticità e integrità, ma non riservatezza senza una cifratura aggiuntiva.
-*Utilizzando il tipo SignedData, ogni destinatario può verificare l’autenticità della firma digitale, ma il processo potrebbe non essere automatizzato senza strumenti adeguati.
--Con il tipo EnvelopedData, il contenuto cifrato può essere decifrato solo da un MUA specifico approvato dal mittente.
--Nella modalità in cui il dato viene prima inserito in una struttura SignedData e poi in una EnvelopedData, il messaggio è firmato digitalmente e il contenuto è sempre leggibile da chiunque.
-% 
-$sicurezza, tls, email, smtp
-_Bob sta configurando il suo server SMTP e vuole garantire connessioni sicure ai suoi client. Quali delle seguenti configurazioni sono corrette?3
-*Bob dovrebbe configurare il server SMTP per utilizzare TLS su specifiche porte (es. porta 465 per SMTPS).
-*Bob dovrebbe installare certificati digitali per permettere l’autenticazione del server.
--Bob può configurare il server SMTP per garantire che i messaggi di posta siano cifrati con S/MIME e gli header SMTP siano cifrati tramite TLS.
-*Il server SMTP di Bob potrebbe accettare email cifrate anche se il client non supporta TLS.
-%
-
-$gdpr, sicurezza, crittografia
-_Bob deve implementare la crittografia per proteggere i dati personali trattati dalla sua azienda. Quali delle seguenti affermazioni rispettano il GDPR?3
-*La crittografia è una misura di sicurezza appropriata, ma non obbligatoria per tutti i tipi di dati personali in transit.
-*Se i dati personali crittografati vengono rubati, l'obbligo di notifica può essere evitato in alcuni casi se opportunamente documentati dal DPO.
--Se si scelgono algoritmi forti, l’uso della crittografia garantisce che l’organizzazione non sia responsabile per una violazione dei dati.
-*Anche se i dati sono cifrati, devono essere accessibili solo agli utenti autorizzati, garantendo riservatezza e disponibilità.
--Il GDPR richiede che tutti i dati personali, indipendentemente dal loro livello di sensibilità, siano crittografati at rest senza eccezioni.
-#Ripetere GDPR [Slide 13]
+Seleziona le affermazioni corrette:_2
+-Alice può collegarsi solo al server web di Bob
+-Bob può collegarsi al server web di Alice con qualunque porta
+*Ogni pacchetto TCP inviato a Frank da Alice viene automaticamente inoltrato a Bob se la porta di destinazione è 80
+-Bob non può inviare richieste HTTP verso qualsiasi server web esterno, ma solo verso Alice
+*Qualsiasi altro tipo di traffico (sia in ingresso che in uscita) tra Bob e Alice viene bloccato dalla policy DROP della chain FORWARD.
+#Laboratorio 4
 %
 
 $firewall
-_Indica quali sono le risposte corrette sui firewall e la loro architettura nelle reti?5
-*Un firewall stateful tiene traccia dello stato delle connessioni, migliorando la sicurezza rispetto ai firewall stateless.  
--I firewall di livello applicativo (L7) sono più veloci dei firewall packet filter (L4) perché analizzano dati meglio strutturati.  
-*Un firewall con architettura a "tre gambe" espone una interfaccia di rete per ospitare server pubblici creando una DMZ (De-Militarized Zone).  
--Usare un firewall con architettura a “screening router” permette di creare una DMZ (De-Militarized Zone) per ospitare server pubblici.  
--Un bastion host è un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.  
--Un firewall di tipo stealth non ha un indirizzo IP configurato sulla scheda rete, ma modifica attivamente il traffico per nascondere la rete interna.
-*Il principio "blacklisting" offre minore sicurezza ma è più facile da gestire rispetto al principio opposto detto “whitelisting”. 
--L'utilizzo di un router come firewall è una soluzione sufficientemente sicura, è quindi consigliabile in ambito aziendale.  
-*Un personal firewall è installato direttamente sul nodo da difendere e può essere usato per autorizzare le comunicazioni dei processi in esecuzione.
--Lo scopo di un firewall è bloccare il traffico in ingresso non autorizzato, serve meno attenzione nel controllo del traffico in uscita.
-*Un honey pot può essere un sistema esposto intenzionalmente su una rete per essere un bersaglio facile e quindi analizzabile in caso di attacco.
-#Ripetere tipi di firewall, architetture e concetti di sicurezza [Slide 9 e 10, Lab 04]
+_indica quali delle seguenti affermazioni sul laboratorio sui firewall sono corrette:6
+* Il comando "iptables -A FORWARD -p icmp -s IP-Alice --icmp-type echo-request -j ACCEPT" permette ad Alice di inviare pacchetti ping (echo-request).
+* Abilitare il traffico ICMP senza restrizioni può essere pericoloso perché può portare a leakage di informazioni, attacchi di tipo ICMP redirect e attacchi DoS di tipo Smurf.
+* Uno stateful packet filter può accettare tutto il traffico associato alle connessioni stabilite, risolvendo il problema di dover aprire porte specifiche per il traffico di ritorno.
+- Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute --limit-burst 1 -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
+* HTTPtunnel può essere utilizzato per creare un tunnel HTTP che permette di aggirare le politiche di un firewall, consentendo, ad esempio, una connessione SSH attraverso la porta 80.
+* Ptunnel incapsula il traffico TCP all'interno di pacchetti ICMP echo request ed echo reply, e questo può essere un modo per aggirare le politiche di un firewall che permette il traffico ICMP.
+- La funzionalità di "dynamic port forwarding" di SSH crea un socket in ascolto in locale e inoltra le connessioni su un canale sicuro SSH, agendo come un circuit-level gateway.
+* Un application-level gateway come Apache con mod_proxy può fornire filtri applicativi, filtraggio di contenuti e una maggiore protezione contro le vulnerabilità specifiche di determinate applicazioni.
+#Ripetere IPtables, ICMP, stateful packet filter, e tunneling [Lab 04, Slide 09]
 %
 
-$crypto, autenticazione, chiavi, tls
-_Alice vuole configurare un server per autenticare in modo sicuro i client con TLS. Quali delle seguenti affermazioni descrivono correttamente l'utilizzo delle chiavi e dei certificati?2
-*Il server deve utilizzare un certificato digitale firmato da una Certification Authority (CA) nota ai client (es. incluso nella lista nota ai browser) per garantire la propria autenticità ai client.
-*Un certificato self-signed può essere utilizzato per autenticare il server, ma richiede che i client lo configurino manualmente come attendibile.
--I certificati digitali garantiscono sia autenticità che riservatezza senza la necessità di cifratura.
--I client non necessitano mai di un certificato per comunicare con il server TLS, indipendentemente dalla configurazione.
--TLS utilizza esclusivamente chiavi simmetriche generate durante l'handshake per garantire autenticità e integrità.
+$crypto, rsa, asimmetrica, autenticazione
+_Alice vuole garantire che un messaggio che invia a Bob non solo sia leggibile solo da Bob, ma che Bob possa verificare che proviene effettivamente da lei. Quale delle seguenti opzioni rappresenta la soluzione più sicura?2
+*Alice cifra il messaggio con la chiave pubblica di Bob e lo firma con la sua chiave privata.
+*Alice firma il messaggio con la sua chiave privata, poi cifra il messaggio firmato con la chiave pubblica di Bob.
+-Alice utilizza la sua chiave pubblica per firmare il messaggio, poi lo cifra con la chiave pubblica di Bob.
+-Bob decifra il messaggio con la chiave pubblica di Alice e lo verifica usando la sua chiave privata.
+-Alice invia il messaggio non cifrato, ma ne firma una copia con la sua chiave privata per autenticazione.
 %
 
-$IDS, IPS, sicurezza
-_Indica quali affermazioni relative a IDS, IPS e sicurezza di rete sono corrette?4  
-*Un IDS passivo si limita a rilevare e segnalare attività sospette, senza intervenire attivamente.  
-*Gli NGFW vengono venduti e pubblicizzati come in grado di identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
--Un IPS è sempre preferibile a un IDS perché previene attivamente le intrusioni, senza rischio di falsi positivi.
-*Gli IDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
-*Un sensore IDS può essere posizionato sia per monitorare tratti di rete che su un singolo host.
--I NIDS possono utilizzare diverse tecniche di analisi, tra cui l'analisi dei log file monitor, il monitoraggio del traffico di rete e la verifica dell'integrità del sistema.
--Gli IDS/IPS possono identificare applicazioni e utenti, applicando policy di sicurezza specifiche.
--L'integrazione di firewall, VPN e IDPS in un unico dispositivo (UTM) comporta un aumento dei costi di gestione a causa della maggiore complessità dei task che il dispositivo è in grado di svolgere.
-#Ripetere concetti di IDS/IPS e differenze con NGFW e UTM [Slide 10]
+$pia, analisi
+_Seleziona le affermazioni corrette sulle differenze tra PIA (Privacy Impact Assessment) e il RMF (Risk Management Process)?3
+*Il PIA è obbligatorio quando il trattamento dei dati personali comporta rischi elevati per i diritti e le libertà degli interessati.
+-Il PIA si occupa esclusivamente di proteggere gli asset fisici e digitali di un’organizzazione.
+-L’analisi dei rischi del RMF si applica solo ai dati personali.
+*Entrambi i processi prevedono una fase di identificazione dei rischi e delle contromisure.
+*Il PIA richiede un coinvolgimento diretto dei rappresentanti legali e degli interessati.
+%
+
+$ipsec,esp, transportmode,tunnelmode,sicurezza,funzionamento
+_Quale delle seguenti opzioni descrive correttamente i metodi di funzionamento di IPsec ESP?2
+*Transport Mode: Solo il payload del pacchetto IP è crittografato.
+*Tunnel Mode: L'intero pacchetto IP è incapsulato e protetto.
+-Broadcast Mode: Protegge la trasmissione di pacchetti su reti multicast.
+-Proxy Mode: Instrada e protegge pacchetti attraverso un proxy server.
+-Transport Mode: L'intero pacchetto IP è incapsulato e protetto.
+-Tunnel Mode: Solo il payload del pacchetto IP è crittografato.
+%
+
+$ipsec,tls,ike
+_indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette:3
+- L'opzione “-CAfile” nel comando “openssl s_client” specifica il file contenente la chiave privata del client.
+* L'opzione “-cipher” in “openssl s_client” ti permette di specificare la lista di ciphersuite che il client dovrebbe usare.
+- Per abilitare l'autenticazione del client in una configurazione Apache TLS, devi cambiare la direttiva “SSLVerifyClient” in “require”.
+* Il comando “openssl rsa -in client_pkey.pem -out client_decrypted_pkey.pem” può essere usato per decriptare una chiave privata RSA.
+- Per catturare il traffico durante un attacco MITM con "ettercap" su una connessione TLS, devi prima usare “openssl” per generare un certificato valido firmato da una CA di fiducia.
+* Il comando "ipsec up host-host" è usato per iniziare una connessione IKE definita in "ipsec.conf" come una connessione chiamata "host-host"
+#Rivedere materiale laboratorio riguardo Ipsec e TLS
 %

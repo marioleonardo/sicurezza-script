@@ -1,37 +1,34 @@
 
-$crypto,simmetrica,asimmetrica, chiavi
-__Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi
--rsa.key.alice
--rsapub.key.alice
-quindi, esegue i seguenti comandi:
-echo chiave > aeskey
-openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey -iv 0
-openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.alice -out aeskey.rsa
-Poi invia a Bob i tre file seguenti:
--msg.enc
--aeskey.rsa
--rsa.key.alice
-Quali errori ha commesso Alice?_3
-*La chiave simmetrica la può leggere solo chi possiede la sua chiave privata
--Ha scelto l’IV in maniera non casuale ma non l’ha riutilizzato
-*Ha condiviso la chiave sbagliata
-*Non ha comunicato l’IV a Bob
--Ha condiviso la chiave simmetrica
--Ha utilizzato un algoritmo di cifratura non abbastanza sicuro
-#Laboratorio 3 Sez. 2
+$firewall, vulnerabilità, reti
+_Bob vuole proteggere la sua rete da scansioni delle porte e tentativi di accesso non autorizzato. Quali configurazioni di firewall sono più efficaci per prevenire questi attacchi?3
+*Impostare una regola per bloccare i pacchetti con flag incoerenti.
+*Abilitare il logging per analizzare tentativi di connessione su porte non aperte.
+-Consentire tutto il traffico ICMP per evitare interferenze con i controlli di rete.
+-Impostare una policy di ACCEPT per tutto il traffico in entrata e utilizzare regole per bloccare attacchi specifici.
+*Limitare il numero di connessioni simultanee per ogni indirizzo IP tramite regole connlimit.
+#Firewall [Slide 9]
 %
 
-$firewall
-_indica quali delle seguenti affermazioni sul laboratorio relativo ai firewall sono corrette:4
-* Netfilter/IPtables è un software che fornisce funzionalità di manipolazione e filtraggio di pacchetti IP all'interno del kernel Linux.
--La catena INPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena OUTPUT gestisce i pacchetti in ingresso.
-* La politica di default di una catena IPtables determina l'azione intrapresa se nessuna regola nella catena corrisponde al pacchetto.
--Il comando "iptables -F" elimina tutte le regole nella catena specificata e ripristina automaticamente la politica di default della catena a ACCEPT.e una singola macchina.
-- In uno stateless packet filter, la regola "iptables -A FORWARD -p tcp -s IP-Alice --sport 80 --dport 22 -j ACCEPT" permette ad Alice di navigare su qualsiasi sito web esterno, a patto che la destinazione sia la porta 80.
-- Con uno stateless packet filter, la porta sorgente 80 può essere utilizzata da Bob per instaurare una connessione verso Alice se è presente una regola che accetta pacchetti con porta sorgente 80. Uno stateful packet filter, invece, può distinguere tra connessioni in entrata e in uscita.
-* Il comando "iptables -A FORWARD -p icmp -d IP-Alice --icmp-type echo-request -m limit --limit 20/minute -j ACCEPT" limita il traffico ICMP echo-request a 20 pacchetti al minuto, senza restrizioni sui secondi che devono passare tra l’invio di un pacchetto e il successivo.
-*La catena OUTPUT di IPtables si applica esclusivamente ai pacchetti in uscita dalla macchina su cui è installato IPtables, mentre la catena INPUT gestisce i pacchetti in ingresso.
-#Ripetere Netfilter/IPtables e configurazioni base [Lab 04, Slide 09]
+$ipsec,tls,ike
+__Ti è stato assegnato il compito di impostare un canale di comunicazione sicuro tra due host, Alice e Bob, usando IPsec. Hai deciso di usare strongSwan per la negoziazione IKE e hai già configurato i file /etc/ipsec.conf e /etc/ipsec.secrets su entrambe le macchine. Alice deve iniziare la connessione con Bob. Sono disponibili sia una chiave pre-condivisa che dei certificati. Usi il comando ipsec up host-host per iniziare la connessione. Quali affermazioni sono corrette?_4
+* Prima di eseguire "ipsec up host-host", devi assicurarti che il servizio strongSwan sia in esecuzione, cosa che può essere verificata usando il comando "ipsec start".
+- Se il comando "ipsec up host-host" fallisce, la prima cosa da controllare è la connettività di rete tra Alice e Bob usando il comando "ping".
+* Dopo aver stabilito con successo il tunnel IPsec, puoi usare il comando "ip xfrm state list" sia su Alice che su Bob per verificare che le Associazioni di Sicurezza (SA) siano state create.
+- Se vuoi usare l'autenticazione basata su certificati invece della PSK, puoi modificare il comando "ipsec up" includendo l'opzione "--cert" seguita dal percorso del file del certificato.
+- Il comando "ip xfrm policy list" può essere usato per controllare se il traffico tra Alice e Bob è indirizzato attraverso il tunnel IPsec.
+* Se la connessione viene stabilita con successo, ma il traffico non è cifrato, dovresti controllare che su Bob il file "/etc/ipsec.conf" abbia il parametro "type" impostato a "start" per la connessione "host-host".
+* Per assicurare che la connessione IPsec sia ristabilita automaticamente dopo un riavvio, dovresti modificare il file "/etc/ipsec.conf" sia su Alice che su Bob per includere la riga "auto=start" all'interno della definizione della connessione.
+- Se vuoi proteggere solo il traffico TCP, devi aggiungere una riga con il parametro "proto tcp" al comando "ip xfrm state add".
+%
+
+$ids, firewall, reti
+_Bob sta progettando una rete aziendale e vuole combinare un IDS e un firewall per ottimizzare la sicurezza. Quali strategie può adottare?3
+*Utilizzare il firewall per bloccare traffico noto come malevolo e l'IDS per rilevare attività sospette.
+*Posizionare l'IDS in modalità monitoraggio passivo in una posizione strategica della rete.
+-Configurare l'IDS per modificare direttamente le regole del firewall senza revisione umana.
+*Utilizzare un sistema SIEM per correlare i log dell’IDS e del firewall, permettendo un’analisi approfondita.
+-Impostare il firewall per ignorare il traffico segnalato dall'IDS senza ulteriori controlli.
+#Ripetere IDS, Firewall e SIEM [Slide 9]
 %
 
 $hash, funzioni di hash, crypto
@@ -43,99 +40,85 @@ _Quali tra le seguenti affermazioni sull’hashing nella crittografia sono vere?
 -Gli algoritmi di hash vengono utilizzati esclusivamente per proteggere le password memorizzate nei database.
 %
 
-$ipsec,tls,ike
-_indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette:3
-- L'opzione “-CAfile” nel comando “openssl s_client” specifica il file contenente la chiave privata del client.
-* L'opzione “-cipher” in “openssl s_client” ti permette di specificare la lista di ciphersuite che il client dovrebbe usare.
-- Per abilitare l'autenticazione del client in una configurazione Apache TLS, devi cambiare la direttiva “SSLVerifyClient” in “require”.
-* Il comando “openssl rsa -in client_pkey.pem -out client_decrypted_pkey.pem” può essere usato per decriptare una chiave privata RSA.
-- Per catturare il traffico durante un attacco MITM con "ettercap" su una connessione TLS, devi prima usare “openssl” per generare un certificato valido firmato da una CA di fiducia.
-* Il comando "ipsec up host-host" è usato per iniziare una connessione IKE definita in "ipsec.conf" come una connessione chiamata "host-host"
-#Rivedere materiale laboratorio riguardo Ipsec e TLS
+$algoritmi, crypto, simmetrica
+_Quali tra le seguenti affermazioni sull'algoritmo AES sono vere?2
+*AES prevede tre versioni con lunghezza della chiave diversa, 128, 192 o 256 bit.
+*AES è un algoritmo a blocchi che opera su blocchi di 128 bit indipendentemente dalla lunghezza della chiave.
+-AES supporta lunghezze di chiave di 64, 128 o 256 bit per garantire flessibilità.
+-AES è stato progettato per garantire confidenzialità ma non può essere usato per garantire integrità e autenticità dei dati.
 %
 
-$hash, autenticazione, tls, collisioni
-_Quali delle seguenti affermazioni sull'uso delle funzioni di hash nella sicurezza TLS sono vere?3
-*Funzioni di hash sicure come SHA-256 possono svolgere un ruolo importante nella verifica di integrità e autenticazione delle connessioni TLS.
-*Usare di hash per cui è possibile trovare collisioni potrebbe compromettere l'integrità del certificato usato da un server TLS, se riuscissi a generare un certificato con lo stesso hash.
--Le funzioni di hash sono utilizzate esclusivamente per cifrare il traffico TLS.
--L'utilizzo di funzioni di hash obsoleti come MD5 non influisce sulla sicurezza di TLS, se per calcolare i MAC vengono usate chiavi lunghe.
-*TLS utilizza funzioni di hash nei certificati per garantire l'autenticità delle identità coinvolte nella connessione.
+$firewall, configurazione, forwarding
+__Bob configura il suo firewall con la seguente regola:
+iptables -A FORWARD -p tcp --dport 22 -s 192.168.1.0/24 -d 10.0.0.1 -j ACCEPT
+Quali delle seguenti affermazioni sono vere?_3
+*Il traffico SSH dalla rete 192.168.1.0/24 verso il server 10.0.0.1 è consentito.
+-Il traffico HTTP tra la rete interna e 10.0.0.1 è bloccato dalla configurazione.
+*Bob può monitorare l'attività di questa regola aggiungendo una regola di LOG prima di essa.
+*Il firewall inoltra i pacchetti solo se la policy predefinita della chain FORWARD è ACCEPT o se esistono regole aggiuntive che consentono esplicitamente il traffico.
+-La regola consente connessioni in entrata su tutte le porte dal server 10.0.0.1.
+#Ripetere configurazione di IPtables, forwarding e regole di logging [Lab 04, Slide 9]
 %
 
-$gdpr, analisi dei rischi, sicurezza
-_Alice sta valutando i rischi legati al trattamento dei dati personali in conformità al GDPR. Quali delle seguenti azioni rappresentano buone pratiche?3
-*Considerare l'impatto di una violazione dei dati sia a livello finanziario che reputazionale.
-*Coinvolgere i responsabili delle aree interessate nel processo di analisi dei rischi.
--Documentare i rischi associati ai dati sensibili è necessario, mentre gli altri tipi di dati non sono tutelati dal GPDR è pertanto l’adeguata documentazione risulta opzionale.
-*Valutare regolarmente l'efficacia delle misure tecniche e organizzative adottate.
--Concludere l'analisi dei rischi una volta definite le misure di protezione iniziali.
+$crypto, stream, simmetrica
+_Quali affermazioni riguardanti la crittografia a stream sono corrette?2
+-Nel CBC, l’algoritmo è sempre più sicuro rispetto ai metodi di cifratura stream.
+-Nel CBC, l’IV deve essere un numero casuale sempre riutilizzabile per risparmiare risorse.
+-Nel CBC, come in TLSv1, l’IV deve essere un numero generato dal traffico precedente per risparmiare risorse.
+*Nel CBC, un errore di trasmissione in un blocco cifrato si riflette solo su quel blocco e sul successivo durante la decifratura.
+-Nel CBC, un errore di trasmissione si propaga solo in avanti senza alterare i blocchi precedenti.
+- L’IV per la modalità EBC deve essere un numero casuale utilizzabile solo una volta.
+*Nell’EBC blocchi di plaintext identici producono ciphertext identici.
 %
 
-$standard, sicurezza, certificazioni
-_Alice ha deciso di implementare la ISO/IEC 27001 e ottenere una certificazione per dimostrare il suo impegno nella sicurezza informatica. Quali delle seguenti affermazioni descrivono correttamente il processo?3
-*La certificazione richiede una verifica indipendente da parte di un ente accreditato.
-*L’ottenimento della certificazione dipende dall’implementazione di un ISMS adeguata con una adeguata gestione dei rischi post-analisi.
--Una volta ottenuta, la certificazione è valida per un tempo illimitato.
-*La conformità allo standard include la preparazione alla risposta agli incidenti di sicurezza.
--L'implementazione delle misure minime consigliate dalla norma garantisce la certificazione senza bisogno di adattamenti.
+$incident,SOC,sicurezza
+_Indica quali affermazioni relative alla risposta agli incidenti, ai SOC e alla sicurezza informatica sono vere?4
+*Un data breach si riferisce ad una divulgazione non autorizzata di dati sensibili.  
+-La preparazione alla risposta agli incidenti è una fase che può essere ignorata se l'organizzazione dispone di strumenti avanzati per il blocco degli attacchi.  
+*Un Incident Response Team ha il compito di definire politiche di risposta agli incidenti e piani di azione.  
+-Un data disclosure si riferisce ad una esposizione di dati sensibili.  
+-L'obiettivo principale di un SIEM è bloccare attivamente gli attacchi informatici in tempo reale.
+*Un SOC include diverse figure professionali impegnate anche a monitorare continuamente la sicurezza di un sistema informativo.
+-Il personale del SOC è responsabile solo dell'implementazione di misure preventive, mentre la gestione degli incidenti è compito dell’incident response team.
+*Un honeypot è un sistema progettato per simulare risorse legittime, attrarre attività malevole e consentire l'analisi di eventi in tempo reale per migliorare la sicurezza complessiva.
+#Ripetere concetti relativi a SOC, Incident Response e SIEM [Slide 12]
 %
 
-$analisi dei rischi, firewall, GDPR
-_Alice vuole proteggere i dati personali trattati dalla sua azienda attraverso un firewall. Quali delle seguenti affermazioni rispettano i requisiti del GDPR e le migliori pratiche di sicurezza?3
-*Il firewall deve bloccare il traffico non autorizzato e registrare i tentativi di accesso.
-*La configurazione del firewall deve essere documentata come parte delle misure di sicurezza adottate.
--Il GDPR richiede che i log del firewall includano i dati personali completi degli utenti per scopi di verifica (deep packet inspection).
-*Il firewall deve essere aggiornato regolarmente per proteggere i dati personali da attacchi noti.
--L'uso di un firewall e la sua corretta configurazione rendono superfluo adottare ulteriori misure di sicurezza per proteggere i dati personali.
-#La configurazione del firewall deve essere documentata: Per una gestione efficace della sicurezza e per garantire la continuità operativa in caso di problemi.
-#Il firewall deve essere aggiornato regolarmente: Per proteggere i sistemi da vulnerabilità note e nuove minacce.
+$spam,tecniche,email,sicurezza
+_Indica quali delle seguenti affermazioni sulle tecniche anti-spam sono vere:3
+- Il Whitelisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+- I primi tentativi di sicurezza della posta elettronica prevedevano l'uso di codici segreti incorporati direttamente nel corpo del messaggio.
+* Blacklist e whitelist vengono utilizzate per filtrare le email in base all'indirizzo IP o al dominio del mittente.
+* Il greylisting è una tecnica che rifiuta temporaneamente le email da mittenti sconosciuti, richiedendo loro di ritentare la consegna.
+* Gli "open relay" sono MTA che consentono a chiunque di inviare email attraverso di essi, rendendoli obiettivi interessanti per gli spammer.
 %
 
-$firewall, architettura, sicurezza
-_Alice gestisce una rete aziendale che include server pubblici e risorse interne sensibili. Decide di implementare un'architettura firewall a "tre gambe" con una DMZ. Quali sono i vantaggi di questa configurazione?3
-*Isolamento dei server pubblici dato il divieto di accesso diretto alla rete interna.
-*Facilità di applicazione di policy di sicurezza specifiche per ciascun segmento di rete.
--Maggiore velocità di trasmissione rispetto a un firewall con DMZ singola.
--I server nella DMZ possono comunicare direttamente con la rete interna senza ulteriori configurazioni.
-*Possibilità di monitorare e analizzare il traffico verso i server pubblici senza esporre la rete interna.
-#Ripetere Firewall [Slide 9]
+$gdpr, sicurezza, crittografia
+_Bob deve implementare la crittografia per proteggere i dati personali trattati dalla sua azienda. Quali delle seguenti affermazioni rispettano il GDPR?3
+*La crittografia è una misura di sicurezza appropriata, ma non obbligatoria per tutti i tipi di dati personali in transit.
+*Se i dati personali crittografati vengono rubati, l'obbligo di notifica può essere evitato in alcuni casi se opportunamente documentati dal DPO.
+-Se si scelgono algoritmi forti, l’uso della crittografia garantisce che l’organizzazione non sia responsabile per una violazione dei dati.
+*Anche se i dati sono cifrati, devono essere accessibili solo agli utenti autorizzati, garantendo riservatezza e disponibilità.
+-Il GDPR richiede che tutti i dati personali, indipendentemente dal loro livello di sensibilità, siano crittografati at rest senza eccezioni.
+#Ripetere GDPR [Slide 13]
 %
 
-$firewall, iptables,configurazione
-__Alice ha configurato il firewall del suo sistema con i seguenti comandi:
-iptables -F
-iptables -P INPUT ACCEPT
-iptables -A INPUT -p tcp --syn -j DROP
-
-La configurazione risultante di iptables è la seguente:
-Chain INPUT (policy ACCEPT)
- pkts bytes target     prot opt in     out     source               destination         
-    0     0 DROP       tcp  --  *      *       0.0.0.0/0            0.0.0.0/0           tcp flags:0x17/0x02 (SYN)
-
-Chain FORWARD (policy ACCEPT)
- pkts bytes target     prot opt in     out     source               destination         
-
-Chain OUTPUT (policy ACCEPT)
- pkts bytes target     prot opt in     out     source               destination                       destination         
-
-Seleziona le affermazioni corrette:_3
-*Tutto il traffico in uscita è consentito
--Tutto il traffico in ingresso viene automaticamente inoltrato (default policy ACCEPT)
--Alice non può connettersi ad un server di Bob, perché tutti i pacchetti TCP con flag SYN sono bloccati
-*Bob non può instaurare una nuova connessione TCP con Alice
-*Bob non può individuare i servizi esposti di Alice tramite SYN scan
-#Laboratorio 4 Sez.2
-%
-
-$ipsec,tls,ike
-_Indica quali delle seguenti affermazioni sul laboratorio su IPsec e TLS sono corrette:4
-- Il comando "ip xfrm state flush" è usato per cancellare il Database delle Politiche di Sicurezza (SPD).
-* Il comando "ip xfrm policy list" mostra le politiche di sicurezza IPsec correnti.
-* Il comando "ipsec start" è usato per avviare il demone strongSwan.
-- Dopo aver modificato il file "/etc/ipsec.conf", devi usare il comando "ipsec update" perché le modifiche abbiano effetto immediatamente.
-* Il comando "openssl s_server -www" avvia un semplice server TLS che mostra le informazioni di connessione in formato HTML.
-- In una VPN IPsec site-to-site, ogni gateway necessita solo di una singola Associazione di Sicurezza (SA) per gestire il traffico in entrambe le direzioni.
-* Per usare certificati con strongSwan devi posizionare il certificato CA nella directory "/etc/ipsec.d/cacerts"
-#Rivedere materiale laboratorio riguardo Ipsec e TLS
+$crypto, simmetrica, chiavi, attacchi
+__Alice e Bob vogliono scambiare un messaggio cifrato, ma non hanno una chiave simmetrica condivisa. Alice, possiede le seguenti chiavi
+-rsa.key.alice
+-rsapub.key.alice
+quindi, esegue i seguenti comandi:
+echo chiave > aeskey
+openssl enc -aes-128-cbc -in msg -out msg.enc -kfile aeskey
+openssl pkeyutl -encrypt -in aeskey -inkey rsa.key.bob -out aeskey.enc
+Poi invia a Bob i seguenti file:
+-msg.enc
+-aeskey.enc
+Seleziona le risposte corrette:_2
+*Questa procedura è vulnerabile ad un attacco Man In the Middle
+-Questa procedura è vulnerabile ad un attacco IP Spoofing
+-Bob deve sapere l’IV per decifrare la chiave
+*Bob deve decifrare prima la chiave con la sua chiave privata e poi usare quella chiave per decifrare il messaggio
+-Bob deve decifrare prima la chiave con la chiave pubblica di Alice e poi usare quella chiave per decifrare il messaggio
+#Laboratorio 3 Sez. 2
 %
